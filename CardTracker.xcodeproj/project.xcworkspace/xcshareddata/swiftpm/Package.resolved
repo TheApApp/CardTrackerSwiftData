@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swiftuikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youjinp/SwiftUIKit",
+      "state" : {
+        "branch" : "master",
+        "revision" : "a83aedd996bcb59ca846346bb507f090a7350e34"
+      }
+    }
+  ],
+  "version" : 2
+}

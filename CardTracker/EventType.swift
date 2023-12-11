@@ -1,5 +1,5 @@
 //
-//  Event.swift
+//  EventType.swift
 //  CardTracker
 //
 //  Created by Michael Rowe on 12/10/23.
@@ -9,12 +9,11 @@ import Foundation
 import SwiftData
 
 @Model
-final class Event {
-    var id: UUID
-    var eventName: String
+final class EventType {
+    var eventName: String = "Unknown"
+    var card: Card?
     
     init(eventName: String) {
-        self.id = UUID()
         self.eventName = eventName
     }
     

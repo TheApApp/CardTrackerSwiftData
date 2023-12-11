@@ -15,8 +15,15 @@
 		18D962242B263EC400662849 /* CardTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962232B263EC400662849 /* CardTrackerTests.swift */; };
 		18D9622E2B263EC400662849 /* CardTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9622D2B263EC400662849 /* CardTrackerUITests.swift */; };
 		18D962302B263EC400662849 /* CardTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9622F2B263EC400662849 /* CardTrackerUITestsLaunchTests.swift */; };
-		18D9623D2B26409500662849 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9623C2B26409500662849 /* Event.swift */; };
+		18D9623D2B26409500662849 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9623C2B26409500662849 /* EventType.swift */; };
 		18D9623F2B26411900662849 /* Recipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9623E2B26411900662849 /* Recipient.swift */; };
+		18D962432B264D1D00662849 /* NewRecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962422B264D1D00662849 /* NewRecipientView.swift */; };
+		18D962462B26501200662849 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18D962452B26501200662849 /* SwiftUIKit */; };
+		18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962482B2650C100662849 /* TextFieldModifier.swift */; };
+		18D9624B2B2654EA00662849 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624A2B2654EA00662849 /* NewEventView.swift */; };
+		18D9624D2B2656AB00662849 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624C2B2656AB00662849 /* EventsList.swift */; };
+		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
+		18D962512B2675D100662849 /* NewEventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962502B2675D100662849 /* NewEventTypeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +57,14 @@
 		18D962292B263EC400662849 /* CardTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D9622D2B263EC400662849 /* CardTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerUITests.swift; sourceTree = "<group>"; };
 		18D9622F2B263EC400662849 /* CardTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		18D9623C2B26409500662849 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		18D9623C2B26409500662849 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		18D9623E2B26411900662849 /* Recipient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipient.swift; sourceTree = "<group>"; };
+		18D962422B264D1D00662849 /* NewRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipientView.swift; sourceTree = "<group>"; };
+		18D962482B2650C100662849 /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
+		18D9624A2B2654EA00662849 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
+		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
+		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		18D962502B2675D100662849 /* NewEventTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventTypeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D962462B26501200662849 /* SwiftUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				18D9620E2B263EC200662849 /* CardTrackerApp.swift */,
+				18D962472B2650AB00662849 /* Helpers */,
 				18D962402B2649DE00662849 /* Data */,
 				18D962412B264A0200662849 /* Views */,
 				18D962142B263EC300662849 /* Assets.xcassets */,
@@ -142,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				18D962122B263EC200662849 /* Card.swift */,
-				18D9623C2B26409500662849 /* Event.swift */,
+				18D9623C2B26409500662849 /* EventType.swift */,
 				18D9623E2B26411900662849 /* Recipient.swift */,
 			);
 			name = Data;
@@ -152,8 +167,21 @@
 			isa = PBXGroup;
 			children = (
 				18D962102B263EC200662849 /* ContentView.swift */,
+				18D9624C2B2656AB00662849 /* EventsList.swift */,
+				18D9624E2B266F0E00662849 /* FilteredList.swift */,
+				18D9624A2B2654EA00662849 /* NewEventView.swift */,
+				18D962422B264D1D00662849 /* NewRecipientView.swift */,
+				18D962502B2675D100662849 /* NewEventTypeView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		18D962472B2650AB00662849 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				18D962482B2650C100662849 /* TextFieldModifier.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +200,9 @@
 			dependencies = (
 			);
 			name = CardTracker;
+			packageProductDependencies = (
+				18D962452B26501200662849 /* SwiftUIKit */,
+			);
 			productName = CardTracker;
 			productReference = 18D9620B2B263EC200662849 /* CardTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -244,6 +275,9 @@
 				Base,
 			);
 			mainGroup = 18D962022B263EC200662849;
+			packageReferences = (
+				18D962442B26501200662849 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
+			);
 			productRefGroup = 18D9620C2B263EC200662849 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -287,10 +321,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D9623F2B26411900662849 /* Recipient.swift in Sources */,
-				18D9623D2B26409500662849 /* Event.swift in Sources */,
+				18D9623D2B26409500662849 /* EventType.swift in Sources */,
+				18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */,
 				18D962112B263EC200662849 /* ContentView.swift in Sources */,
+				18D962432B264D1D00662849 /* NewRecipientView.swift in Sources */,
+				18D9624B2B2654EA00662849 /* NewEventView.swift in Sources */,
+				18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */,
 				18D962132B263EC200662849 /* Card.swift in Sources */,
+				18D9624D2B2656AB00662849 /* EventsList.swift in Sources */,
 				18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */,
+				18D962512B2675D100662849 /* NewEventTypeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +495,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Card Tracker";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -473,7 +515,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -494,6 +538,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardTracker/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Card Tracker";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -512,7 +558,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -649,6 +697,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		18D962442B26501200662849 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youjinp/SwiftUIKit";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18D962452B26501200662849 /* SwiftUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 18D962442B26501200662849 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;
+			productName = SwiftUIKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18D962032B263EC200662849 /* Project object */;
 }

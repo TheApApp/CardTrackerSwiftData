@@ -10,44 +10,69 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    
+    @State var eventList = false
+    @State var newEvent = false
+    @State var newRecipient = false
+    @State private var nameFilter = ""
     @Query private var recipients: [Recipient]
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(recipients) { recipient in
-                    NavigationLink {
-                        Text("Recipient named \(recipient.fullName)")
-                    } label: {
-                        Text(recipient.fullName)
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        NavigationView {
+            VStack(spacing: 0) {
+                /// todo: change to Searchable
+                TextField("Filter", text: $nameFilter)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding([.top, .leading, .trailing, .bottom])
+                    .background(Color(UIColor.systemGroupedBackground))
+                FilteredList(filter: nameFilter, eventList: eventList)
+                Spacer()
             }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
             .toolbar {
-#if os(iOS)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        self.eventList.toggle()
+                    }, label: {
+                        Image(systemName: eventList ? "person.crop.circle" : "calendar.circle")
+                            .font(.title2)
+                            .foregroundColor(.green)
+                    })
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        if eventList {
+                            self.newEvent.toggle()
+                        } else {
+                            self.newRecipient.toggle()
+                        }
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                            .font(.title2)
+                            .foregroundColor(.green)
+                    })
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
-#endif
-                ToolbarItem {
-                    Button(action: addRecipient) {
-                        Label("Add Recipient", systemImage: "plus.circle.fill")
-                    }
-                }
             }
-        } detail: {
-            Text("Select a recipient")
+            if eventList {
+                Text("Select an Event")
+                    .font(.largeTitle)
+                    .foregroundColor(.green)
+            } else {
+                Text("Select a Recipient")
+                    .font(.largeTitle)
+                    .foregroundColor(.green)
+            }
         }
-    }
-
-    private func addRecipient() {
-        withAnimation {
-            let newRecipient = Recipient(addressLine1: "5017 Wineberry Drive", addressLine2: "", city: "Durham", state: "NC", zip: "27713-8535", country: "USA", firstName: "Michael", lastName: "Rowe")
-            modelContext.insert(newRecipient)
+        .navigationViewStyle(.automatic)
+        .ignoresSafeArea(.all)
+        .sheet(isPresented: $newRecipient) {
+            NewRecipientView()
+        }
+        .sheet(isPresented: $newEvent) {
+            NewEventView()
         }
     }
 

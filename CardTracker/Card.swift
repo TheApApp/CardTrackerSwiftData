@@ -7,19 +7,18 @@
 
 import Foundation
 import SwiftData
+import UIKit
 
 @Model
 final class Card {
-    var id: UUID
-    var cardDate: Date
-    var eventType: Event
-    @Attribute(.externalStorage, .allowsCloudEncryption) var cardFront: Data
-    var recipient: Recipient
+    var cardDate: Date = Date()
+    @Relationship(deleteRule: .nullify, inverse: \EventType.card) var eventName: EventType?
+    @Attribute(.externalStorage) var cardFront: Data = (UIImage(named: "frontImage")?.pngData())!
+    var recipient: Recipient?
     
-    init(cardDate: Date, eventType: Event, cardFront: Data, recipient: Recipient) {
-        self.id = UUID()
+    init(cardDate: Date, eventName: EventType, cardFront: Data, recipient: Recipient) {
         self.cardDate = cardDate
-        self.eventType = eventType
+        self.eventName = eventName
         self.cardFront = cardFront
         self.recipient = recipient
     }

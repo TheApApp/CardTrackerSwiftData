@@ -13,11 +13,10 @@ struct CardTrackerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Card.self,
-            Event.self,
+            EventType.self,
             Recipient.self,
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, cloudKitDatabase: .automatic )
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
