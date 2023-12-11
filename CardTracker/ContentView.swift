@@ -14,20 +14,16 @@ struct ContentView: View {
     @State var eventList = false
     @State var newEvent = false
     @State var newRecipient = false
-    @State private var nameFilter = ""
+    @State private var searchString = ""
     @Query private var recipients: [Recipient]
 
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                /// todo: change to Searchable
-                TextField("Filter", text: $nameFilter)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding([.top, .leading, .trailing, .bottom])
-                    .background(Color(UIColor.systemGroupedBackground))
-                FilteredList(filter: nameFilter, eventList: eventList)
+                FilteredList(searchString: searchString, eventList: eventList)
                 Spacer()
             }
+            .searchable(text: $searchString)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

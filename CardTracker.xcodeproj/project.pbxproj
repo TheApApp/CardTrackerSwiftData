@@ -24,6 +24,7 @@
 		18D9624D2B2656AB00662849 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624C2B2656AB00662849 /* EventsList.swift */; };
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962512B2675D100662849 /* NewEventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962502B2675D100662849 /* NewEventTypeView.swift */; };
+		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962502B2675D100662849 /* NewEventTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventTypeView.swift; sourceTree = "<group>"; };
+		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				18D962102B263EC200662849 /* ContentView.swift */,
+				18D962522B269DF400662849 /* EditCardView.swift */,
 				18D9624C2B2656AB00662849 /* EventsList.swift */,
 				18D9624E2B266F0E00662849 /* FilteredList.swift */,
 				18D9624A2B2654EA00662849 /* NewEventView.swift */,
@@ -320,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D962532B269DF400662849 /* EditCardView.swift in Sources */,
 				18D9623F2B26411900662849 /* Recipient.swift in Sources */,
 				18D9623D2B26409500662849 /* EventType.swift in Sources */,
 				18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */,
