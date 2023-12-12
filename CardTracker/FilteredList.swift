@@ -44,18 +44,17 @@ struct FilteredList: View {
                                    Text("Event \(event.eventName)")
                     ) {
                         Text("\(event.eventName)")
-                            .foregroundColor(Color(red: 0.138, green: 0.545, blue: 0.282))
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .onDelete(perform: deleteEvent)
             } else {
                 ForEach(recipients, id: \.self) { recipient in
                     NavigationLink(destination:
-                                    //                                    ViewEventsView(recipient: recipient)
-                                   Text("Recipient \(recipient.fullName)")
+                        ViewEventsView(recipient: recipient)
                     ) {
                         Text("\(recipient.fullName)")
-                            .foregroundColor(Color(red: 0.138, green: 0.545, blue: 0.282))
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .onDelete(perform: deleteRecipient)

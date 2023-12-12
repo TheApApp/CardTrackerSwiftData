@@ -10,11 +10,10 @@ import SwiftData
 
 @Model
 final class EventType {
-    var eventName: String = "Unknown"
-    var card: Card?
+    var eventName: String = ""
+    var cards: [Card]? = []
     
     init(eventName: String) {
         self.eventName = eventName
     }
-    
 }

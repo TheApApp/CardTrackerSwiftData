@@ -23,7 +23,7 @@ final class Recipient {
     var fullName: String {
         String("\(firstName) \(lastName)")
     }
-    
+        
     init(addressLine1: String, addressLine2: String, city: String, state: String, zip: String, country: String, firstName: String, lastName: String) {
         self.addressLine1 = addressLine1
         self.addressLine2 = addressLine2
