@@ -17,6 +17,17 @@ struct FilteredList: View {
     private var eventList = false
     
     init(searchString: String, eventList: Bool) {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemGreen,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.systemGreen,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        UINavigationBar.appearance().compactAppearance = navBarAppearance
+        
         self.eventList = eventList
         
         _events = Query(filter: #Predicate {

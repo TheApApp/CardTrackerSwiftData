@@ -30,12 +30,26 @@ struct ViewEventsView: View {
     @State var showShareSheet: Bool = false
     
     init(recipient: Recipient) {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemGreen,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.systemGreen,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        UINavigationBar.appearance().compactAppearance = navBarAppearance
+        
         self.recipient = recipient
-        //        _cards = Query(filter: #Predicate {
-        //            return $0.recipient == recipient
-        //        }, sort: [
-        //            SortDescriptor(\Card.cardDate, order: .reverse)
-        //        ])
+        let recipientID = recipient.persistentModelID // Note this is required to help in Macro Expansion
+        _cards = Query(
+            filter: #Predicate {$0.recipient?.persistentModelID == recipientID },
+            sort: [
+                SortDescriptor(\Card.cardDate, order: .reverse),
+                SortDescriptor(\Card.event?.eventName, order: .forward)
+            ]
+        )
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.gridLayout = [
                 GridItem(.adaptive(minimum: 320), spacing: 20, alignment: .center)
@@ -76,7 +90,7 @@ struct ViewEventsView: View {
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        Text("\(card.cardDate)")
+                        ScreenView(card: card)
                     }
                     .padding()
                 }
@@ -146,7 +160,7 @@ struct ViewEventsView: View {
                             pdfOutput.translateBy(x: size.width + 10, y: 0)
                             currentX += size.width + 10
                         }
-                        print("Body - currentX = \(currentX), currentY = \(currentY)")
+//                        print("Body - currentX = \(currentX), currentY = \(currentY)")
                     }
                 }
                 pdfOutput.translateBy(x: -pageSize.width + 5, y: -144)

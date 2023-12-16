@@ -10,21 +10,12 @@ import SwiftData
 import SwiftUI
 
 struct AddNewCardView: View {
-    var recipient: Recipient
-    @Query(sort: \EventType.eventName) private var events: [EventType]
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var zoomed = false
+    var recipient: Recipient
+    @Query(sort: \EventType.eventName) private var events: [EventType]
     
-    enum CaptureCardView: Identifiable {
-        case front
-        var id: Int {
-            hashValue
-        }
-    }
-    
-    @State var captureCardView: CaptureCardView?
     @State private var selectedEvent: EventType?
     @State private var cardDate = Date()
     @State var frontImageSelected: Image? = Image("frontImage")
@@ -34,6 +25,7 @@ struct AddNewCardView: View {
     
     init(recipient: Recipient) {
         self.recipient = recipient
+        self._selectedEvent = State(initialValue: events.first)
     }
     
     var body: some View {
@@ -46,6 +38,7 @@ struct AddNewCardView: View {
                         Picker(selection: $selectedEvent, label: Text("")) {
                             ForEach(events) { event in
                                 Text(event.eventName)
+                                    .tag(Optional(event))
                             }
                         }
                         .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.25)
@@ -103,24 +96,25 @@ struct AddNewCardView: View {
                 }, label: {
                     Image(systemName: "square.and.arrow.down")
                         .font(.largeTitle)
-                        .foregroundColor(.green)
+                        .foregroundColor(.accentColor)
                 })
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "chevron.down.circle.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.green)
+                        .foregroundColor(.accentColor)
                 })
             }
             )
         }
+        .foregroundColor(.accentColor)
     }
     
     func saveCard() {
         let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "AddNewCardView")
         logger.log("saving...")
-        print("Selected Event = \(String(describing: selectedEvent))")
+        print("Selected Event = \(String(describing: selectedEvent?.eventName))")
         ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: maxBytes) { image in
             guard image != nil else {
                 logger.log("Error compressing image")

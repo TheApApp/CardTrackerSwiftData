@@ -15,6 +15,7 @@ struct FooterView: View {
         self.page = page
         self.pages = pages
     }
+    
     var body: some View {
         HStack {
             Text("Page \((page).formatted()) of \(pages.formatted())")

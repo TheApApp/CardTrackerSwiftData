@@ -13,6 +13,17 @@ struct PrintView: View {
     var card: Card
     
     init(event: Card) {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.largeTitleTextAttributes = [
+            .foregroundColor: UIColor.systemGreen,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
+        navBarAppearance.titleTextAttributes = [
+            .foregroundColor: UIColor.systemGreen,
+            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        UINavigationBar.appearance().compactAppearance = navBarAppearance
+        
         self.card = event
     }
     
@@ -26,7 +37,7 @@ struct PrintView: View {
                     .frame(width: 130, height: 103)
                 HStack {
                     VStack {
-//                        Text("\(card.event?.eventName)")
+                        Text("\(String(describing: card.event?.eventName))")
                         Text("\(card.cardDate, formatter: cardDateFormatter)")
                     }
                     .font(.caption)

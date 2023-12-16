@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
+		189DB6822B2E230400FC3E87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6812B2E230400FC3E87 /* CardView.swift */; };
 		189F5C652B2766B30067245A /* ViewEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C642B2766B30067245A /* ViewEventsView.swift */; };
 		189F5C672B2766D00067245A /* MenuOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C662B2766D00067245A /* MenuOverlayView.swift */; };
 		189F5C692B276C570067245A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C682B276C570067245A /* Constants.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
+		189DB6812B2E230400FC3E87 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		189F5C642B2766B30067245A /* ViewEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventsView.swift; sourceTree = "<group>"; };
 		189F5C662B2766D00067245A /* MenuOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOverlayView.swift; sourceTree = "<group>"; };
 		189F5C682B276C570067245A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			children = (
 				189F5C782B27CF240067245A /* AddNewCardView.swift */,
 				189F5C6C2B27B48A0067245A /* AddressView.swift */,
+				189DB6812B2E230400FC3E87 /* CardView.swift */,
 				18D962102B263EC200662849 /* ContentView.swift */,
 				18D962522B269DF400662849 /* EditCardView.swift */,
 				18D9624C2B2656AB00662849 /* EventsList.swift */,
@@ -211,6 +216,7 @@
 				18D962422B264D1D00662849 /* NewRecipientView.swift */,
 				18D962502B2675D100662849 /* NewEventTypeView.swift */,
 				189F5C6E2B27C6410067245A /* PrintView.swift */,
+				189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */,
 				189F5C642B2766B30067245A /* ViewEventsView.swift */,
 			);
 			name = Views;
@@ -374,6 +380,7 @@
 				18D9623F2B26411900662849 /* Recipient.swift in Sources */,
 				18D9623D2B26409500662849 /* EventType.swift in Sources */,
 				18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */,
+				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,
@@ -382,6 +389,7 @@
 				18D962432B264D1D00662849 /* NewRecipientView.swift in Sources */,
 				189F5C772B27CBBF0067245A /* Collection+Extensions.swift in Sources */,
 				189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */,
+				189DB6822B2E230400FC3E87 /* CardView.swift in Sources */,
 				189F5C7D2B27CFD10067245A /* View+Extensions.swift in Sources */,
 				189F5C812B27D4070067245A /* ImageCompressor.swift in Sources */,
 				18D9624B2B2654EA00662849 /* NewEventView.swift in Sources */,
