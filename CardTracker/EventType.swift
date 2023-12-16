@@ -11,7 +11,7 @@ import SwiftData
 @Model
 final class EventType {
     var eventName: String = ""
-    var cards: [Card]? = []
+    @Relationship(deleteRule: .cascade, inverse: \Card.eventType) var cards: [Card]? = []
     
     init(eventName: String) {
         self.eventName = eventName

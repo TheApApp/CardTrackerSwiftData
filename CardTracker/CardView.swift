@@ -44,7 +44,7 @@ struct CardView: View {
         VStack {
             HStack {
                 Spacer()
-                Image(uiImage: cardImage)
+                Image( uiImage: cardImage)
                     .resizable()
                     .aspectRatio(contentMode: zoomed ? .fit : .fill)
                     .padding(2)

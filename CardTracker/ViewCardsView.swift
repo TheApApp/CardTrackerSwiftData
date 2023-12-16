@@ -1,16 +1,15 @@
 //
-//  ViewEventsView.swift
+//  ViewCardsView.swift
 //  CardTracker
 //
-//  Created by Michael Rowe on 12/11/23.
+//  Created by Michael Rowe on 12/16/23.
 //
 
-import MapKit
 import os
 import SwiftData
 import SwiftUI
 
-struct ViewEventsView: View {
+struct ViewCardsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     @Query(sort: [SortDescriptor(\Card.cardDate, order: .reverse)]) private var cards: [Card]
@@ -18,18 +17,16 @@ struct ViewEventsView: View {
     private let blankCardFront = UIImage(named: "frontImage")
     private var gridLayout: [GridItem]
     private var iPhone = false
-    private var recipient: Recipient
+    private var eventType: EventType
     
     @State private var actionSheetPresented = false
-    @State private var navBarItemChosen: NavBarItemChosen?
-    @State private var region: MKCoordinateRegion?
-    
+//    @State private var navBarItemChosen: NavBarItemChosen
     
     // MARK: PDF Properties
     @State var PDFUrl: URL?
     @State var showShareSheet: Bool = false
     
-    init(recipient: Recipient) {
+    init(eventType: EventType) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -41,10 +38,10 @@ struct ViewEventsView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        self.recipient = recipient
-        let recipientID = recipient.persistentModelID // Note this is required to help in Macro Expansion
+        self.eventType = eventType
+        let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
         _cards = Query(
-            filter: #Predicate {$0.recipient?.persistentModelID == recipientID },
+            filter: #Predicate {$0.eventType?.persistentModelID == eventTypeID },
             sort: [
                 SortDescriptor(\Card.cardDate, order: .reverse),
                 SortDescriptor(\Card.eventType?.eventName, order: .forward)
@@ -64,29 +61,6 @@ struct ViewEventsView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                if let region = region {
-                    MapView(region: region)
-                        .frame(width: iPhone ? 120 : 200, height: 150)
-                        .mask(RoundedRectangle(cornerRadius: 25))
-                        .padding([.top, .leading], 15 )
-                    AddressView(recipient: recipient)
-                        .scaledToFit()
-                        .frame(width: 250, height: 150)
-                }
-                Spacer()
-                    .onAppear {
-                        // swiftlint:disable:next line_length
-                        let addressString = String("\(recipient.addressLine1) \(recipient.city) \(recipient.state) \(recipient.zip) \(recipient.country)")
-                        getLocation(from: addressString) { coordinates in
-                            if let coordinates = coordinates {
-                                self.region = MKCoordinateRegion(
-                                    center: coordinates,
-                                    span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
-                            }
-                        }
-                    }
-            }
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
@@ -98,27 +72,15 @@ struct ViewEventsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     HStack {
-                Button(action: {
-                    navBarItemChosen = .newCard
-                }, label: {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.accentColor)
-                })
                 ShareLink("Export PDF", item: render(viewsPerPage: 16))
             }
             )
-        }
-        .sheet(item: $navBarItemChosen ) { item in
-            switch item {
-            case .newCard:
-                AddNewCardView(recipient: recipient)
-            }
         }
     }
     
     @MainActor func render(viewsPerPage: Int) -> URL {
         let cardsArray: [Card] = cards.map { $0 }
-        let url = URL.documentsDirectory.appending(path: "\(recipient.fullName)-cards.pdf")
+        let url = URL.documentsDirectory.appending(path: "\(eventType.eventName)-cards.pdf")
         var pageSize = CGRect(x: 0, y: 0, width: 612, height: 792)
         
         guard let pdfOutput = CGContext(url as CFURL, mediaBox: &pageSize, nil) else {
@@ -140,7 +102,7 @@ struct ViewEventsView: View {
             pdfOutput.beginPDFPage(nil)
             
             // Printer header - top 160 points of the page
-            let renderTop = ImageRenderer(content: AddressView(recipient: recipient))
+            let renderTop = ImageRenderer(content: Text("   \(eventType.eventName) Cards"))
             renderTop.render { size, renderTop in
                 // Go to Bottom Left of Page and then translate up to 160 points from the top
                 pdfOutput.move(to: CGPoint(x: 0.0, y: 0.0))
@@ -179,17 +141,5 @@ struct ViewEventsView: View {
         }
         pdfOutput.closePDF()
         return url
-    }
-    
-    func getLocation(from address: String, completion: @escaping (_ location: CLLocationCoordinate2D?) -> Void) {
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { (placemarks, _) in
-            guard let placemarks = placemarks,
-                  let location = placemarks.first?.location?.coordinate else {
-                completion(nil)
-                return
-            }
-            completion(location)
-        }
     }
 }

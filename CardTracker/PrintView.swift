@@ -37,7 +37,7 @@ struct PrintView: View {
                     .frame(width: 130, height: 103)
                 HStack {
                     VStack {
-                        Text("\(String(describing: card.event?.eventName))")
+                        Text("\(String(describing: card.eventType?.eventName ?? "Unknown"))")
                         Text("\(card.cardDate, formatter: cardDateFormatter)")
                     }
                     .font(.caption)

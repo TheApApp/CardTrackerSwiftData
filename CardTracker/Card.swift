@@ -12,13 +12,13 @@ import UIKit
 @Model
 final class Card {
     var cardDate: Date = Date()
-    @Relationship(deleteRule: .nullify, inverse: \EventType.cards) var event: EventType?
+    var eventType: EventType? // @Relationship(deleteRule: .nullify, inverse: \EventType.cards) 
     @Attribute(.externalStorage) var cardFront: Data = (UIImage(named: "frontImage")?.pngData())!
     var recipient: Recipient?
     
-    init(cardDate: Date, eventName: EventType, cardFront: Data, recipient: Recipient) {
+    init(cardDate: Date, eventType: EventType, cardFront: Data, recipient: Recipient) {
         self.cardDate = cardDate
-        self.event = event
+        self.eventType = eventType
         self.cardFront = cardFront
         self.recipient = recipient
     }

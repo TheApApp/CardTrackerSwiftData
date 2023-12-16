@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
 		189DB6822B2E230400FC3E87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6812B2E230400FC3E87 /* CardView.swift */; };
+		189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6832B2E405800FC3E87 /* ViewCardsView.swift */; };
 		189F5C652B2766B30067245A /* ViewEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C642B2766B30067245A /* ViewEventsView.swift */; };
 		189F5C672B2766D00067245A /* MenuOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C662B2766D00067245A /* MenuOverlayView.swift */; };
 		189F5C692B276C570067245A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C682B276C570067245A /* Constants.swift */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
 		189DB6812B2E230400FC3E87 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		189DB6832B2E405800FC3E87 /* ViewCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCardsView.swift; sourceTree = "<group>"; };
 		189F5C642B2766B30067245A /* ViewEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEventsView.swift; sourceTree = "<group>"; };
 		189F5C662B2766D00067245A /* MenuOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOverlayView.swift; sourceTree = "<group>"; };
 		189F5C682B276C570067245A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				18D962502B2675D100662849 /* NewEventTypeView.swift */,
 				189F5C6E2B27C6410067245A /* PrintView.swift */,
 				189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */,
+				189DB6832B2E405800FC3E87 /* ViewCardsView.swift */,
 				189F5C642B2766B30067245A /* ViewEventsView.swift */,
 			);
 			name = Views;
@@ -381,6 +384,7 @@
 				18D9623D2B26409500662849 /* EventType.swift in Sources */,
 				18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */,
 				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
+				189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */,
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,

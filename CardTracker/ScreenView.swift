@@ -34,7 +34,7 @@ struct ScreenView: View {
                     .padding(.top, iPhone ? 2: 5)
                 HStack {
                     VStack {
-                        Text("\(card.event?.eventName ?? "")")
+                        Text("\(card.eventType?.eventName ?? "Unknown")")
                             .foregroundColor(.green)
                         Spacer()
                         HStack {

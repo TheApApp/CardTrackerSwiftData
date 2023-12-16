@@ -121,7 +121,7 @@ struct AddNewCardView: View {
                 return
             }
             if selectedEvent != nil {
-                let card = Card(cardDate: cardDate, eventName: selectedEvent!, cardFront: (image?.pngData())!, recipient: recipient)
+                let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: (image?.pngData())!, recipient: recipient)
                 print("Selected Event = \(String(describing: selectedEvent))")
                 modelContext.insert(card)
             }

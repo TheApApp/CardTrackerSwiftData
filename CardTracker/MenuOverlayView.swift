@@ -51,7 +51,7 @@ struct MenuOverlayView: View {
                     .font(iPhone ? .caption : .title3)
             }
             NavigationLink {
-                CardView(cardImage: UIImage(data: card.cardFront) ?? UIImage(named: "frontImage")!, event: card.event?.eventName ?? "Unknown", eventDate: card.cardDate)
+                CardView(cardImage: UIImage(data: card.cardFront) ?? UIImage(named: "frontImage")!, event: card.eventType?.eventName ?? "Unknown", eventDate: card.cardDate)
             } label: {
                 Image(systemName: "doc.text.image")
                     .foregroundColor(.green)
@@ -67,13 +67,13 @@ struct MenuOverlayView: View {
             .confirmationDialog("Are you sure", isPresented: $areYouSure, titleVisibility: .visible) {
                 Button("Yes", role:.destructive) {
                     withAnimation {
-                        print("Deleting Event \(String(describing: card.event)) \(card.cardDate)")
+                        print("Deleting Event \(String(describing: card.eventType)) \(card.cardDate)")
                         deleteCard(card: card)
                     }
                 }
                 Button("No") {
                     withAnimation {
-                        print("Cancelled delete of \(String(describing: card.event)) \(card.cardDate)")
+                        print("Cancelled delete of \(String(describing: card.eventType)) \(card.cardDate)")
                     }
                 }
                 .keyboardShortcut(.defaultAction)

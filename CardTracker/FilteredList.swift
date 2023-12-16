@@ -11,7 +11,7 @@ import SwiftUI
 struct FilteredList: View {
     @Environment(\.modelContext) private var modelContext
     
-    @Query(sort: \EventType.eventName) private var events: [EventType]
+    @Query(sort: \EventType.eventName) private var eventTypes: [EventType]
     @Query(sort: [SortDescriptor(\Recipient.lastName), SortDescriptor(\Recipient.firstName)]) private var recipients: [Recipient]
     
     private var eventList = false
@@ -30,7 +30,7 @@ struct FilteredList: View {
         
         self.eventList = eventList
         
-        _events = Query(filter: #Predicate {
+        _eventTypes = Query(filter: #Predicate {
             if searchString.isEmpty {
                 return true
             } else {
@@ -49,12 +49,11 @@ struct FilteredList: View {
     var body: some View {
         List {
             if eventList {
-                ForEach(events, id: \.self) { event in
+                ForEach(eventTypes, id: \.self) { eventType in
                     NavigationLink(destination:
-                                    //                                    ViewEventsView(recipient: recipient)
-                                   Text("Event \(event.eventName)")
+                        ViewCardsView(eventType: eventType)
                     ) {
-                        Text("\(event.eventName)")
+                        Text("\(eventType.eventName)")
                             .foregroundColor(.accentColor)
                     }
                 }
@@ -90,7 +89,7 @@ struct FilteredList: View {
     func deleteEvent(offsets: IndexSet) {
         
         for index in offsets {
-            let event = events[index]
+            let event = eventTypes[index]
             modelContext.delete(event)
         }
         do {

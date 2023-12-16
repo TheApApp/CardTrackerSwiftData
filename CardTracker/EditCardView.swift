@@ -15,7 +15,7 @@ struct EditCardView: View {
     
     @Query(sort: \EventType.eventName) private var events: [EventType]
 
-    var card: Card
+    @Bindable var card: Card
     var defaultImage = UIImage(named: "frontImage")
 
     @State private var cardFrontImage: Image?
@@ -41,8 +41,9 @@ struct EditCardView: View {
         
         self.card = card
         self._cardDate = State(initialValue: card.cardDate)
-        self._eventName = State(initialValue: card.event?.eventName ?? "")
-        self._selectedEvent = State(initialValue: card.event)
+        self._eventName = State(initialValue: card.eventType?.eventName ?? "Unknown")
+        self._frontImageSelected = State(initialValue: Image(uiImage: UIImage(data: card.cardFront) ?? defaultImage!))
+        self._selectedEvent = State(initialValue: card.eventType)
         
     }
 
@@ -152,6 +153,6 @@ struct EditCardView: View {
 
 struct EditAnEvent_Previews: PreviewProvider {
     static var previews: some View {
-        EditCardView(card: Card(cardDate: Date(), eventName: EventType(eventName: "Dummy Event"), cardFront: (UIImage(named: "frontImage")?.pngData())!, recipient: Recipient(addressLine1: "Line 1", addressLine2: "Line 2", city: "New York", state: "NY", zip: "01234", country: "USA", firstName: "First Name", lastName: "Last Name")))
+        EditCardView(card: Card(cardDate: Date(), eventType: EventType(eventName: "Dummy Event"), cardFront: (UIImage(named: "frontImage")?.pngData())!, recipient: Recipient(addressLine1: "Line 1", addressLine2: "Line 2", city: "New York", state: "NY", zip: "01234", country: "USA", firstName: "First Name", lastName: "Last Name")))
     }
 }
