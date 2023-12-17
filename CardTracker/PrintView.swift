@@ -11,8 +11,9 @@ import SwiftUI
 struct PrintView: View {
     let blankCardFront = UIImage(contentsOfFile: "frontImage")
     var card: Card
+    var isEventType: Bool = false
     
-    init(event: Card) {
+    init(event: Card, isEventType: Bool) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -25,6 +26,7 @@ struct PrintView: View {
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
         self.card = event
+        self.isEventType = isEventType
     }
     
     var body: some View {
@@ -37,7 +39,11 @@ struct PrintView: View {
                     .frame(width: 130, height: 103)
                 HStack {
                     VStack {
-                        Text("\(String(describing: card.eventType?.eventName ?? "Unknown"))")
+                        if isEventType == true {
+                            Text("\(card.recipient?.fullName ?? "Unknown")")
+                        } else {
+                            Text("\(String(describing: card.eventType?.eventName ?? "Unknown"))")
+                        }
                         Text("\(card.cardDate, formatter: cardDateFormatter)")
                     }
                     .font(.caption)

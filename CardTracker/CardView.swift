@@ -34,12 +34,6 @@ struct CardView: View {
         self.eventDate = eventDate
     }
 
-    static let eventDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        return formatter
-    }()
-
     var body: some View {
         VStack {
             HStack {
@@ -58,7 +52,7 @@ struct CardView: View {
             }
             VStack(alignment: .center) {
                 Text(event)
-                Text("\(eventDate, formatter: Self.eventDateFormatter)")
+                Text("\(eventDate, formatter: cardDateFormatter)")
             }
             .padding(5)
             .font(.title)

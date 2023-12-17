@@ -19,9 +19,6 @@ struct ViewCardsView: View {
     private var iPhone = false
     private var eventType: EventType
     
-    @State private var actionSheetPresented = false
-//    @State private var navBarItemChosen: NavBarItemChosen
-    
     // MARK: PDF Properties
     @State var PDFUrl: URL?
     @State var showShareSheet: Bool = false
@@ -61,10 +58,15 @@ struct ViewCardsView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                EventTypeView(eventType: eventType)
+                    .scaledToFill()
+                    .frame(width: 320, height: 150)
+            }
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        ScreenView(card: card)
+                        ScreenView(card: card, isEventType: true)
                     }
                     .padding()
                 }
@@ -102,7 +104,7 @@ struct ViewCardsView: View {
             pdfOutput.beginPDFPage(nil)
             
             // Printer header - top 160 points of the page
-            let renderTop = ImageRenderer(content: Text("   \(eventType.eventName) Cards"))
+            let renderTop = ImageRenderer(content: EventTypeView(eventType: eventType))
             renderTop.render { size, renderTop in
                 // Go to Bottom Left of Page and then translate up to 160 points from the top
                 pdfOutput.move(to: CGPoint(x: 0.0, y: 0.0))
@@ -116,13 +118,13 @@ struct ViewCardsView: View {
                 for col in 0..<viewsPerRow {
                     let index = startIndex + row * viewsPerRow + col
                     if index < endIndex, let event = cardsArray[safe: index] {
-                        let renderBody = ImageRenderer(content: PrintView(event: event))
+                        let renderBody = ImageRenderer(content: PrintView(event: event, isEventType: true))
                         renderBody.render { size, renderBody in
                             renderBody(pdfOutput)
                             pdfOutput.translateBy(x: size.width + 10, y: 0)
                             currentX += size.width + 10
                         }
-//                        print("Body - currentX = \(currentX), currentY = \(currentY)")
+                        //                        print("Body - currentX = \(currentX), currentY = \(currentY)")
                     }
                 }
                 pdfOutput.translateBy(x: -pageSize.width + 5, y: -144)

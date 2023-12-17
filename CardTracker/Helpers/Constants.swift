@@ -21,4 +21,4 @@ enum NavBarItemChosen: Identifiable {
     }
 }
 
-let maxBytes = 4_000_000
+let maxBytes = 2_000_000

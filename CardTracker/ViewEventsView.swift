@@ -90,7 +90,7 @@ struct ViewEventsView: View {
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        ScreenView(card: card)
+                        ScreenView(card: card, isEventType: false)
                     }
                     .padding()
                 }
@@ -154,7 +154,7 @@ struct ViewEventsView: View {
                 for col in 0..<viewsPerRow {
                     let index = startIndex + row * viewsPerRow + col
                     if index < endIndex, let event = cardsArray[safe: index] {
-                        let renderBody = ImageRenderer(content: PrintView(event: event))
+                        let renderBody = ImageRenderer(content: PrintView(event: event, isEventType: false))
                         renderBody.render { size, renderBody in
                             renderBody(pdfOutput)
                             pdfOutput.translateBy(x: size.width + 10, y: 0)

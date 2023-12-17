@@ -12,9 +12,11 @@ struct ScreenView: View {
     private let blankCardFront = UIImage(named: "frontImage")
     private var iPhone = false
     private var card: Card
+    var isEventType: Bool = false
     
-    init(card: Card) {
+    init(card: Card, isEventType: Bool) {
         self.card = card
+        self.isEventType = isEventType
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             iPhone = false
@@ -34,8 +36,13 @@ struct ScreenView: View {
                     .padding(.top, iPhone ? 2: 5)
                 HStack {
                     VStack {
-                        Text("\(card.eventType?.eventName ?? "Unknown")")
-                            .foregroundColor(.green)
+                        if isEventType == true {
+                            Text("\(card.recipient?.fullName ?? "Unknown")")
+                                .foregroundColor(.green)
+                        } else {
+                            Text("\(String(describing: card.eventType?.eventName ?? "Unknown"))")
+                                .foregroundColor(.green)
+                        }
                         Spacer()
                         HStack {
                             Text("\(card.cardDate, formatter: cardDateFormatter)")
