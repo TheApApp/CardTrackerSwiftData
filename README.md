@@ -1,9 +1,9 @@
-Card Tracker App
+# Card Tracker App
 This is a rewrite of my personal Holiday card tracker app. 
 
 The basics of the application is that I have Cards that I want to track.  I sent a lot of cards each year to different people, at different times.  Sometimes I forget and send the same card to someone a few years later.  By allowing for classification of Events and Cards for Events, I can now pick a card and assign it to a person.  This way I will know if I've already sent it before.
 
 A few features being added since swtiching to this rewrite:
-# Allow for creation of new events
-# Creating an in-app card gallery, reducing the data foot print, and the reuse of a card for multiple people
-# Ability to print the cards either by person, by event type (unique cards, or all cards by person and date)
+* Allow for creation of new events
+* Creating an in-app card gallery, reducing the data foot print, and the reuse of a card for multiple people
+* Ability to print the cards either by person, by event type (unique cards, or all cards by person and date)
