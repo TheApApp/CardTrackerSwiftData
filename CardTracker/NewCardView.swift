@@ -49,14 +49,15 @@ struct NewCardView: View {
                                 .tag(Optional(event))
                         }
                     }
+                    
                     DatePicker(
                         "Event Date",
                         selection: $cardDate,
                         displayedComponents: [.date])
                     
-                }
-                Section("Card Image") {
-                    GreetingCardsPicker(eventType: selectedEvent ?? EventType(eventName: "Unknown"))
+                    if selectedEvent != nil {
+                        GreetingCardsPicker(eventType: selectedEvent ?? EventType(eventName: "Unknown"))
+                    }
                 }
             }
             .padding([.leading, .trailing], 10)

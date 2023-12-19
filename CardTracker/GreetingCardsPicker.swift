@@ -46,7 +46,7 @@ struct GreetingCardsPicker: View {
         Form {
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                 ForEach(greetingCards) { greetingCard in
-                    Text("\(greetingCard.cardName!)")
+                    CardView(cardImage: UIImage(data: greetingCard.cardFront!)!, event: greetingCard.eventType?.eventName ?? "Unknown")
                 }
             }
         }

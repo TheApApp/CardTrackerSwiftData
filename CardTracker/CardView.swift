@@ -11,11 +11,11 @@ struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
     var cardImage: UIImage
     var event: String
-    var eventDate: Date
+    var eventDate: Date?
 
     @State private var zoomed = true
 
-    init(cardImage: UIImage, event: String, eventDate: Date) {
+    init(cardImage: UIImage, event: String, eventDate: Date? = nil) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -52,7 +52,9 @@ struct CardView: View {
             }
             VStack(alignment: .center) {
                 Text(event)
-                Text("\(eventDate, formatter: cardDateFormatter)")
+                if eventDate != nil {
+                    Text("\(eventDate ?? Date(), formatter: cardDateFormatter)")
+                }
             }
             .padding(5)
             .font(.title)
