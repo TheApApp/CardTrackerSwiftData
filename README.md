@@ -5,5 +5,5 @@ The basics of the application is that I have Cards that I want to track.  I sent
 
 A few features being added since swtiching to this rewrite:
 * Allow for creation of new events
-* Creating an in-app card gallery, reducing the data foot print, and the reuse of a card for multiple people
+* Creating an in-app card gallery, reducing the data foot print, and the reuse of a card for multiple people - Note the old NewGreetingCardView show the old way I did a picker in the old app. this works fine for adding thing to the in App Gallery.
 * Ability to print the cards either by person, by event type (unique cards, or all cards by person and date)
