@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A simple ViewModifier to adjust the way content is displayed in a TextField.  The application uses this to provide a consistent design language for all Text Fields.
 struct TextFieldModifier: ViewModifier {
     let borderWidth: CGFloat = 1.0
 
@@ -18,6 +19,7 @@ struct TextFieldModifier: ViewModifier {
     }
 }
 
+/// This View extension allows for assigning the TextFieldModifer to textFields in SwiftUI
 extension View {
     func customTextField() -> some View {
         self.modifier(TextFieldModifier())

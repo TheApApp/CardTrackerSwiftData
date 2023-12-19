@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+/// Card Tracker is an application developed by Michael Rowe as a means of tracking all the various greeting cards sent out each year.  There are four major objects in this application: Cards, EventTypes, GreetingCards, and Recipients.  Each of these are defined as SwiftData classes.
 @main
 struct CardTrackerApp: App {
     var sharedModelContainer: ModelContainer = {
@@ -15,6 +16,7 @@ struct CardTrackerApp: App {
             Card.self,
             EventType.self,
             Recipient.self,
+            GreetingCard.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false, cloudKitDatabase: .automatic )
         do {

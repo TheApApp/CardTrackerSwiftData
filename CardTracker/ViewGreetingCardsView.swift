@@ -1,18 +1,19 @@
 //
-//  ViewCardsView.swift
+//  ViewGreetingCardsView.swift
 //  CardTracker
 //
-//  Created by Michael Rowe on 12/16/23.
+//  Created by Michael Rowe on 12/18/23.
 //
 
 import os
 import SwiftData
 import SwiftUI
 
-struct ViewCardsView: View {
+/// ViewGreetingCardsView allows for capturing new Greeting Cards into the Image gallery.  Images can be captured in one of two ways, importing from the user's Photo library or via the camera on their device.  The image gallery will be sorted by EventType
+struct ViewGreetingCardsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
-    @Query(sort: [SortDescriptor(\Card.cardDate, order: .reverse)]) private var cards: [Card]
+    @Query(sort: \GreetingCard.cardName) private var greetingCards: [GreetingCard]
     
     private let blankCardFront = UIImage(named: "frontImage")
     private var gridLayout: [GridItem]
@@ -37,10 +38,10 @@ struct ViewCardsView: View {
         
         self.eventType = eventType
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
-        _cards = Query(
+        _greetingCards = Query(
             filter: #Predicate {$0.eventType?.persistentModelID == eventTypeID },
             sort: [
-                SortDescriptor(\Card.cardDate, order: .reverse),
+                SortDescriptor(\GreetingCard.cardName, order: .reverse),
             ]
         )
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -64,23 +65,22 @@ struct ViewCardsView: View {
             }
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                    ForEach(cards) { card in
-                        ScreenView(card: card, greetingCard: nil, isEventType: .events)
+                    ForEach(greetingCards) { greetingCard in
+                        Text("\(greetingCard.cardName!)")
                     }
-                    .padding()
                 }
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(trailing:
+                                        HStack {
+                    ShareLink("Export PDF", item: render(viewsPerPage: 16))
+                }
+                )
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing:
-                                    HStack {
-                ShareLink("Export PDF", item: render(viewsPerPage: 16))
-            }
-            )
         }
     }
     
     @MainActor func render(viewsPerPage: Int) -> URL {
-        let cardsArray: [Card] = cards.map { $0 }
+        let greetingCardsArray: [GreetingCard] = greetingCards.map { $0 }
         let url = URL.documentsDirectory.appending(path: "\(eventType.eventName)-cards.pdf")
         var pageSize = CGRect(x: 0, y: 0, width: 612, height: 792)
         
@@ -88,14 +88,14 @@ struct ViewCardsView: View {
             return url
         }
         
-        let numberOfPages = Int((cards.count + viewsPerPage - 1) / viewsPerPage)   // Round to number of pages
+        let numberOfPages = Int((greetingCards.count + viewsPerPage - 1) / viewsPerPage)   // Round to number of pages
         let viewsPerRow = 4
         let rowsPerPage = 4
         let spacing = 10.0
         
         for pageIndex in 0..<numberOfPages {
             let startIndex = pageIndex * viewsPerPage
-            let endIndex = min(startIndex + viewsPerPage, cardsArray.count)
+            let endIndex = min(startIndex + viewsPerPage, greetingCardsArray.count)
             
             var currentX : Double = 0
             var currentY : Double = 0
@@ -116,14 +116,13 @@ struct ViewCardsView: View {
             for row in 0..<rowsPerPage {
                 for col in 0..<viewsPerRow {
                     let index = startIndex + row * viewsPerRow + col
-                    if index < endIndex, let event = cardsArray[safe: index] {
-                        let renderBody = ImageRenderer(content: PrintView(card: event, greetingCard: nil, isEventType: .events))
+                    if index < endIndex, let greetingCard = greetingCardsArray[safe: index] {
+                        let renderBody = ImageRenderer(content: PrintView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard))
                         renderBody.render { size, renderBody in
                             renderBody(pdfOutput)
                             pdfOutput.translateBy(x: size.width + 10, y: 0)
                             currentX += size.width + 10
                         }
-                        //                        print("Body - currentX = \(currentX), currentY = \(currentY)")
                     }
                 }
                 pdfOutput.translateBy(x: -pageSize.width + 5, y: -144)

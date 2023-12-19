@@ -19,9 +19,11 @@ struct MenuOverlayView: View {
     
     private let blankCardFront = UIImage(named: "frontImage")
     private var iPhone = false
-    private var card: Card
+    private var card: Card?
+    private var greetingCard: GreetingCard?
+    private var isEventType: ListView = .recipients
     
-    init(card: Card) {
+    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -37,6 +39,8 @@ struct MenuOverlayView: View {
             iPhone = true
         }
         self.card = card
+        self.greetingCard = greetingCard
+        self.isEventType = isEventType
     }
     
     
@@ -44,14 +48,16 @@ struct MenuOverlayView: View {
         HStack {
             Spacer()
             NavigationLink {
-                EditCardView(card: card)
+                if isEventType != .greetingCard {
+                    EditCardView(card: card!)
+                }
             } label: {
                 Image(systemName: "square.and.pencil")
                     .foregroundColor(.green)
                     .font(iPhone ? .caption : .title3)
             }
             NavigationLink {
-                CardView(cardImage: UIImage(data: card.cardFront) ?? UIImage(named: "frontImage")!, event: card.eventType?.eventName ?? "Unknown", eventDate: card.cardDate)
+                CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, event: card?.eventType?.eventName ?? "Unknown", eventDate: card?.cardDate ?? Date())
             } label: {
                 Image(systemName: "doc.text.image")
                     .foregroundColor(.green)
@@ -67,13 +73,13 @@ struct MenuOverlayView: View {
             .confirmationDialog("Are you sure", isPresented: $areYouSure, titleVisibility: .visible) {
                 Button("Yes", role:.destructive) {
                     withAnimation {
-                        print("Deleting Event \(String(describing: card.eventType)) \(card.cardDate)")
-                        deleteCard(card: card)
+                        print("Deleting Event \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
+                        deleteCard(card: card!)
                     }
                 }
                 Button("No") {
                     withAnimation {
-                        print("Cancelled delete of \(String(describing: card.eventType)) \(card.cardDate)")
+                        print("Cancelled delete of \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
                     }
                 }
                 .keyboardShortcut(.defaultAction)
@@ -86,6 +92,20 @@ struct MenuOverlayView: View {
         let taskContext = modelContext
         
         taskContext.delete(card)
+        do {
+            try taskContext.save()
+        } catch {
+            let nsError = error as NSError
+            logger.log("Unresolved error \(nsError), \(nsError.userInfo)")
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
+    
+    private func deleteGreetingCard(greetingCard: GreetingCard) {
+        let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "MenuOverlayView.deleteGreetingCard")
+        let taskContext = modelContext
+        
+        taskContext.delete(greetingCard)
         do {
             try taskContext.save()
         } catch {

@@ -11,11 +11,13 @@ import SwiftUI
 struct ScreenView: View {
     private let blankCardFront = UIImage(named: "frontImage")
     private var iPhone = false
-    private var card: Card
-    var isEventType: Bool = false
+    private var card: Card?
+    private var greetingCard: GreetingCard?
+    var isEventType: ListView = .recipients
     
-    init(card: Card, isEventType: Bool) {
+    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView) {
         self.card = card
+        self.greetingCard = greetingCard
         self.isEventType = isEventType
         
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -28,28 +30,53 @@ struct ScreenView: View {
     var body: some View {
         HStack {
             VStack {
-                Image(uiImage: UIImage(data: card.cardFront) ?? UIImage(named: "frontImage")!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: iPhone ? 120 : 225, height: iPhone ? 120 : 225)
-                    .scaledToFit()
-                    .padding(.top, iPhone ? 2: 5)
+                if isEventType != .greetingCard {
+                    Image(uiImage: UIImage(data: (card!.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .frame(width: 130, height: 103)
+                } else {
+                    Image(uiImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .frame(width: 130, height: 103)
+                }
                 HStack {
                     VStack {
-                        if isEventType == true {
-                            Text("\(card.recipient?.fullName ?? "Unknown")")
+                        switch isEventType {
+                        case .events:
+                            Text("\(String(describing: card?.eventType?.eventName ?? "Unknown"))")
                                 .foregroundColor(.green)
-                        } else {
-                            Text("\(String(describing: card.eventType?.eventName ?? "Unknown"))")
+                            Spacer()
+                            HStack {
+                                Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                                    .fixedSize()
+                                    .foregroundColor(.green)
+                                MenuOverlayView(card: card!, greetingCard: greetingCard!, isEventType: .events)
+                            }
+                        case .recipients:
+                            Text("\(card?.recipient?.fullName ?? "Unknown")")
                                 .foregroundColor(.green)
+                            Spacer()
+                            HStack {
+                                Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                                    .fixedSize()
+                                    .foregroundColor(.green)
+                                MenuOverlayView(card: card!, greetingCard: greetingCard!, isEventType: .recipients)
+                            }
+                        case .greetingCard:
+                            Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
+                            Spacer()
+                            HStack {
+                                Text((greetingCard?.cardName)!)
+                                    .fixedSize()
+                                    .foregroundColor(.green)
+                                MenuOverlayView(card: card!, greetingCard: greetingCard!, isEventType: .greetingCard)
+                            }
                         }
-                        Spacer()
-                        HStack {
-                            Text("\(card.cardDate, formatter: cardDateFormatter)")
-                                .fixedSize()
-                                .foregroundColor(.green)
-                            MenuOverlayView(card: card)
-                        }
+
                     }
                     .padding(iPhone ? 1 : 5)
                     .font(iPhone ? .caption : .title3)

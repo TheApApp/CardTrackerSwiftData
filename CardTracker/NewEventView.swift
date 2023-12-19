@@ -32,22 +32,16 @@ struct NewEventView: View {
     
     var body: some View {
         NavigationView {
-            GeometryReader { geo in
-                VStack {
-                    Text("")
-                    HStack {
-                        VStack(alignment: .leading) {
-                            TextField("Event Name", text: $eventName)
-                                .customTextField()
-                        }
-                    }
+            Form {
+                Section("Description") {
+                    TextField("Event Name", text: $eventName)
+                        .customTextField()
                 }
             }
             .padding([.leading, .trailing], 10 )
-            .navigationTitle("Event")
+            .navigationTitle("Event Information")
             .navigationBarItems(trailing:
                                     HStack {
-
                 Button(action: {
                     saveEvent()
                     self.presentationMode.wrappedValue.dismiss()

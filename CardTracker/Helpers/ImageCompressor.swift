@@ -7,7 +7,13 @@
 
 import UIKit
 
+/// ImageCompressor struct provides a method to iteratively compress a UIImage while adjusting the compression quality to meet a specified maximum size requirement. The process is performed asynchronously on a background queue, and the result is returned via a completion closure.
 struct ImageCompressor {
+    
+    /// This is a static method that takes three parameters:
+    /// image: The input UIImage that needs to be compressed.
+    /// maxByte: The maximum allowable size for the compressed image in bytes.
+    /// completion: A closure that will be called when the compression is complete, passing the resulting compressed UIImage or nil if an error occurs.
     static func compress(image: UIImage, maxByte: Int,
                          completion: @escaping (UIImage?) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
@@ -39,6 +45,7 @@ struct ImageCompressor {
         }
     }
 
+    /// This is a private helper method that determines the percentage decrease in compression quality based on the size of the image in bytes. The percentage decrease is chosen based on different ranges of image sizes.
     private static func getPercentageToDecreaseTo(forDataCount dataCount: Int) -> CGFloat {
         switch dataCount {
         case 0..<3000000: return 0.05

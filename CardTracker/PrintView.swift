@@ -10,10 +10,11 @@ import SwiftUI
 
 struct PrintView: View {
     let blankCardFront = UIImage(contentsOfFile: "frontImage")
-    var card: Card
-    var isEventType: Bool = false
+    var card: Card?
+    var greetingCard: GreetingCard?
+    var isEventType: ListView = .recipients
     
-    init(event: Card, isEventType: Bool) {
+    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -25,26 +26,39 @@ struct PrintView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        self.card = event
+        self.card = card
+        self.greetingCard = greetingCard
         self.isEventType = isEventType
     }
     
     var body: some View {
         HStack {
             VStack {
-                Image(uiImage: UIImage(data: card.cardFront) ?? UIImage(named: "frontImage")!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaledToFit()
-                    .frame(width: 130, height: 103)
+                if isEventType != .greetingCard {
+                    Image(uiImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .frame(width: 130, height: 103)
+                } else {
+                    Image(uiImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .frame(width: 130, height: 103)
+                }
                 HStack {
                     VStack {
-                        if isEventType == true {
-                            Text("\(card.recipient?.fullName ?? "Unknown")")
-                        } else {
-                            Text("\(String(describing: card.eventType?.eventName ?? "Unknown"))")
+                        switch isEventType {
+                        case .events:
+                            Text("\(String(describing: card?.eventType?.eventName ?? "Unknown"))")
+                            Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                        case .recipients:
+                            Text("\(card!.recipient?.fullName ?? "Unknown")")
+                            Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                        case .greetingCard:
+                            Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
                         }
-                        Text("\(card.cardDate, formatter: cardDateFormatter)")
                     }
                     .font(.caption)
                 }

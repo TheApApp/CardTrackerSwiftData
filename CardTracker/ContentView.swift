@@ -11,10 +11,10 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
-    @State var eventList = false
-    @State var newEvent = false
-    @State var newRecipient = false
+    @State var listView: ListView = ListView.recipients
+    @State var addItem = false
     @State private var searchString = ""
+    @State var selectedTab = 0
     @Query private var recipients: [Recipient]
     
     init() {
@@ -29,32 +29,31 @@ struct ContentView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
     }
-
+    
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                FilteredList(searchString: searchString, eventList: eventList)
-                Spacer()
+            TabView(selection: $selectedTab) {
+                FilteredList(searchString: searchString, listView: .recipients)
+                    .tabItem {
+                        Label("Recipient", systemImage: "person.crop.circle")
+                    }
+                    .tag(0)
+                FilteredList(searchString: searchString, listView: .events)
+                    .tabItem {
+                        Label("Event", systemImage: "calendar.circle")
+                    }
+                    .tag(1)
+                FilteredList(searchString: searchString, listView: .greetingCard)
+                    .tabItem {
+                        Label("Gallery", systemImage: "photo.circle")
+                    }
+                    .tag(2)
             }
             .searchable(text: $searchString)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        self.eventList.toggle()
-                    }, label: {
-                        Image(systemName: eventList ? "person.crop.circle" : "calendar.circle")
-                            .font(.title2)
-                            .foregroundColor(.green)
-                    })
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        if eventList {
-                            self.newEvent.toggle()
-                        } else {
-                            self.newRecipient.toggle()
-                        }
+                        self.addItem.toggle()
                     }, label: {
                         Image(systemName: "plus.circle")
                             .font(.title2)
@@ -65,30 +64,20 @@ struct ContentView: View {
                     EditButton()
                 }
             }
-            if eventList {
-                Text("Select an Event")
-                    .font(.largeTitle)
-                    .foregroundColor(.green)
-            } else {
-                Text("Select a Recipient")
-                    .font(.largeTitle)
-                    .foregroundColor(.green)
-            }
+            Text("Make a selection")
+                .font(.largeTitle)
+                .foregroundColor(.green)
         }
         .navigationViewStyle(.automatic)
         .ignoresSafeArea(.all)
-        .sheet(isPresented: $newRecipient) {
-            NewRecipientView()
-        }
-        .sheet(isPresented: $newEvent) {
-            NewEventView()
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(recipients[index])
+        .sheet(isPresented: $addItem) {
+            switch selectedTab {
+            case 1:
+                NewEventView()
+            case 2:
+                NewGreetingCardView()
+            default:
+                NewRecipientView()
             }
         }
     }

@@ -47,7 +47,6 @@ struct ViewEventsView: View {
             filter: #Predicate {$0.recipient?.persistentModelID == recipientID },
             sort: [
                 SortDescriptor(\Card.cardDate, order: .reverse),
-                SortDescriptor(\Card.eventType?.eventName, order: .forward)
             ]
         )
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -90,7 +89,7 @@ struct ViewEventsView: View {
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        ScreenView(card: card, isEventType: false)
+                        ScreenView(card: card, greetingCard: nil, isEventType: .events)
                     }
                     .padding()
                 }
@@ -111,7 +110,7 @@ struct ViewEventsView: View {
         .sheet(item: $navBarItemChosen ) { item in
             switch item {
             case .newCard:
-                AddNewCardView(recipient: recipient)
+                NewCardView(recipient: recipient)
             }
         }
     }
@@ -153,14 +152,13 @@ struct ViewEventsView: View {
             for row in 0..<rowsPerPage {
                 for col in 0..<viewsPerRow {
                     let index = startIndex + row * viewsPerRow + col
-                    if index < endIndex, let event = cardsArray[safe: index] {
-                        let renderBody = ImageRenderer(content: PrintView(event: event, isEventType: false))
+                    if index < endIndex, let card = cardsArray[safe: index] {
+                        let renderBody = ImageRenderer(content: PrintView(card: card, greetingCard: nil, isEventType: .recipients))
                         renderBody.render { size, renderBody in
                             renderBody(pdfOutput)
                             pdfOutput.translateBy(x: size.width + 10, y: 0)
                             currentX += size.width + 10
                         }
-//                        print("Body - currentX = \(currentX), currentY = \(currentY)")
                     }
                 }
                 pdfOutput.translateBy(x: -pageSize.width + 5, y: -144)

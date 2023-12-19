@@ -108,7 +108,7 @@ struct NewRecipientView: View {
                 }
             }
             .padding([.leading, .trailing], 10 )
-            .navigationTitle("Recipient")
+            .navigationTitle("Recipient Information")
             .navigationBarItems(trailing:
                                     HStack {
                 Button(action: {

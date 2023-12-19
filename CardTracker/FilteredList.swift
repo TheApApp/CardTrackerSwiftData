@@ -14,9 +14,9 @@ struct FilteredList: View {
     @Query(sort: \EventType.eventName) private var eventTypes: [EventType]
     @Query(sort: [SortDescriptor(\Recipient.lastName), SortDescriptor(\Recipient.firstName)]) private var recipients: [Recipient]
     
-    private var eventList = false
+    private var listView: ListView
     
-    init(searchString: String, eventList: Bool) {
+    init(searchString: String, listView: ListView) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -28,7 +28,7 @@ struct FilteredList: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        self.eventList = eventList
+        self.listView = listView
         
         _eventTypes = Query(filter: #Predicate {
             if searchString.isEmpty {
@@ -48,7 +48,8 @@ struct FilteredList: View {
     
     var body: some View {
         List {
-            if eventList {
+            switch listView {
+            case .events:
                 ForEach(eventTypes, id: \.self) { eventType in
                     NavigationLink(destination:
                         ViewCardsView(eventType: eventType)
@@ -58,7 +59,7 @@ struct FilteredList: View {
                     }
                 }
                 .onDelete(perform: deleteEvent)
-            } else {
+            case .recipients:
                 ForEach(recipients, id: \.self) { recipient in
                     NavigationLink(destination:
                         ViewEventsView(recipient: recipient)
@@ -68,6 +69,16 @@ struct FilteredList: View {
                     }
                 }
                 .onDelete(perform: deleteRecipient)
+            case .greetingCard:
+                ForEach(eventTypes, id: \.self) { eventType in
+                    NavigationLink(destination:
+                        ViewGreetingCardsView(eventType: eventType)
+                    ) {
+                        Text("\(eventType.eventName)")
+                            .foregroundColor(.accentColor)
+                    }
+                }
+                .onDelete(perform: deleteGreetingCards)
             }
         }
     }
@@ -99,9 +110,23 @@ struct FilteredList: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
+    
+    func deleteGreetingCards(offsets: IndexSet) {
+        
+        for index in offsets {
+            let recipient = recipients[index]
+            modelContext.delete(recipient)
+        }
+        do {
+            try modelContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
 }
 
 #Preview {
-    FilteredList(searchString: "", eventList: false)
+    FilteredList(searchString: "", listView: ListView.recipients)
         .modelContainer(for: [EventType.self, Recipient.self])
 }

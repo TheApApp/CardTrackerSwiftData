@@ -21,4 +21,13 @@ enum NavBarItemChosen: Identifiable {
     }
 }
 
+enum ListView: Identifiable {
+    case events
+    case recipients
+    case greetingCard
+    var id: Int {
+        hashValue
+    }
+}
+
 let maxBytes = 2_000_000
