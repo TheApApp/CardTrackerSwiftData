@@ -3,4 +3,70 @@
    uuid = "563AA198-684E-4EE1-9EB2-7506468D6689"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D78ECB7-0C90-4F8B-B9C9-2596A0532692"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CardTracker/NewCardView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "saveCard()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0D78ECB7-0C90-4F8B-B9C9-2596A0532692 - d6f39cd50a6c04c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CardTracker.NewCardView.saveCard() -&gt; ()"
+                  moduleName = "CardTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/NewCardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "2580">
+               </Location>
+               <Location
+                  uuid = "0D78ECB7-0C90-4F8B-B9C9-2596A0532692 - d6f39cd50a6c04c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CardTracker.NewCardView.saveCard() -&gt; ()"
+                  moduleName = "CardTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/NewCardView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "1900">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "336AF2EB-63F3-435C-8BB4-1379E8169FAF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CardTracker/GreetingCardsPicker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

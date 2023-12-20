@@ -57,7 +57,8 @@ struct MenuOverlayView: View {
                     .font(iPhone ? .caption : .title3)
             }
             NavigationLink {
-                CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, event: card?.eventType?.eventName ?? "Unknown", eventDate: card?.cardDate ?? Date())
+//                CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, event: card?.eventType?.eventName ?? "Unknown", eventDate: card?.cardDate ?? Date())
+                CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
             } label: {
                 Image(systemName: "doc.text.image")
                     .foregroundColor(.green)

@@ -41,23 +41,26 @@ struct NewCardView: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                Section("Card Information") {
-                    Picker("Select type", selection: $selectedEvent) {
-                        ForEach(events) { event in
-                            Text(event.eventName)
-                                .tag(Optional(event))
+            VStack {
+                Form {
+                    Section("Card Information") {
+                        Picker("Select type", selection: $selectedEvent) {
+                            Text("").tag("") //basically added empty tag and it solve the case
+                            ForEach(events) { event in
+                                Text(event.eventName)
+                                    .tag(Optional(event))
+                            }
                         }
+                        
+                        DatePicker(
+                            "Event Date",
+                            selection: $cardDate,
+                            displayedComponents: [.date])
                     }
-                    
-                    DatePicker(
-                        "Event Date",
-                        selection: $cardDate,
-                        displayedComponents: [.date])
-                    
-                    if selectedEvent != nil {
-                        GreetingCardsPicker(eventType: selectedEvent ?? EventType(eventName: "Unknown"))
-                    }
+                }
+                .padding(.bottom, 5)
+                if selectedEvent != nil {
+                    GreetingCardsPicker(eventType: selectedEvent ?? EventType(eventName: "Unknown"), selectedGreetingCard: $selectedGreetgingCard)
                 }
             }
             .padding([.leading, .trailing], 10)

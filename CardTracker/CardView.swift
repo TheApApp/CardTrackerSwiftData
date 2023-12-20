@@ -9,13 +9,16 @@ import SwiftUI
 
 struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme
+
     var cardImage: UIImage
-    var event: String
-    var eventDate: Date?
+//    var event: String
+//    var eventDate: Date?
 
-    @State private var zoomed = true
+    @State private var isSelected = false
 
-    init(cardImage: UIImage, event: String, eventDate: Date? = nil) {
+    init(cardImage: UIImage) {
+//        init(cardImage: UIImage, event: String, eventDate: Date? = nil) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -30,8 +33,8 @@ struct CardView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         self.cardImage = cardImage
-        self.event = event
-        self.eventDate = eventDate
+//        self.event = event
+//        self.eventDate = eventDate
     }
 
     var body: some View {
@@ -40,22 +43,22 @@ struct CardView: View {
                 Spacer()
                 Image( uiImage: cardImage)
                     .resizable()
-                    .aspectRatio(contentMode: zoomed ? .fit : .fill)
+                    .scaledToFit()
+                    .frame(width: 130, height: 130)
                     .padding(2)
                     .mask(RoundedRectangle(cornerRadius: 25))
+                    .shadow(radius: isSelected ? 2 : 0 )
                     .onTapGesture {
-                        withAnimation {
-                            zoomed.toggle()
-                        }
+                        isSelected.toggle()
                     }
                 Spacer()
             }
-            VStack(alignment: .center) {
-                Text(event)
-                if eventDate != nil {
-                    Text("\(eventDate ?? Date(), formatter: cardDateFormatter)")
-                }
-            }
+//            VStack(alignment: .center) {
+//                Text(event)
+//                if eventDate != nil {
+//                    Text("\(eventDate ?? Date(), formatter: cardDateFormatter)")
+//                }
+//            }
             .padding(5)
             .font(.title)
             .foregroundColor(.primary)
@@ -64,5 +67,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(cardImage: UIImage(imageLiteralResourceName: "frontImage"), event: "Dummy", eventDate: Date())
+    CardView(cardImage: UIImage(imageLiteralResourceName: "frontImage"))
 }

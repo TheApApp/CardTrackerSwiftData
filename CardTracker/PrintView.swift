@@ -57,7 +57,9 @@ struct PrintView: View {
                             Text("\(card!.recipient?.fullName ?? "Unknown")")
                             Text("\(card!.cardDate, formatter: cardDateFormatter)")
                         case .greetingCard:
-                            Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
+                            Text("\(String(describing: greetingCard!.cardName ?? "Unknown"))")
+                                .font(.caption2)
+                            Text("Used \(greetingCard?.cards?.count ?? 0) times")
                         }
                     }
                     .font(.caption)

@@ -15,13 +15,16 @@ struct GreetingCardsPicker: View {
     
     @Query(sort: \GreetingCard.cardName) private var greetingCards: [GreetingCard]
     
+    @Binding var selectedGreetingCard: GreetingCard?
+    @State private var isSelected = false
+    
     private var gridLayout = [
-        GridItem(.adaptive(minimum: 160), spacing: 10, alignment: .center)
+        GridItem(.adaptive(minimum: 140), spacing: 10, alignment: .center)
     ]
     
     var eventType: EventType
     
-    init(eventType: EventType) {
+    init(eventType: EventType, selectedGreetingCard: Binding<GreetingCard?>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -33,6 +36,7 @@ struct GreetingCardsPicker: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         self.eventType = eventType
+        _selectedGreetingCard = selectedGreetingCard
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
         _greetingCards = Query(
             filter: #Predicate {$0.eventType?.persistentModelID == eventTypeID },
@@ -43,10 +47,19 @@ struct GreetingCardsPicker: View {
     }
     
     var body: some View {
-        Form {
+        VStack {
+//            Text(eventType.eventName)
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                 ForEach(greetingCards) { greetingCard in
-                    CardView(cardImage: UIImage(data: greetingCard.cardFront!)!, event: greetingCard.eventType?.eventName ?? "Unknown")
+                    Button( action: {
+                        isSelected.toggle()
+                        print("selected")
+                        selectedGreetingCard = greetingCard
+                    }, label: {
+                        CardView(cardImage: UIImage(data: greetingCard.cardFront!)!)
+                            .shadow(color: .green, radius: isSelected ? 2 : 0 )
+                    }
+                    )
                 }
             }
         }

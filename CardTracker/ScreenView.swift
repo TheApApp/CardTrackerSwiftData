@@ -54,7 +54,7 @@ struct ScreenView: View {
                                 Text("\(card!.cardDate, formatter: cardDateFormatter)")
                                     .fixedSize()
                                     .foregroundColor(.green)
-                                MenuOverlayView(card: card!, greetingCard: greetingCard!, isEventType: .events)
+                                MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .events)
                             }
                         case .recipients:
                             Text("\(card?.recipient?.fullName ?? "Unknown")")
@@ -64,7 +64,7 @@ struct ScreenView: View {
                                 Text("\(card!.cardDate, formatter: cardDateFormatter)")
                                     .fixedSize()
                                     .foregroundColor(.green)
-                                MenuOverlayView(card: card!, greetingCard: greetingCard!, isEventType: .recipients)
+                                MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .recipients)
                             }
                         case .greetingCard:
                             Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
@@ -73,7 +73,7 @@ struct ScreenView: View {
                                 Text((greetingCard?.cardName)!)
                                     .fixedSize()
                                     .foregroundColor(.green)
-                                MenuOverlayView(card: card!, greetingCard: greetingCard!, isEventType: .greetingCard)
+                                MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .greetingCard)
                             }
                         }
 

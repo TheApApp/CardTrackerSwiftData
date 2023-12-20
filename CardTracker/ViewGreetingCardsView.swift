@@ -66,7 +66,7 @@ struct ViewGreetingCardsView: View {
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(greetingCards) { greetingCard in
-                        Text("\(greetingCard.cardName!)")
+                        CardView(cardImage: UIImage(data: greetingCard.cardFront!)!)
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
