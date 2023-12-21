@@ -35,13 +35,13 @@ struct ScreenView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
-                        .frame(width: 130, height: 103)
+                        .frame(width: iPhone ? 130 : 250, height: iPhone ? 103 : 250)
                 } else {
                     Image(uiImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
-                        .frame(width: 130, height: 103)
+                        .frame(width: iPhone ? 130 : 250, height: iPhone ? 103 : 250)
                 }
                 HStack {
                     VStack {
@@ -49,7 +49,6 @@ struct ScreenView: View {
                         case .events:
                             Text("\(String(describing: card?.eventType?.eventName ?? "Unknown"))")
                                 .foregroundColor(.green)
-                            Spacer()
                             HStack {
                                 Text("\(card!.cardDate, formatter: cardDateFormatter)")
                                     .fixedSize()
@@ -59,7 +58,6 @@ struct ScreenView: View {
                         case .recipients:
                             Text("\(card?.recipient?.fullName ?? "Unknown")")
                                 .foregroundColor(.green)
-                            Spacer()
                             HStack {
                                 Text("\(card!.cardDate, formatter: cardDateFormatter)")
                                     .fixedSize()
@@ -67,11 +65,10 @@ struct ScreenView: View {
                                 MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .recipients)
                             }
                         case .greetingCard:
-                            Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
-                            Spacer()
+//                            Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
                             HStack {
-                                Text((greetingCard?.cardName)!)
-                                    .fixedSize()
+                                Text("\(greetingCard?.cardName ?? "")")
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .foregroundColor(.green)
                                 MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .greetingCard)
                             }

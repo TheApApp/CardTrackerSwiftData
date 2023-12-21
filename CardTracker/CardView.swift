@@ -44,7 +44,7 @@ struct CardView: View {
                 Image( uiImage: cardImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 130, height: 130)
+                    .frame(width: 150, height: 150)
                     .padding(2)
                     .mask(RoundedRectangle(cornerRadius: 25))
                     .shadow(radius: isSelected ? 2 : 0 )

@@ -48,18 +48,15 @@ struct GreetingCardsPicker: View {
     
     var body: some View {
         VStack {
-//            Text(eventType.eventName)
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                ForEach(greetingCards) { greetingCard in
-                    Button( action: {
-                        isSelected.toggle()
-                        print("selected")
-                        selectedGreetingCard = greetingCard
-                    }, label: {
-                        CardView(cardImage: UIImage(data: greetingCard.cardFront!)!)
-                            .shadow(color: .green, radius: isSelected ? 2 : 0 )
-                    }
-                    )
+                ForEach(greetingCards, id: \.id) { greetingCard in
+                    CardView(cardImage: UIImage(data: greetingCard.cardFront!)!)
+                        .shadow(color: .green, radius: isSelected ? 2 : 0 )
+                        .onTapGesture {
+                            self.isSelected.toggle()
+                            self.selectedGreetingCard = greetingCard
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                 }
             }
         }

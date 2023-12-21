@@ -58,7 +58,11 @@ struct MenuOverlayView: View {
             }
             NavigationLink {
 //                CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, event: card?.eventType?.eventName ?? "Unknown", eventDate: card?.cardDate ?? Date())
-                CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                if isEventType != .greetingCard {
+                    CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                } else {
+                    CardView(cardImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                }
             } label: {
                 Image(systemName: "doc.text.image")
                     .foregroundColor(.green)
@@ -74,13 +78,22 @@ struct MenuOverlayView: View {
             .confirmationDialog("Are you sure", isPresented: $areYouSure, titleVisibility: .visible) {
                 Button("Yes", role:.destructive) {
                     withAnimation {
-                        print("Deleting Event \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
-                        deleteCard(card: card!)
+                        if isEventType != .greetingCard {
+                            print("Deleting Event \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
+                            deleteCard(card: card!)
+                        } else {
+                            print("Deleting Greeting Card \(String(describing: greetingCard?.eventType)) \(String(describing: greetingCard?.cardName))")
+                            deleteGreetingCard(greetingCard: greetingCard!)
+                        }
                     }
                 }
                 Button("No") {
                     withAnimation {
-                        print("Cancelled delete of \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
+                        if isEventType != .greetingCard {
+                            print("Cancelled delete of \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
+                        } else {
+                            print("Cancelled delete of \(String(describing: greetingCard?.eventType)) \(String(describing: greetingCard?.cardName))")
+                        }
                     }
                 }
                 .keyboardShortcut(.defaultAction)

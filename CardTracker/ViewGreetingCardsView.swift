@@ -13,7 +13,7 @@ import SwiftUI
 struct ViewGreetingCardsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
-    @Query(sort: \GreetingCard.cardName) private var greetingCards: [GreetingCard]
+    @Query(sort: \GreetingCard.cardName, order: .forward) private var greetingCards: [GreetingCard]
     
     private let blankCardFront = UIImage(named: "frontImage")
     private var gridLayout: [GridItem]
@@ -61,12 +61,15 @@ struct ViewGreetingCardsView: View {
             HStack {
                 EventTypeView(eventType: eventType)
                     .scaledToFill()
-                    .frame(width: 320, height: 150)
+                    .frame(width: 320, height: 75)
+                    .padding(.leading, 15)
+                Spacer()
             }
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(greetingCards) { greetingCard in
-                        CardView(cardImage: UIImage(data: greetingCard.cardFront!)!)
+//                        CardView(cardImage: UIImage(data: greetingCard.cardFront!)!)
+                        ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard)
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
