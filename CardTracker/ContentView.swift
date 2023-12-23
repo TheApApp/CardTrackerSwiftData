@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var listView: ListView = ListView.recipients
     @State var addItem = false
     @State private var searchString = ""
-    @State var selectedTab = 0
+    @State private var selected = false
     @Query private var recipients: [Recipient]
     
     init() {
@@ -31,53 +31,45 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
-            TabView(selection: $selectedTab) {
-                FilteredList(searchString: searchString, listView: .recipients)
-                    .tabItem {
-                        Label("Recipient", systemImage: "person.crop.circle")
+        NavigationSplitView {
+            List(ListView.allCases) { listView in
+                Text(listView.rawValue).tag(listView)
+                    .textCase(.uppercase)
+                    .foregroundColor(.green)
+                    .onTapGesture {
+                        self.listView = listView
                     }
-                    .tag(0)
-                FilteredList(searchString: searchString, listView: .events)
-                    .tabItem {
-                        Label("Event", systemImage: "calendar.circle")
-                    }
-                    .tag(1)
-                FilteredList(searchString: searchString, listView: .greetingCard)
-                    .tabItem {
-                        Label("Gallery", systemImage: "photo.circle")
-                    }
-                    .tag(2)
             }
-            .searchable(text: $searchString)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        self.addItem.toggle()
-                    }, label: {
-                        Image(systemName: "plus.circle")
-                            .font(.title2)
-                            .foregroundColor(.green)
-                    })
+            .listStyle(.sidebar)
+        } content: {
+            FilteredList(searchString: searchString, listView: listView)
+                .searchable(text: $searchString)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            self.addItem.toggle()
+                        }, label: {
+                            Image(systemName: "plus.circle")
+                                .font(.title2)
+                                .foregroundColor(.green)
+                        })
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-            }
+        } detail: {
             Text("Make a selection")
-                .font(.largeTitle)
-                .foregroundColor(.green)
         }
-        .navigationViewStyle(.automatic)
-        .ignoresSafeArea(.all)
+        .navigationSplitViewStyle(.balanced)
         .sheet(isPresented: $addItem) {
-            switch selectedTab {
-            case 1:
+            switch listView {
+            case .events:
                 NewEventView()
-            case 2:
-                NewGreetingCardView()
-            default:
+            case .recipients:
                 NewRecipientView()
+            case .greetingCard:
+                NewGreetingCardView()
             }
         }
     }

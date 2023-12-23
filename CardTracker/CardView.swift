@@ -53,12 +53,6 @@ struct CardView: View {
                     }
                 Spacer()
             }
-//            VStack(alignment: .center) {
-//                Text(event)
-//                if eventDate != nil {
-//                    Text("\(eventDate ?? Date(), formatter: cardDateFormatter)")
-//                }
-//            }
             .padding(5)
             .font(.title)
             .foregroundColor(.primary)
@@ -67,5 +61,11 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(cardImage: UIImage(imageLiteralResourceName: "frontImage"))
+    do {
+        let previewer = try Previewer()
+        
+        return CardView(cardImage: UIImage(data: (previewer.card.cardFront?.cardFront)!)!)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
 }

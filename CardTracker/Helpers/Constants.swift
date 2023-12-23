@@ -24,12 +24,12 @@ enum NavBarItemChosen: Identifiable {
 }
 
 /// This enum is used to identify which of the tab views we are on for various functions within the application.
-enum ListView: Identifiable {
+enum ListView: String, Identifiable, CaseIterable {
     case events
     case recipients
     case greetingCard
-    var id: Int {
-        hashValue
+    var id: String {
+        rawValue
     }
 }
 

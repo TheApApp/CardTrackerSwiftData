@@ -58,10 +58,11 @@ struct ViewCardsView: View {
     var body: some View {
         VStack {
             HStack {
-                EventTypeView(eventType: eventType)
+                EventTypeView(eventType: eventType, isCards: false)
                     .scaledToFill()
-                    .frame(width: 320, height: 150)
+                    .frame(width: 320, height: 75)
             }
+            .padding(.leading, 15)
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
@@ -103,7 +104,7 @@ struct ViewCardsView: View {
             pdfOutput.beginPDFPage(nil)
             
             // Printer header - top 160 points of the page
-            let renderTop = ImageRenderer(content: EventTypeView(eventType: eventType))
+            let renderTop = ImageRenderer(content: EventTypeView(eventType: eventType, isCards: false))
             renderTop.render { size, renderTop in
                 // Go to Bottom Left of Page and then translate up to 160 points from the top
                 pdfOutput.move(to: CGPoint(x: 0.0, y: 0.0))

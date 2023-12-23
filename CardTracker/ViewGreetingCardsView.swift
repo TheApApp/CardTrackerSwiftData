@@ -59,16 +59,14 @@ struct ViewGreetingCardsView: View {
     var body: some View {
         VStack {
             HStack {
-                EventTypeView(eventType: eventType)
+                EventTypeView(eventType: eventType, isCards: true)
                     .scaledToFill()
                     .frame(width: 320, height: 75)
-                    .padding(.leading, 15)
-                Spacer()
             }
+            .padding(.leading, 15)
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(greetingCards) { greetingCard in
-//                        CardView(cardImage: UIImage(data: greetingCard.cardFront!)!)
                         ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard)
                     }
                 }
@@ -106,7 +104,7 @@ struct ViewGreetingCardsView: View {
             pdfOutput.beginPDFPage(nil)
             
             // Printer header - top 160 points of the page
-            let renderTop = ImageRenderer(content: EventTypeView(eventType: eventType))
+            let renderTop = ImageRenderer(content: EventTypeView(eventType: eventType, isCards: true))
             renderTop.render { size, renderTop in
                 // Go to Bottom Left of Page and then translate up to 160 points from the top
                 pdfOutput.move(to: CGPoint(x: 0.0, y: 0.0))

@@ -7,49 +7,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0D78ECB7-0C90-4F8B-B9C9-2596A0532692"
+            uuid = "C6A0403F-B1FF-4E03-9F1B-F6F2F6432350"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CardTracker/NewCardView.swift"
+            filePath = "CardTracker/GreetingCardsPicker.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "saveCard()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0D78ECB7-0C90-4F8B-B9C9-2596A0532692 - d6f39cd50a6c04c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CardTracker.NewCardView.saveCard() -&gt; ()"
-                  moduleName = "CardTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/NewCardView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "2580">
-               </Location>
-               <Location
-                  uuid = "0D78ECB7-0C90-4F8B-B9C9-2596A0532692 - d6f39cd50a6c04c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CardTracker.NewCardView.saveCard() -&gt; ()"
-                  moduleName = "CardTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/NewCardView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "1900">
-               </Location>
-            </Locations>
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

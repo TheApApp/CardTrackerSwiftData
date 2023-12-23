@@ -28,7 +28,6 @@ struct NewCardView: View {
     
     init(recipient: Recipient) {
         self.recipient = recipient
-//        self._selectedEvent = State(initialValue: events.first)
         self._selectedEvent = State(initialValue: EventType(eventName: "Unknown"))
         let selectedEventTypeID = selectedEvent?.persistentModelID
         _greetingCards = Query(
@@ -102,6 +101,17 @@ struct NewCardView: View {
         } catch let error as NSError {
             logger.log("Save error \(error), \(error.userInfo)")
         }
+    }
+}
+
+#Preview {
+    do {
+        let previewer = try Previewer()
+        
+        return NewCardView(recipient: previewer.recipient)
+        
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
     }
 }
 

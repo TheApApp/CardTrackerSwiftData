@@ -138,3 +138,6 @@ struct NewGreetingCardView: View {
     }
 }
 
+#Preview {
+    NewGreetingCardView()
+}
