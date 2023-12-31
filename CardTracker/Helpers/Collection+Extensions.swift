@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// Extension to safely access array elements
+/// Extension to the Swift Collection protocol to safely access array elements
 extension Collection {
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil

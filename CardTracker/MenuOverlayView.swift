@@ -9,6 +9,14 @@ import os
 import SwiftData
 import SwiftUI
 
+/// MenuOverLayView - This allows for card to have a set of functions that are able to be executed on them.
+///
+/// Supported Features;
+///
+/// * "􀉅" You can display a larger view of the card
+/// * "􀈎" You can edit an existing card
+/// * "􀈑" You can delete a specific instance of a card.
+/// 
 struct MenuOverlayView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
@@ -16,6 +24,7 @@ struct MenuOverlayView: View {
     @State var areYouSure: Bool = false
     @State var isEditActive: Bool = false
     @State var isCardActive: Bool = false
+    @Binding var navigationPath: NavigationPath
     
     private let blankCardFront = UIImage(named: "frontImage")
     private var iPhone = false
@@ -23,7 +32,7 @@ struct MenuOverlayView: View {
     private var greetingCard: GreetingCard?
     private var isEventType: ListView = .recipients
     
-    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView) {
+    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -41,6 +50,7 @@ struct MenuOverlayView: View {
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
+        self._navigationPath = navigationPath
     }
     
     
@@ -49,7 +59,7 @@ struct MenuOverlayView: View {
             Spacer()
             NavigationLink {
                 if isEventType != .greetingCard {
-                    EditCardView(card: card!)
+                    EditCardView(card: Bindable(card!), navigationPath: $navigationPath)
                 }
             } label: {
                 Image(systemName: "square.and.pencil")
@@ -57,14 +67,15 @@ struct MenuOverlayView: View {
                     .font(iPhone ? .caption : .title3)
             }
             NavigationLink {
-//                CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, event: card?.eventType?.eventName ?? "Unknown", eventDate: card?.cardDate ?? Date())
                 if isEventType != .greetingCard {
-                    CardView(cardImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                    CardView(cardImage: card!.cardUIImage())
+                        .aspectRatio(2/3, contentMode: .fit)
                 } else {
-                    CardView(cardImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                    CardView(cardImage: greetingCard!.cardUIImage())
+                        .aspectRatio(2/3, contentMode: .fit)
                 }
             } label: {
-                Image(systemName: "doc.text.image")
+                Image(systemName: "doc.richtext")
                     .foregroundColor(.green)
                     .font(iPhone ? .caption : .title3)
             }

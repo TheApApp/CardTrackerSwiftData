@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension UIView {
-    // This is the function to convert UIView to UIImage
+    /// This function extends the UIView to allow for conversion of UIView to UIImage
     public func asUIImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         return renderer.image { rendererContext in

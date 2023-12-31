@@ -14,11 +14,13 @@ struct ScreenView: View {
     private var card: Card?
     private var greetingCard: GreetingCard?
     var isEventType: ListView = .recipients
+    @Binding var navigationPath: NavigationPath
     
-    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView) {
+    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
+        self._navigationPath = navigationPath
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             iPhone = false
@@ -31,13 +33,13 @@ struct ScreenView: View {
         HStack {
             VStack {
                 if isEventType != .greetingCard {
-                    Image(uiImage: UIImage(data: (card!.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                    Image(uiImage: card!.cardUIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
                         .frame(width: iPhone ? 130 : 250, height: iPhone ? 103 : 250)
                 } else {
-                    Image(uiImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                    Image(uiImage: greetingCard!.cardUIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
@@ -50,19 +52,19 @@ struct ScreenView: View {
                             Text("\(String(describing: card?.eventType?.eventName ?? "Unknown"))")
                                 .foregroundColor(.green)
                             HStack {
-                                Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
                                     .fixedSize()
                                     .foregroundColor(.green)
-                                MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .events)
+                                MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
                             }
                         case .recipients:
                             Text("\(card?.recipient?.fullName ?? "Unknown")")
                                 .foregroundColor(.green)
                             HStack {
-                                Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
                                     .fixedSize()
                                     .foregroundColor(.green)
-                                MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .recipients)
+                                MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
                             }
                         case .greetingCard:
 //                            Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
@@ -70,7 +72,7 @@ struct ScreenView: View {
                                 Text("\(greetingCard?.cardName ?? "")")
                                     .fixedSize(horizontal: false, vertical: true)
                                     .foregroundColor(.green)
-                                MenuOverlayView(card: card, greetingCard: greetingCard, isEventType: .greetingCard)
+                                MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
                             }
                         }
 

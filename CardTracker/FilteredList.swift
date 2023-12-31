@@ -14,9 +14,11 @@ struct FilteredList: View {
     @Query(sort: \EventType.eventName) private var eventTypes: [EventType]
     @Query(sort: [SortDescriptor(\Recipient.lastName), SortDescriptor(\Recipient.firstName)]) private var recipients: [Recipient]
     
+    @Binding var navigationPath: NavigationPath
+    
     private var listView: ListView
     
-    init(searchString: String, listView: ListView) {
+    init(searchText: String, listView: ListView, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -31,19 +33,21 @@ struct FilteredList: View {
         self.listView = listView
         
         _eventTypes = Query(filter: #Predicate {
-            if searchString.isEmpty {
+            if searchText.isEmpty {
                 return true
             } else {
-                return $0.eventName.localizedStandardContains(searchString)
+                return $0.eventName.localizedStandardContains(searchText)
             }
         }, sort: \EventType.eventName)
         _recipients = Query(filter: #Predicate {
-            if searchString.isEmpty {
+            if searchText.isEmpty {
                 return true
             } else {
-                return $0.lastName.localizedStandardContains(searchString) || $0.firstName.localizedStandardContains(searchString)
+                return $0.lastName.localizedStandardContains(searchText) || $0.firstName.localizedStandardContains(searchText)
             }
         }, sort: [SortDescriptor(\Recipient.lastName), SortDescriptor(\Recipient.firstName)])
+        
+        self._navigationPath = navigationPath
     }
     
     var body: some View {
@@ -52,30 +56,30 @@ struct FilteredList: View {
             case .events:
                 ForEach(eventTypes, id: \.self) { eventType in
                     NavigationLink(destination:
-                        ViewCardsView(eventType: eventType)
+                        ViewCardsView(eventType: eventType, navigationPath: $navigationPath)
                     ) {
                         Text("\(eventType.eventName)")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.green)
                     }
                 }
                 .onDelete(perform: deleteEvent)
             case .recipients:
                 ForEach(recipients, id: \.self) { recipient in
                     NavigationLink(destination:
-                        ViewEventsView(recipient: recipient)
+                        ViewEventsView(recipient: recipient, navigationPath: $navigationPath)
                     ) {
                         Text("\(recipient.fullName)")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.green)
                     }
                 }
                 .onDelete(perform: deleteRecipient)
             case .greetingCard:
                 ForEach(eventTypes, id: \.self) { eventType in
                     NavigationLink(destination:
-                        ViewGreetingCardsView(eventType: eventType)
+                        ViewGreetingCardsView(eventType: eventType, navigationPath: $navigationPath)
                     ) {
                         Text("\(eventType.eventName)")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.green)
                     }
                 }
                 .onDelete(perform: deleteGreetingCards)
@@ -127,6 +131,6 @@ struct FilteredList: View {
 }
 
 #Preview {
-    FilteredList(searchString: "", listView: ListView.recipients)
+    FilteredList(searchText: "", listView: ListView.recipients, navigationPath: .constant(NavigationPath()))
         .modelContainer(for: [EventType.self, Recipient.self])
 }

@@ -16,18 +16,19 @@ struct EditCardView: View {
     @Query(sort: \EventType.eventName) private var events: [EventType]
 
     @Bindable var card: Card
+    @Binding var navigationPath: NavigationPath
     var defaultImage = UIImage(named: "frontImage")
 
     @State private var cardFrontImage: Image?
     @State var frontImageSelected: Image? 
-    @State private var eventName: String
-    @State private var cardDate: Date
+    @State private var eventName: String?
+    @State private var cardDate: Date = Date()
     @State private var selectedEvent: EventType?
     @State var frontPhoto = false
     @State var captureFrontImage = false
     @State var shouldPresentCamera = false
 
-    init(card: Card) {
+    init(card: Bindable<Card>, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -39,11 +40,8 @@ struct EditCardView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        self.card = card
-        self._cardDate = State(initialValue: card.cardDate)
-        self._eventName = State(initialValue: card.eventType?.eventName ?? "Unknown")
-        self._frontImageSelected = State(initialValue: Image(uiImage: UIImage(data: (card.cardFront?.cardFront)!) ?? defaultImage!))
-        self._selectedEvent = State(initialValue: card.eventType)
+        self._card = card
+        self._navigationPath = navigationPath
         
     }
 
@@ -53,10 +51,16 @@ struct EditCardView: View {
                 HStack {
                     Text("Event")
                     Spacer()
-                    Picker(selection: $selectedEvent, label: Text("")) {
-                        ForEach(events) { event in
-                            Text(event.eventName)
-                                .tag(Optional(event))
+                    Picker(selection: $selectedEvent, label: Text("Event Type")) {
+                        
+                        Text("Uknown Event Type")
+                            .tag(Optional<EventType>.none)
+                        
+                        if events.isEmpty == false {
+                            ForEach(events) { event in
+                                Text(event.eventName)
+                                    .tag(Optional(event))
+                            }
                         }
                     }
                     .frame(width: geo.size.width * 0.55, height: geo.size.height * 0.25)
@@ -64,7 +68,7 @@ struct EditCardView: View {
                 .padding([.leading, .trailing], 10)
                 DatePicker(
                     "Event Date",
-                    selection: $cardDate,
+                    selection: $card.cardDate,
                     displayedComponents: [.date])
                 .padding([.leading, .trailing, .bottom], 10)
                 HStack {
@@ -153,6 +157,6 @@ struct EditCardView: View {
 
 struct EditAnEvent_Previews: PreviewProvider {
     static var previews: some View {
-        EditCardView(card: Card(cardDate: Date(), eventType: EventType(eventName: "Dummy Event"), cardFront: GreetingCard(cardName: "Sample", cardFront: UIImage(named: "frontImage")?.pngData(), eventType: EventType(eventName: "Sample Name"), cardURL: URL(string: "https://michaelrowe01.com")), recipient: Recipient(addressLine1: "Line 1", addressLine2: "Line 2", city: "New York", state: "NY", zip: "01234", country: "USA", firstName: "First Name", lastName: "Last Name")))
+        EditCardView(card: Bindable(wrappedValue:Card(cardDate: Date(), eventType: EventType(eventName: "Dummy Event"), cardFront: GreetingCard(cardName: "Sample", cardFront: UIImage(named: "frontImage")?.pngData(), eventType: EventType(eventName: "Sample Name"), cardURL: URL(string: "https://michaelrowe01.com")), recipient: Recipient(addressLine1: "Line 1", addressLine2: "Line 2", city: "New York", state: "NY", zip: "01234", country: "USA", firstName: "First Name", lastName: "Last Name"))), navigationPath: .constant(NavigationPath()))
     }
 }

@@ -7,18 +7,16 @@
 
 import SwiftUI
 
+/// CardView presents an image of a single Card, sized in a 175 frame.
 struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
 
     var cardImage: UIImage
-//    var event: String
-//    var eventDate: Date?
 
     @State private var isSelected = false
 
     init(cardImage: UIImage) {
-//        init(cardImage: UIImage, event: String, eventDate: Date? = nil) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -33,18 +31,17 @@ struct CardView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         self.cardImage = cardImage
-//        self.event = event
-//        self.eventDate = eventDate
     }
 
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Image( uiImage: cardImage)
+                Image(uiImage: cardImage)
                     .resizable()
+                    .aspectRatio(1, contentMode: .fit)
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
+                    .frame(width: 175, height: 175)
                     .padding(2)
                     .mask(RoundedRectangle(cornerRadius: 25))
                     .shadow(radius: isSelected ? 2 : 0 )
@@ -64,7 +61,7 @@ struct CardView: View {
     do {
         let previewer = try Previewer()
         
-        return CardView(cardImage: UIImage(data: (previewer.card.cardFront?.cardFront)!)!)
+        return CardView(cardImage: previewer.card.cardUIImage())
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }

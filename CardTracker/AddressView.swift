@@ -7,9 +7,9 @@
 
 import SwiftUI
 
+/// Address View presents the address information of a recipient in a visually appealing way.
 struct AddressView: View {
     var recipient: Recipient
-    private var iPhone = false
 
     init(recipient: Recipient) {
         let navBarAppearance = UINavigationBarAppearance()
@@ -45,7 +45,7 @@ struct AddressView: View {
             }
         }
         .scaledToFit()
-        .foregroundColor(.accentColor)
+        .foregroundColor(.green)
         .padding([.leading, .trailing], 10 )
     }
 }

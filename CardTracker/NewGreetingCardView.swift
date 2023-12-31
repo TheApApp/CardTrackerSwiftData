@@ -43,10 +43,16 @@ struct NewGreetingCardView: View {
             Form {
                 Section("Card Information") {
                     Picker("Select type", selection: $selectedEvent) {
-                        ForEach(events) { event in
-                            Text(event.eventName)
-                                .tag(Optional(event))
-                                .customTextField()
+                        Text("Unknown Event")
+                            .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
+                        
+                        if events.isEmpty == false {
+                            Divider()
+                            
+                            ForEach(events) { event in
+                                Text(event.eventName)
+                                    .tag(Optional(event))
+                            }
                         }
                     }
                     TextField("Description", text: $cardName)
@@ -89,6 +95,7 @@ struct NewGreetingCardView: View {
                                     isPresented: self.$captureFrontImage)
                             }
                     }
+                    .frame(width: 300, height: 300)
                 }
             }
             .padding([.leading, .trailing], 10)

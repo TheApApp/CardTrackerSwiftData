@@ -19,11 +19,13 @@ struct ViewCardsView: View {
     private var iPhone = false
     private var eventType: EventType
     
+    @Binding var navigationPath: NavigationPath
+    
     // MARK: PDF Properties
     @State var PDFUrl: URL?
     @State var showShareSheet: Bool = false
     
-    init(eventType: EventType) {
+    init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -53,24 +55,20 @@ struct ViewCardsView: View {
                 GridItem(.adaptive(minimum: 160), spacing: 10, alignment: .center)
             ]
         }
+        self._navigationPath = navigationPath
     }
     
     var body: some View {
         VStack {
-            HStack {
-                EventTypeView(eventType: eventType, isCards: false)
-                    .scaledToFill()
-                    .frame(width: 320, height: 75)
-            }
-            .padding(.leading, 15)
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        ScreenView(card: card, greetingCard: nil, isEventType: .events)
+                        ScreenView(card: card, greetingCard: nil, isEventType: .events, navigationPath: $navigationPath)
                     }
                     .padding()
                 }
             }
+            .navigationTitle("Cards Sent")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     HStack {

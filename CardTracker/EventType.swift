@@ -12,13 +12,26 @@ import SwiftData
 
 @Model
 final class EventType {
+    // MARK: Properties
     /// All eventtypes must have a descriptive name
     var eventName: String = ""
     /// Events are related to cards.  We have an array of cards which were created for this event.  We have an inverse relationship with the Cards
     @Relationship(deleteRule: .cascade, inverse: \Card.eventType) var cards: [Card]? = []
-    @Relationship(deleteRule: .nullify, inverse: \GreetingCard.eventType) var greetingCards: [GreetingCard]? = []
+    @Relationship(deleteRule: .cascade, inverse: \GreetingCard.eventType) var greetingCards: [GreetingCard]? = []
     
+    // MARK: - Initializer
     init(eventName: String) {
         self.eventName = eventName
+    }
+    
+    // MARK: - Intents
+    /// cardCount returns the number of Cards sent for this EventType
+    func cardCount() -> Int {
+        cards?.count ?? 0
+    }
+    
+    /// galleryCount returns the number of Cards in the Gallery for this EventType
+    func galleryCount() -> Int {
+        greetingCards?.count ?? 0
     }
 }

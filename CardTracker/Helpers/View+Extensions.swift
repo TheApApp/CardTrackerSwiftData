@@ -8,8 +8,8 @@
 import SwiftUI
 
 extension View {
-    // This function changes our View to UIView, then calls another function
-    // to convert the newly-made UIView to a UIImage.
+    /// This function changes our View to UIView, then calls another function
+    /// to convert the newly-made UIView to a UIImage.
     public func asUIImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
 

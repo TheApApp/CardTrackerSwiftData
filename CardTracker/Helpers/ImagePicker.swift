@@ -20,7 +20,8 @@ struct ImagePicker: UIViewControllerRepresentable {
     /// A binding to a boolean indicating whether the image picker is currently presented.
     @Binding var isPresented: Bool
 
-    /// This function creates and returns an instance of ImagePickerViewCoordinator, passing the $image and $isPresented bindings to it. This coordinator will handle the interaction with the UIImagePickerController.
+    /// This function creates and returns an instance of ImagePickerViewCoordinator, passing the $image and $isPresented bindings to it. 
+    /// This coordinator will handle the interaction with the UIImagePickerController.
     func makeCoordinator() -> ImagePickerViewCoordinator {
         return ImagePickerViewCoordinator(image: $image, isPresented: $isPresented)
     }
@@ -43,8 +44,10 @@ struct ImagePicker: UIViewControllerRepresentable {
 }
 
 /// This Swift class, ImagePickerViewCoordinator, is designed to act as a coordinator for handling image picking functionality using UIImagePickerController.
-/// The class inherits from NSObject and conforms to two protocols: UINavigationControllerDelegate and UIImagePickerControllerDelegate. These protocols are part of the UIKit framework and provide methods for managing navigation and handling events related to image picking.
-/// Overall, this class encapsulates the logic for handling image picking events and updating the necessary state variables using the @Binding mechanism. It can be used as a coordinator in SwiftUI to integrate image picking functionality into a SwiftUI view.
+/// The class inherits from NSObject and conforms to two protocols: UINavigationControllerDelegate and UIImagePickerControllerDelegate. 
+/// These protocols are part of the UIKit framework and provide methods for managing navigation and handling events related to image picking.
+/// Overall, this class encapsulates the logic for handling image picking events and updating the necessary state variables using the @Binding mechanism. 
+/// It can be used as a coordinator in SwiftUI to integrate image picking functionality into a SwiftUI view.
 class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     /// The image property represents the selected image
@@ -52,13 +55,15 @@ class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIIm
     /// isPresented represents whether the image picker is currently presented.
     @Binding var isPresented: Bool
 
-    /// The initializer takes two Binding parameters: one for the selected image (image) and another for the presentation state (isPresented). It sets the corresponding internal properties with the provided bindings.
+    /// The initializer takes two Binding parameters: one for the selected image (image) and another for the presentation state (isPresented). 
+    /// It sets the corresponding internal properties with the provided bindings.
     init(image: Binding<Image?>, isPresented: Binding<Bool>) {
         self._image = image
         self._isPresented = isPresented
     }
 
-    /// This method is called when the user selects an image in the image picker. It extracts the original image from the info dictionary, converts it to a SwiftUI Image, and updates the image property. Finally, it sets isPresented to false, indicating that the image picker should be dismissed.
+    /// This method is called when the user selects an image in the image picker. It extracts the original image from the info dictionary, converts it to a SwiftUI Image, and updates the image property. 
+    /// Finally, it sets isPresented to false, indicating that the image picker should be dismissed.
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {

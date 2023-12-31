@@ -20,6 +20,8 @@ struct ViewEventsView: View {
     private var iPhone = false
     private var recipient: Recipient
     
+    @Binding var navigationPath: NavigationPath
+    
     @State private var actionSheetPresented = false
     @State private var navBarItemChosen: NavBarItemChosen?
     @State private var region: MKCoordinateRegion?
@@ -29,7 +31,7 @@ struct ViewEventsView: View {
     @State var PDFUrl: URL?
     @State var showShareSheet: Bool = false
     
-    init(recipient: Recipient) {
+    init(recipient: Recipient, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -59,6 +61,7 @@ struct ViewEventsView: View {
                 GridItem(.adaptive(minimum: 160), spacing: 10, alignment: .center)
             ]
         }
+        self._navigationPath = navigationPath
     }
     
     var body: some View {
@@ -89,11 +92,13 @@ struct ViewEventsView: View {
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        ScreenView(card: card, greetingCard: nil, isEventType: .events)
+                        ScreenView(card: card, greetingCard: nil, isEventType: .events, navigationPath: $navigationPath)
                     }
                     .padding()
                 }
             }
+            .navigationTitle("Cards Sent")
+            .foregroundColor(.green)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     HStack {
@@ -101,9 +106,10 @@ struct ViewEventsView: View {
                     navBarItemChosen = .newCard
                 }, label: {
                     Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(.green)
                 })
                 ShareLink("Export PDF", item: render(viewsPerPage: 16))
+                    .foregroundColor(.green)
             }
             )
         }

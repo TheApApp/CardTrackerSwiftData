@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: FIXME - All the variables in this swift file should be moved into the main App or the related areas of the code
+
 /// For conisistent Date formatting across all views.
 let cardDateFormatter: DateFormatter = {
     let formatter = DateFormatter()

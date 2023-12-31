@@ -44,10 +44,16 @@ struct NewCardView: View {
                 Form {
                     Section("Card Information") {
                         Picker("Select type", selection: $selectedEvent) {
-                            Text("").tag("") //basically added empty tag and it solve the case
-                            ForEach(events) { event in
-                                Text(event.eventName)
-                                    .tag(Optional(event))
+                            Text("Unknown Event")
+                                .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
+                            
+                            if events.isEmpty == false {
+                                Divider()
+                                
+                                ForEach(events) { eventType in
+                                    Text(eventType.eventName)
+                                        .tag(Optional(eventType))
+                                }
                             }
                         }
                         
@@ -61,6 +67,7 @@ struct NewCardView: View {
                 if selectedEvent != nil {
                     GreetingCardsPicker(eventType: selectedEvent ?? EventType(eventName: "Unknown"), selectedGreetingCard: $selectedGreetgingCard)
                 }
+                Spacer()
             }
             .padding([.leading, .trailing], 10)
             .navigationBarTitle("\(recipient.fullName)")

@@ -31,6 +31,8 @@
 		189F5C7D2B27CFD10067245A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C7C2B27CFD10067245A /* View+Extensions.swift */; };
 		189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C7E2B27D2360067245A /* ImagePicker.swift */; };
 		189F5C812B27D4070067245A /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C802B27D4070067245A /* ImageCompressor.swift */; };
+		18B0869F2B368B48001CBFFB /* EditRecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0869E2B368B48001CBFFB /* EditRecipientView.swift */; };
+		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
 		18B916722B365441008101A7 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B916712B365441008101A7 /* Previewer.swift */; };
 		18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* CardTrackerApp.swift */; };
 		18D962112B263EC200662849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962102B263EC200662849 /* ContentView.swift */; };
@@ -93,6 +95,8 @@
 		189F5C7C2B27CFD10067245A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		189F5C7E2B27D2360067245A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		189F5C802B27D4070067245A /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
+		18B0869E2B368B48001CBFFB /* EditRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipientView.swift; sourceTree = "<group>"; };
+		18B086A02B375415001CBFFB /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
 		18B916712B365441008101A7 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		18D9620B2B263EC200662849 /* CardTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D9620E2B263EC200662849 /* CardTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerApp.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				189DB6812B2E230400FC3E87 /* CardView.swift */,
 				18D962102B263EC200662849 /* ContentView.swift */,
 				18D962522B269DF400662849 /* EditCardView.swift */,
+				18B0869E2B368B48001CBFFB /* EditRecipientView.swift */,
 				189DB6872B2E4C0100FC3E87 /* EventTypeView.swift */,
 				18D9624C2B2656AB00662849 /* EventsList.swift */,
 				18D9624E2B266F0E00662849 /* FilteredList.swift */,
@@ -245,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				189F5C762B27CBBF0067245A /* Collection+Extensions.swift */,
+				18B086A02B375415001CBFFB /* ContactPicker.swift */,
 				189F5C682B276C570067245A /* Constants.swift */,
 				189F5C802B27D4070067245A /* ImageCompressor.swift */,
 				189F5C7E2B27D2360067245A /* ImagePicker.swift */,
@@ -414,6 +420,7 @@
 				189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */,
 				189DB6822B2E230400FC3E87 /* CardView.swift in Sources */,
 				189F5C7D2B27CFD10067245A /* View+Extensions.swift in Sources */,
+				18B0869F2B368B48001CBFFB /* EditRecipientView.swift in Sources */,
 				1870471F2B30B6F600E489AC /* GreetingCard.swift in Sources */,
 				189F5C812B27D4070067245A /* ImageCompressor.swift in Sources */,
 				18D9624B2B2654EA00662849 /* NewEventView.swift in Sources */,
@@ -422,6 +429,7 @@
 				18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */,
 				189F5C652B2766B30067245A /* ViewEventsView.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
+				18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */,
 				189F5C752B27CB280067245A /* FooterView.swift in Sources */,
 				18D962132B263EC200662849 /* Card.swift in Sources */,
 				187047252B3226EB00E489AC /* GreetingCardsPicker.swift in Sources */,
@@ -520,7 +528,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -576,7 +586,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -610,7 +622,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -654,7 +666,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;

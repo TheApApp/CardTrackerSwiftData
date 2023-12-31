@@ -35,13 +35,13 @@ struct PrintView: View {
         HStack {
             VStack {
                 if isEventType != .greetingCard {
-                    Image(uiImage: UIImage(data: (card?.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                    Image(uiImage: (card?.cardUIImage())!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
                         .frame(width: 130, height: 103)
                 } else {
-                    Image(uiImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
+                    Image(uiImage: (greetingCard?.cardUIImage())!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
