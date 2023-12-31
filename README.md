@@ -7,3 +7,6 @@ A few features being added since swtiching to this rewrite:
 * Allow for creation of new events
 * Creating an in-app card gallery, reducing the data foot print, and the reuse of a card for multiple people - Note the old NewGreetingCardView show the old way I did a picker in the old app. this works fine for adding thing to the in App Gallery.
 * Ability to print the cards either by person, by event type (unique cards, or all cards by person and date)
+
+Picker challenge - 
+<img width="632" alt="Screenshot 2023-12-31 at 17 13 22" src="https://github.com/TheApApp/CardTrackerSwiftData/assets/2049209/33bff07a-5989-4dd2-bda4-fe288670b7ca">
