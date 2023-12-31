@@ -67,9 +67,8 @@ struct ScreenView: View {
                                 MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
                             }
                         case .greetingCard:
-//                            Text("\(String(describing: greetingCard!.eventType?.eventName ?? "Unknown"))")
                             HStack {
-                                Text("\(greetingCard?.cardName ?? "")")
+                                Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
                                     .fixedSize(horizontal: false, vertical: true)
                                     .foregroundColor(.green)
                                 MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)

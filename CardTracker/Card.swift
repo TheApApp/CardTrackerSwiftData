@@ -35,8 +35,15 @@ final class Card {
     // MARK: - Intents
     /// A helper value that exposes the card as an Image either a blank image or the value of the image from the realted GreetingCard
     func cardUIImage() -> UIImage {
-        let defaultImage: UIImage = UIImage(data: (cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!
-        return defaultImage
+        if let greetingCard = cardFront {
+            if let cardFront = greetingCard.cardFront {
+                return UIImage(data: cardFront)!
+            } else {
+                return UIImage(named: "frontImage")!
+            }
+        } else {
+            return UIImage(named: "frontImage")!
+        }
     }
 
 }
