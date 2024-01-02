@@ -16,10 +16,10 @@ struct GreetingCardsPickerView: View {
     @Query(sort: \GreetingCard.cardName) private var greetingCards: [GreetingCard]
     
     @Binding var selectedGreetingCard: GreetingCard?
-    @State private var isSelected = false
+//    @State private var isSelected = false
     
     private var gridLayout = [
-        GridItem(.adaptive(minimum: 140), spacing: 10, alignment: .center)
+        GridItem(.adaptive(minimum: 145), spacing: 5, alignment: .center)
     ]
     
     var eventType: EventType
@@ -50,18 +50,19 @@ struct GreetingCardsPickerView: View {
         VStack {
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                 ForEach(greetingCards, id: \.id) { greetingCard in
-                    Button(action:  {
-                        self.selectedGreetingCard = greetingCard
-                        self.isSelected.toggle()
-                        print("Selected is \(String(describing: self.selectedGreetingCard))")
-                    }, label: {
-                        CardView(cardImage: greetingCard.cardUIImage())
-                            .aspectRatio(1, contentMode: .fit)
-                            .shadow(color: .green, radius: isSelected ? 10 : 0 )
-                    })
-
+                    Image(uiImage: greetingCard.cardUIImage())
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 130, height: 130)
+                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                        .onTapGesture {
+                            selectedGreetingCard = greetingCard
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                 }
             }
+            .padding()
+            .navigationTitle("Select \(eventType.eventName) Card")
         }
     }
 }

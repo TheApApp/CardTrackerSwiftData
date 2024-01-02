@@ -12,7 +12,7 @@ import UIKit
 /// This is used to build a gallery of Greeting Cards
 
 @Model
-final class GreetingCard {
+final class GreetingCard: CustomDebugStringConvertible {
     ///     This is an optional String, you can use this to describe the card with a descriptive name
     var cardName: String?
     ///     This is the only required property.  An image of the front of the card must be supplied
@@ -25,6 +25,10 @@ final class GreetingCard {
     var cardURL: URL?
     ///     A greeting card will be used by various cards being sent.  We have an inverse relationship.
     @Relationship(deleteRule: .cascade, inverse: \Card.cardFront) var cards: [Card]? = []
+    
+    var debugDescription: String {
+        "\(cardName ?? "No Name"), \(eventType?.eventName ?? "No Event Type"), \(cardManufacturer ?? "No Manufacturer"), \(cardURL?.absoluteString ?? "No URL"), Used - \(cardsCount()) "
+    }
     
     init(cardName: String?, cardFront: Data?, eventType: EventType?, cardManufacturer: String? = nil, cardURL: URL?) {
         /// When creating a new Greeting Card, you have to have an image, all other properties are optional.

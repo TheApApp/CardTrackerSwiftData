@@ -10,7 +10,7 @@ import SwiftData
 
 /// A recipient is someone you have sent a card to.  It is the primary view for the application.  A recipient must have a name.
 @Model
-class Recipient {
+class Recipient: CustomDebugStringConvertible {
     // MARK: Properties
     /// When sending a card, a recipient should have an address.  This is the first line, usually the street address.
     var addressLine1: String = ""
@@ -30,6 +30,10 @@ class Recipient {
     var lastName: String = ""
     /// A Recipient may have zero or more cards. There is a cascading relationship to the cards
     @Relationship(deleteRule: .cascade, inverse: \Card.recipient) var cards: [Card]? = [Card]()
+    
+    var debugDescription: String {
+        "\(fullName ), \(firstName ), \(lastName ), \(addressLine1 ), \(addressLine2 ), \(city ), \(state ), \(zip ), \(country ), Number of Cards - \(cardsSent())"
+    }
     
     // MARK: - Computed Properties
     /// This is a computed promperty holidng the full name of the recipient, it is first name followed by a space and then the last name

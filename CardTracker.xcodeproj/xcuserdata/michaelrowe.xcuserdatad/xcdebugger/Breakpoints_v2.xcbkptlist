@@ -7,77 +7,62 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C6A0403F-B1FF-4E03-9F1B-F6F2F6432350"
+            uuid = "4ED861F1-C765-41B4-B37D-0A00EC0E102C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardTracker/GreetingCardsPicker.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "C6A0403F-B1FF-4E03-9F1B-F6F2F6432350 - 3dfd7c1563bce324"
+                  uuid = "4ED861F1-C765-41B4-B37D-0A00EC0E102C - 9b6b8bc1d3a4a886"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (CardTracker.GreetingCard) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt; in CardTracker.GreetingCardsPicker.body.getter : some"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (CardTracker.GreetingCard) -&gt; SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in CardTracker.GreetingCardsPicker.body.getter : some"
                   moduleName = "CardTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/GreetingCardsPicker.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "1060">
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "968">
                </Location>
                <Location
-                  uuid = "C6A0403F-B1FF-4E03-9F1B-F6F2F6432350 - 9d995f455549f17c"
+                  uuid = "4ED861F1-C765-41B4-B37D-0A00EC0E102C - 9b6b8bc1d3a4a886"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (CardTracker.GreetingCard) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt; in CardTracker.GreetingCardsPicker.body.getter : some"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (CardTracker.GreetingCard) -&gt; SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in CardTracker.GreetingCardsPicker.body.getter : some"
                   moduleName = "CardTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/GreetingCardsPicker.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "268">
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "736">
                </Location>
                <Location
-                  uuid = "C6A0403F-B1FF-4E03-9F1B-F6F2F6432350 - 9d995f455549f17c"
+                  uuid = "4ED861F1-C765-41B4-B37D-0A00EC0E102C - 9b6b8bc1d3a4a8a5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (CardTracker.GreetingCard) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt; in CardTracker.GreetingCardsPicker.body.getter : some"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (CardTracker.GreetingCard) -&gt; SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.shadow(color: SwiftUI.Color, radius: CoreGraphics.CGFloat, x: CoreGraphics.CGFloat, y: CoreGraphics.CGFloat) -&gt; some&gt;&gt;.0&gt;&gt;&gt; in CardTracker.GreetingCardsPicker.body.getter : some"
                   moduleName = "CardTracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/GreetingCardsPicker.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "440">
-               </Location>
-               <Location
-                  uuid = "C6A0403F-B1FF-4E03-9F1B-F6F2F6432350 - 9d995f455549f19d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (CardTracker.GreetingCard) -&gt; &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;CardTracker.GreetingCard&gt;, SwiftData.PersistentIdentifier, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;&gt; in CardTracker.GreetingCardsPicker.body.getter : some"
-                  moduleName = "CardTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michaelrowe/Documents/TheApApp/CardTracker/CardTracker/GreetingCardsPicker.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "440">
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "460">
                </Location>
             </Locations>
          </BreakpointContent>

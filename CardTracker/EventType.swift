@@ -11,7 +11,10 @@ import SwiftData
 ///  EventType defines the name of various events for which you may wish to send a greeting card
 
 @Model
-final class EventType {
+final class EventType: CustomDebugStringConvertible {
+    var debugDescription: String {
+        "\(eventName ?? "No Name Provided")"
+    }
     // MARK: Properties
     /// All eventtypes must have a descriptive name
     var eventName: String = ""

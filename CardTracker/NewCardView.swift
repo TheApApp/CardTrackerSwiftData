@@ -14,13 +14,13 @@ struct NewCardView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var recipient: Recipient
-//    @State var passedEvent: EventType
+
     @Query(sort: \EventType.eventName) private var events: [EventType]
     @Query(sort: \GreetingCard.cardName) private var greetingCards: [GreetingCard]
     
     @State private var selectedEvent: EventType?
     @State private var cardDate = Date()
-    @State private var selectedGreetgingCard: GreetingCard?
+    @State private var selectedGreetingCard: GreetingCard?
     @State var frontImageSelected: Image? = Image("frontImage")
     @State var shouldPresentCamera = false
     @State var frontPhoto = false
@@ -28,7 +28,6 @@ struct NewCardView: View {
     
     init(recipient: Recipient) {
         self.recipient = recipient
-        self._selectedEvent = State(initialValue: EventType(eventName: "Unknown"))
         let selectedEventTypeID = selectedEvent?.persistentModelID
         _greetingCards = Query(
             filter: #Predicate {$0.eventType?.persistentModelID == selectedEventTypeID },
@@ -65,9 +64,12 @@ struct NewCardView: View {
                 }
                 .padding(.bottom, 5)
                 if selectedEvent != nil {
-                    GreetingCardsPicker(eventType: selectedEvent ?? EventType(eventName: "Unknown"), selectedGreetingCard: $selectedGreetgingCard)
+                    NavigationLink("Select card:", destination: GreetingCardsPickerView(eventType: selectedEvent!, selectedGreetingCard: $selectedGreetingCard))
                 }
                 Spacer()
+            }
+            .onChange(of: selectedGreetingCard) {
+                print("Selected a Greeting Card - \(String(describing: selectedGreetingCard)))")
             }
             .padding([.leading, .trailing], 10)
             .navigationBarTitle("\(recipient.fullName)")
@@ -97,10 +99,9 @@ struct NewCardView: View {
     func saveCard() {
         let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "NewCardView")
         logger.log("saving...")
-        print("Selected Event = \(String(describing: selectedEvent?.eventName))")
+        print("Selected greetingCard = \(String(describing: selectedGreetingCard?.cardName))")
         if selectedEvent != nil {
-            let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: selectedGreetgingCard ?? GreetingCard(cardName: "", cardFront: frontImageSelected?.asUIImage().pngData(), eventType: selectedEvent, cardURL: URL(string: "")), recipient: recipient)
-            print("Selected Event = \(String(describing: selectedEvent))")
+            let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: selectedGreetingCard ?? GreetingCard(cardName: "", cardFront: frontImageSelected?.asUIImage().pngData(), eventType: selectedEvent, cardURL: URL(string: "")), recipient: recipient)
             modelContext.insert(card)
         }
         do {

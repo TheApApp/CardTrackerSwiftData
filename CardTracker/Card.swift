@@ -13,7 +13,11 @@ import UIKit
 /// A card is a specific instance of a greeting card sent to a specific person.
 
 @Model
-final class Card {
+final class Card: CustomDebugStringConvertible {
+    var debugDescription: String {
+        "\(cardDate), \(eventType?.eventName ?? "Unknown event"), \(cardFront?.cardName ?? "No Card Name"), \(recipient?.fullName ?? "No Name")"
+    }
+    
     // MARK: Properties
     /// This can either be the date the card is sent or the date of the event the card is for.  By default all cards will start with today's date.
     var cardDate: Date = Date()
