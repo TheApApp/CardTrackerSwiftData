@@ -9,7 +9,7 @@ import os
 import SwiftData
 import SwiftUI
 
-struct GreetingCardsPicker: View {
+struct GreetingCardsPickerView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     
@@ -50,17 +50,16 @@ struct GreetingCardsPicker: View {
         VStack {
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                 ForEach(greetingCards, id: \.id) { greetingCard in
-                    CardView(cardImage: greetingCard.cardUIImage())
-                        .aspectRatio(2/3, contentMode: .fit)
-                        .shadow(color: .green, radius: isSelected ? 2 : 0 )
-                        .onTapGesture {
-                            // Why does a view care about modifying your card's state?
-                            // Tell the card what state is it, and allow the
-                            // view to redraw it if necessary.
-                            self.isSelected.toggle()
-                            self.selectedGreetingCard = greetingCard
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
+                    Button(action:  {
+                        self.selectedGreetingCard = greetingCard
+                        self.isSelected.toggle()
+                        print("Selected is \(String(describing: self.selectedGreetingCard))")
+                    }, label: {
+                        CardView(cardImage: greetingCard.cardUIImage())
+                            .aspectRatio(1, contentMode: .fit)
+                            .shadow(color: .green, radius: isSelected ? 10 : 0 )
+                    })
+
                 }
             }
         }
