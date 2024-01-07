@@ -16,7 +16,6 @@ struct GreetingCardsPickerView: View {
     @Query(sort: \GreetingCard.cardName) private var greetingCards: [GreetingCard]
     
     @Binding var selectedGreetingCard: GreetingCard?
-//    @State private var isSelected = false
     
     private var gridLayout = [
         GridItem(.adaptive(minimum: 145), spacing: 5, alignment: .center)
@@ -64,5 +63,17 @@ struct GreetingCardsPickerView: View {
             .padding()
             .navigationTitle("Select \(eventType.eventName) Card")
         }
+    }
+}
+
+#Preview {
+    do {
+        let previewer = try Previewer()
+        @State var greetingCard: GreetingCard? = previewer.greetingCard
+        
+        return GreetingCardsPickerView(eventType: previewer.eventType, selectedGreetingCard: $greetingCard)
+        
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
     }
 }

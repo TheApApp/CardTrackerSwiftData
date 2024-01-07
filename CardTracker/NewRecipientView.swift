@@ -44,35 +44,35 @@ struct NewRecipientView: View {
     var body: some View {
         NavigationView {
             GeometryReader { geo in
-//                ContactPicker(showPicker: $showPicker, onSelectContact: {contact in
-//                    firstName = contact.givenName
-//                    lastName = contact.familyName
-//                    if contact.postalAddresses.count > 0 {
-//                        if let addressString = (
-//                            ((contact.postalAddresses[0] as AnyObject).value(forKey: "labelValuePair")
-//                             as AnyObject).value(forKey: "value"))
-//                            as? CNPostalAddress {
-//                            let mailAddress =
-//                                CNPostalAddressFormatter.string(from: addressString, style: .mailingAddress)
-//                            addressLine1 = "\(addressString.street)"
-//                            addressLine2 = ""
-//                            city = "\(addressString.city)"
-//                            state = "\(addressString.state)"
-//                            zip = "\(addressString.postalCode)"
-//                            country = "\(addressString.country)"
-//                            print("Mail address is \n\(mailAddress)")
-//                        }
-//                    } else {
-//                        addressLine1 = "No Address Provided"
-//                        addressLine2 = ""
-//                        city = ""
-//                        state = ""
-//                        zip = ""
-//                        country = ""
-//                        print("No Address Provided")
-//                    }
-//                    self.showPicker.toggle()
-//                }, onCancel: nil)
+                ContactPicker(showPicker: $showPicker, onSelectContact: {contact in
+                    firstName = contact.givenName
+                    lastName = contact.familyName
+                    if contact.postalAddresses.count > 0 {
+                        if let addressString = (
+                            ((contact.postalAddresses[0] as AnyObject).value(forKey: "labelValuePair")
+                             as AnyObject).value(forKey: "value"))
+                            as? CNPostalAddress {
+                            let mailAddress =
+                                CNPostalAddressFormatter.string(from: addressString, style: .mailingAddress)
+                            addressLine1 = "\(addressString.street)"
+                            addressLine2 = ""
+                            city = "\(addressString.city)"
+                            state = "\(addressString.state)"
+                            zip = "\(addressString.postalCode)"
+                            country = "\(addressString.country)"
+                            print("Mail address is \n\(mailAddress)")
+                        }
+                    } else {
+                        addressLine1 = "No Address Provided"
+                        addressLine2 = ""
+                        city = ""
+                        state = ""
+                        zip = ""
+                        country = ""
+                        print("No Address Provided")
+                    }
+                    self.showPicker.toggle()
+                }, onCancel: nil)
                 VStack {
                     Text("")
                     HStack {
@@ -141,7 +141,7 @@ struct NewRecipientView: View {
             }
             )
             .alert(isPresented: $presentAlert, content: {
-                Alert( // 1
+                Alert(
                     title: Text("Contacts Denied"),
                     message: Text("Please enable access to contacs in Settings"),
                     dismissButton: .cancel()

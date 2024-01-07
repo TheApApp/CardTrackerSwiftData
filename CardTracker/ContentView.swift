@@ -11,6 +11,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
+    @State private var columnVisibility = NavigationSplitViewVisibility.all
     @State private var listView: ListView = ListView.recipients
     @State private var navigationPath = NavigationPath()
     @State private var searchText = ""
@@ -18,40 +19,7 @@ struct ContentView: View {
     @State private var addItem = false
     
     var body: some View {
-        //        NavigationStack(path: $navigationPath) {
-        //            List {
-        //
-        //            FilteredList(searchText: searchText, listView: listView, navigationPath: $navigationPath)
-        //                .navigationTitle("Greeting Card Tracker")
-        //                .navigationDestination(for: Recipient.self) { recipient in
-        //                    EditRecipientView(recipient: Bindable(wrappedValue: recipient), navigationPath: $navigationPath)
-        //                }
-        //                .toolbar {
-        //                    Menu("List", systemImage: "list.bullet") {
-        //                        Picker("ListView", selection: $listView ) {
-        //                            Text("Recipient")
-        //                                .tag(ListView.recipients)
-        //                            Text("Events")
-        //                                .tag(ListView.events)
-        //                            Text("Greeting Cards")
-        //                                .tag(ListView.greetingCard)
-        //                        }
-        //                    }
-        //                    Button("Add", systemImage: "plus", action: addRecipient)
-        //                    EditButton()
-        //                }
-        //                .searchable(text: $searchText)
-        //        }
-        
-        NavigationSplitView {
-            //            List(ListView.allCases) { listView in
-            //                Text(listView.rawValue).tag(listView)
-            //                    .textCase(.lowercase)
-            //                    .foregroundColor(.green)
-            //                    .onTapGesture {
-            //                        self.listView = listView
-            //                    }
-            //            }
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             List {
                 Button(action: {
                     listView = .events
@@ -74,7 +42,7 @@ struct ContentView: View {
                         .foregroundColor(.green)
                 })
             }
-            .listStyle(.sidebar)
+            .listStyle(.automatic)
         } content: {
             FilteredList(searchText: searchText, listView: listView, navigationPath: $navigationPath)
                 .searchable(text: $searchText)
@@ -111,7 +79,7 @@ struct ContentView: View {
                 .font(.title)
                 .foregroundColor(.green)
         }
-        .navigationSplitViewStyle(.balanced)
+        .navigationSplitViewStyle(.automatic)
         .sheet(isPresented: $addItem) {
             switch listView {
             case .events:
@@ -124,27 +92,26 @@ struct ContentView: View {
         }
     }
     
-    func addRecipient() {
-        
-        switch listView {
-        case .events:
-            let eventType = EventType(eventName: "")
-            modelContext.insert(eventType)
-            // push to the recipient in the stack
-            navigationPath.append(eventType)
-        case .recipients:
-            let recipient = Recipient(addressLine1: "", addressLine2: "", city: "", state: "", zip: "", country: "", firstName: "", lastName: "")
-            modelContext.insert(recipient)
-            // push to the recipient in the stack
-            navigationPath.append(recipient)
-        case .greetingCard:
-            let greetingCard = GreetingCard(cardName: "", cardFront: nil, eventType: nil, cardURL: nil)
-            modelContext.insert(greetingCard)
-            // push to the recipient in the stack
-            navigationPath.append(greetingCard)
-        }
-        
-    }
+//    func addRecipient() {
+//        
+//        switch listView {
+//        case .events:
+//            let eventType = EventType(eventName: "")
+//            modelContext.insert(eventType)
+//            // push to the recipient in the stack
+//            navigationPath.append(eventType)
+//        case .recipients:
+//            let recipient = Recipient(addressLine1: "", addressLine2: "", city: "", state: "", zip: "", country: "", firstName: "", lastName: "")
+//            modelContext.insert(recipient)
+//            // push to the recipient in the stack
+//            navigationPath.append(recipient)
+//        case .greetingCard:
+//            let greetingCard = GreetingCard(cardName: "", cardFront: nil, eventType: nil, cardManufacturer: "", cardURL: "")
+//            modelContext.insert(greetingCard)
+//            // push to the recipient in the stack
+//            navigationPath.append(greetingCard)
+//        }
+//    }
 }
 //
 //#Preview {

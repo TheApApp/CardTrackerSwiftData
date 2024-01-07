@@ -19,7 +19,7 @@ extension GreetingCardsPickerView {
         var greetingCards = [GreetingCard]()
         
         var selectedGreetingCard: GreetingCard? {
-            return GreetingCard(cardName: "DO-NOT-USE", cardFront: nil, eventType: nil, cardURL: nil)
+            return GreetingCard(cardName: "DO-NOT-USE", cardFront: nil, eventType: nil, cardManufacturer: "", cardURL: "")
         }
         
         init(modelContext: ModelContext) {

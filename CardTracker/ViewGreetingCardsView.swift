@@ -43,7 +43,7 @@ struct ViewGreetingCardsView: View {
         _greetingCards = Query(
             filter: #Predicate {$0.eventType?.persistentModelID == eventTypeID },
             sort: [
-                SortDescriptor(\GreetingCard.cardName, order: .reverse),
+                SortDescriptor(\GreetingCard.cardName, order: .forward),
             ]
         )
         if UIDevice.current.userInterfaceIdiom == .pad {

@@ -61,12 +61,25 @@ struct NewCardView: View {
                             selection: $cardDate,
                             displayedComponents: [.date])
                     }
+                    
+                    Section("Image") {
+                        if selectedEvent != nil {
+                            NavigationLink("Select card:", destination: GreetingCardsPickerView(eventType: selectedEvent!, selectedGreetingCard: $selectedGreetingCard))
+                        }
+                        
+                        if let imageData = selectedGreetingCard?.cardFront {
+                            Image(uiImage: UIImage(data: imageData)!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 200, height: 200, alignment: .center)
+                        } else {
+                            Image(uiImage: UIImage(named: "frontImage")!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 200, height: 200, alignment: .center)
+                        }
+                    }
                 }
-                .padding(.bottom, 5)
-                if selectedEvent != nil {
-                    NavigationLink("Select card:", destination: GreetingCardsPickerView(eventType: selectedEvent!, selectedGreetingCard: $selectedGreetingCard))
-                }
-                Spacer()
             }
             .onChange(of: selectedGreetingCard) {
                 print("Selected a Greeting Card - \(String(describing: selectedGreetingCard)))")
@@ -101,7 +114,7 @@ struct NewCardView: View {
         logger.log("saving...")
         print("Selected greetingCard = \(String(describing: selectedGreetingCard?.cardName))")
         if selectedEvent != nil {
-            let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: selectedGreetingCard ?? GreetingCard(cardName: "", cardFront: frontImageSelected?.asUIImage().pngData(), eventType: selectedEvent, cardURL: URL(string: "")), recipient: recipient)
+            let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: selectedGreetingCard ?? GreetingCard(cardName: "", cardFront: frontImageSelected?.asUIImage().pngData(), eventType: selectedEvent, cardManufacturer: "", cardURL:  ""), recipient: recipient)
             modelContext.insert(card)
         }
         do {

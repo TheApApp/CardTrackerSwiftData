@@ -13,14 +13,14 @@ import SwiftData
 @Model
 final class EventType: CustomDebugStringConvertible {
     var debugDescription: String {
-        "\(eventName ?? "No Name Provided")"
+        "\(eventName)"
     }
     // MARK: Properties
     /// All eventtypes must have a descriptive name
     var eventName: String = ""
     /// Events are related to cards.  We have an array of cards which were created for this event.  We have an inverse relationship with the Cards
-    @Relationship(deleteRule: .cascade, inverse: \Card.eventType) var cards: [Card]? = []
-    @Relationship(deleteRule: .cascade, inverse: \GreetingCard.eventType) var greetingCards: [GreetingCard]? = []
+    @Relationship(deleteRule: .cascade, inverse: \Card.eventType) var cards: [Card]? = [Card]()
+    @Relationship(deleteRule: .cascade, inverse: \GreetingCard.eventType) var greetingCards: [GreetingCard]? = [GreetingCard]()
     
     // MARK: - Initializer
     init(eventName: String) {

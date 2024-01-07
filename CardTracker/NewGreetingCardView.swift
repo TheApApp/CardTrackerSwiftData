@@ -41,7 +41,7 @@ struct NewGreetingCardView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section("Card Information") {
+                Section("Details") {
                     Picker("Select type", selection: $selectedEvent) {
                         Text("Unknown Event")
                             .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
@@ -132,7 +132,7 @@ struct NewGreetingCardView: View {
                 return
             }
             if selectedEvent != nil {
-                let greetingCard = GreetingCard(cardName: cardName, cardFront: (image?.pngData())!, eventType: selectedEvent, cardManufacturer: cardManufacturer, cardURL: URL(string: cardURLString))
+                let greetingCard = GreetingCard(cardName: cardName, cardFront: (image?.pngData())!, eventType: selectedEvent, cardManufacturer: cardManufacturer, cardURL: cardURLString)
                 print("Selected Event = \(String(describing: selectedEvent))")
                 modelContext.insert(greetingCard)
             }

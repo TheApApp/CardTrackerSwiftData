@@ -60,6 +60,9 @@ struct FilteredList: View {
                     ) {
                         Text("\(eventType.eventName)")
                             .foregroundColor(.green)
+//                            .onTapGesture {} .onLongPressGesture {
+//                                EditEventTypeView(eventType: Bindable(eventType))
+//                            }
                     }
                 }
                 .onDelete(perform: deleteEvent)
@@ -130,7 +133,7 @@ struct FilteredList: View {
     }
 }
 
-#Preview {
-    FilteredList(searchText: "", listView: ListView.recipients, navigationPath: .constant(NavigationPath()))
-        .modelContainer(for: [EventType.self, Recipient.self])
-}
+//#Preview {
+//    FilteredList(searchText: "", listView: ListView.recipients, navigationPath: .constant(NavigationPath()))
+//        .modelContainer(for: [EventType.self, Recipient.self])
+//}

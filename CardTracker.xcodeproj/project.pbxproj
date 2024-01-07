@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1813F16A2B4A120200D7F234 /* AQUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1813F1692B4A120200D7F234 /* AQUI */; };
 		1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471C2B30B59900E489AC /* NewGreetingCardView.swift */; };
 		1870471F2B30B6F600E489AC /* GreetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471E2B30B6F600E489AC /* GreetingCard.swift */; };
 		187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047202B3131B300E489AC /* ViewGreetingCardsView.swift */; };
 		187047232B32098600E489AC /* TabView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047222B32098600E489AC /* TabView+Extensions.swift */; };
 		187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */; };
+		1892FB092B4A370B003997D7 /* EditEventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892FB082B4A370B003997D7 /* EditEventTypeView.swift */; };
 		189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
 		189DB6822B2E230400FC3E87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6812B2E230400FC3E87 /* CardView.swift */; };
 		189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6832B2E405800FC3E87 /* ViewCardsView.swift */; };
@@ -31,6 +33,7 @@
 		189F5C7D2B27CFD10067245A /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C7C2B27CFD10067245A /* View+Extensions.swift */; };
 		189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C7E2B27D2360067245A /* ImagePicker.swift */; };
 		189F5C812B27D4070067245A /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C802B27D4070067245A /* ImageCompressor.swift */; };
+		189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */; };
 		18A6FE5F2B433C7F007BE87D /* GreetingCardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FE5E2B433C7F007BE87D /* GreetingCardPicker.swift */; };
 		18B0869F2B368B48001CBFFB /* EditRecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0869E2B368B48001CBFFB /* EditRecipientView.swift */; };
 		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
@@ -77,6 +80,7 @@
 		187047202B3131B300E489AC /* ViewGreetingCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGreetingCardsView.swift; sourceTree = "<group>"; };
 		187047222B32098600E489AC /* TabView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabView+Extensions.swift"; sourceTree = "<group>"; };
 		187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCardsPickerView.swift; sourceTree = "<group>"; };
+		1892FB082B4A370B003997D7 /* EditEventTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventTypeView.swift; sourceTree = "<group>"; };
 		189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
 		189DB6812B2E230400FC3E87 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		189DB6832B2E405800FC3E87 /* ViewCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCardsView.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		189F5C7C2B27CFD10067245A /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		189F5C7E2B27D2360067245A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		189F5C802B27D4070067245A /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
+		189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGreetingCardView.swift; sourceTree = "<group>"; };
 		18A6FE5E2B433C7F007BE87D /* GreetingCardPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCardPicker.swift; sourceTree = "<group>"; };
 		18B0869E2B368B48001CBFFB /* EditRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipientView.swift; sourceTree = "<group>"; };
 		18B086A02B375415001CBFFB /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
@@ -128,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1813F16A2B4A120200D7F234 /* AQUI in Frameworks */,
 				18D962462B26501200662849 /* SwiftUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +242,8 @@
 				189DB6812B2E230400FC3E87 /* CardView.swift */,
 				18D962102B263EC200662849 /* ContentView.swift */,
 				18D962522B269DF400662849 /* EditCardView.swift */,
+				189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */,
+				1892FB082B4A370B003997D7 /* EditEventTypeView.swift */,
 				18B0869E2B368B48001CBFFB /* EditRecipientView.swift */,
 				189DB6872B2E4C0100FC3E87 /* EventTypeView.swift */,
 				18D9624C2B2656AB00662849 /* EventsList.swift */,
@@ -294,6 +302,7 @@
 			name = CardTracker;
 			packageProductDependencies = (
 				18D962452B26501200662849 /* SwiftUIKit */,
+				1813F1692B4A120200D7F234 /* AQUI */,
 			);
 			productName = CardTracker;
 			productReference = 18D9620B2B263EC200662849 /* CardTracker.app */;
@@ -369,6 +378,7 @@
 			mainGroup = 18D962022B263EC200662849;
 			packageReferences = (
 				18D962442B26501200662849 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
+				1813F1682B4A120200D7F234 /* XCRemoteSwiftPackageReference "AQUI" */,
 			);
 			productRefGroup = 18D9620C2B263EC200662849 /* Products */;
 			projectDirPath = "";
@@ -420,6 +430,7 @@
 				18D9623D2B26409500662849 /* EventType.swift in Sources */,
 				18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */,
 				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
+				1892FB092B4A370B003997D7 /* EditEventTypeView.swift in Sources */,
 				189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */,
 				18A6FE5F2B433C7F007BE87D /* GreetingCardPicker.swift in Sources */,
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
@@ -449,6 +460,7 @@
 				1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */,
 				189F5C6D2B27B48A0067245A /* AddressView.swift in Sources */,
 				18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */,
+				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
 				187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */,
 			);
@@ -831,6 +843,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1813F1682B4A120200D7F234 /* XCRemoteSwiftPackageReference "AQUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AlanQuatermain/AQUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		18D962442B26501200662849 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/youjinp/SwiftUIKit";
@@ -842,6 +862,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1813F1692B4A120200D7F234 /* AQUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1813F1682B4A120200D7F234 /* XCRemoteSwiftPackageReference "AQUI" */;
+			productName = AQUI;
+		};
 		18D962452B26501200662849 /* SwiftUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18D962442B26501200662849 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;

@@ -60,6 +60,10 @@ struct MenuOverlayView: View {
             NavigationLink {
                 if isEventType != .greetingCard {
                     EditCardView(card: Bindable(card!), navigationPath: $navigationPath)
+                } else {
+                    if isEventType == .greetingCard {
+                        EditGreetingCardView(greetingCard: Bindable(greetingCard!))
+                    }
                 }
             } label: {
                 Image(systemName: "square.and.pencil")
@@ -68,11 +72,9 @@ struct MenuOverlayView: View {
             }
             NavigationLink {
                 if isEventType != .greetingCard {
-                    CardView(cardImage: card!.cardUIImage())
-                        .aspectRatio(2/3, contentMode: .fit)
+                    CardView(cardImage: card!.cardUIImage(), cardTitle: "\(card!.cardDate.formatted(date: .abbreviated, time: .omitted))")
                 } else {
-                    CardView(cardImage: greetingCard!.cardUIImage())
-                        .aspectRatio(2/3, contentMode: .fit)
+                    CardView(cardImage: greetingCard!.cardUIImage(), cardTitle: "\(greetingCard?.cardName ?? "Missing EventType")")
                 }
             } label: {
                 Image(systemName: "doc.richtext")

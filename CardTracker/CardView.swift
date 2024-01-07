@@ -13,10 +13,11 @@ struct CardView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var cardImage: UIImage
+    var cardTitle = ""
 
-    @State private var isSelected = false
+//    @State private var isSelected = false
 
-    init(cardImage: UIImage) {
+    init(cardImage: UIImage, cardTitle: String) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -31,28 +32,29 @@ struct CardView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         self.cardImage = cardImage
+        self.cardTitle = cardTitle
     }
 
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
+        GeometryReader { geo in
+            VStack {
                 Image(uiImage: cardImage)
                     .resizable()
-                    .aspectRatio(1, contentMode: .fit)
+                    .aspectRatio(contentMode: .fit)
                     .scaledToFit()
-                    .frame(width: 175, height: 175)
+                    .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.95)
                     .padding(2)
                     .mask(RoundedRectangle(cornerRadius: 25))
-                    .shadow(radius: isSelected ? 2 : 0 )
-                    .onTapGesture {
-                        isSelected.toggle()
-                    }
-                Spacer()
+//                    .shadow(radius: isSelected ? 2 : 0 )
+//                    .onTapGesture {
+//                        isSelected.toggle()
+//                    }
+
             }
             .padding(5)
             .font(.title)
             .foregroundColor(.primary)
+            .navigationTitle("\(cardTitle)")
         }
     }
 }
@@ -61,7 +63,7 @@ struct CardView: View {
     do {
         let previewer = try Previewer()
         
-        return CardView(cardImage: previewer.card.cardUIImage())
+        return CardView(cardImage: previewer.card.cardUIImage(),cardTitle: "Title")
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }
