@@ -103,3 +103,6 @@ struct EditGreetingCardView: View {
     }
 }
 
+#Preview {
+    EditGreetingCardView()
+}
