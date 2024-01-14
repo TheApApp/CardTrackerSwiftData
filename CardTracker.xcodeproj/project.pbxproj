@@ -34,10 +34,10 @@
 		189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C7E2B27D2360067245A /* ImagePicker.swift */; };
 		189F5C812B27D4070067245A /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C802B27D4070067245A /* ImageCompressor.swift */; };
 		189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */; };
-		18A6FE5F2B433C7F007BE87D /* GreetingCardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6FE5E2B433C7F007BE87D /* GreetingCardPicker.swift */; };
 		18B0869F2B368B48001CBFFB /* EditRecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0869E2B368B48001CBFFB /* EditRecipientView.swift */; };
 		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
 		18B916722B365441008101A7 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B916712B365441008101A7 /* Previewer.swift */; };
+		18CFAE152B537E020036CD8A /* What To Test in Resources */ = {isa = PBXBuildFile; fileRef = 18CFAE142B537E020036CD8A /* What To Test */; };
 		18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* CardTrackerApp.swift */; };
 		18D962112B263EC200662849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962102B263EC200662849 /* ContentView.swift */; };
 		18D962132B263EC200662849 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962122B263EC200662849 /* Card.swift */; };
@@ -102,10 +102,10 @@
 		189F5C7E2B27D2360067245A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		189F5C802B27D4070067245A /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
 		189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGreetingCardView.swift; sourceTree = "<group>"; };
-		18A6FE5E2B433C7F007BE87D /* GreetingCardPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCardPicker.swift; sourceTree = "<group>"; };
 		18B0869E2B368B48001CBFFB /* EditRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipientView.swift; sourceTree = "<group>"; };
 		18B086A02B375415001CBFFB /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
 		18B916712B365441008101A7 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		18CFAE142B537E020036CD8A /* What To Test */ = {isa = PBXFileReference; lastKnownFileType = text; path = "What To Test"; sourceTree = "<group>"; };
 		18D9620B2B263EC200662849 /* CardTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D9620E2B263EC200662849 /* CardTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerApp.swift; sourceTree = "<group>"; };
 		18D962102B263EC200662849 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -156,17 +156,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18A6FE5D2B433C4E007BE87D /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				18A6FE5E2B433C7F007BE87D /* GreetingCardPicker.swift */,
-			);
-			name = ViewModels;
-			sourceTree = "<group>";
-		};
 		18D962022B263EC200662849 = {
 			isa = PBXGroup;
 			children = (
+				18CFAE142B537E020036CD8A /* What To Test */,
 				18D9620D2B263EC200662849 /* CardTracker */,
 				18D962222B263EC400662849 /* CardTrackerTests */,
 				18D9622C2B263EC400662849 /* CardTrackerUITests */,
@@ -191,7 +184,6 @@
 				18D962472B2650AB00662849 /* Helpers */,
 				18D962402B2649DE00662849 /* Data */,
 				18D962412B264A0200662849 /* Views */,
-				18A6FE5D2B433C4E007BE87D /* ViewModels */,
 				18D962142B263EC300662849 /* Assets.xcassets */,
 				18D962162B263EC300662849 /* CardTracker.entitlements */,
 				18D9621A2B263EC300662849 /* Info.plist */,
@@ -399,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D962192B263EC300662849 /* Preview Assets.xcassets in Resources */,
+				18CFAE152B537E020036CD8A /* What To Test in Resources */,
 				18D962152B263EC300662849 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,7 +427,6 @@
 				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
 				1892FB092B4A370B003997D7 /* EditEventTypeView.swift in Sources */,
 				189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */,
-				18A6FE5F2B433C7F007BE87D /* GreetingCardPicker.swift in Sources */,
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,
@@ -636,7 +628,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardTracker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Card Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = "Greeting Tracker";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -680,7 +672,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardTracker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Card Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = "Greeting Tracker";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
