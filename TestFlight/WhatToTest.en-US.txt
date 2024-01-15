@@ -1,16 +1,11 @@
 This is the initial build of Greeting Tracker.  Please note it is very rough around the edges.
 
-Right now it is recommended that you test on iPadOS and macOS only.  I am having issues with iPhone rendering of the menuing.
-
 The primary things to test right now:
+0) Confirm that the app works on iPhone, iPad, and macOS
 1) create new event types, things like Birthday, Christmas, etc. Try it in multiple languages
 2) Create a gallery of cards for the types you created
 3) add a few people with address information, try both getting data from Contacts, and manually entering
 4) Given them a few different cards on different days
 5) see if it correctly syncs data between your iPad and you Mac
-
-Please report any crashes.
-
-Coming soon, Changing the main menuing to simple two panel view, hopefully will fix issue with iPhone.  Will provide a Picker to choose which view you start with, will remember view for next time you enter the app.
 
 Thank you for being willing to test this out.

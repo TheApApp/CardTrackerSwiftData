@@ -19,67 +19,156 @@ struct ContentView: View {
     @State private var addItem = false
     
     var body: some View {
-        NavigationSplitView(columnVisibility: $columnVisibility) {
-            List {
-                Button(action: {
-                    listView = .events
-                }, label: {
-                    Text("Events")
-                        .foregroundColor(.green)
-                })
-                
-                Button(action: {
-                    listView = .greetingCard
-                }, label: {
-                    Text("Greeting Cards")
-                        .foregroundColor(.green)
-                })
-                
-                Button(action: {
-                    listView = .recipients
-                }, label: {
-                    Text("Recipients")
-                        .foregroundColor(.green)
-                })
-            }
-            .listStyle(.automatic)
-        } content: {
-            FilteredList(searchText: searchText, listView: listView, navigationPath: $navigationPath)
-                .searchable(text: $searchText)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        switch listView {
-                        case .events:
-                            Text("Events")
-                                .foregroundColor(.green)
-                        case .greetingCard:
-                            Text("Gallery")
-                                .foregroundColor(.green)
-                        case .recipients:
-                            Text("Recipients")
+        TabView {
+            NavigationView {
+                FilteredList(searchText: searchText, listView: .events, navigationPath: $navigationPath)
+                    .searchable(text: $searchText)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                                Text("Events")
+                                    .foregroundColor(.green)
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                listView = .events
+                                self.addItem.toggle()
+                            }, label: {
+                                Image(systemName: "plus.circle")
+                                    .font(.title2)
+                                    .foregroundColor(.green)
+                            })
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            EditButton()
                                 .foregroundColor(.green)
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            self.addItem.toggle()
-                        }, label: {
-                            Image(systemName: "plus.circle")
-                                .font(.title2)
+            }
+            .tabItem {
+                Image(systemName: "calendar")
+                Text("Events")
+                    .foregroundColor(.green)
+            }
+            NavigationView {
+                FilteredList(searchText: searchText, listView: .greetingCard, navigationPath: $navigationPath)
+                    .searchable(text: $searchText)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                                Text("Gallery")
+                                    .foregroundColor(.green)
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                listView = .greetingCard
+                                self.addItem.toggle()
+                            }, label: {
+                                Image(systemName: "plus.circle")
+                                    .font(.title2)
+                                    .foregroundColor(.green)
+                            })
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            EditButton()
                                 .foregroundColor(.green)
-                        })
+                        }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                            .foregroundColor(.green)
+            }
+            .tabItem {
+                Image(systemName: "photo.stack")
+                Text("Gallery")
+                    .foregroundColor(.green)
+            }
+            NavigationView {
+                FilteredList(searchText: searchText, listView: .recipients, navigationPath: $navigationPath)
+                    .searchable(text: $searchText)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                                Text("Recipient")
+                                    .foregroundColor(.green)
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button(action: {
+                                listView = .recipients
+                                self.addItem.toggle()
+                            }, label: {
+                                Image(systemName: "plus.circle")
+                                    .font(.title2)
+                                    .foregroundColor(.green)
+                            })
+                        }
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            EditButton()
+                                .foregroundColor(.green)
+                        }
                     }
-                }
-        } detail: {
-            Text("Make a selection")
-                .font(.title)
-                .foregroundColor(.green)
+            }
+            .tabItem {
+                Image(systemName: "person.crop.circle")
+                Text("Receipients")
+                    .foregroundColor(.green)
+            }
         }
-        .navigationSplitViewStyle(.automatic)
+//        NavigationSplitView(columnVisibility: $columnVisibility) {
+//            List {
+//                Button(action: {
+//                    listView = .events
+//                }, label: {
+//                    Text("Events")
+//                        .foregroundColor(.green)
+//                })
+//                
+//                Button(action: {
+//                    listView = .greetingCard
+//                }, label: {
+//                    Text("Greeting Cards")
+//                        .foregroundColor(.green)
+//                })
+//                
+//                Button(action: {
+//                    listView = .recipients
+//                }, label: {
+//                    Text("Recipients")
+//                        .foregroundColor(.green)
+//                })
+//            }
+//            .listStyle(.automatic)
+//        } content: {
+//            FilteredList(searchText: searchText, listView: listView, navigationPath: $navigationPath)
+//                .searchable(text: $searchText)
+//                .toolbar {
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        switch listView {
+//                        case .events:
+//                            Text("Events")
+//                                .foregroundColor(.green)
+//                        case .greetingCard:
+//                            Text("Gallery")
+//                                .foregroundColor(.green)
+//                        case .recipients:
+//                            Text("Recipients")
+//                                .foregroundColor(.green)
+//                        }
+//                    }
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        Button(action: {
+//                            self.addItem.toggle()
+//                        }, label: {
+//                            Image(systemName: "plus.circle")
+//                                .font(.title2)
+//                                .foregroundColor(.green)
+//                        })
+//                    }
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        EditButton()
+//                            .foregroundColor(.green)
+//                    }
+//                }
+//        } detail: {
+//            Text("Make a selection")
+//                .font(.title)
+//                .foregroundColor(.green)
+//        }
+//        .navigationSplitViewStyle(.automatic)
         .sheet(isPresented: $addItem) {
             switch listView {
             case .events:

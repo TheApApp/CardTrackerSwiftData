@@ -60,9 +60,6 @@ struct FilteredList: View {
                     ) {
                         Text("\(eventType.eventName)")
                             .foregroundColor(.green)
-//                            .onTapGesture {} .onLongPressGesture {
-//                                EditEventTypeView(eventType: Bindable(eventType))
-//                            }
                     }
                 }
                 .onDelete(perform: deleteEvent)
