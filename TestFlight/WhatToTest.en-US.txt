@@ -11,4 +11,6 @@ The primary things to test right now:
 
 Please report any crashes.
 
+Coming soon, Changing the main menuing to simple two panel view, hopefully will fix issue with iPhone.  Will provide a Picker to choose which view you start with, will remember view for next time you enter the app.
+
 Thank you for being willing to test this out.

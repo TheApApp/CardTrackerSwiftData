@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/michaelrowe/Documents/TheApApp/CardTracker/Greet Keeper.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

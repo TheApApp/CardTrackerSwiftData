@@ -49,7 +49,7 @@ struct ScreenView: View {
                     VStack {
                         switch isEventType {
                         case .events:
-                            Text("\(String(describing: card?.eventType?.eventName ?? "Unknown"))")
+                            Text("\(card?.eventType?.eventName ?? "Unknown")")
                                 .foregroundColor(.green)
                             HStack {
                                 Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")

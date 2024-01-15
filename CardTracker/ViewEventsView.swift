@@ -159,7 +159,7 @@ struct ViewEventsView: View {
                 for col in 0..<viewsPerRow {
                     let index = startIndex + row * viewsPerRow + col
                     if index < endIndex, let card = cardsArray[safe: index] {
-                        let renderBody = ImageRenderer(content: PrintView(card: card, greetingCard: nil, isEventType: .recipients))
+                        let renderBody = ImageRenderer(content: PrintView(card: card, greetingCard: nil, isEventType: .events))
                         renderBody.render { size, renderBody in
                             renderBody(pdfOutput)
                             pdfOutput.translateBy(x: size.width + 10, y: 0)
