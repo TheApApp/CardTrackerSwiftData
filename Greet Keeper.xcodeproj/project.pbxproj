@@ -37,7 +37,7 @@
 		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
 		18B916722B365441008101A7 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B916712B365441008101A7 /* Previewer.swift */; };
 		18CFAE152B537E020036CD8A /* WhatToTest.en-US.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18CFAE142B537E020036CD8A /* WhatToTest.en-US.txt */; };
-		18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* CardTrackerApp.swift */; };
+		18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* GreetKeeperApp.swift */; };
 		18D962112B263EC200662849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962102B263EC200662849 /* ContentView.swift */; };
 		18D962132B263EC200662849 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962122B263EC200662849 /* Card.swift */; };
 		18D962152B263EC300662849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D962142B263EC300662849 /* Assets.xcassets */; };
@@ -106,7 +106,7 @@
 		18B916712B365441008101A7 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		18CFAE142B537E020036CD8A /* WhatToTest.en-US.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WhatToTest.en-US.txt"; sourceTree = "<group>"; };
 		18D9620B2B263EC200662849 /* Greet Keeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Greet Keeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		18D9620E2B263EC200662849 /* CardTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerApp.swift; sourceTree = "<group>"; };
+		18D9620E2B263EC200662849 /* GreetKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetKeeperApp.swift; sourceTree = "<group>"; };
 		18D962102B263EC200662849 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18D962122B263EC200662849 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		18D962142B263EC300662849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		18D9620D2B263EC200662849 /* CardTracker */ = {
 			isa = PBXGroup;
 			children = (
-				18D9620E2B263EC200662849 /* CardTrackerApp.swift */,
+				18D9620E2B263EC200662849 /* GreetKeeperApp.swift */,
 				18D962472B2650AB00662849 /* Helpers */,
 				18D962402B2649DE00662849 /* Data */,
 				18D962412B264A0200662849 /* Views */,
@@ -458,7 +458,7 @@
 				18D9624D2B2656AB00662849 /* EventsList.swift in Sources */,
 				1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */,
 				189F5C6D2B27B48A0067245A /* AddressView.swift in Sources */,
-				18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */,
+				18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */,
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
 				187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */,
