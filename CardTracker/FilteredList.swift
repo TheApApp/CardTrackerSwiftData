@@ -82,7 +82,7 @@ struct FilteredList: View {
                             .foregroundColor(.green)
                     }
                 }
-                .onDelete(perform: deleteGreetingCards)
+//                .onDelete(perform: deleteGreetingCards)
             }
         }
     }
@@ -115,19 +115,19 @@ struct FilteredList: View {
         }
     }
     
-    func deleteGreetingCards(offsets: IndexSet) {
-        
-        for index in offsets {
-            let recipient = recipients[index]
-            modelContext.delete(recipient)
-        }
-        do {
-            try modelContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
+//    func deleteGreetingCards(offsets: IndexSet) {
+//        
+//        for index in offsets {
+//            let event = eventTypes[index]
+//            modelContext.delete(event)
+//        }
+//        do {
+//            try modelContext.save()
+//        } catch {
+//            let nsError = error as NSError
+//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//        }
+//    }
 }
 
 //#Preview {

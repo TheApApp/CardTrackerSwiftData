@@ -63,7 +63,7 @@ struct CardView: View {
     do {
         let previewer = try Previewer()
         
-        return CardView(cardImage: previewer.card.cardUIImage(),cardTitle: "Title")
+        return CardView(cardImage: previewer.card.cardUIImage(), cardTitle: "Title")
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }

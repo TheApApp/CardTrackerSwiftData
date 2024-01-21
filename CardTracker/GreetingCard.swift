@@ -45,7 +45,7 @@ final class GreetingCard: CustomDebugStringConvertible {
         return defaultImage
     }
     
-    // cardsCount returns the nummber of recipients of this specific Greeting Card
+    /// cardsCount returns the nummber of recipients of this specific Greeting Card
     func cardsCount() -> Int {
         cards?.count ?? 0
     }

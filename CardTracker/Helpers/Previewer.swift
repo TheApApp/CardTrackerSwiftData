@@ -59,7 +59,7 @@ struct Previewer {
         container = try ModelContainer(for: Recipient.self, configurations: config)
         
         eventType = EventType(eventName: "Christmas")
-        greetingCard = GreetingCard(cardName: "Sample Card", cardFront: UIImage(named: "frontImage")!.pngData()! , eventType: eventType, cardManufacturer: "Cards Are Us", cardURL: "https://michaelrowe01.com")
+        greetingCard = GreetingCard(cardName: "Sample Card", cardFront: UIImage(named: "frontImage")!.pngData()!, eventType: eventType, cardManufacturer: "Cards Are Us", cardURL: "https://michaelrowe01.com")
         recipient = Recipient(addressLine1: "1 Apple Park Way", addressLine2: "", city: "Cupertino", state: "CA", zip: "95014", country: "USA", firstName: "Steve", lastName: "Jobs")
         card = Card(cardDate: Date(), eventType: eventType, cardFront: greetingCard, recipient: recipient)
         

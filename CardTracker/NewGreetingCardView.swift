@@ -126,12 +126,13 @@ struct NewGreetingCardView: View {
         let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "NewGreetingCardView")
         logger.log("saving...")
         print("Selected Event = \(String(describing: selectedEvent?.eventName))")
-        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: maxBytes) { image in
+        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: (512 * 512)) { image in
             guard image != nil else {
                 logger.log("Error compressing image")
                 return
             }
             if selectedEvent != nil {
+                                                 
                 let greetingCard = GreetingCard(cardName: cardName, cardFront: (image?.pngData())!, eventType: selectedEvent, cardManufacturer: cardManufacturer, cardURL: cardURLString)
                 print("Selected Event = \(String(describing: selectedEvent))")
                 modelContext.insert(greetingCard)

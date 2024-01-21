@@ -92,7 +92,7 @@ struct ViewEventsView: View {
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        ScreenView(card: card, greetingCard: nil, isEventType: .events, navigationPath: $navigationPath)
+                        ScreenView(card: card, greetingCard: nil, isEventType: .recipients, navigationPath: $navigationPath)
                     }
                     .padding()
                 }

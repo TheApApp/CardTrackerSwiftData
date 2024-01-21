@@ -37,19 +37,19 @@ struct ScreenView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
-                        .frame(width: iPhone ? 130 : 250, height: iPhone ? 103 : 250)
+                        .frame(width: iPhone ? 125 : 250, height: iPhone ? 125 : 250)
                 } else {
                     Image(uiImage: greetingCard!.cardUIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
-                        .frame(width: iPhone ? 130 : 250, height: iPhone ? 103 : 250)
+                        .frame(width: iPhone ? 125 : 250, height: iPhone ? 125 : 250)
                 }
                 HStack {
                     VStack {
                         switch isEventType {
                         case .events:
-                            Text("\(card?.eventType?.eventName ?? "Unknown")")
+                            Text("\(card?.recipient?.fullName ?? "Unknown")")
                                 .foregroundColor(.green)
                             HStack {
                                 Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
@@ -58,7 +58,7 @@ struct ScreenView: View {
                                 MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
                             }
                         case .recipients:
-                            Text("\(card?.recipient?.fullName ?? "Unknown")")
+                            Text("\(card?.eventType?.eventName ?? "Unknown")")
                                 .foregroundColor(.green)
                             HStack {
                                 Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")

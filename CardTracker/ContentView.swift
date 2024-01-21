@@ -68,10 +68,6 @@ struct ContentView: View {
                                     .foregroundColor(.green)
                             })
                         }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            EditButton()
-                                .foregroundColor(.green)
-                        }
                     }
             }
             .tabItem {

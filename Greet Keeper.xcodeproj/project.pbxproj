@@ -13,6 +13,7 @@
 		187047232B32098600E489AC /* TabView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047222B32098600E489AC /* TabView+Extensions.swift */; };
 		187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */; };
 		1892FB092B4A370B003997D7 /* EditEventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892FB082B4A370B003997D7 /* EditEventTypeView.swift */; };
+		189C3F3F2B5DB57900B10B31 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C3F3E2B5DB57900B10B31 /* ImageData.swift */; };
 		189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
 		189DB6822B2E230400FC3E87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6812B2E230400FC3E87 /* CardView.swift */; };
 		189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6832B2E405800FC3E87 /* ViewCardsView.swift */; };
@@ -81,6 +82,7 @@
 		187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCardsPickerView.swift; sourceTree = "<group>"; };
 		1892FB082B4A370B003997D7 /* EditEventTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventTypeView.swift; sourceTree = "<group>"; };
 		18987E3A2B534B7B008275E4 /* ReadMe.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.MD; sourceTree = "<group>"; };
+		189C3F3E2B5DB57900B10B31 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
 		189DB6812B2E230400FC3E87 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		189DB6832B2E405800FC3E87 /* ViewCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCardsView.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				18D962122B263EC200662849 /* Card.swift */,
 				18D9623C2B26409500662849 /* EventType.swift */,
 				1870471E2B30B6F600E489AC /* GreetingCard.swift */,
+				189C3F3E2B5DB57900B10B31 /* ImageData.swift */,
 				18D9623E2B26411900662849 /* Recipient.swift */,
 			);
 			name = Data;
@@ -462,6 +465,7 @@
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
 				187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */,
+				189C3F3F2B5DB57900B10B31 /* ImageData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

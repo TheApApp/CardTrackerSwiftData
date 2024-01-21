@@ -51,7 +51,7 @@ struct PrintView: View {
                     VStack {
                         switch isEventType {
                         case .events:
-                            Text("\(card!.eventType?.eventName ?? "Unknown")")
+                            Text("\(card?.recipient?.fullName ?? "Unknown")")
                             Text("\(card!.cardDate, formatter: cardDateFormatter)")
                         case .recipients:
                             Text("\(card!.recipient?.fullName ?? "Unknown")")
