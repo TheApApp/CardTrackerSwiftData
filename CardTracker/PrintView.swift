@@ -52,18 +52,27 @@ struct PrintView: View {
                         switch isEventType {
                         case .events:
                             Text("\(card?.recipient?.fullName ?? "Unknown")")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                             Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                         case .recipients:
                             Text("\(card!.recipient?.fullName ?? "Unknown")")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                             Text("\(card!.cardDate, formatter: cardDateFormatter)")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                         case .greetingCard:
                             Text("\(String(describing: greetingCard!.cardName))")
-                                .fixedSize(horizontal: false, vertical: true)
-                                .font(.caption2)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                             Text("Used \(greetingCard?.cards?.count ?? 0) times")
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
                         }
                     }
-                    .font(.caption)
                 }
             }
         }
