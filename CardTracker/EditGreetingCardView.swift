@@ -13,7 +13,7 @@ struct EditGreetingCardView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable private var greetingCard: GreetingCard
     @State var frontImageSelected: Image? = Image("frontImage")
-    @State var shouldPresentCamera = false
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State var frontPhoto = false
     @State var captureFrontImage = false
     
@@ -81,19 +81,18 @@ struct EditGreetingCardView: View {
                                 message: Text("Select one."),
                                 buttons: [ActionSheet.Button.default(Text("Camera"), action: {
                                     self.captureFrontImage.toggle()
-                                    self.shouldPresentCamera = true
+                                    self.sourceType = .camera
                                 }),
                                           ActionSheet.Button.default(Text("Photo Library"), action: {
                                               self.captureFrontImage.toggle()
-                                              self.shouldPresentCamera = false
+                                              self.sourceType = .photoLibrary
                                           }),
                                           ActionSheet.Button.cancel()])
                         }
                         .sheet(isPresented: $captureFrontImage) {
                             ImagePicker(
-                                sourceType: self.shouldPresentCamera ? .camera : .photoLibrary,
-                                image: $frontImageSelected,
-                                isPresented: self.$captureFrontImage)
+                                sourceType: sourceType,
+                                image: $frontImageSelected)
                         }
                 }
                 .frame(width: 230, height: 230)

@@ -5,7 +5,7 @@
 //  Created by Michael Rowe on 12/18/23.
 //
 
-import os
+import AVKit
 import SwiftData
 import SwiftUI
 
@@ -21,9 +21,12 @@ struct NewGreetingCardView: View {
     @State private var cardManufacturer: String = ""
     @State private var cardURLString: String = ""
     @State var frontImageSelected: Image? = Image("frontImage")
-    @State var shouldPresentCamera = false
     @State var frontPhoto = false
-    @State var captureFrontImage = false
+    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State var captureFrontImage: Bool = false
+    
+    @State private var cameraNotAuthorized = false
+    @State private var isCameraPresented = false
     
     init() {
         let navBarAppearance = UINavigationBarAppearance()
@@ -78,26 +81,46 @@ struct NewGreetingCardView: View {
                                 ActionSheet(
                                     title: Text("Choose mode"),
                                     message: Text("Select one."),
-                                    buttons: [ActionSheet.Button.default(Text("Camera"), action: {
+                                    buttons: [
+                                        ActionSheet.Button.default(Text("Camera"), action: {
+                                        checkCameraAuthorization()
                                         self.captureFrontImage.toggle()
-                                        self.shouldPresentCamera = true
+                                        self.sourceType = .camera
                                     }),
-                                              ActionSheet.Button.default(Text("Photo Library"), action: {
-                                                  self.captureFrontImage.toggle()
-                                                  self.shouldPresentCamera = false
-                                              }),
-                                              ActionSheet.Button.cancel()])
+                                        
+                                        ActionSheet.Button.default(Text("Photo Library"), action: {
+                                              self.captureFrontImage.toggle()
+                                              self.sourceType = .photoLibrary
+                                    }),
+                                        
+                                        ActionSheet.Button.cancel()
+                                    ]
+                                )
                             }
                             .sheet(isPresented: $captureFrontImage) {
                                 ImagePicker(
-                                    sourceType: self.shouldPresentCamera ? .camera : .photoLibrary,
-                                    image: $frontImageSelected,
-                                    isPresented: self.$captureFrontImage)
+                                    sourceType: sourceType,
+                                    image: $frontImageSelected)
                             }
                     }
-                    .frame(width: 300, height: 300)
+                    .frame(width: 350, height: 350)
                 }
             }
+//            .onAppear(perform: {
+//                checkCameraAuthorization()
+//            })
+            .alert(isPresented: $cameraNotAuthorized) {
+                Alert(
+                    title: Text("Unable to access the Camera"),
+                    message: Text("To enable access, go to Settings > Privacy > Camera and turn on Camera access for this app."),
+                    primaryButton: .default(Text("Settings")) {
+                        openSettings()
+                    }
+                    ,
+                    secondaryButton: .cancel()
+                )
+            }
+
             .padding([.leading, .trailing], 10)
             .navigationBarItems(trailing:
                                     HStack {
@@ -123,25 +146,45 @@ struct NewGreetingCardView: View {
     }
     
     func saveGreetingCard() {
-        let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "NewGreetingCardView")
-        logger.log("saving...")
-        print("Selected Event = \(String(describing: selectedEvent?.eventName))")
         ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: (512 * 512)) { image in
             guard image != nil else {
-                logger.log("Error compressing image")
+                print("Error compressing image")
                 return
             }
             if selectedEvent != nil {
                                                  
                 let greetingCard = GreetingCard(cardName: cardName, cardFront: (image?.pngData())!, eventType: selectedEvent, cardManufacturer: cardManufacturer, cardURL: cardURLString)
-                print("Selected Event = \(String(describing: selectedEvent))")
                 modelContext.insert(greetingCard)
             }
             do {
                 try modelContext.save()
             } catch let error as NSError {
-                logger.log("Save error \(error), \(error.userInfo)")
+                print("error \(error.localizedDescription)")
             }
+        }
+    }
+    
+    func openSettings() {
+        #if os(macOS)
+            SettingsLink {
+                Text("Settings")
+            }
+        #else
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: { _ in })
+        }
+        #endif
+    }
+    
+    func checkCameraAuthorization() {
+        var checkCamera: Bool
+        checkCamera = AVCaptureDevice.authorizationStatus(for: .video) == .authorized
+        
+        if checkCamera == true {
+            cameraNotAuthorized = false
+        } else {
+            cameraNotAuthorized = true
         }
     }
 }

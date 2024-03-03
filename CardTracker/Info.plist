@@ -6,6 +6,8 @@
 	<false/>
 	<key>NSContactsUsageDescription</key>
 	<string>You can pick contacts from your address book to create a new recipient</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Can we use the camera to capture cards?</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
