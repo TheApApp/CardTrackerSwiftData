@@ -1,13 +1,4 @@
-This is the final build of Greeting Tracker before submission to Apple.  Please do a complete test.
+Starting work on my first mainteance release. 
 
-A few things to test in v21
-0) Confirm that the app works on iPhone and iPad:  dropping macOS Support for now
-1) create new event types, things like Birthday, Christmas, etc. Try it in multiple languages
-2) Create a gallery of cards for the types you created
-3) add a few people with address information, try both getting data from Contacts, and manually entering
-4) Give them a few different cards on different days
-5) see if it correctly syncs data between your iPad and iPhone
-6) Save to PDF or print - confirm that each view prints data that makes sense for that view
-7) Rewrote handling of image loads (trying to address performance).  Question on full screen image, is there a meaningful photo deregation
-
-Thank you for being willing to test this out, it has been a very long time to get to this point. I believe that the image handling is much quicker now.
+A few things to test
+1) Does the card picker correctly scroll?
