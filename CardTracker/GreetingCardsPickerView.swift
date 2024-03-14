@@ -46,18 +46,22 @@ struct GreetingCardsPickerView: View {
     }
     
     var body: some View {
-        VStack {
+        ScrollView {
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                 ForEach(greetingCards, id: \.id) { greetingCard in
-                    Image(uiImage: greetingCard.cardUIImage())
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 130, height: 130)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .onTapGesture {
-                            selectedGreetingCard = greetingCard
-                            self.presentationMode.wrappedValue.dismiss()
-                        }
+                    VStack {
+                        Image(uiImage: greetingCard.cardUIImage())
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 130, height: 130)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .onTapGesture {
+                                selectedGreetingCard = greetingCard
+                                self.presentationMode.wrappedValue.dismiss()
+                            }
+                        Text(greetingCard.cardName)
+	                        .font(.subtitle)
+                    }
                 }
             }
             .padding()
