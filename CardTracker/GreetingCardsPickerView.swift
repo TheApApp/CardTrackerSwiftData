@@ -60,7 +60,6 @@ struct GreetingCardsPickerView: View {
                                 self.presentationMode.wrappedValue.dismiss()
                             }
                         Text(greetingCard.cardName)
-	                        .font(.subtitle)
                     }
                 }
             }
