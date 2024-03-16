@@ -40,7 +40,7 @@ struct GreetingCardsPickerView: View {
         _greetingCards = Query(
             filter: #Predicate {$0.eventType?.persistentModelID == eventTypeID },
             sort: [
-                SortDescriptor(\GreetingCard.cardName, order: .reverse),
+                SortDescriptor(\GreetingCard.cardName),
             ]
         )
     }
@@ -60,6 +60,7 @@ struct GreetingCardsPickerView: View {
                                 self.presentationMode.wrappedValue.dismiss()
                             }
                         Text(greetingCard.cardName)
+                            .font(.footnote)
                     }
                 }
             }

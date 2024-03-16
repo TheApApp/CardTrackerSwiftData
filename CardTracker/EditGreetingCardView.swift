@@ -12,6 +12,7 @@ import SwiftUI
 struct EditGreetingCardView: View {
     @Environment(\.modelContext) var modelContext
     @Bindable private var greetingCard: GreetingCard
+    @Binding var navigationPath: NavigationPath
     @State var frontImageSelected: Image? = Image("frontImage")
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State var frontPhoto = false
@@ -21,7 +22,7 @@ struct EditGreetingCardView: View {
         SortDescriptor(\EventType.eventName)
     ]) var events: [EventType]
     
-    init(greetingCard: Bindable<GreetingCard>) {
+    init(greetingCard: Bindable<GreetingCard>, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -33,10 +34,12 @@ struct EditGreetingCardView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        _greetingCard = greetingCard
+        self._greetingCard = greetingCard
+        self._navigationPath = navigationPath
     }
     
     var body: some View {
+        let _ = Self._printChanges()
         Form {
             Section {
                 Picker("Select type", selection: $greetingCard.eventType) {
@@ -102,6 +105,11 @@ struct EditGreetingCardView: View {
     }
 }
 
-//#Preview {
-//    EditGreetingCardView()
-//}
+#Preview {
+     let config = ModelConfiguration(isStoredInMemoryOnly: true)
+     let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
+     @Bindable var card = GreetingCard(cardName: "CardName", cardFront: Data(), cardManufacturer: "ABB", cardURL: "cardSampleURL")
+    
+    return EditGreetingCardView(greetingCard: $card, navigationPath: .constant(NavigationPath()))
+         .modelContainer(container)
+}

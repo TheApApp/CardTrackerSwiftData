@@ -25,6 +25,7 @@ struct MenuOverlayView: View {
     @State var isEditActive: Bool = false
     @State var isCardActive: Bool = false
     @Binding var navigationPath: NavigationPath
+//    @State var navigationPath = NavigationPath()
     
     private let blankCardFront = UIImage(named: "frontImage")
     private var iPhone = false
@@ -62,7 +63,7 @@ struct MenuOverlayView: View {
                     EditCardView(card: Bindable(card!), navigationPath: $navigationPath)
                 } else {
                     if isEventType == .greetingCard {
-                        EditGreetingCardView(greetingCard: Bindable(greetingCard!))
+                        EditGreetingCardView(greetingCard: Bindable(greetingCard!), navigationPath: $navigationPath)
                     }
                 }
             } label: {
@@ -92,10 +93,10 @@ struct MenuOverlayView: View {
                 Button("Yes", role:.destructive) {
                     withAnimation {
                         if isEventType != .greetingCard {
-                            print("Deleting Event \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
+//                            print("Deleting Event \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
                             deleteCard(card: card!)
                         } else {
-                            print("Deleting Greeting Card \(String(describing: greetingCard?.eventType)) \(String(describing: greetingCard?.cardName))")
+//                            print("Deleting Greeting Card \(String(describing: greetingCard?.eventType)) \(String(describing: greetingCard?.cardName))")
                             deleteGreetingCard(greetingCard: greetingCard!)
                         }
                     }
