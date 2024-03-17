@@ -110,15 +110,16 @@ struct ContentView: View {
         .sheet(isPresented: $addItem) {
             switch listView {
             case .events:
-                NewEventView()
+                EditEventTypeView(eventType: nil)
             case .recipients:
                 NewRecipientView()
             case .greetingCard:
-                NewGreetingCardView()
+                EditGreetingCardView(greetingCard: nil)
             }
         }
     }
 }
+
 //
 //#Preview {
 //    do {

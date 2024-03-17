@@ -2,6 +2,9 @@ Starting work on my first mainteance release.
 
 A few things to test
 1) Does the card picker correctly scroll?
+2) Updated design for New Event Type and New Greeting Card
+3) Corrected edit function of Greeting Card
+4) Added Required Privacy Info for App Store 
 
 ToDo:
-1) Resolve edit issue
+1) Resolve edit issue with Card View

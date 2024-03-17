@@ -31,5 +31,10 @@ struct GreetKeeperApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        #if os(macOS)
+        .commands {
+            SidebarCommands()
+        }
+        #endif
     }
 }

@@ -9,44 +9,90 @@ import SwiftData
 import SwiftUI
 
 struct EditEventTypeView: View {
-    @Environment(\.modelContext) var modelContext
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     
-    @Bindable var eventType: EventType
+    var eventType: EventType?
     
-    init(eventType: Bindable<EventType>) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
-        self._eventType = eventType
+    @State private var eventName = ""
+
+    private var editorTitle: String {
+        eventType == nil ? "Add Event Type" : "Edit Event Type"
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("Description") {
-                    TextField("Event Name", text: $eventType.eventName)
+                    TextField("Event Name", text: $eventName)
                         .customTextField()
                 }
             }
-            .navigationTitle("Event Information")
+            
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(editorTitle)
+                        .font(Font.system(size: 20, weight: .medium, design: .rounded))
+                        .foregroundColor(.accentColor)
+                }
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        withAnimation {
+                            save()
+                            dismiss()
+                        }
+                    } label: {
+                        Image(systemName: "square.and.arrow.down")
+                    }
+                    .disabled($eventName.wrappedValue == "")
+                }
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", role: .cancel) {
+                        dismiss()
+                    }
+                }
+            }
+            
+            .onAppear {
+                if let eventType {
+                    // edit the incoming EventType
+                    eventName = eventType.eventName
+                }
+            }
+            
+            #if os(macOS)
+            .padding()
+            #endif
+        }
+    }
+    
+    private func save() {
+        if let eventType {
+            eventType.eventName = eventName
+        } else {
+            let newEventType = EventType(eventName: eventName)
+            modelContext.insert(newEventType)
         }
     }
 }
-//
-//#Preview {
-//    do {
-//        let previewer = try Previewer()
-//        
-//        return EditEventTypeView(eventType: Bindable<EventType>(previewer.eventType))
-//    } catch {
-//        return Text("Failed to create preview: \(error.localizedDescription)")
-//    }
-//}
+
+#Preview("Add Event Type") {
+     let config = ModelConfiguration(isStoredInMemoryOnly: true)
+     let container = try! ModelContainer(for: EventType.self, configurations: config)
+     let event: EventType? = nil
+    
+    return EditEventTypeView(eventType: event)
+         .modelContainer(container)
+}
+
+#Preview("Edit Event Type") {
+     let config = ModelConfiguration(isStoredInMemoryOnly: true)
+     let container = try! ModelContainer(for: EventType.self, configurations: config)
+     let event = EventType(eventName: "Event Name")
+    
+    return EditEventTypeView(eventType: event)
+         .modelContainer(container)
+}
+
