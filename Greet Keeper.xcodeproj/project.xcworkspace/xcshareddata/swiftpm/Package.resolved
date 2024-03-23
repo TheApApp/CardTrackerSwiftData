@@ -1,0 +1,24 @@
+{
+  "originHash" : "1468a091a9a235d19d7d6b7596c8c508aece156428a625e56753842347fc63df",
+  "pins" : [
+    {
+      "identity" : "aqui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AlanQuatermain/AQUI.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e1ced4a69915556a9af4c15791bb83eccc33e5b8"
+      }
+    },
+    {
+      "identity" : "swiftuikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/youjinp/SwiftUIKit",
+      "state" : {
+        "branch" : "master",
+        "revision" : "a83aedd996bcb59ca846346bb507f090a7350e34"
+      }
+    }
+  ],
+  "version" : 3
+}
