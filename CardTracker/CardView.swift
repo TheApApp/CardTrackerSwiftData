@@ -45,10 +45,6 @@ struct CardView: View {
                     .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.95)
                     .padding(2)
                     .mask(RoundedRectangle(cornerRadius: 25))
-//                    .shadow(radius: isSelected ? 2 : 0 )
-//                    .onTapGesture {
-//                        isSelected.toggle()
-//                    }
 
             }
             .padding(5)

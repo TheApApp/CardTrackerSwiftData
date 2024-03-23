@@ -4,7 +4,9 @@ A few things to test
 1) Does the card picker correctly scroll?
 2) Updated design for New Event Type and New Greeting Card
 3) Corrected edit function of Greeting Card
-4) Added Required Privacy Info for App Store 
+4) Added Required Privacy Info for App Store
+5) Corrected Spelling error
+6) First attempt at AsyncImage to improve performance
 
 ToDo:
 1) Resolve edit issue with Card View

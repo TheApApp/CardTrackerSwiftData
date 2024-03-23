@@ -33,17 +33,9 @@ struct ScreenView: View {
         HStack {
             VStack {
                 if isEventType != .greetingCard {
-                    Image(uiImage: card!.cardUIImage())
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .scaledToFit()
-                        .frame(width: iPhone ? 125 : 250, height: iPhone ? 125 : 250)
+                    AsyncImageView(imageData: card!.cardFront?.cardFront)
                 } else {
-                    Image(uiImage: greetingCard!.cardUIImage())
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .scaledToFit()
-                        .frame(width: iPhone ? 125 : 250, height: iPhone ? 125 : 250)
+                    AsyncImageView(imageData: greetingCard!.cardFront)
                 }
                 HStack {
                     VStack {

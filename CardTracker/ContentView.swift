@@ -102,7 +102,7 @@ struct ContentView: View {
             }
             .tabItem {
                 Image(systemName: "person.crop.circle")
-                Text("Receipients")
+                Text("Recipients")
                     .foregroundColor(.green)
             }
             .tag(ListView.recipients)

@@ -168,7 +168,7 @@ struct EditGreetingCardView: View {
 #Preview("Add Greeting Card") {
      let config = ModelConfiguration(isStoredInMemoryOnly: true)
      let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
-     var card: GreetingCard? = nil
+     let card: GreetingCard? = nil
     
     return EditGreetingCardView(greetingCard: card)
          .modelContainer(container)
@@ -177,7 +177,7 @@ struct EditGreetingCardView: View {
 #Preview("Edit Greeting Card") {
      let config = ModelConfiguration(isStoredInMemoryOnly: true)
      let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
-     var card = GreetingCard(cardName: "CardName", cardFront: Data(), cardManufacturer: "ABB", cardURL: "cardSampleURL")
+     let card = GreetingCard(cardName: "CardName", cardFront: Data(), cardManufacturer: "ABB", cardURL: "cardSampleURL")
     
     return EditGreetingCardView(greetingCard: card)
          .modelContainer(container)

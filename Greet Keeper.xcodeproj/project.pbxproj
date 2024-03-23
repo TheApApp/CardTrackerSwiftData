@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */; };
+		1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */; };
 		180BD22F2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */; };
 		1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471C2B30B59900E489AC /* NewGreetingCardView.swift */; };
 		1870471F2B30B6F600E489AC /* GreetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471E2B30B6F600E489AC /* GreetingCard.swift */; };
@@ -76,6 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1870471C2B30B59900E489AC /* NewGreetingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGreetingCardView.swift; sourceTree = "<group>"; };
 		1870471E2B30B6F600E489AC /* GreetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCard.swift; sourceTree = "<group>"; };
@@ -274,10 +278,12 @@
 		18D962472B2650AB00662849 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */,
 				189F5C762B27CBBF0067245A /* Collection+Extensions.swift */,
 				18B086A02B375415001CBFFB /* ContactPicker.swift */,
 				189F5C682B276C570067245A /* Constants.swift */,
 				189F5C802B27D4070067245A /* ImageCompressor.swift */,
+				1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */,
 				189F5C7E2B27D2360067245A /* ImagePicker.swift */,
 				189F5C702B27C7500067245A /* ImageTransformer.swift */,
 				187047222B32098600E489AC /* TabView+Extensions.swift */,
@@ -457,6 +463,7 @@
 				189DB6882B2E4C0100FC3E87 /* EventTypeView.swift in Sources */,
 				18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */,
 				189F5C652B2766B30067245A /* ViewEventsView.swift in Sources */,
+				1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
 				18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */,
 				189F5C752B27CB280067245A /* FooterView.swift in Sources */,
@@ -470,6 +477,7 @@
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
 				187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */,
 				189C3F3F2B5DB57900B10B31 /* ImageData.swift in Sources */,
+				1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
