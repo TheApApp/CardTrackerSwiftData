@@ -131,6 +131,10 @@ struct FilteredList: View {
 }
 
 //#Preview {
-//    FilteredList(searchText: "", listView: ListView.recipients, navigationPath: .constant(NavigationPath()))
-//        .modelContainer(for: [EventType.self, Recipient.self])
+//    do {
+//        let previwer = try Previewer()
+//        FilteredList(searchText: "", listView: Listview.recipients, navigationPath: .constant(NavigationPath()))
+//    } catch {
+//        return Text("Failed to create preview: \(error.localizedDescription)")
+//    }
 //}

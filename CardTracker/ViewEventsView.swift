@@ -108,8 +108,8 @@ struct ViewEventsView: View {
                     Image(systemName: "plus.circle.fill")
                         .foregroundColor(.green)
                 })
-                ShareLink("Export PDF", item: render(viewsPerPage: 16))
-                    .foregroundColor(.green)
+//                ShareLink("Export PDF", item: render(viewsPerPage: 16))
+//                    .foregroundColor(.green)
             }
             )
         }

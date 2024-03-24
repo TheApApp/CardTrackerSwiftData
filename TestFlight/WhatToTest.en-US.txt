@@ -1,4 +1,5 @@
-Starting work on my first mainteance release. 
+Starting work on my first mainteance release.
+Temporaraily removing PDF option to address performance for now.
 
 A few things to test
 1) Does the card picker correctly scroll?
