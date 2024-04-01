@@ -151,16 +151,22 @@ struct EditGreetingCardView: View {
     }
     
     private func save() {
-        if let greetingCard {
-            greetingCard.cardName = cardName
-            greetingCard.cardFront = cardUIImage?.pngData()
-            greetingCard.cardManufacturer = cardManufacturer
-            greetingCard.cardURL = cardURL
-            greetingCard.eventType = eventType
-            
-        } else {
-            let newGreetingCard = GreetingCard(cardName: cardName, cardFront: cardUIImage?.pngData(), eventType: eventType, cardManufacturer: cardManufacturer, cardURL: cardURL)
-            modelContext.insert(newGreetingCard)
+        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 100_000) { image in
+            guard image != nil else {
+                print("Error compressing image")
+                return
+            }
+            if let greetingCard {
+                greetingCard.cardName = cardName
+                greetingCard.cardFront = cardUIImage?.pngData()
+                greetingCard.cardManufacturer = cardManufacturer
+                greetingCard.cardURL = cardURL
+                greetingCard.eventType = eventType
+                
+            } else {
+                let newGreetingCard = GreetingCard(cardName: cardName, cardFront: cardUIImage?.pngData(), eventType: eventType, cardManufacturer: cardManufacturer, cardURL: cardURL)
+                modelContext.insert(newGreetingCard)
+            }
         }
     }
 }

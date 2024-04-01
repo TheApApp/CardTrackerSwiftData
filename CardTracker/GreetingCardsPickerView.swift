@@ -18,7 +18,7 @@ struct GreetingCardsPickerView: View {
     @Binding var selectedGreetingCard: GreetingCard?
     
     private var gridLayout = [
-        GridItem(.adaptive(minimum: 145), spacing: 5, alignment: .center)
+        GridItem(.adaptive(minimum: 200), spacing: 5, alignment: .center)
     ]
     
     var eventType: EventType
@@ -53,7 +53,7 @@ struct GreetingCardsPickerView: View {
                         Image(uiImage: greetingCard.cardUIImage())
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 130, height: 130)
+                            .frame(width: 195, height: 195)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                             .onTapGesture {
                                 selectedGreetingCard = greetingCard

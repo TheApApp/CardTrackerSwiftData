@@ -1,5 +1,5 @@
 Starting work on my first mainteance release.
-Temporaraily removing PDF option to address performance for now.
+PDF option is still removed, however, I believe I have corrected the save issue on image size.
 
 A few things to test
 1) Does the card picker correctly scroll?

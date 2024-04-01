@@ -106,9 +106,6 @@ struct NewGreetingCardView: View {
                     .frame(width: 350, height: 350)
                 }
             }
-//            .onAppear(perform: {
-//                checkCameraAuthorization()
-//            })
             .alert(isPresented: $cameraNotAuthorized) {
                 Alert(
                     title: Text("Unable to access the Camera"),
@@ -146,7 +143,7 @@ struct NewGreetingCardView: View {
     }
     
     func saveGreetingCard() {
-        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: (512 * 512)) { image in
+        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 100_000) { image in
             guard image != nil else {
                 print("Error compressing image")
                 return
