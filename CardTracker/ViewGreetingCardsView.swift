@@ -68,11 +68,11 @@ struct ViewGreetingCardsView: View {
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
-//                .navigationBarItems(trailing:
-//                                        HStack {
-//                    ShareLink("Export PDF", item: render(viewsPerPage: 16))
-//                }
-//                )
+                .navigationBarItems(trailing:
+                                        HStack {
+                    ShareLink("Export PDF", item: render(viewsPerPage: 16))
+                }
+                )
             }
             .navigationTitle("Cards Available")
             .navigationBarTitleDisplayMode(.inline)

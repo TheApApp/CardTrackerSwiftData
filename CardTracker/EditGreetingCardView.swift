@@ -151,7 +151,7 @@ struct EditGreetingCardView: View {
     }
     
     private func save() {
-        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 100_000) { image in
+        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 75_000) { image in
             guard image != nil else {
                 print("Error compressing image")
                 return
