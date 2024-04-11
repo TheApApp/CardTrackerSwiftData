@@ -12,10 +12,8 @@ struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
 
-    var cardImage: UIImage
+    weak var cardImage: UIImage?
     var cardTitle = ""
-
-//    @State private var isSelected = false
 
     init(cardImage: UIImage, cardTitle: String) {
         let navBarAppearance = UINavigationBarAppearance()
@@ -38,7 +36,7 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                Image(uiImage: cardImage)
+                Image(uiImage: cardImage!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .scaledToFit()

@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
+//    @Environment(\.modelContext) private var modelContext
+    let container: ModelContainer
     
     @State private var columnVisibility = NavigationSplitViewVisibility.all
     @AppStorage("initial_tab", store: .standard) var listView: ListView = ListView.events
@@ -52,6 +53,7 @@ struct ContentView: View {
             .tag(ListView.events)
             NavigationView {
                 FilteredList(searchText: searchText, listView: .greetingCard, navigationPath: $navigationPath)
+                    .modelContainer(container)
                     .searchable(text: $searchText)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
@@ -78,6 +80,7 @@ struct ContentView: View {
             .tag(ListView.greetingCard)
             NavigationView {
                 FilteredList(searchText: searchText, listView: .recipients, navigationPath: $navigationPath)
+                    .modelContainer(container)
                     .searchable(text: $searchText)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
