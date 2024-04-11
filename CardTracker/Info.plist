@@ -8,6 +8,8 @@
 	<string>You can pick contacts from your address book to create a new recipient</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Can we use the camera to capture cards?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To pick card images from your photo library.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
