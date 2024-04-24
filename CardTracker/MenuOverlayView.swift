@@ -72,9 +72,9 @@ struct MenuOverlayView: View {
             }
             NavigationLink {
                 if isEventType != .greetingCard {
-                    CardView(cardImage: card!.cardUIImage(), cardTitle: "\(card!.cardDate.formatted(date: .abbreviated, time: .omitted))")
+                    CardView(cardImage: UIImage(data: (card!.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, cardTitle: "\(card!.cardDate.formatted(date: .abbreviated, time: .omitted))")
                 } else {
-                    CardView(cardImage: greetingCard!.cardUIImage(), cardTitle: "\(greetingCard?.cardName ?? "Missing EventType")")
+                    CardView(cardImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!, cardTitle: "\(greetingCard?.cardName ?? "Missing EventType")")
                 }
             } label: {
                 Image(systemName: "doc.richtext")

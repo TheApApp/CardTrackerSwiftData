@@ -24,7 +24,7 @@ final class GreetingCard: CustomDebugStringConvertible {
     ///     A URL can be stored to allow fo identifying where you bought the card
     var cardURL: String = ""
     ///     A greeting card will be used by various cards being sent.  We have an inverse relationship.
-    @Relationship(deleteRule: .cascade, inverse: \Card.cardFront) var cards: [Card]? = [Card]()
+    @Relationship(deleteRule: .cascade, inverse: \Card.cardFront) var cards: [Card]?
     
     var debugDescription: String {
         "\(cardName ), \(eventType?.eventName ?? "No Event Type"), \(cardManufacturer ), \(cardURL), Used - \(cardsCount()) "
@@ -37,13 +37,14 @@ final class GreetingCard: CustomDebugStringConvertible {
         self.eventType = eventType
         self.cardManufacturer = cardManufacturer
         self.cardURL = cardURL
+        self.cards = [Card]()
     }
     
     /// A helper value that exposes the card as an Image either a blank image or the value of the image from the realted GreetingCard
-    func cardUIImage() -> UIImage {
-        let defaultImage: UIImage = UIImage(data: (cardFront)!) ?? UIImage(named: "frontImage")!
-        return defaultImage
-    }
+//    func cardUIImage() -> UIImage {
+//        let defaultImage: UIImage = UIImage(data: (cardFront)!) ?? UIImage(named: "frontImage")!
+//        return defaultImage
+//    }
     
     /// cardsCount returns the nummber of recipients of this specific Greeting Card
     func cardsCount() -> Int {

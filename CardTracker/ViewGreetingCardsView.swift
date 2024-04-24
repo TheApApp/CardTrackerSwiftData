@@ -107,7 +107,7 @@ struct ViewGreetingCardsView: View {
             renderTop.render { size, renderTop in
                 // Go to Bottom Left of Page and then translate up to 160 points from the top
                 pdfOutput.move(to: CGPoint(x: 0.0, y: 0.0))
-                pdfOutput.translateBy(x: 0.0, y: 692)
+                pdfOutput.translateBy(x: 5.0, y: 692)
                 currentY += 692
                 renderTop(pdfOutput)
             }
@@ -120,8 +120,8 @@ struct ViewGreetingCardsView: View {
                         let renderBody = ImageRenderer(content: PrintView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard))
                         renderBody.render { size, renderBody in
                             renderBody(pdfOutput)
-                            pdfOutput.translateBy(x: size.width + 10, y: 0)
-                            currentX += size.width + 10
+                            pdfOutput.translateBy(x: size.width + 8, y: 0)
+                            currentX += size.width + 8
                         }
                     }
                 }
@@ -133,7 +133,7 @@ struct ViewGreetingCardsView: View {
             // Print Footer - from bottom of page, up 40 points
             let renderBottom = ImageRenderer(content: FooterView(page: pageIndex + 1, pages: numberOfPages))
             pdfOutput.move(to: CGPoint(x: 0, y: 0))
-            pdfOutput.translateBy(x: 0, y: 40)
+            pdfOutput.translateBy(x: 5, y: 60)
             renderBottom.render { size, renderBottom in
                 renderBottom(pdfOutput)
             }

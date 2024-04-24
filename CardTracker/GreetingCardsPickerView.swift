@@ -50,7 +50,7 @@ struct GreetingCardsPickerView: View {
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                 ForEach(greetingCards, id: \.id) { greetingCard in
                     VStack {
-                        Image(uiImage: greetingCard.cardUIImage())
+                        Image(uiImage: UIImage(data: (greetingCard.cardFront)!) ?? UIImage(named: "frontImage")!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 195, height: 195)

@@ -63,16 +63,6 @@ struct FilteredList: View {
                     }
                 }
                 .onDelete(perform: deleteEvent)
-            case .recipients:
-                ForEach(recipients, id: \.self) { recipient in
-                    NavigationLink(destination:
-                        ViewEventsView(recipient: recipient, navigationPath: $navigationPath)
-                    ) {
-                        Text("\(recipient.fullName)")
-                            .foregroundColor(.green)
-                    }
-                }
-                .onDelete(perform: deleteRecipient)
             case .greetingCard:
                 ForEach(eventTypes, id: \.self) { eventType in
                     NavigationLink(destination:
@@ -83,6 +73,16 @@ struct FilteredList: View {
                     }
                 }
 //                .onDelete(perform: deleteGreetingCards)
+            case .recipients:
+                ForEach(recipients, id: \.self) { recipient in
+                    NavigationLink(destination:
+                        ViewEventsView(recipient: recipient, navigationPath: $navigationPath)
+                    ) {
+                        Text("\(recipient.fullName)")
+                            .foregroundColor(.green)
+                    }
+                }
+                .onDelete(perform: deleteRecipient)
             }
         }
     }

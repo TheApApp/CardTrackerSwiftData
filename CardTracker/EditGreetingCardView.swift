@@ -135,7 +135,7 @@ struct EditGreetingCardView: View {
                     cardName = greetingCard.cardName
                     cardManufacturer = greetingCard.cardManufacturer
                     cardURL = greetingCard.cardURL
-                    cardUIImage = greetingCard.cardUIImage()
+                    cardUIImage = UIImage(data: (greetingCard.cardFront)!) ?? UIImage(named: "frontImage")!
                     eventType = greetingCard.eventType
                 }
             }
