@@ -34,6 +34,7 @@ struct ViewGreetingCardsView: View {
         navBarAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
             .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
+        
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
@@ -61,23 +62,45 @@ struct ViewGreetingCardsView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
-                LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                    ForEach(greetingCards) { greetingCard in
-                        ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
+            List {
+                ForEach(0..<greetingCards.count / 3 + (greetingCards.count % 3 == 0 ? 0 : 1)) { row in
+                    HStack {
+                        ForEach(0..<3) { column in
+                            let index = row * 3 + column
+                            if index < greetingCards.count {
+                                ScreenView(card: nil, greetingCard: greetingCards[index], isEventType: .greetingCard, navigationPath: $navigationPath)
+                                    .frame(maxWidth: .infinity)
+                            } else {
+                                Spacer()
+                            }
+                        }
                     }
                 }
-                .navigationBarTitleDisplayMode(.inline)
-//                .navigationBarItems(trailing:
-//                                        HStack {
-//                    ShareLink("Export PDF", item: render(viewsPerPage: 16))
-//                }
-//                )
             }
-            .navigationTitle("Cards Available")
+            .navigationTitle("\(greetingCards.count) \(eventType) Cards Available")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
+
+//    
+//    var body: some View {
+//        VStack {
+//            ScrollView {
+//                LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
+//                    ForEach(greetingCards) { greetingCard in
+//                        ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
+//                    }
+//                }
+////                .navigationBarItems(trailing:
+////                                        HStack {
+////                    ShareLink("Export PDF", item: render(viewsPerPage: 16))
+////                }
+////                )
+//            }
+//            .navigationTitle("\(eventType) Cards Available")
+//            .navigationBarTitleDisplayMode(.inline)
+//        }
+//    }
     
     @MainActor func render(viewsPerPage: Int) -> URL {
         let greetingCardsArray: [GreetingCard] = greetingCards.map { $0 }

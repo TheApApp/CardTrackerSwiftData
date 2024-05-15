@@ -68,7 +68,7 @@ struct ViewCardsView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Cards Sent")
+            .navigationTitle("\(eventType.eventName) Cards Sent - \(cards.count)")
             .navigationBarTitleDisplayMode(.inline)
 //            .navigationBarItems(trailing:
 //                                    HStack {

@@ -21,11 +21,12 @@ struct FilteredList: View {
     init(searchText: String, listView: ListView, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
+            .foregroundColor: UIColor.green,
             .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
         navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
+            .foregroundColor: UIColor.green,
             .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
+        
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance

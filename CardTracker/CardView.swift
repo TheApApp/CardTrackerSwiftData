@@ -12,7 +12,7 @@ struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
 
-    weak var cardImage: UIImage?
+    var cardImage: UIImage
     var cardTitle = ""
 
     init(cardImage: UIImage, cardTitle: String) {
@@ -36,7 +36,7 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geo in
             VStack {
-                Image(uiImage: cardImage!)
+                Image(uiImage: cardImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .scaledToFit()

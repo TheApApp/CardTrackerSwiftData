@@ -97,9 +97,6 @@ struct ViewEventsView: View {
                     .padding()
                 }
             }
-            .navigationTitle("Cards Sent")
-            .foregroundColor(.green)
-            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                                     HStack {
                 Button(action: {
@@ -112,6 +109,8 @@ struct ViewEventsView: View {
 //                    .foregroundColor(.green)
             }
             )
+            .navigationTitle("\(recipient.fullName) Cards Sent - \(cards.count)")
+            .navigationBarTitleDisplayMode(.inline)
         }
         .sheet(item: $navBarItemChosen ) { item in
             switch item {
