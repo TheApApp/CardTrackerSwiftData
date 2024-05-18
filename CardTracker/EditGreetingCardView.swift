@@ -77,6 +77,7 @@ struct EditGreetingCardView: View {
                                 .frame(width: 200)
                                 .onTapGesture { self.frontPhoto = true }
                                 .actionSheet(isPresented: $frontPhoto) { () -> ActionSheet in
+                                    #if !os(visionOS)
                                     ActionSheet(
                                         title: Text("Choose mode"),
                                         message: Text("Select one."),
@@ -90,6 +91,18 @@ struct EditGreetingCardView: View {
                                             ActionSheet.Button.cancel()
                                         ]
                                     )
+                                    #else
+                                    ActionSheet(
+                                        title: Text("Choose mode"),
+                                        message: Text("Select one."),
+                                        buttons: [
+                                            ActionSheet.Button.default(Text("Photo Library"), action: {
+                                                self.captureFrontImage.toggle()
+                                                self.sourceType = .photoLibrary }),
+                                            ActionSheet.Button.cancel()
+                                        ]
+                                    )
+                                    #endif
                                 }
                                 .sheet(isPresented: $captureFrontImage) {
                                     ImagePicker(
@@ -151,20 +164,20 @@ struct EditGreetingCardView: View {
     }
     
     private func save() {
-        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 75_000) { image in
+        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 1_048_576) { image in
             guard image != nil else {
                 print("Error compressing image")
                 return
             }
             if let greetingCard {
                 greetingCard.cardName = cardName
-                greetingCard.cardFront = cardUIImage?.pngData()
+                greetingCard.cardFront = image?.pngData()
                 greetingCard.cardManufacturer = cardManufacturer
                 greetingCard.cardURL = cardURL
                 greetingCard.eventType = eventType
                 
             } else {
-                let newGreetingCard = GreetingCard(cardName: cardName, cardFront: cardUIImage?.pngData(), eventType: eventType, cardManufacturer: cardManufacturer, cardURL: cardURL)
+                let newGreetingCard = GreetingCard(cardName: cardName, cardFront: image?.pngData(), eventType: eventType, cardManufacturer: cardManufacturer, cardURL: cardURL)
                 modelContext.insert(newGreetingCard)
             }
         }

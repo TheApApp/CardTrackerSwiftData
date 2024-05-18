@@ -15,9 +15,7 @@ struct AsyncImageView: View {
     init(imageData: Data?) {
         self.imageData = imageData
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            iPhone = false
-        } else {
+        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
             iPhone = true
         }
     }

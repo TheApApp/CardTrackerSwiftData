@@ -13,16 +13,25 @@ extension View {
     public func asUIImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
 
+        // Temporarily off-screen to avoid layout issues
         controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
+        
+        // Get the first window from the connected scenes
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
-        windowScene?.windows.first!.rootViewController?.view.addSubview(controller.view)
-
-        let size = controller.sizeThatFits(in: UIScreen.main.bounds.size)
+        guard let window = windowScene?.windows.first else {
+            fatalError("No windows found in the application")
+        }
+        
+        // Add the view to the window's root view controller
+        window.rootViewController?.view.addSubview(controller.view)
+        
+        // Use the window's bounds for the size calculation
+        let size = controller.sizeThatFits(in: window.bounds.size)
         controller.view.bounds = CGRect(origin: .zero, size: size)
         controller.view.sizeToFit()
-
-        // here is the call to the function that converts UIView to UIImage: `.asImage()`
+        
+        // Convert UIView to UIImage
         let image = controller.view.asUIImage()
         controller.view.removeFromSuperview()
         return image

@@ -78,6 +78,7 @@ struct NewGreetingCardView: View {
                             .frame(width: 150)
                             .onTapGesture { self.frontPhoto = true }
                             .actionSheet(isPresented: $frontPhoto) { () -> ActionSheet in
+                                #if !os(visionOS)
                                 ActionSheet(
                                     title: Text("Choose mode"),
                                     message: Text("Select one."),
@@ -96,6 +97,20 @@ struct NewGreetingCardView: View {
                                         ActionSheet.Button.cancel()
                                     ]
                                 )
+                                #else
+                                ActionSheet(
+                                    title: Text("Choose mode"),
+                                    message: Text("Select one."),
+                                    buttons: [
+                                        ActionSheet.Button.default(Text("Photo Library"), action: {
+                                              self.captureFrontImage.toggle()
+                                              self.sourceType = .photoLibrary
+                                    }),
+                                        ActionSheet.Button.cancel()
+                                    ]
+                                )
+
+                                #endif
                             }
                             .sheet(isPresented: $captureFrontImage) {
                                 ImagePicker(
@@ -143,7 +158,7 @@ struct NewGreetingCardView: View {
     }
     
     func saveGreetingCard() {
-        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 100_000) { image in
+        ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 1_048_576) { image in
             guard image != nil else {
                 print("Error compressing image")
                 return

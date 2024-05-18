@@ -51,14 +51,14 @@ struct ViewEventsView: View {
                 SortDescriptor(\Card.cardDate, order: .reverse),
             ]
         )
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.gridLayout = [
-                GridItem(.adaptive(minimum: 320), spacing: 20, alignment: .center)
-            ]
-        } else {
+        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
             iPhone = true
             self.gridLayout = [
                 GridItem(.adaptive(minimum: 160), spacing: 10, alignment: .center)
+            ]
+        } else {
+            self.gridLayout = [
+                GridItem(.adaptive(minimum: 320), spacing: 20, alignment: .center)
             ]
         }
         self._navigationPath = navigationPath

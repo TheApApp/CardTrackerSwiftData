@@ -10,7 +10,6 @@ import SwiftUI
 struct EventTypeView: View {
     var eventType: EventType
     var isCards: Bool = false
-    private var iPhone = false
     
     init(eventType: EventType, isCards: Bool) {
         let navBarAppearance = UINavigationBarAppearance()
@@ -23,6 +22,7 @@ struct EventTypeView: View {
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
+        
         self.eventType = eventType
         self.isCards = isCards
     }

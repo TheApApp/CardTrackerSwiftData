@@ -44,7 +44,7 @@ struct MenuOverlayView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        if UIDevice.current.userInterfaceIdiom == .phone {
+        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
             iPhone = true
         }
         self.card = card
@@ -72,9 +72,23 @@ struct MenuOverlayView: View {
             }
             NavigationLink {
                 if isEventType != .greetingCard {
-                    CardView(cardImage: UIImage(data: (card!.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, cardTitle: "\(card!.cardDate.formatted(date: .abbreviated, time: .omitted))")
+                    if let card = card,
+                       let cardFrontData = card.cardFront?.cardFront,
+                       let cardImage = UIImage(data: cardFrontData) ?? UIImage(named: "frontImage") {
+                        CardView(cardImage: cardImage, cardTitle: "\(card.cardDate.formatted(date: .abbreviated, time: .omitted))")
+                    } else {
+                        let defaultImage = UIImage(named: "frontImage") ?? UIImage()
+                        CardView(cardImage: defaultImage, cardTitle: "Unknown Date")
+                    }
                 } else {
-                    CardView(cardImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!, cardTitle: "\(greetingCard?.cardName ?? "Missing EventType")")
+                    if let greetingCard = greetingCard,
+                       let cardFrontData = greetingCard.cardFront,
+                       let cardImage = UIImage(data: cardFrontData) ?? UIImage(named: "frontImage") {
+                        CardView(cardImage: cardImage, cardTitle: greetingCard.cardName)
+                    } else {
+                        let defaultImage = UIImage(named: "frontImage") ?? UIImage()
+                        CardView(cardImage: defaultImage, cardTitle: "Missing EventType")
+                    }
                 }
             } label: {
                 Image(systemName: "doc.richtext")

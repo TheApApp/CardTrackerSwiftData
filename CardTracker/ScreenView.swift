@@ -22,9 +22,7 @@ struct ScreenView: View {
         self.isEventType = isEventType
         self._navigationPath = navigationPath
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            iPhone = false
-        } else {
+        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
             iPhone = true
         }
     }
