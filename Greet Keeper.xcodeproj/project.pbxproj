@@ -83,11 +83,6 @@
 		1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1826974D2BF9602F00964297 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
-		182697502BF9602F00964297 /* GreetKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetKeeperApp.swift; sourceTree = "<group>"; };
-		182697522BF9602F00964297 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		182697542BF9603000964297 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		182697572BF9603000964297 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		182697592BF9603000964297 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1870471C2B30B59900E489AC /* NewGreetingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGreetingCardView.swift; sourceTree = "<group>"; };
 		1870471E2B30B6F600E489AC /* GreetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCard.swift; sourceTree = "<group>"; };
 		187047202B3131B300E489AC /* ViewGreetingCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGreetingCardsView.swift; sourceTree = "<group>"; };
@@ -170,32 +165,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1826974B2BF9602F00964297 /* GreetKeeper */ = {
-			isa = PBXGroup;
-			children = (
-				182697502BF9602F00964297 /* GreetKeeperApp.swift */,
-				182697522BF9602F00964297 /* ContentView.swift */,
-				182697542BF9603000964297 /* Assets.xcassets */,
-				182697592BF9603000964297 /* Info.plist */,
-				182697562BF9603000964297 /* Preview Content */,
-			);
-			path = GreetKeeper;
-			sourceTree = "<group>";
-		};
 		1826974C2BF9602F00964297 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
 				1826974D2BF9602F00964297 /* RealityKitContent */,
 			);
 			path = Packages;
-			sourceTree = "<group>";
-		};
-		182697562BF9603000964297 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				182697572BF9603000964297 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		18CFAE162B53826B0036CD8A /* TestFlight */ = {
@@ -214,7 +189,6 @@
 				18D9620D2B263EC200662849 /* CardTracker */,
 				18D962222B263EC400662849 /* CardTrackerTests */,
 				18D9622C2B263EC400662849 /* CardTrackerUITests */,
-				1826974B2BF9602F00964297 /* GreetKeeper */,
 				1826974C2BF9602F00964297 /* Packages */,
 				18D9620C2B263EC200662849 /* Products */,
 			);
