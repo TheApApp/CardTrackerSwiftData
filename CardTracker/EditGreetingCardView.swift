@@ -5,6 +5,7 @@
 //  Created by Michael Rowe on 1/2/24.
 //
 
+import AVKit
 import SwiftData
 import SwiftUI
 
@@ -13,11 +14,11 @@ struct EditGreetingCardView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
-    var greetingCard: GreetingCard?
+    @Query(sort: \EventType.eventName) private var events: [EventType]
     
-    private var editorTitle: String {
-        greetingCard == nil ? "Add Greeting Card" : "Edit Greeting Card"
-    }
+    
+    var greetingCard: GreetingCard?
+    private var editorTitle: String { greetingCard == nil ? "Add Greeting Card" : "Edit Greeting Card" }
     
     @State var frontImageSelected: Image? = Image("frontImage")
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -30,14 +31,13 @@ struct EditGreetingCardView: View {
     @State private var cardURL = ""
     @State private var cardUIImage: UIImage?
     
-    @Query(sort: [
-        SortDescriptor(\EventType.eventName)
-    ]) var events: [EventType]
+    @State private var cameraNotAuthorized = false
+    @State private var isCameraPresented = false
     
     var body: some View {
         NavigationStack {
             Form {
-                Section {
+                Section("Detils") {
                     Picker("Select type", selection: $eventType) {
                         Text("Unknown Event")
                             .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
@@ -51,9 +51,6 @@ struct EditGreetingCardView: View {
                             }
                         }
                     }
-                }
-                
-                Section("Details") {
                     TextField("Description", text: $cardName)
                         .customTextField()
                     TextField("Manufacturer", text: $cardManufacturer)
@@ -83,11 +80,16 @@ struct EditGreetingCardView: View {
                                         message: Text("Select one."),
                                         buttons: [
                                             ActionSheet.Button.default(Text("Camera"), action: {
+                                                checkCameraAuthorization()
                                                 self.captureFrontImage.toggle()
-                                                self.sourceType = .camera }),
+                                                self.sourceType = .camera
+                                            }),
+                                            
                                             ActionSheet.Button.default(Text("Photo Library"), action: {
                                                 self.captureFrontImage.toggle()
-                                                self.sourceType = .photoLibrary }),
+                                                self.sourceType = .photoLibrary
+                                            }),
+                                            
                                             ActionSheet.Button.cancel()
                                         ]
                                     )
@@ -111,10 +113,21 @@ struct EditGreetingCardView: View {
                                 }
                             
                         }
-                        .frame(width: 230, height: 230)
+                        .frame(width: 250, height: 250)
                         Spacer()
                     }
                 }
+            }
+            .alert(isPresented: $cameraNotAuthorized) {
+                Alert(
+                    title: Text("Unable to access the Camera"),
+                    message: Text("To enable access, go to Settings > Privacy > Camera and turn on Camera access for this app."),
+                    primaryButton: .default(Text("Settings")) {
+                        openSettings()
+                    }
+                    ,
+                    secondaryButton: .cancel()
+                )
             }
             
             .toolbar {
@@ -180,6 +193,30 @@ struct EditGreetingCardView: View {
                 let newGreetingCard = GreetingCard(cardName: cardName, cardFront: image?.pngData(), eventType: eventType, cardManufacturer: cardManufacturer, cardURL: cardURL)
                 modelContext.insert(newGreetingCard)
             }
+        }
+    }
+    
+    func openSettings() {
+        #if os(macOS)
+            SettingsLink {
+                Text("Settings")
+            }
+        #else
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: { _ in })
+        }
+        #endif
+    }
+    
+    func checkCameraAuthorization() {
+        var checkCamera: Bool
+        checkCamera = AVCaptureDevice.authorizationStatus(for: .video) == .authorized
+        
+        if checkCamera == true {
+            cameraNotAuthorized = false
+        } else {
+            cameraNotAuthorized = true
         }
     }
 }

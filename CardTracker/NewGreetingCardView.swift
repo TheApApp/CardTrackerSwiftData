@@ -20,6 +20,7 @@ struct NewGreetingCardView: View {
     @State private var cardName: String = ""
     @State private var cardManufacturer: String = ""
     @State private var cardURLString: String = ""
+    
     @State var frontImageSelected: Image? = Image("frontImage")
     @State var frontPhoto = false
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -65,6 +66,7 @@ struct NewGreetingCardView: View {
                     TextField("Website", text: $cardURLString)
                         .customTextField()
                 }
+                
                 Section("Card Image") {
                     ZStack {
                         frontImageSelected?
