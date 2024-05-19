@@ -10,13 +10,13 @@
 		1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */; };
 		1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */; };
 		1800AC152BAF4A3A00C51D14 /* AQUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 1800AC142BAF4A3A00C51D14 /* AQUI */; };
-		1800AC182BAF4A4600C51D14 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1800AC172BAF4A4600C51D14 /* SwiftUIKit */; };
 		180BD22F2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */; };
 		1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471C2B30B59900E489AC /* NewGreetingCardView.swift */; };
 		1870471F2B30B6F600E489AC /* GreetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471E2B30B6F600E489AC /* GreetingCard.swift */; };
 		187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047202B3131B300E489AC /* ViewGreetingCardsView.swift */; };
 		187047232B32098600E489AC /* TabView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047222B32098600E489AC /* TabView+Extensions.swift */; };
 		187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */; };
+		188E28B42BFA749600B4CEA3 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 188E28B32BFA749600B4CEA3 /* SwiftUIKit */; };
 		1892FB092B4A370B003997D7 /* EditEventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892FB082B4A370B003997D7 /* EditEventTypeView.swift */; };
 		189C3F3F2B5DB57900B10B31 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C3F3E2B5DB57900B10B31 /* ImageData.swift */; };
 		189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
@@ -144,7 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1800AC152BAF4A3A00C51D14 /* AQUI in Frameworks */,
-				1800AC182BAF4A4600C51D14 /* SwiftUIKit in Frameworks */,
+				188E28B42BFA749600B4CEA3 /* SwiftUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +173,13 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		188E28B22BFA749600B4CEA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		18CFAE162B53826B0036CD8A /* TestFlight */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +198,7 @@
 				18D9622C2B263EC400662849 /* CardTrackerUITests */,
 				1826974C2BF9602F00964297 /* Packages */,
 				18D9620C2B263EC200662849 /* Products */,
+				188E28B22BFA749600B4CEA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,7 +334,7 @@
 			name = "Greet Keeper";
 			packageProductDependencies = (
 				1800AC142BAF4A3A00C51D14 /* AQUI */,
-				1800AC172BAF4A4600C51D14 /* SwiftUIKit */,
+				188E28B32BFA749600B4CEA3 /* SwiftUIKit */,
 			);
 			productName = CardTracker;
 			productReference = 18D9620B2B263EC200662849 /* Greet Keeper.app */;
@@ -686,8 +694,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -734,8 +742,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -903,7 +911,7 @@
 			package = 1800AC132BAF4A3A00C51D14 /* XCRemoteSwiftPackageReference "AQUI" */;
 			productName = AQUI;
 		};
-		1800AC172BAF4A4600C51D14 /* SwiftUIKit */ = {
+		188E28B32BFA749600B4CEA3 /* SwiftUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1800AC162BAF4A4600C51D14 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;
 			productName = SwiftUIKit;

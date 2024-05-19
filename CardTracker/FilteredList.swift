@@ -73,7 +73,6 @@ struct FilteredList: View {
                             .foregroundColor(.green)
                     }
                 }
-//                .onDelete(perform: deleteGreetingCards)
             case .recipients:
                 ForEach(recipients, id: \.self) { recipient in
                     NavigationLink(destination:
@@ -115,27 +114,4 @@ struct FilteredList: View {
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
-    
-//    func deleteGreetingCards(offsets: IndexSet) {
-//        
-//        for index in offsets {
-//            let event = eventTypes[index]
-//            modelContext.delete(event)
-//        }
-//        do {
-//            try modelContext.save()
-//        } catch {
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
-//    }
 }
-
-//#Preview {
-//    do {
-//        let previwer = try Previewer()
-//        FilteredList(searchText: "", listView: Listview.recipients, navigationPath: .constant(NavigationPath()))
-//    } catch {
-//        return Text("Failed to create preview: \(error.localizedDescription)")
-//    }
-//}
