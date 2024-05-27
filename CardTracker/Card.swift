@@ -35,19 +35,4 @@ final class Card: CustomDebugStringConvertible {
         self.cardFront = cardFront
         self.recipient = recipient
     }
-    
-    // MARK: - Intents
-    /// A helper value that exposes the card as an Image either a blank image or the value of the image from the realted GreetingCard
-//    func cardUIImage() -> UIImage {
-//        if let greetingCard = cardFront {
-//            if let cardFront = greetingCard.cardFront {
-//                return UIImage(data: cardFront)!
-//            } else {
-//                return UIImage(named: "frontImage")!
-//            }
-//        } else {
-//            return UIImage(named: "frontImage")!
-//        }
-//    }
-
 }

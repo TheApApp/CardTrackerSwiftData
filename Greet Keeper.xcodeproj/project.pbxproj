@@ -42,6 +42,8 @@
 		18B0869F2B368B48001CBFFB /* EditRecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B0869E2B368B48001CBFFB /* EditRecipientView.swift */; };
 		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
 		18B916722B365441008101A7 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B916712B365441008101A7 /* Previewer.swift */; };
+		18CBD38B2C05317F00CA9C05 /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBD38A2C05317F00CA9C05 /* GeneratePDF.swift */; };
+		18CBD38D2C05328B00CA9C05 /* ShareSheetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */; };
 		18CFAE152B537E020036CD8A /* WhatToTest.en-US.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18CFAE142B537E020036CD8A /* WhatToTest.en-US.txt */; };
 		18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* GreetKeeperApp.swift */; };
 		18D962112B263EC200662849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962102B263EC200662849 /* ContentView.swift */; };
@@ -114,6 +116,8 @@
 		18B0869E2B368B48001CBFFB /* EditRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecipientView.swift; sourceTree = "<group>"; };
 		18B086A02B375415001CBFFB /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
 		18B916712B365441008101A7 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
+		18CBD38A2C05317F00CA9C05 /* GeneratePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDF.swift; sourceTree = "<group>"; };
+		18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetHelper.swift; sourceTree = "<group>"; };
 		18CFAE142B537E020036CD8A /* WhatToTest.en-US.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WhatToTest.en-US.txt"; sourceTree = "<group>"; };
 		18D9620B2B263EC200662849 /* Greet Keeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Greet Keeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D9620E2B263EC200662849 /* GreetKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetKeeperApp.swift; sourceTree = "<group>"; };
@@ -302,16 +306,18 @@
 				189F5C762B27CBBF0067245A /* Collection+Extensions.swift */,
 				18B086A02B375415001CBFFB /* ContactPicker.swift */,
 				189F5C682B276C570067245A /* Constants.swift */,
+				18CBD38A2C05317F00CA9C05 /* GeneratePDF.swift */,
 				189F5C802B27D4070067245A /* ImageCompressor.swift */,
 				1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */,
 				189F5C7E2B27D2360067245A /* ImagePicker.swift */,
 				189F5C702B27C7500067245A /* ImageTransformer.swift */,
+				18B916712B365441008101A7 /* Previewer.swift */,
+				18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */,
 				187047222B32098600E489AC /* TabView+Extensions.swift */,
 				18D962482B2650C100662849 /* TextFieldModifier.swift */,
 				189F5C722B27CAEF0067245A /* UIImage+Extensions.swift */,
 				189F5C7A2B27CFAA0067245A /* UIView+Extensions.swift */,
 				189F5C7C2B27CFD10067245A /* View+Extensions.swift */,
-				18B916712B365441008101A7 /* Previewer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 				189F5C712B27C7500067245A /* ImageTransformer.swift in Sources */,
 				18D962432B264D1D00662849 /* NewRecipientView.swift in Sources */,
 				189F5C772B27CBBF0067245A /* Collection+Extensions.swift in Sources */,
+				18CBD38D2C05328B00CA9C05 /* ShareSheetHelper.swift in Sources */,
 				189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */,
 				189DB6822B2E230400FC3E87 /* CardView.swift in Sources */,
 				189F5C7D2B27CFD10067245A /* View+Extensions.swift in Sources */,
@@ -485,6 +492,7 @@
 				18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */,
 				189F5C652B2766B30067245A /* ViewEventsView.swift in Sources */,
 				1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */,
+				18CBD38B2C05317F00CA9C05 /* GeneratePDF.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
 				18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */,
 				189F5C752B27CB280067245A /* FooterView.swift in Sources */,

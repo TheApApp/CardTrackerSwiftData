@@ -28,8 +28,9 @@ struct ViewEventsView: View {
     
     
     // MARK: PDF Properties
-    @State var PDFUrl: URL?
-    @State var showShareSheet: Bool = false
+    @State private var PDFUrl: URL?
+    @State private var showShareSheet: Bool = false
+    @State private var isLoading: Bool = false
     
     init(recipient: Recipient, navigationPath: Binding<NavigationPath>) {
         let navBarAppearance = UINavigationBarAppearance()
@@ -105,8 +106,13 @@ struct ViewEventsView: View {
                     Image(systemName: "plus.circle.fill")
                         .foregroundColor(.green)
                 })
-//                ShareLink("Export PDF", item: render(viewsPerPage: 16))
-//                    .foregroundColor(.green)
+                if isLoading {
+                    ProgressView()
+                } else {
+                    Button(action: generatePDF) {
+                        Text("Export PDF")
+                    }
+                }
             }
             )
             .navigationTitle("\(recipient.fullName) Cards Sent - \(cards.count)")
@@ -118,6 +124,11 @@ struct ViewEventsView: View {
                 NewCardView(recipient: recipient)
             }
         }
+        .sheet(isPresented: $showShareSheet, content: {
+            if let PDFUrl = PDFUrl {
+                ShareSheet(activityItems: [PDFUrl])
+            }
+        })
     }
     
     @MainActor func render(viewsPerPage: Int) -> URL {
@@ -193,6 +204,17 @@ struct ViewEventsView: View {
                 return
             }
             completion(location)
+        }
+    }
+    
+    private func generatePDF() {
+        isLoading = true
+        Task {
+            let pdfGenerator = GeneratePDF(title: "\(recipient.fullName)", cards: cards, greetingCards: nil, cardArray: true)
+            let pdfUrl = await pdfGenerator.render(viewsPerPage: 16)
+            PDFUrl = pdfUrl
+            isLoading = false
+            showShareSheet = true
         }
     }
 }

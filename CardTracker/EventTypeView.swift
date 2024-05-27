@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct EventTypeView: View {
-    var eventType: EventType
+    var title: String
     var isCards: Bool = false
     
-    init(eventType: EventType, isCards: Bool) {
+    init(title: String, isCards: Bool) {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.largeTitleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
@@ -23,7 +23,7 @@ struct EventTypeView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
         
-        self.eventType = eventType
+        self.title = title
         self.isCards = isCards
     }
     
@@ -32,10 +32,10 @@ struct EventTypeView: View {
             Spacer()
             HStack {
                 if isCards {
-                    Text("\(eventType.eventName) Gallery")
+                    Text("\(title) Gallery")
                         .font(.title)
                 } else {
-                    Text("\(eventType.eventName) Cards Sent")
+                    Text("\(title) Cards Sent")
                         .font(.title)
                 }
                 Spacer()
@@ -52,7 +52,7 @@ struct EventTypeView: View {
     do {
         let previewer = try Previewer()
         
-        return EventTypeView(eventType: previewer.eventType, isCards: false)
+        return EventTypeView(title: previewer.eventType.eventName, isCards: false)
         
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")

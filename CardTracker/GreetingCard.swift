@@ -40,12 +40,6 @@ final class GreetingCard: CustomDebugStringConvertible {
         self.cards = [Card]()
     }
     
-    /// A helper value that exposes the card as an Image either a blank image or the value of the image from the realted GreetingCard
-//    func cardUIImage() -> UIImage {
-//        let defaultImage: UIImage = UIImage(data: (cardFront)!) ?? UIImage(named: "frontImage")!
-//        return defaultImage
-//    }
-    
     /// cardsCount returns the nummber of recipients of this specific Greeting Card
     func cardsCount() -> Int {
         cards?.count ?? 0

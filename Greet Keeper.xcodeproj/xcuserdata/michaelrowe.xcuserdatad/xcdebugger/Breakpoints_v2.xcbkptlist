@@ -107,8 +107,8 @@
             filePath = "CardTracker/ViewGreetingCardsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "init(eventType:navigationPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -136,8 +136,8 @@
             filePath = "CardTracker/ViewEventsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "init(recipient:navigationPath:)"
             landmarkType = "7">
          </BreakpointContent>
