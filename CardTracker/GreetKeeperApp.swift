@@ -29,8 +29,8 @@ struct GreetKeeperApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(sharedModelContainer)
         }
-        .modelContainer(sharedModelContainer)
         #if os(macOS)
         .commands {
             SidebarCommands()

@@ -89,6 +89,7 @@ struct NewCardView: View {
             .navigationBarItems(trailing:
                                     HStack {
                 Button(action: {
+                    // TODO: add an error check to confirm they have an event and card selected
                     saveCard()
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
@@ -113,8 +114,9 @@ struct NewCardView: View {
         let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "NewCardView")
         logger.log("saving...")
         print("Selected greetingCard = \(String(describing: selectedGreetingCard?.cardName))")
-        if selectedEvent != nil {
-            let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: selectedGreetingCard ?? GreetingCard(cardName: "", cardFront: frontImageSelected?.asUIImage().pngData(), eventType: selectedEvent, cardManufacturer: "", cardURL:  ""), recipient: recipient)
+        /// You must have both an event and a card selected.
+        if selectedEvent != nil  && selectedGreetingCard != nil {
+            let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: selectedGreetingCard!, recipient: recipient)
             modelContext.insert(card)
         }
         do {

@@ -1,10 +1,9 @@
-Starting work on my second mainteance release.
+Close to second mainteance release.
 
 Found bug in image sizing code, have rewriten, this means you need to remove and recreate all cards - sorry.
-
-Removed temporary build to test changing from LazyVGrid to List view did not address large galleries afterall, and formatting issues were not very good.
 
 Things to Test:
 0. Remove and re-add all cards - see if performance improves.
 1. Initial Code added for VisionOS support.
-2. Please test using large galleries.
+2. Please test using large galleries, (note please wipe your existing data if at all possible, due to issue with prior compression issues.)
+3. Note you must have both an event and a card selected to save a new card for a recipient - I may add an error popup
