@@ -19,7 +19,6 @@
 		187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */; };
 		188E28B42BFA749600B4CEA3 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 188E28B32BFA749600B4CEA3 /* SwiftUIKit */; };
 		1892FB092B4A370B003997D7 /* EditEventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892FB082B4A370B003997D7 /* EditEventTypeView.swift */; };
-		189C3F3F2B5DB57900B10B31 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189C3F3E2B5DB57900B10B31 /* ImageData.swift */; };
 		189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
 		189DB6822B2E230400FC3E87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6812B2E230400FC3E87 /* CardView.swift */; };
 		189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6832B2E405800FC3E87 /* ViewCardsView.swift */; };
@@ -93,7 +92,6 @@
 		187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCardsPickerView.swift; sourceTree = "<group>"; };
 		1892FB082B4A370B003997D7 /* EditEventTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventTypeView.swift; sourceTree = "<group>"; };
 		18987E3A2B534B7B008275E4 /* ReadMe.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.MD; sourceTree = "<group>"; };
-		189C3F3E2B5DB57900B10B31 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
 		189DB6812B2E230400FC3E87 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		189DB6832B2E405800FC3E87 /* ViewCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCardsView.swift; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 				18D962122B263EC200662849 /* Card.swift */,
 				18D9623C2B26409500662849 /* EventType.swift */,
 				1870471E2B30B6F600E489AC /* GreetingCard.swift */,
-				189C3F3E2B5DB57900B10B31 /* ImageData.swift */,
 				18D9623E2B26411900662849 /* Recipient.swift */,
 			);
 			name = Data;
@@ -390,7 +387,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					18D9620A2B263EC200662849 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -505,7 +502,6 @@
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
 				187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */,
-				189C3F3F2B5DB57900B10B31 /* ImageData.swift in Sources */,
 				1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,10 +689,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -706,7 +702,8 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
@@ -741,10 +738,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -754,7 +751,8 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
@@ -762,7 +760,6 @@
 		18D962372B263EC400662849 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -786,7 +783,6 @@
 		18D962382B263EC400662849 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -810,7 +806,6 @@
 		18D9623A2B263EC400662849 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -833,7 +828,6 @@
 		18D9623B2B263EC400662849 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;

@@ -70,14 +70,14 @@ struct GreetingCardsPickerView: View {
     }
 }
 
-#Preview {
-    do {
-        let previewer = try Previewer()
-        @State var greetingCard: GreetingCard? = previewer.greetingCard
-        
-        return GreetingCardsPickerView(eventType: previewer.eventType, selectedGreetingCard: $greetingCard)
-        
-    } catch {
-        return Text("Failed to create preview: \(error.localizedDescription)")
-    }
-}
+//#Preview {
+//    @Previewable @State var greetingCard: GreetingCard? = GreetingCard(cardName: "Test Card", cardFront: nil, eventType: .birthday, cardManufacturer: "Test Manufacturer", cardURL: "https://www.example.com")
+//    do {
+//        let previewer = try Previewer()
+//        
+//        GreetingCardsPickerView(eventType: previewer.eventType, selectedGreetingCard: $greetingCard)
+//        
+//    } catch {
+//       return Text("Error: \(error.localizedDescription)")
+//    }
+//}

@@ -10,7 +10,7 @@ import SwiftData
 
 /// A recipient is someone you have sent a card to.  It is the primary view for the application.  A recipient must have a name.
 @Model
-class Recipient: CustomDebugStringConvertible {
+final class Recipient: CustomDebugStringConvertible {
     // MARK: Properties
     /// When sending a card, a recipient should have an address.  This is the first line, usually the street address.
     var addressLine1: String = ""
