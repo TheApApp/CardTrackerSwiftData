@@ -110,13 +110,13 @@ struct ViewEventsView: View {
                     ProgressView()
                 } else {
                     Button(action: generatePDF) {
-                        Text("Export PDF")
+                        Image(systemName: "square.and.arrow.up")
                     }
                 }
             }
             )
-            .navigationTitle("\(recipient.fullName) Cards Sent - \(cards.count)")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("\(recipient.fullName)")
         }
         .sheet(item: $navBarItemChosen ) { item in
             switch item {

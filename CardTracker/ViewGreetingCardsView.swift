@@ -35,7 +35,6 @@ struct ViewGreetingCardsView: View {
         navBarAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.systemGreen,
             .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        
         UINavigationBar.appearance().standardAppearance = navBarAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         UINavigationBar.appearance().compactAppearance = navBarAppearance
@@ -75,14 +74,14 @@ struct ViewGreetingCardsView: View {
                             ProgressView()
                         } else {
                             Button(action: generatePDF) {
-                                Text("Export PDF")
+                                Image(systemName: "square.and.arrow.up")
                             }
                         }
                     }
                 )
             }
-            .navigationTitle("\(eventType) Cards Available")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("\(eventType)")
         }
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {

@@ -70,19 +70,19 @@ struct ViewCardsView: View {
                     .padding()
                 }
             }
-            .navigationTitle("\(eventType.eventName) Cards Sent - \(cards.count)")
-            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing:
                 HStack {
                     if isLoading {
                         ProgressView()
                     } else {
                         Button(action: generatePDF) {
-                            Text("Export PDF")
+                            Image(systemName: "square.and.arrow.up")
                         }
                     }
                 }
             )
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("\(eventType.eventName) - \(cards.count)")
         }
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {
