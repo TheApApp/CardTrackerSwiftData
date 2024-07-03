@@ -187,8 +187,8 @@ struct NewRecipientView: View {
             logger.log("you need to request authorization via the API now")
         case .authorized:
             logger.log("already authorized")
-        case .limited:
-            logger.log("limited access")
+//        case .limited:
+//            logger.log("limited access")
         @unknown default:
             logger.log("unknown error")
             return false

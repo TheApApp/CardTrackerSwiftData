@@ -159,7 +159,7 @@ struct NewGreetingCardView: View {
         .foregroundColor(.accentColor)
     }
     
-    func saveGreetingCard() {
+    @MainActor func saveGreetingCard() {
         ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 1_048_576) { image in
             guard image != nil else {
                 print("Error compressing image")

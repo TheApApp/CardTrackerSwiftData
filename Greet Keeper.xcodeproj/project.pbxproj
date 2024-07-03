@@ -9,15 +9,15 @@
 /* Begin PBXBuildFile section */
 		1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */; };
 		1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */; };
-		1800AC152BAF4A3A00C51D14 /* AQUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 1800AC142BAF4A3A00C51D14 /* AQUI */; };
 		180BD22F2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */; };
+		18121A372C360B550054A016 /* AQUI in Frameworks */ = {isa = PBXBuildFile; productRef = 18121A362C360B550054A016 /* AQUI */; };
+		18121A3A2C360B5E0054A016 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18121A392C360B5E0054A016 /* SwiftUIKit */; };
 		181BAA3C2C0BC68B00E7DA87 /* WhatToTest.en-US in Resources */ = {isa = PBXBuildFile; fileRef = 181BAA3B2C0BC68A00E7DA87 /* WhatToTest.en-US */; };
 		1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471C2B30B59900E489AC /* NewGreetingCardView.swift */; };
 		1870471F2B30B6F600E489AC /* GreetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471E2B30B6F600E489AC /* GreetingCard.swift */; };
 		187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047202B3131B300E489AC /* ViewGreetingCardsView.swift */; };
 		187047232B32098600E489AC /* TabView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047222B32098600E489AC /* TabView+Extensions.swift */; };
 		187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047242B3226EB00E489AC /* GreetingCardsPickerView.swift */; };
-		188E28B42BFA749600B4CEA3 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 188E28B32BFA749600B4CEA3 /* SwiftUIKit */; };
 		1892FB092B4A370B003997D7 /* EditEventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892FB082B4A370B003997D7 /* EditEventTypeView.swift */; };
 		189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
 		189DB6822B2E230400FC3E87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6812B2E230400FC3E87 /* CardView.swift */; };
@@ -145,8 +145,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1800AC152BAF4A3A00C51D14 /* AQUI in Frameworks */,
-				188E28B42BFA749600B4CEA3 /* SwiftUIKit in Frameworks */,
+				18121A372C360B550054A016 /* AQUI in Frameworks */,
+				18121A3A2C360B5E0054A016 /* SwiftUIKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,8 +336,8 @@
 			);
 			name = "Greet Keeper";
 			packageProductDependencies = (
-				1800AC142BAF4A3A00C51D14 /* AQUI */,
-				188E28B32BFA749600B4CEA3 /* SwiftUIKit */,
+				18121A362C360B550054A016 /* AQUI */,
+				18121A392C360B5E0054A016 /* SwiftUIKit */,
 			);
 			productName = CardTracker;
 			productReference = 18D9620B2B263EC200662849 /* Greet Keeper.app */;
@@ -412,8 +412,8 @@
 			);
 			mainGroup = 18D962022B263EC200662849;
 			packageReferences = (
-				1800AC132BAF4A3A00C51D14 /* XCRemoteSwiftPackageReference "AQUI" */,
-				1800AC162BAF4A4600C51D14 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
+				18121A352C360B550054A016 /* XCRemoteSwiftPackageReference "AQUI" */,
+				18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
 			);
 			productRefGroup = 18D9620C2B263EC200662849 /* Products */;
 			projectDirPath = "";
@@ -592,15 +592,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				XROS_DEPLOYMENT_TARGET = 1.2;
 			};
 			name = Debug;
 		};
@@ -651,13 +652,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
+				XROS_DEPLOYMENT_TARGET = 1.2;
 			};
 			name = Release;
 		};
@@ -691,10 +693,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -705,7 +707,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
@@ -741,10 +743,10 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -755,7 +757,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 1.3;
 			};
@@ -893,7 +895,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1800AC132BAF4A3A00C51D14 /* XCRemoteSwiftPackageReference "AQUI" */ = {
+		18121A352C360B550054A016 /* XCRemoteSwiftPackageReference "AQUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AlanQuatermain/AQUI.git";
 			requirement = {
@@ -901,7 +903,7 @@
 				kind = branch;
 			};
 		};
-		1800AC162BAF4A4600C51D14 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
+		18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/youjinp/SwiftUIKit";
 			requirement = {
@@ -912,14 +914,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1800AC142BAF4A3A00C51D14 /* AQUI */ = {
+		18121A362C360B550054A016 /* AQUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1800AC132BAF4A3A00C51D14 /* XCRemoteSwiftPackageReference "AQUI" */;
+			package = 18121A352C360B550054A016 /* XCRemoteSwiftPackageReference "AQUI" */;
 			productName = AQUI;
 		};
-		188E28B32BFA749600B4CEA3 /* SwiftUIKit */ = {
+		18121A392C360B5E0054A016 /* SwiftUIKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1800AC162BAF4A4600C51D14 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;
+			package = 18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;
 			productName = SwiftUIKit;
 		};
 /* End XCSwiftPackageProductDependency section */
