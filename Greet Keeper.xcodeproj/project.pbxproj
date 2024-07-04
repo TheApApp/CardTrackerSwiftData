@@ -899,8 +899,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AlanQuatermain/AQUI.git";
 			requirement = {
-				kind = exactVersion;
-				version = 1.0.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 		18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
