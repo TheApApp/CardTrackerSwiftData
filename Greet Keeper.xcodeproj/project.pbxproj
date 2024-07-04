@@ -10,7 +10,7 @@
 		1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */; };
 		1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */; };
 		180BD22F2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */; };
-		18121A372C360B550054A016 /* AQUI in Frameworks */ = {isa = PBXBuildFile; productRef = 18121A362C360B550054A016 /* AQUI */; };
+		18121A372C360B550054A016 /* AQUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, ); productRef = 18121A362C360B550054A016 /* AQUI */; };
 		18121A3A2C360B5E0054A016 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18121A392C360B5E0054A016 /* SwiftUIKit */; };
 		181BAA3C2C0BC68B00E7DA87 /* WhatToTest.en-US in Resources */ = {isa = PBXBuildFile; fileRef = 181BAA3B2C0BC68A00E7DA87 /* WhatToTest.en-US */; };
 		1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471C2B30B59900E489AC /* NewGreetingCardView.swift */; };
@@ -899,8 +899,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AlanQuatermain/AQUI.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 1.0.0;
 			};
 		};
 		18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */ = {
