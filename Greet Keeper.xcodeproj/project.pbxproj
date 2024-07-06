@@ -307,6 +307,7 @@
 				1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */,
 				189F5C7E2B27D2360067245A /* ImagePicker.swift */,
 				189F5C702B27C7500067245A /* ImageTransformer.swift */,
+				180967B22C38642900393D28 /* iPhone.swift */,
 				18B916712B365441008101A7 /* Previewer.swift */,
 				18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */,
 				187047222B32098600E489AC /* TabView+Extensions.swift */,
@@ -314,7 +315,6 @@
 				189F5C722B27CAEF0067245A /* UIImage+Extensions.swift */,
 				189F5C7A2B27CFAA0067245A /* UIView+Extensions.swift */,
 				189F5C7C2B27CFD10067245A /* View+Extensions.swift */,
-				180967B22C38642900393D28 /* iPhone.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

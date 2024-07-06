@@ -27,12 +27,19 @@ struct MenuOverlayView: View {
     @State var isCardActive: Bool = false
     @Binding var navigationPath: NavigationPath
     
+    private var isVision = false
+    
     private let blankCardFront = UIImage(named: "frontImage")
     private var card: Card?
     private var greetingCard: GreetingCard?
     private var isEventType: ListView = .recipients
     
     init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
+        
+        if UIDevice.current.userInterfaceIdiom == .vision {
+            self.isVision = true
+        }
+        
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
@@ -54,7 +61,7 @@ struct MenuOverlayView: View {
             } label: {
                 Image(systemName: "square.and.pencil")
                     .foregroundColor(.accentColor)
-                    .font(isIphone.iPhone ? .caption : .title3)
+                    .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
             }
             NavigationLink {
                 if isEventType != .greetingCard {
@@ -79,14 +86,14 @@ struct MenuOverlayView: View {
             } label: {
                 Image(systemName: "doc.richtext")
                     .foregroundColor(.accentColor)
-                    .font(isIphone.iPhone ? .caption : .title3)
+                    .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
             }
             Button(action: {
                 areYouSure.toggle()
             }, label: {
                 Image(systemName: "trash")
                     .foregroundColor(.red)
-                    .font(isIphone.iPhone ? .caption : .title3)
+                    .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
             })
             .confirmationDialog("Are you sure", isPresented: $areYouSure, titleVisibility: .visible) {
                 Button("Yes", role:.destructive) {
@@ -109,6 +116,7 @@ struct MenuOverlayView: View {
                 }
                 .keyboardShortcut(.defaultAction)
             }
+            Spacer()
         }
     }
     

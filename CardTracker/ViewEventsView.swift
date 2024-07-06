@@ -13,6 +13,7 @@ import SwiftUI
 struct ViewEventsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
+//    @EnvironmentObject var isIphone: IsIphone
     @Query(sort: [SortDescriptor(\Card.cardDate, order: .reverse)]) private var cards: [Card]
     
     private let blankCardFront = UIImage(named: "frontImage")
@@ -41,7 +42,7 @@ struct ViewEventsView: View {
                 SortDescriptor(\Card.cardDate, order: .reverse),
             ]
         )
-        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
+        if  UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision { // isIphone.iPhone {
             iPhone = true
             self.gridLayout = [
                 GridItem(.adaptive(minimum: 160), spacing: 10, alignment: .center)

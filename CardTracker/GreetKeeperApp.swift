@@ -11,7 +11,7 @@ import SwiftData
 /// Card Tracker is an application developed by Michael Rowe as a means of tracking all the various greeting cards sent out each year.  There are four major objects in this application: Cards, EventTypes, GreetingCards, and Recipients.  Each of these are defined as SwiftData classes.
 @main
 struct GreetKeeperApp: App {
-    @ObservedObject var isIphone = IsIphone()
+    @State var isIphone = IsIphone()
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -55,8 +55,5 @@ struct GreetKeeperApp: App {
 
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.accent]
-        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
-            isIphone.iPhone = true
-        }
     }
 }

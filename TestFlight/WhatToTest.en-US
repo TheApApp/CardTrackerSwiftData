@@ -7,6 +7,7 @@ Things to Test:
 2. Try printing on multiple printers to confirm that none of the text or cards are cut off.
 3. Confirm if background syncing is no longer crashing app.
 4. Confirm Color consistency across all screens and orientations
+5. If you have access to a Vision Pro let me know, as I have changed the UI to address an issue that only impacts the Vision Pro
 
 Things yet to come:
 1. Correct VisionOS layout issues
