@@ -20,6 +20,7 @@ import SwiftUI
 struct MenuOverlayView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var isIphone: IsIphone
     
     @State var areYouSure: Bool = false
     @State var isEditActive: Bool = false
@@ -27,26 +28,11 @@ struct MenuOverlayView: View {
     @Binding var navigationPath: NavigationPath
     
     private let blankCardFront = UIImage(named: "frontImage")
-    private var iPhone = false
     private var card: Card?
     private var greetingCard: GreetingCard?
     private var isEventType: ListView = .recipients
     
     init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
-        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
-            iPhone = true
-        }
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
@@ -67,8 +53,8 @@ struct MenuOverlayView: View {
                 }
             } label: {
                 Image(systemName: "square.and.pencil")
-                    .foregroundColor(.green)
-                    .font(iPhone ? .caption : .title3)
+                    .foregroundColor(.accentColor)
+                    .font(isIphone.iPhone ? .caption : .title3)
             }
             NavigationLink {
                 if isEventType != .greetingCard {
@@ -92,15 +78,15 @@ struct MenuOverlayView: View {
                 }
             } label: {
                 Image(systemName: "doc.richtext")
-                    .foregroundColor(.green)
-                    .font(iPhone ? .caption : .title3)
+                    .foregroundColor(.accentColor)
+                    .font(isIphone.iPhone ? .caption : .title3)
             }
             Button(action: {
                 areYouSure.toggle()
             }, label: {
                 Image(systemName: "trash")
                     .foregroundColor(.red)
-                    .font(iPhone ? .caption : .title3)
+                    .font(isIphone.iPhone ? .caption : .title3)
             })
             .confirmationDialog("Are you sure", isPresented: $areYouSure, titleVisibility: .visible) {
                 Button("Yes", role:.destructive) {

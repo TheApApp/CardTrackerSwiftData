@@ -19,18 +19,6 @@ struct FilteredList: View {
     private var listView: ListView
     
     init(searchText: String, listView: ListView, navigationPath: Binding<NavigationPath>) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.green,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.green,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
         self.listView = listView
         
         _eventTypes = Query(filter: #Predicate {
@@ -60,7 +48,7 @@ struct FilteredList: View {
                         ViewCardsView(eventType: eventType, navigationPath: $navigationPath)
                     ) {
                         Text("\(eventType.eventName)")
-                            .foregroundColor(.green)
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .onDelete(perform: deleteEvent)
@@ -70,7 +58,7 @@ struct FilteredList: View {
                         ViewGreetingCardsView(eventType: eventType, navigationPath: $navigationPath)
                     ) {
                         Text("\(eventType.eventName)")
-                            .foregroundColor(.green)
+                            .foregroundColor(.accentColor)
                     }
                 }
             case .recipients:
@@ -79,7 +67,7 @@ struct FilteredList: View {
                         ViewEventsView(recipient: recipient, navigationPath: $navigationPath)
                     ) {
                         Text("\(recipient.fullName)")
-                            .foregroundColor(.green)
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .onDelete(perform: deleteRecipient)

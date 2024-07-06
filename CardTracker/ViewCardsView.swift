@@ -12,6 +12,7 @@ import SwiftUI
 struct ViewCardsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var isIphone: IsIphone
     @Query(sort: [SortDescriptor(\Card.cardDate, order: .reverse)]) private var cards: [Card]
     
     private let blankCardFront = UIImage(named: "frontImage")
@@ -27,17 +28,6 @@ struct ViewCardsView: View {
     @State private var isLoading: Bool = false
 
     init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
         self.eventType = eventType
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
         _cards = Query(

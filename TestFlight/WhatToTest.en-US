@@ -3,16 +3,14 @@ Close to second mainteance release.
 Found bug in image sizing code, have rewriten, this means you need to remove and recreate all cards - sorry.
 
 Things to Test:
-0. Remove and re-add all cards - see if performance improves.
-1. Initial Code added for VisionOS support.
-2. Please test using large galleries, (note please wipe your existing data if at all possible, due to issue with prior compression issues.)
-3. Note you must have both an event and a card selected to save a new card for a recipient - I may add an error popup
+1. PDF Print for Recipient view, test both small number of cards (less than 16) and large number (greater than 16) - This appears to be an off by 1 issue, 
+2. Try printing on multiple printers to confirm that none of the text or cards are cut off.
+3. Confirm if background syncing is no longer crashing app.
+4. Confirm Color consistency across all screens and orientations
 
 Things yet to come:
 1. Correct VisionOS layout issues
-2. Fix issue with background sync crash - see following StackOverlow response - https://stackoverflow.com/questions/78265564/background-crash-swiftdata-swiftui-one-time-initialization-function-for-empty/78290247?noredirect=1#comment138472671_78290247
-3. Fix color consistency across views and address Dark mode better
-4. Resolve issue with Receipient Title ,with Cards Sent, changing from color to black
+2. Resolve issue with Receipient Title ,with Cards Sent, changing from color to black
 
 Potential Features to develop:
 1. Add filter by name option in the Card picker view

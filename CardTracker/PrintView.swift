@@ -15,17 +15,6 @@ struct PrintView: View {
     var isEventType: ListView = .recipients
     
     init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
@@ -39,14 +28,14 @@ struct PrintView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
-                        .frame(width: 130, height: 103)
+                        .frame(width: 125, height: 115)
                 } else {
 //                    Image(uiImage: (greetingCard?.cardUIImage())!)
                     Image(uiImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .scaledToFit()
-                        .frame(width: 130, height: 103)
+                        .frame(width: 125, height: 115)
                 }
                 HStack {
                     VStack {
@@ -79,7 +68,7 @@ struct PrintView: View {
         }
         .padding()
         .scaledToFit()
-        .frame(width: 143, height: 134)
+        .frame(width: 130, height: 139)
         .mask(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 5)
     }

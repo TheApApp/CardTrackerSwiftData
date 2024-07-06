@@ -26,17 +26,6 @@ struct MapView: View {
     ]
     
     init(region: MKCoordinateRegion) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
         var region = region
         region.span = MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.005), longitudeDelta: CLLocationDegrees(0.005))
         self._region = State(initialValue: region)
@@ -51,7 +40,7 @@ struct MapView: View {
                 Image(systemName: "house")
                     .padding(4)
                     .foregroundStyle(.white)
-                    .background(Color.green)
+                    .background(Color.accentColor)
                     .cornerRadius(4)
             }
         }

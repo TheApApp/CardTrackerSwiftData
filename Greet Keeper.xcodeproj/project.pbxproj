@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */; };
 		1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */; };
+		180967B32C38642900393D28 /* iPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180967B22C38642900393D28 /* iPhone.swift */; };
 		180BD22F2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */; };
 		18121A372C360B550054A016 /* AQUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, ); productRef = 18121A362C360B550054A016 /* AQUI */; };
 		18121A3A2C360B5E0054A016 /* SwiftUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 18121A392C360B5E0054A016 /* SwiftUIKit */; };
 		181BAA3C2C0BC68B00E7DA87 /* WhatToTest.en-US in Resources */ = {isa = PBXBuildFile; fileRef = 181BAA3B2C0BC68A00E7DA87 /* WhatToTest.en-US */; };
-		1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471C2B30B59900E489AC /* NewGreetingCardView.swift */; };
 		1870471F2B30B6F600E489AC /* GreetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471E2B30B6F600E489AC /* GreetingCard.swift */; };
 		187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047202B3131B300E489AC /* ViewGreetingCardsView.swift */; };
 		187047232B32098600E489AC /* TabView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047222B32098600E489AC /* TabView+Extensions.swift */; };
@@ -82,10 +82,10 @@
 /* Begin PBXFileReference section */
 		1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		180967B22C38642900393D28 /* iPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPhone.swift; sourceTree = "<group>"; };
 		180BD22E2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		181BAA3B2C0BC68A00E7DA87 /* WhatToTest.en-US */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "WhatToTest.en-US"; sourceTree = "<group>"; };
 		1826974D2BF9602F00964297 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
-		1870471C2B30B59900E489AC /* NewGreetingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGreetingCardView.swift; sourceTree = "<group>"; };
 		1870471E2B30B6F600E489AC /* GreetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCard.swift; sourceTree = "<group>"; };
 		187047202B3131B300E489AC /* ViewGreetingCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewGreetingCardsView.swift; sourceTree = "<group>"; };
 		187047222B32098600E489AC /* TabView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabView+Extensions.swift"; sourceTree = "<group>"; };
@@ -285,7 +285,6 @@
 				189F5C662B2766D00067245A /* MenuOverlayView.swift */,
 				189F5C782B27CF240067245A /* NewCardView.swift */,
 				18D9624A2B2654EA00662849 /* NewEventView.swift */,
-				1870471C2B30B59900E489AC /* NewGreetingCardView.swift */,
 				18D962422B264D1D00662849 /* NewRecipientView.swift */,
 				189F5C6E2B27C6410067245A /* PrintView.swift */,
 				189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */,
@@ -315,6 +314,7 @@
 				189F5C722B27CAEF0067245A /* UIImage+Extensions.swift */,
 				189F5C7A2B27CFAA0067245A /* UIView+Extensions.swift */,
 				189F5C7C2B27CFD10067245A /* View+Extensions.swift */,
+				180967B22C38642900393D28 /* iPhone.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -496,12 +496,12 @@
 				18D962132B263EC200662849 /* Card.swift in Sources */,
 				187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */,
 				18D9624D2B2656AB00662849 /* EventsList.swift in Sources */,
-				1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */,
 				189F5C6D2B27B48A0067245A /* AddressView.swift in Sources */,
 				18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */,
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
 				187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */,
+				180967B32C38642900393D28 /* iPhone.swift in Sources */,
 				1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

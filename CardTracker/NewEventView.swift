@@ -17,19 +17,6 @@ struct NewEventView: View {
     
     @State var presentAlert = false
     
-    init() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-    }
-    
     var body: some View {
         NavigationView {
             Form {
@@ -48,14 +35,14 @@ struct NewEventView: View {
                 }, label: {
                     Image(systemName: "square.and.arrow.down")
                         .font(.largeTitle)
-                        .foregroundColor(.green)
+                        .foregroundColor(.accentColor)
                 })
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "chevron.down.circle.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.green)
+                        .foregroundColor(.accentColor)
                 })
             }
             )

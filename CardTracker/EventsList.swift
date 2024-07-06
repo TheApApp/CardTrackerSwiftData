@@ -13,29 +13,16 @@ struct EventsList: View {
     @Query private var events: [EventType]
     @State private var newEvent = false
     
-    init() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-    }
-    
     var body: some View {
         NavigationSplitView {
             List {
                 ForEach(events) { event in
                     NavigationLink {
                         Text("Event named \(event.eventName)")
-                            .foregroundColor(.green)
+                            .foregroundColor(.accentColor)
                     } label: {
                         Text(event.eventName)
-                            .foregroundColor(.green)
+                            .foregroundColor(.accentColor)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -55,13 +42,13 @@ struct EventsList: View {
                     }, label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title2)
-                            .foregroundColor(.green)
+                            .foregroundColor(.accentColor)
                     })
                 }
             }
         } detail: {
             Text("Select event")
-                .foregroundColor(.green)
+                .foregroundColor(.accentColor)
         }
         .sheet(isPresented: $newEvent) {
             NewEventView()

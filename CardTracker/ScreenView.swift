@@ -9,8 +9,9 @@ import SwiftData
 import SwiftUI
 
 struct ScreenView: View {
+    @EnvironmentObject var isIphone: IsIphone
+    
     private let blankCardFront = UIImage(named: "frontImage")
-    private var iPhone = false
     private var card: Card?
     private var greetingCard: GreetingCard?
     var isEventType: ListView = .recipients
@@ -21,10 +22,6 @@ struct ScreenView: View {
         self.greetingCard = greetingCard
         self.isEventType = isEventType
         self._navigationPath = navigationPath
-        
-        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
-            iPhone = true
-        }
     }
     
     var body: some View {
@@ -40,44 +37,44 @@ struct ScreenView: View {
                         switch isEventType {
                         case .events:
                             Text("\(card?.recipient?.fullName ?? "Unknown")")
-                                .foregroundColor(.green)
+                                .foregroundColor(.accentColor)
                             HStack {
                                 Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
                                     .fixedSize()
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                                 MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
                             }
                         case .recipients:
                             Text("\(card?.eventType?.eventName ?? "Unknown")")
-                                .foregroundColor(.green)
+                                .foregroundColor(.accentColor)
                             HStack {
                                 Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
                                     .fixedSize()
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                                 MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
                             }
                         case .greetingCard:
                             HStack {
                                 Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
                                     .fixedSize(horizontal: false, vertical: true)
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                                 MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
                             }
                         }
 
                     }
-                    .padding(iPhone ? 1 : 5)
-                    .font(iPhone ? .caption : .title3)
-                    .foregroundColor(.primary)
+                    .padding(isIphone.iPhone ? 1 : 5)
+                    .font(isIphone.iPhone ? .caption : .title3)
+                    .foregroundColor(.accentColor)
                 }
             }
         }
         .padding()
-        .frame(minWidth: iPhone ? 160 : 320, maxWidth: .infinity,
-               minHeight: iPhone ? 160 : 320, maxHeight: .infinity)
+        .frame(minWidth: isIphone.iPhone ? 160 : 320, maxWidth: .infinity,
+               minHeight: isIphone.iPhone ? 160 : 320, maxHeight: .infinity)
         .background(Color(UIColor.systemGroupedBackground))
         .mask(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 5)
-        .padding(iPhone ? 5: 10)
+        .padding(isIphone.iPhone ? 5: 10)
     }
 }

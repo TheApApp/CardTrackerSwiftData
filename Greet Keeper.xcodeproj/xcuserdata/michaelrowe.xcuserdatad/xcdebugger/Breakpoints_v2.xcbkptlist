@@ -30,8 +30,8 @@
             filePath = "CardTracker/ScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "init(card:greetingCard:isEventType:navigationPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -59,8 +59,8 @@
             filePath = "CardTracker/NewGreetingCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "saveGreetingCard()"
             landmarkType = "7">
          </BreakpointContent>
@@ -75,8 +75,8 @@
             filePath = "CardTracker/NewGreetingCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -104,8 +104,8 @@
             filePath = "CardTracker/NewGreetingCardView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>

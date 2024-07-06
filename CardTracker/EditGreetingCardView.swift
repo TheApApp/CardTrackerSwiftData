@@ -37,17 +37,22 @@ struct EditGreetingCardView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Detils") {
-                    Picker("Select type", selection: $eventType) {
-                        Text("Unknown Event")
-                            .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
+                Section("Details") {
+                    HStack {
+                        Text("Select Type")
+                            .foregroundColor(.accentColor)
                         
-                        if events.isEmpty == false {
-                            Divider()
+                        Picker("", selection: $eventType) {
+                            Text("Unknown Event")
+                                .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                             
-                            ForEach(events) { event in
-                                Text(event.eventName)
-                                    .tag(Optional(event))
+                            if events.isEmpty == false {
+                                Divider()
+                                
+                                ForEach(events) { event in
+                                    Text(event.eventName)
+                                        .tag(Optional(event))
+                                }
                             }
                         }
                     }
@@ -58,6 +63,7 @@ struct EditGreetingCardView: View {
                     TextField("Website", text: $cardURL)
                         .customTextField()
                 }
+                .foregroundColor(.accentColor)
                 
                 Section("Card Image") {
                     HStack(alignment: .center){
@@ -133,7 +139,7 @@ struct EditGreetingCardView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text(editorTitle)
-                        .font(Font.system(size: 20, weight: .medium, design: .rounded))
+                        .font(Font.system(size: 15, weight: .medium, design: .rounded))
                         .foregroundColor(.accentColor)
                 }
                 
@@ -196,7 +202,7 @@ struct EditGreetingCardView: View {
         }
     }
     
-    func openSettings() {
+    @MainActor func openSettings() {
         #if os(macOS)
             SettingsLink {
                 Text("Settings")

@@ -33,17 +33,6 @@ struct ViewEventsView: View {
     @State private var isLoading: Bool = false
     
     init(recipient: Recipient, navigationPath: Binding<NavigationPath>) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-        
         self.recipient = recipient
         let recipientID = recipient.persistentModelID // Note this is required to help in Macro Expansion
         _cards = Query(
@@ -104,7 +93,7 @@ struct ViewEventsView: View {
                     navBarItemChosen = .newCard
                 }, label: {
                     Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.green)
+                        .foregroundColor(.accentColor)
                 })
                 if isLoading {
                     ProgressView()

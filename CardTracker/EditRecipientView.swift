@@ -23,16 +23,6 @@ struct EditRecipientView: View {
     @State private var showPicker = false
     
     init(recipient: Bindable<Recipient>, navigationPath: Binding<NavigationPath>) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
         self._recipient = recipient
         self._navigationPath = navigationPath
     }
@@ -118,8 +108,8 @@ struct EditRecipientView: View {
                     }
                 }, label: {
                     Image(systemName: "person.crop.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.green)
+//                        .font(.largeTitle)
+//                        .foregroundColor(.accentColor)
                 })
             }
             )

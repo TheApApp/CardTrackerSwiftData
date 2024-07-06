@@ -29,33 +29,26 @@ struct NewGreetingCardView: View {
     @State private var cameraNotAuthorized = false
     @State private var isCameraPresented = false
     
-    init() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-    }
-    
     var body: some View {
         NavigationView {
             Form {
                 Section("Details") {
-                    Picker("Select type", selection: $selectedEvent) {
-                        Text("Unknown Event")
-                            .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
+                    HStack {
+                        Text("Select Type")
+                            .foregroundColor(.accentColor)
+                            .font(.headline)
                         
-                        if events.isEmpty == false {
-                            Divider()
+                        Picker("Select type", selection: $selectedEvent) {
+                            Text("Unknown Event")
+                                .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                             
-                            ForEach(events) { event in
-                                Text(event.eventName)
-                                    .tag(Optional(event))
+                            if events.isEmpty == false {
+                                Divider()
+                                
+                                ForEach(events) { event in
+                                    Text(event.eventName)
+                                        .tag(Optional(event))
+                                }
                             }
                         }
                     }
@@ -66,6 +59,7 @@ struct NewGreetingCardView: View {
                     TextField("Website", text: $cardURLString)
                         .customTextField()
                 }
+                .foregroundColor(.accentColor)
                 
                 Section("Card Image") {
                     ZStack {
@@ -143,15 +137,15 @@ struct NewGreetingCardView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "square.and.arrow.down")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
+//                        .font(.largeTitle)
+//                        .foregroundColor(.accentColor)
                 })
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "chevron.down.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
+//                        .font(.largeTitle)
+//                        .foregroundColor(.accentColor)
                 })
             }
             )

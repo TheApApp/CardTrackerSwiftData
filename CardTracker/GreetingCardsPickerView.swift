@@ -24,16 +24,6 @@ struct GreetingCardsPickerView: View {
     var eventType: EventType
     
     init(eventType: EventType, selectedGreetingCard: Binding<GreetingCard?>) {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 35)!]
-        navBarAppearance.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGreen,
-            .font: UIFont(name: "ArialRoundedMTBold", size: 20)!]
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
         self.eventType = eventType
         _selectedGreetingCard = selectedGreetingCard
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion

@@ -36,4 +36,4 @@ enum ListView: String, Identifiable, CaseIterable {
 }
 
 /// Maximum number of bytes for image size
-let maxBytes = 2_000_000
+let maxBytes = 1_000_000

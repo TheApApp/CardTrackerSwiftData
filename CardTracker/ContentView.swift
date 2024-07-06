@@ -26,7 +26,7 @@ struct ContentView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                                 Text("Events")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
@@ -35,19 +35,19 @@ struct ContentView: View {
                             }, label: {
                                 Image(systemName: "plus.circle")
                                     .font(.title2)
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                             })
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             EditButton()
-                                .foregroundColor(.green)
+                                .foregroundColor(.accentColor)
                         }
                     }
             }
             .tabItem {
                 Image(systemName: "calendar")
                 Text("Events")
-                    .foregroundColor(.green)
+                    .foregroundColor(.accentColor)
             }
             .tag(ListView.events)
             NavigationView {
@@ -56,7 +56,7 @@ struct ContentView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                                 Text("Gallery")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
@@ -65,7 +65,7 @@ struct ContentView: View {
                             }, label: {
                                 Image(systemName: "plus.circle")
                                     .font(.title2)
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                             })
                         }
                     }
@@ -73,7 +73,7 @@ struct ContentView: View {
             .tabItem {
                 Image(systemName: "photo.stack")
                 Text("Gallery")
-                    .foregroundColor(.green)
+                    .foregroundColor(.accentColor)
             }
             .tag(ListView.greetingCard)
             NavigationView {
@@ -82,7 +82,7 @@ struct ContentView: View {
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
                                 Text("Recipient")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button(action: {
@@ -91,19 +91,19 @@ struct ContentView: View {
                             }, label: {
                                 Image(systemName: "plus.circle")
                                     .font(.title2)
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.accentColor)
                             })
                         }
                         ToolbarItem(placement: .navigationBarTrailing) {
                             EditButton()
-                                .foregroundColor(.green)
+                                .foregroundColor(.accentColor)
                         }
                     }
             }
             .tabItem {
                 Image(systemName: "person.crop.circle")
                 Text("Recipients")
-                    .foregroundColor(.green)
+                    .foregroundColor(.accentColor)
             }
             .tag(ListView.recipients)
         }
