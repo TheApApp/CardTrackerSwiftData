@@ -1,13 +1,9 @@
-Close to second mainteance release.
+Initial feature redesign for adding events and cards
 
-Found bug in image sizing code, have rewriten, this means you need to remove and recreate all cards - sorry.
+No Known bugs - Yet
 
 Things to Test:
-1. PDF Print for Recipient view, test both small number of cards (less than 16) and large number (greater than 16) - This appears to be an off by 1 issue, 
-2. Try printing on multiple printers to confirm that none of the text or cards are cut off.
-3. Confirm if background syncing is no longer crashing app.
-4. Confirm Color consistency across all screens and orientations
-5. If you have access to a Vision Pro let me know, as I have changed the UI to address an issue that only impacts the Vision Pro
+1. You can now create a new event when adding a card to the gallery.  What do you think of the User Experience?ts the Vision Pro
 
 Things yet to come:
 1. Correct VisionOS layout issues

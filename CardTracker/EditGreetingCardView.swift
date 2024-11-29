@@ -40,7 +40,7 @@ struct EditGreetingCardView: View {
         NavigationStack {
             Form {
                 Section("Event") {
-                    Picker("Select type", selection: $eventType) {
+                    Picker("Select Event type", selection: $eventType) {
                         Text("Unknown Event")
                             .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                         
@@ -53,7 +53,9 @@ struct EditGreetingCardView: View {
                             }
                         }
                     }
-                    NavigationLink("Add New Event", destination: NewEventView())
+                    NavigationLink(destination: NewEventView()) {
+                        Text("\(Image(systemName: "plus.circle.fill")) Add New Event")
+                    }
                 }
                 
                 Section("Card details") {

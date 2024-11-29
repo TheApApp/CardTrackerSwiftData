@@ -42,7 +42,7 @@ struct NewCardView: View {
             VStack {
                 Form {
                     Section("Card Information") {
-                        Picker("Select type", selection: $selectedEvent) {
+                        Picker("Select Event Type", selection: $selectedEvent) {
                             Text("Unknown Event")
                                 .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                             
