@@ -39,3 +39,7 @@ struct AddressView: View {
         .padding([.leading, .trailing], 10 )
     }
 }
+
+#Preview {
+    AddressView(recipient: Recipient(addressLine1: "123 North Street", addressLine2: "", city: "Anytown", state: "NC", zip: "12345-1234", country: "US", firstName: "Johnny", lastName: "Appleseed"))
+}

@@ -34,28 +34,30 @@ struct EditGreetingCardView: View {
     @State private var cameraNotAuthorized = false
     @State private var isCameraPresented = false
     
+    @State private var newEvent = false
+    
     var body: some View {
         NavigationStack {
             Form {
-                Section("Details") {
-                    HStack {
-                        Text("Select Type")
-                            .foregroundColor(.accentColor)
+                Section("Event") {
+                    Picker("Select type", selection: $eventType) {
+                        Text("Unknown Event")
+                            .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                         
-                        Picker("", selection: $eventType) {
-                            Text("Unknown Event")
-                                .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
+                        if events.isEmpty == false {
+                            Divider()
                             
-                            if events.isEmpty == false {
-                                Divider()
-                                
-                                ForEach(events) { event in
-                                    Text(event.eventName)
-                                        .tag(Optional(event))
-                                }
+                            ForEach(events) { event in
+                                Text(event.eventName)
+                                    .tag(Optional(event))
                             }
                         }
                     }
+                    NavigationLink("Add New Event", destination: NewEventView())
+                }
+                
+                Section("Card details") {
+                    
                     TextField("Description", text: $cardName)
                         .customTextField()
                     TextField("Manufacturer", text: $cardManufacturer)
@@ -80,7 +82,7 @@ struct EditGreetingCardView: View {
                                 .frame(width: 200)
                                 .onTapGesture { self.frontPhoto = true }
                                 .actionSheet(isPresented: $frontPhoto) { () -> ActionSheet in
-                                    #if !os(visionOS)
+#if !os(visionOS)
                                     ActionSheet(
                                         title: Text("Choose mode"),
                                         message: Text("Select one."),
@@ -99,7 +101,7 @@ struct EditGreetingCardView: View {
                                             ActionSheet.Button.cancel()
                                         ]
                                     )
-                                    #else
+#else
                                     ActionSheet(
                                         title: Text("Choose mode"),
                                         message: Text("Select one."),
@@ -110,7 +112,7 @@ struct EditGreetingCardView: View {
                                             ActionSheet.Button.cancel()
                                         ]
                                     )
-                                    #endif
+#endif
                                 }
                                 .sheet(isPresented: $captureFrontImage) {
                                     ImagePicker(
@@ -175,9 +177,9 @@ struct EditGreetingCardView: View {
             .onChange(of: frontImageSelected) { oldValue, newValue in
                 cardUIImage = newValue?.asUIImage()
             }
-            #if os(macOS)
+#if os(macOS)
             .padding()
-            #endif
+#endif
             Spacer()
         }
     }
@@ -203,16 +205,16 @@ struct EditGreetingCardView: View {
     }
     
     @MainActor func openSettings() {
-        #if os(macOS)
-            SettingsLink {
-                Text("Settings")
-            }
-        #else
+#if os(macOS)
+        SettingsLink {
+            Text("Settings")
+        }
+#else
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
         if UIApplication.shared.canOpenURL(settingsUrl) {
             UIApplication.shared.open(settingsUrl, completionHandler: { _ in })
         }
-        #endif
+#endif
     }
     
     func checkCameraAuthorization() {
@@ -228,19 +230,19 @@ struct EditGreetingCardView: View {
 }
 
 #Preview("Add Greeting Card") {
-     let config = ModelConfiguration(isStoredInMemoryOnly: true)
-     let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
-     let card: GreetingCard? = nil
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
+    let card: GreetingCard? = nil
     
     return EditGreetingCardView(greetingCard: card)
-         .modelContainer(container)
+        .modelContainer(container)
 }
 
 #Preview("Edit Greeting Card") {
-     let config = ModelConfiguration(isStoredInMemoryOnly: true)
-     let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
-     let card = GreetingCard(cardName: "CardName", cardFront: Data(), cardManufacturer: "ABB", cardURL: "cardSampleURL")
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
+    let card = GreetingCard(cardName: "CardName", cardFront: Data(), cardManufacturer: "ABB", cardURL: "cardSampleURL")
     
     return EditGreetingCardView(greetingCard: card)
-         .modelContainer(container)
+        .modelContainer(container)
 }

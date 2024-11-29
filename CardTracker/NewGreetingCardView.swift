@@ -28,6 +28,7 @@ struct NewGreetingCardView: View {
     
     @State private var cameraNotAuthorized = false
     @State private var isCameraPresented = false
+    @State private var newEvent = false
     
     var body: some View {
         NavigationView {
@@ -52,6 +53,8 @@ struct NewGreetingCardView: View {
                             }
                         }
                     }
+                    NavigationLink("Add New Event", destination: NewEventView())
+                    
                     TextField("Description", text: $cardName)
                         .customTextField()
                     TextField("Manufacturer", text: $cardManufacturer)
@@ -129,6 +132,10 @@ struct NewGreetingCardView: View {
                 )
             }
 
+            .sheet(isPresented: $newEvent) {
+                NewEventView()
+            }
+            
             .padding([.leading, .trailing], 10)
             .navigationBarItems(trailing:
                                     HStack {

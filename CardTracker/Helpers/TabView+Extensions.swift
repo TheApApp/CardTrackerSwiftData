@@ -22,12 +22,13 @@ import SwiftUI
 /// }
 /// ```
 extension Binding {
-    func onUpdate(_ closure: @Sendable @escaping () -> Void) -> Binding<Value> {
-        Binding(get: {
-            wrappedValue
-        }, set: { newValue in
-            wrappedValue = newValue
-            closure()
-        })
+    func onUpdate(_ closure: @escaping @Sendable () -> Void) -> Binding<Value> where Value: Sendable {
+        Binding(
+            get: { self.wrappedValue },
+            set: { newValue in
+                self.wrappedValue = newValue
+                closure()
+            }
+        )
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Michael Rowe on 12/10/23.
 //
 
+import os
 import SwiftUI
 import SwiftData
 
@@ -13,6 +14,7 @@ import SwiftData
 struct GreetKeeperApp: App {
     @State var isIphone = IsIphone()
     
+    let logger=Logger(subsystem: "com.theapapp.CardTracker", category: "State Changes")
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Card.self,
@@ -28,11 +30,19 @@ struct GreetKeeperApp: App {
         }
     }()
 
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
                 .modelContainer(sharedModelContainer)
                 .environmentObject(isIphone)
+                .onChange(of: scenePhase) {
+                    print("scenePhase \(scenePhase)")
+//                    logger.log("scenePhase \(scenePhase)")
+                    /// look at logger for UIapplicationDelecgate if memory issue
+                }
         }
         #if os(macOS)
         .commands {

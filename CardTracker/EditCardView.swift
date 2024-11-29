@@ -27,6 +27,7 @@ struct EditCardView: View {
     @State var frontPhoto = false
     @State var captureFrontImage = false
     @State var shouldPresentCamera = false
+    @State private var newEvent = false
     
     init(card: Bindable<Card>, navigationPath: Binding<NavigationPath>) {
         self._card = card
@@ -42,6 +43,8 @@ struct EditCardView: View {
                     Text("Uknown Event Type")
                         .tag(Optional<EventType>.none)
                     
+                    Divider()
+
                     if events.isEmpty == false {
                         Divider()
                         
@@ -51,6 +54,8 @@ struct EditCardView: View {
                         }
                     }
                 }
+                
+                NavigationLink("Add New Event", destination: NewEventView())
             }
             
             Section("Date") {
