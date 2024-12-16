@@ -13,7 +13,7 @@ import SwiftUI
 struct ViewEventsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
-//    @EnvironmentObject var isIphone: IsIphone
+
     @Query(sort: [SortDescriptor(\Card.cardDate, order: .reverse)]) private var cards: [Card]
     
     private let blankCardFront = UIImage(named: "frontImage")

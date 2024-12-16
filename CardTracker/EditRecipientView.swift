@@ -4,6 +4,7 @@
 //
 //  Created by Michael Rowe on 12/22/23.
 //
+// This looks like an abandoned view  Not called by any other view
 
 import Contacts
 import ContactsUI

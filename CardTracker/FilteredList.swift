@@ -4,6 +4,12 @@
 //
 //  Created by Michael Rowe on 12/10/23.
 //
+/// FilteredList is a view that managed the various supported lists. There are currently three types supported:
+/// .events - which calls ViewCardsView
+/// .greetingCard - which calls ViewGreetingCardView
+/// .recipients - which calls ViewEventsView
+///
+/// FilteredLists is used by ContentView to support different Tabs used by the main application interface.
 
 import SwiftData
 import SwiftUI

@@ -4,6 +4,11 @@
 //
 //  Created by Michael Rowe on 12/10/23.
 //
+/// EventsList provides a simple List in a NavigationSplitView of all the defined events
+/// It appears to be abandonded as it is not called by any other view.
+/// 
+/// It support creating a new Event Type via the NewEventView()
+/// It also supports deleting one or more events via the Edit button and Slide over.
 
 import SwiftData
 import SwiftUI

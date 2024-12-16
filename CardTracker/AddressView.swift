@@ -8,6 +8,7 @@
 import SwiftUI
 
 /// Address View presents the address information of a recipient in a visually appealing way.
+/// This is used by both GeneratePDF and ViewEventsView
 struct AddressView: View {
     var recipient: Recipient
 

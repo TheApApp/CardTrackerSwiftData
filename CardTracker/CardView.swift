@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-/// CardView presents an image of a single Card, sized in a 175 frame.
+/// CardView presents an image of a single Card, sized in a 95% frame.
+/// 
 struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme

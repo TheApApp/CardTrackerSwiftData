@@ -56,6 +56,8 @@ struct NewCardView: View {
                             }
                         }
                         
+                        NavigationLink("Add Event Type", destination: NewEventView())
+                        
                         DatePicker(
                             "Event Date",
                             selection: $cardDate,
@@ -64,6 +66,8 @@ struct NewCardView: View {
                     
                     Section("Image") {
                         if selectedEvent != nil {
+                            NavigationLink("Add Card", destination: EditGreetingCardView(greetingCard: nil))
+                            
                             NavigationLink("Select card:", destination: GreetingCardsPickerView(eventType: selectedEvent!, selectedGreetingCard: $selectedGreetingCard))
                         }
                         

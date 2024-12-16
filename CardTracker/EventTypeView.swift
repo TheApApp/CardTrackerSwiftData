@@ -4,6 +4,9 @@
 //
 //  Created by Michael Rowe on 12/16/23.
 //
+/// EventTypeView
+/// This is used by the GeneratePDF to title the of the event for the Gallery or Sent Cards
+/// This is also used to show the correct type in the EditEventTypeView as either a Gallery or Sent Cards
 
 import SwiftUI
 

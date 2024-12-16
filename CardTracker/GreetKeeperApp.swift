@@ -65,5 +65,7 @@ struct GreetKeeperApp: App {
 
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.accent]
+        UINavigationBar.appearance().tintColor = UIColor.accent
+        
     }
 }

@@ -10,30 +10,46 @@ import SwiftData
 import SwiftUI
 
 /// EdtiGreetingCardView allows for editing an existing Greeting Card.  You may change any value including replacing the image with a new value from your Photo Library, or via the camera
+/// A view for creating or editing a greeting card, including setting its event, details, and image.
 struct EditGreetingCardView: View {
+    /// The shared model context used for saving and retrieving data.
     @Environment(\.modelContext) private var modelContext
+    /// The dismiss environment value used to close the view.
     @Environment(\.dismiss) private var dismiss
     
+    // A query that retrieves all `EventType` objects sorted by their `eventName` property.
     @Query(sort: \EventType.eventName) private var events: [EventType]
     
-    
+    /// The greeting card being edited, if it exists. If `nil`, the view creates a new card.
     var greetingCard: GreetingCard?
+    /// The title displayed in the toolbar, depending on whether a new card is being created or an existing one is being edited.
     private var editorTitle: String { greetingCard == nil ? "Add Greeting Card" : "Edit Greeting Card" }
     
+    /// The currently selected front image for the card, defaulting to a placeholder image.
     @State var frontImageSelected: Image? = Image("frontImage")
+    /// The source type for selecting an image, either from the photo library or camera.
     @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    /// A flag to show the photo picker action sheet.
     @State var frontPhoto = false
+    /// A flag to present the image picker for capturing or selecting a front image.
     @State var captureFrontImage = false
     
+    /// The selected event type for the greeting card.
     @State private var eventType: EventType?
+    /// The name of the card.
     @State private var cardName = ""
+    /// The manufacturer of the card.
     @State private var cardManufacturer = ""
+    /// The URL associated with the card.
     @State private var cardURL = ""
+    /// The front image of the card as a `UIImage`.
     @State private var cardUIImage: UIImage?
     
+    /// A flag indicating whether the camera is not authorized for use.
     @State private var cameraNotAuthorized = false
+    /// A flag to present the camera interface.
     @State private var isCameraPresented = false
-    
+    /// A flag to track if a new event type is being added.
     @State private var newEvent = false
     
     var body: some View {
