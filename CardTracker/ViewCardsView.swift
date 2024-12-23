@@ -77,6 +77,7 @@ struct ViewCardsView: View {
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {
                 ShareSheet(activityItems: [PDFUrl])
+                    .interactiveDismissDisabled(true)
             }
         })
     }

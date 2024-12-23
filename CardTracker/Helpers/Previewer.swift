@@ -60,7 +60,7 @@ struct Previewer {
         
         eventType = EventType(eventName: "Christmas")
         greetingCard = GreetingCard(cardName: "Sample Card", cardFront: UIImage(named: "frontImage")!.pngData()!, eventType: eventType, cardManufacturer: "Cards Are Us", cardURL: "https://michaelrowe01.com")
-        recipient = Recipient(addressLine1: "1 Apple Park Way", addressLine2: "", city: "Cupertino", state: "CA", zip: "95014", country: "USA", firstName: "Steve", lastName: "Jobs")
+        recipient = Recipient(addressLine1: "1 Apple Park Way", addressLine2: "", city: "Cupertino", state: "CA", zip: "95014", country: "USA", firstName: "Steve", lastName: "Jobs", category: .home)
         card = Card(cardDate: Date(), eventType: eventType, cardFront: greetingCard, recipient: recipient)
         
         container.mainContext.insert(card)

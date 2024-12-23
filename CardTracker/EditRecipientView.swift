@@ -59,19 +59,26 @@ struct EditRecipientView: View {
                         print("No Address Provided")
                     }
                     self.showPicker.toggle()
-                }, onCancel: nil )
+                }, onCancel: nil)
                 VStack {
                     Text("")
+                    Picker("Category", selection: $recipient.category) {
+                            ForEach(Category.allCases) { category in
+                                Text(category.rawValue).tag(category)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
+                        
                     HStack {
                         VStack(alignment: .leading) {
                             TextField("First Name", text: $recipient.firstName)
                                 .customTextField()
-                                .textContentType(.name)
                         }
                         VStack(alignment: .leading) {
                             TextField("Last Name", text: $recipient.lastName)
                                 .customTextField()
-                                .textContentType(.name)
                         }
                     }
                     TextField("Address Line 1", text: $recipient.addressLine1)
@@ -109,13 +116,32 @@ struct EditRecipientView: View {
                     }
                 }, label: {
                     Image(systemName: "person.crop.circle.fill")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.accentColor)
+                        .font(.largeTitle)
+                        .foregroundColor(.accentColor)
+                })
+                Button(action: {
+                    do {
+                        try modelContext.save()
+                    } catch {
+                        fatalError("Error saving changes: \(error)")
+                    }
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "square.and.arrow.down")
+                        .font(.largeTitle)
+                        .foregroundColor(.accentColor)
+                })
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "chevron.down.circle.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.accentColor)
                 })
             }
             )
             .alert(isPresented: $presentAlert, content: {
-                Alert( // 1
+                Alert(
                     title: Text("Contacts Denied"),
                     message: Text("Please enable access to contacs in Settings"),
                     dismissButton: .cancel()
@@ -123,6 +149,7 @@ struct EditRecipientView: View {
             })
         }
     }
+    
     
     func checkContactsPermissions() -> Bool {
         // swiftlint:disable:next line_length

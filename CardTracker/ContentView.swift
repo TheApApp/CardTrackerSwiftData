@@ -127,10 +127,13 @@ struct ContentView: View {
             switch listView {
             case .events:
                 EditEventTypeView(eventType: nil)
+                    .interactiveDismissDisabled(true)
             case .recipients:
                 NewRecipientView()
+                    .interactiveDismissDisabled(true)
             case .greetingCard:
                 EditGreetingCardView(greetingCard: nil)
+                    .interactiveDismissDisabled(true)
             }
         }
     }

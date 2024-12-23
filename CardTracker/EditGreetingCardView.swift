@@ -82,6 +82,7 @@ struct EditGreetingCardView: View {
                         .customTextField()
                     TextField("Website", text: $cardURL)
                         .customTextField()
+                        .autocapitalization(.none)
                 }
                 .foregroundColor(.accentColor)
                 
@@ -136,6 +137,7 @@ struct EditGreetingCardView: View {
                                     ImagePicker(
                                         sourceType: sourceType,
                                         image: $frontImageSelected)
+                                    .interactiveDismissDisabled(true)
                                 }
                             
                         }

@@ -60,6 +60,7 @@
 		18D9624D2B2656AB00662849 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624C2B2656AB00662849 /* EventsList.swift */; };
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
+		9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9586F3FD2D19ECD000CE1A39 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+		9586F3FD2D19ECD000CE1A39 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +264,7 @@
 				18D9623C2B26409500662849 /* EventType.swift */,
 				1870471E2B30B6F600E489AC /* GreetingCard.swift */,
 				18D9623E2B26411900662849 /* Recipient.swift */,
+				9586F3FD2D19ECD000CE1A39 /* Category.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */,
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
+				9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */,
 				187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */,
 				180967B32C38642900393D28 /* iPhone.swift in Sources */,
 				1800AC0E2BAF3BD800C51D14 /* AsyncImageView.swift in Sources */,

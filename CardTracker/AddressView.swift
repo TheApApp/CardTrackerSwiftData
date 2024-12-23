@@ -10,7 +10,9 @@ import SwiftUI
 /// Address View presents the address information of a recipient in a visually appealing way.
 /// This is used by both GeneratePDF and ViewEventsView
 struct AddressView: View {
-    var recipient: Recipient
+    @Bindable  var recipient: Recipient
+    @State private var navigationPath = NavigationPath()
+    @State private var editRecipient = false
 
     init(recipient: Recipient) {
         self.recipient = recipient
@@ -18,9 +20,12 @@ struct AddressView: View {
 
     var body: some View {
         Menu {
-            Button("Edit", action: editAddress)
+            Button("Edit") {
+                editRecipient.toggle()
+            }
         } label: {
-          VStack(alignment: .leading) {
+            VStack(alignment: .leading) {
+                Text("\(recipient.category?.rawValue.capitalized ?? "Home")")
                 Text("\(recipient.firstName) \(recipient.lastName)")
                 if !recipient.addressLine1.isEmpty {
                     Text(recipient.addressLine1)
@@ -42,14 +47,13 @@ struct AddressView: View {
             .foregroundColor(.accentColor)
             .padding([.leading, .trailing], 10 )
         }
-    }
-    
-    func editAddress() {
-        print("Edit Address")
-        // Need to create an edit function
+        .sheet(isPresented: $editRecipient) {
+            EditRecipientView(recipient: $recipient, navigationPath: $navigationPath)
+                .interactiveDismissDisabled(true)
+        }
     }
 }
 
 #Preview {
-    AddressView(recipient: Recipient(addressLine1: "123 North Street", addressLine2: "", city: "Anytown", state: "NC", zip: "12345-1234", country: "US", firstName: "Johnny", lastName: "Appleseed"))
+    AddressView(recipient: Recipient(addressLine1: "123 North Street", addressLine2: "", city: "Anytown", state: "NC", zip: "12345-1234", country: "US", firstName: "Johnny", lastName: "Appleseed", category: .home))
 }

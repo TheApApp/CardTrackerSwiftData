@@ -24,6 +24,7 @@ struct NewRecipientView: View {
     @State private var state: String = ""
     @State private var zip: String = ""
     @State private var country: String = ""
+    @State private var selectedCategory: Category = .home
     
     @State var presentAlert = false
     @State var showPicker = false
@@ -62,6 +63,15 @@ struct NewRecipientView: View {
                 }, onCancel: nil)
                 VStack {
                     Text("")
+                    Picker("Category", selection: $selectedCategory) {
+                            ForEach(Category.allCases) { category in
+                                Text(category.rawValue).tag(category)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
+                        
                     HStack {
                         VStack(alignment: .leading) {
                             TextField("First Name", text: $firstName)
@@ -149,7 +159,9 @@ struct NewRecipientView: View {
                 zip: zip,
                 country: country.capitalized(with: NSLocale.current),
                 firstName: firstName,
-                lastName: lastName)
+                lastName: lastName,
+                category: selectedCategory
+            )
             modelContext.insert(recipient)
         }
         do {
@@ -194,6 +206,43 @@ struct NewRecipientView: View {
     }
 }
 
+
 #Preview {
+    var sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            Card.self,
+            EventType.self,
+            Recipient.self,
+            GreetingCard.self,
+        ])
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true, cloudKitDatabase: .none )
+        do {
+            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }()
+    // Mock in-memory context for preview
+    let previewModelContext: ModelContext = {
+        let modelContext = ModelContext(sharedModelContainer)
+        // You can add any mock data to the context if needed
+        let sampleRecipient = Recipient(
+            addressLine1: "John",
+            addressLine2: "Doe",
+            city: "1234 Elm Street",
+            state: "Apt 101",
+            zip: "Anytown",
+            country: "CA",
+            firstName: "12345",
+            lastName: "USA",
+            category: .home
+        )
+        
+        modelContext.insert(sampleRecipient)
+        return modelContext
+    }()
+
+    // Create a preview for NewRecipientView with dummy data and necessary environment setup
     NewRecipientView()
+        .environment(\.modelContext, previewModelContext) // Provide a mock model context for preview
 }

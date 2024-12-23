@@ -146,7 +146,8 @@ struct EditAnEvent_Previews: PreviewProvider {
                         zip: "01234",
                         country: "USA",
                         firstName: "First Name",
-                        lastName: "Last Name"
+                        lastName: "Last Name",
+                        category: .home
                     )
                 )
             ),

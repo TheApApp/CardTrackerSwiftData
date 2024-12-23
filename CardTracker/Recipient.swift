@@ -11,6 +11,7 @@ import SwiftData
 /// A recipient is someone you have sent a card to.  It is the primary view for the application.  A recipient must have a name.
 @Model
 final class Recipient: CustomDebugStringConvertible {
+    
     // MARK: Properties
     /// When sending a card, a recipient should have an address.  This is the first line, usually the street address.
     var addressLine1: String = ""
@@ -31,8 +32,11 @@ final class Recipient: CustomDebugStringConvertible {
     /// A Recipient may have zero or more cards. There is a cascading relationship to the cards
     @Relationship(deleteRule: .cascade, inverse: \Card.recipient) var cards: [Card]? = [Card]()
     
+    /// The category of the recipient, optional, but will default to .home
+    var category: Category? = Category.home
+    
     var debugDescription: String {
-        "\(fullName ), \(firstName ), \(lastName ), \(addressLine1 ), \(addressLine2 ), \(city ), \(state ), \(zip ), \(country ), Number of Cards - \(cardsSent())"
+        "\(fullName ), \(firstName ), \(lastName ), \(addressLine1 ), \(addressLine2 ), \(city ), \(state ), \(zip ), \(country ), Number of Cards - \(cardsSent()), Category: \(category)"
     }
     
     // MARK: - Computed Properties
@@ -42,7 +46,7 @@ final class Recipient: CustomDebugStringConvertible {
     }
      
     // MARK: - Initializer
-    init(addressLine1: String, addressLine2: String, city: String, state: String, zip: String, country: String, firstName: String, lastName: String) {
+    init(addressLine1: String, addressLine2: String, city: String, state: String, zip: String, country: String, firstName: String, lastName: String, category: Category) {
         self.addressLine1 = addressLine1
         self.addressLine2 = addressLine2
         self.city = city
@@ -51,6 +55,7 @@ final class Recipient: CustomDebugStringConvertible {
         self.country = country
         self.firstName = firstName
         self.lastName = lastName
+        self.category = category
     }
     
     // MARK: - Intents

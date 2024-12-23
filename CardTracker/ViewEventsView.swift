@@ -112,11 +112,13 @@ struct ViewEventsView: View {
             switch item {
             case .newCard:
                 NewCardView(recipient: recipient)
+                    .interactiveDismissDisabled(true)
             }
         }
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {
                 ShareSheet(activityItems: [PDFUrl])
+                    .interactiveDismissDisabled(true)
             }
         })
     }
