@@ -17,27 +17,36 @@ struct AddressView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(recipient.firstName) \(recipient.lastName)")
-            if !recipient.addressLine1.isEmpty {
-                Text(recipient.addressLine1)
-            }
-            if !recipient.addressLine2.isEmpty {
-                Text(recipient.addressLine2)
-            }
-            let cityLine =
+        Menu {
+            Button("Edit", action: editAddress)
+        } label: {
+          VStack(alignment: .leading) {
+                Text("\(recipient.firstName) \(recipient.lastName)")
+                if !recipient.addressLine1.isEmpty {
+                    Text(recipient.addressLine1)
+                }
+                if !recipient.addressLine2.isEmpty {
+                    Text(recipient.addressLine2)
+                }
+                let cityLine =
                 String("\(recipient.city), \(recipient.state) \(recipient.zip)")
-            if cityLine != ",  " {
-                Text(cityLine)
+                if cityLine != ",  " {
+                    Text(cityLine)
+                }
+                
+                if !recipient.country.isEmpty {
+                    Text(recipient.country).textCase(.uppercase)
+                }
             }
-
-            if !recipient.country.isEmpty {
-                Text(recipient.country).textCase(.uppercase)
-            }
+            .scaledToFit()
+            .foregroundColor(.accentColor)
+            .padding([.leading, .trailing], 10 )
         }
-        .scaledToFit()
-        .foregroundColor(.accentColor)
-        .padding([.leading, .trailing], 10 )
+    }
+    
+    func editAddress() {
+        print("Edit Address")
+        // Need to create an edit function
     }
 }
 
