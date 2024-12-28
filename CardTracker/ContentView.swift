@@ -122,6 +122,7 @@ struct ContentView: View {
             }
             .tag(ListView.recipients)
         }
+        .tabViewStyle(.automatic)
         .sheet(isPresented: $addItem) {
             /// Dynamically presents a modal sheet based on the current tab.
             switch listView {
@@ -139,13 +140,12 @@ struct ContentView: View {
     }
 }
 
-//
-//#Preview {
-//    do {
-//        let previewer = try Previewer()
-//
-//        return ContentView().modelContainer(previewer.container)
-//    } catch {
-//        return Text("Failed to create preview: \(error.localizedDescription)")
-//    }
-//}
+#Preview {
+    do {
+        let previewer = try Previewer()
+
+        return ContentView().modelContainer(previewer.container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
+}
