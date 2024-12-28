@@ -82,14 +82,14 @@ struct RecipientView: View {
                 VStack {
                     Text("")
                     Picker("Category", selection: $selectedCategory) {
-                        ForEach(Category.allCases) { category in
-                            Text(category.rawValue).tag(category)
+                            ForEach(Category.allCases) { category in
+                                Text(category.rawValue).tag(category)
+                            }
                         }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
-                    
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
+                        
                     HStack {
                         VStack(alignment: .leading) {
                             TextField("First Name", text: $firstName)
@@ -122,15 +122,14 @@ struct RecipientView: View {
                     Spacer()
                 }
             }
-            .padding([.leading, .trailing], 10)
-            .navigationTitle(recipientToEdit == nil ? "New Recipient" : "Edit Recipient")
+            .padding([.leading, .trailing], 10 )
+            .navigationTitle("Recipient Information")
             .navigationBarItems(trailing:
                                     HStack {
-                
                 Button(action: {
                     let contactsPermissions = checkContactsPermissions()
-                    if contactsPermissions {
-                        showPicker.toggle()
+                    if contactsPermissions == true {
+                        self.showPicker.toggle()
                     } else {
                         presentAlert = true
                     }
@@ -139,17 +138,16 @@ struct RecipientView: View {
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })
-                
                 Button(action: {
                     saveRecipient()
-                    presentationMode.wrappedValue.dismiss()
+                    self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "square.and.arrow.down")
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })
                 Button(action: {
-                    presentationMode.wrappedValue.dismiss()
+                    self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "chevron.down.circle.fill")
                         .font(.largeTitle)
@@ -160,13 +158,13 @@ struct RecipientView: View {
             .alert(isPresented: $presentAlert, content: {
                 Alert(
                     title: Text("Contacts Denied"),
-                    message: Text("Please enable access to contacts in Settings"),
+                    message: Text("Please enable access to contacs in Settings"),
                     dismissButton: .cancel()
                 )
             })
-            
         }
     }
+    
     
     func saveRecipient() {
         let logger = Logger(subsystem: "com.theapapp.cardtracker", category: "RecipientFormView.SaveRecipient")
@@ -200,7 +198,6 @@ struct RecipientView: View {
             )
             modelContext.insert(newRecipient)
         }
-        
         do {
             try modelContext.save()
         } catch let error as NSError {
