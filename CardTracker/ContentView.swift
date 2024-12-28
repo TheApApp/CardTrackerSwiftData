@@ -129,7 +129,7 @@ struct ContentView: View {
                 EditEventTypeView(eventType: nil)
                     .interactiveDismissDisabled(true)
             case .recipients:
-                NewRecipientView()
+                RecipientView()
                     .interactiveDismissDisabled(true)
             case .greetingCard:
                 EditGreetingCardView(greetingCard: nil)

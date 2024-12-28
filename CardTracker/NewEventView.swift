@@ -50,7 +50,7 @@ struct NewEventView: View {
     }
     
     func saveEvent() {
-        let logger=Logger(subsystem: "com.theapapp.cardtracker", category: "NewRecipientView.SaveEvent")
+        let logger=Logger(subsystem: "com.theapapp.cardtracker", category: "EVentView.SaveEvent")
         logger.log("Saving...")
         if eventName != "" {
             let event = EventType(eventName: eventName)

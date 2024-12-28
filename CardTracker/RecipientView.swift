@@ -1,11 +1,11 @@
 //
-//  NewRecipientView.swift
-//  CardTracker
+//  RecipientFormView.swift
+//  Greet Keeper
 //
-//  Created by Michael Rowe on 12/10/23.
+//  Created by Michael Rowe1 on 12/28/24.
 //
-/// Depreicated view.. replacing with Recipient View
-/// 
+
+
 import Contacts
 import ContactsUI
 import os
@@ -13,7 +13,7 @@ import SwiftData
 import SwiftUI
 import SwiftUIKit
 
-struct NewRecipientView: View {
+struct RecipientView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
     
@@ -27,8 +27,25 @@ struct NewRecipientView: View {
     @State private var country: String = ""
     @State private var selectedCategory: Category = .home
     
-    @State var presentAlert = false
-    @State var showPicker = false
+    @State private var presentAlert = false
+    @State private var showPicker = false
+    
+    let recipientToEdit: Recipient?
+    
+    init(recipientToEdit: Recipient? = nil) {
+        self.recipientToEdit = recipientToEdit
+        if let recipient = recipientToEdit {
+            _firstName = State(initialValue: recipient.firstName)
+            _lastName = State(initialValue: recipient.lastName)
+            _addressLine1 = State(initialValue: recipient.addressLine1)
+            _addressLine2 = State(initialValue: recipient.addressLine2)
+            _city = State(initialValue: recipient.city)
+            _state = State(initialValue: recipient.state)
+            _zip = State(initialValue: recipient.zip)
+            _country = State(initialValue: recipient.country)
+            _selectedCategory = State(initialValue: recipient.category ?? .home)
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -42,7 +59,7 @@ struct NewRecipientView: View {
                              as AnyObject).value(forKey: "value"))
                             as? CNPostalAddress {
                             let mailAddress =
-                                CNPostalAddressFormatter.string(from: addressString, style: .mailingAddress)
+                            CNPostalAddressFormatter.string(from: addressString, style: .mailingAddress)
                             addressLine1 = "\(addressString.street)"
                             addressLine2 = ""
                             city = "\(addressString.city)"
@@ -65,14 +82,14 @@ struct NewRecipientView: View {
                 VStack {
                     Text("")
                     Picker("Category", selection: $selectedCategory) {
-                            ForEach(Category.allCases) { category in
-                                Text(category.rawValue).tag(category)
-                            }
+                        ForEach(Category.allCases) { category in
+                            Text(category.rawValue).tag(category)
                         }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
-                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
+                    
                     HStack {
                         VStack(alignment: .leading) {
                             TextField("First Name", text: $firstName)
@@ -105,14 +122,15 @@ struct NewRecipientView: View {
                     Spacer()
                 }
             }
-            .padding([.leading, .trailing], 10 )
-            .navigationTitle("Recipient Information")
+            .padding([.leading, .trailing], 10)
+            .navigationTitle(recipientToEdit == nil ? "New Recipient" : "Edit Recipient")
             .navigationBarItems(trailing:
                                     HStack {
+                
                 Button(action: {
                     let contactsPermissions = checkContactsPermissions()
-                    if contactsPermissions == true {
-                        self.showPicker.toggle()
+                    if contactsPermissions {
+                        showPicker.toggle()
                     } else {
                         presentAlert = true
                     }
@@ -121,16 +139,17 @@ struct NewRecipientView: View {
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })
+                
                 Button(action: {
                     saveRecipient()
-                    self.presentationMode.wrappedValue.dismiss()
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "square.and.arrow.down")
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })
                 Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "chevron.down.circle.fill")
                         .font(.largeTitle)
@@ -141,18 +160,34 @@ struct NewRecipientView: View {
             .alert(isPresented: $presentAlert, content: {
                 Alert(
                     title: Text("Contacts Denied"),
-                    message: Text("Please enable access to contacs in Settings"),
+                    message: Text("Please enable access to contacts in Settings"),
                     dismissButton: .cancel()
                 )
             })
+            
         }
     }
     
     func saveRecipient() {
-        let logger=Logger(subsystem: "com.theapapp.cardtracker", category: "NewRecipientView.SaveRecipient")
+        let logger = Logger(subsystem: "com.theapapp.cardtracker", category: "RecipientFormView.SaveRecipient")
         logger.log("Saving...")
-        if firstName != "" {
-            let recipient = Recipient(
+        
+        if firstName.isEmpty && lastName.isEmpty {
+            return
+        }
+        
+        if let recipient = recipientToEdit {
+            recipient.firstName = firstName
+            recipient.lastName = lastName
+            recipient.addressLine1 = addressLine1
+            recipient.addressLine2 = addressLine2
+            recipient.city = city
+            recipient.state = state
+            recipient.zip = zip
+            recipient.country = country
+            recipient.category = selectedCategory
+        } else {
+            let newRecipient = Recipient(
                 addressLine1: addressLine1.capitalized(with: NSLocale.current),
                 addressLine2: addressLine2.capitalized(with: NSLocale.current),
                 city: city.capitalized(with: NSLocale.current),
@@ -163,8 +198,9 @@ struct NewRecipientView: View {
                 lastName: lastName,
                 category: selectedCategory
             )
-            modelContext.insert(recipient)
+            modelContext.insert(newRecipient)
         }
+        
         do {
             try modelContext.save()
         } catch let error as NSError {
@@ -207,7 +243,6 @@ struct NewRecipientView: View {
     }
 }
 
-
 #Preview {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -242,8 +277,8 @@ struct NewRecipientView: View {
         modelContext.insert(sampleRecipient)
         return modelContext
     }()
-
+    
     // Create a preview for NewRecipientView with dummy data and necessary environment setup
-    NewRecipientView()
+    RecipientView()
         .environment(\.modelContext, previewModelContext) // Provide a mock model context for preview
 }

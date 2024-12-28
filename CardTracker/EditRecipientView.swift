@@ -6,6 +6,8 @@
 //
 // This looks like an abandoned view  Not called by any other view
 
+/// Depreicated view.. replacing with Recipient View
+/// 
 import Contacts
 import ContactsUI
 import os

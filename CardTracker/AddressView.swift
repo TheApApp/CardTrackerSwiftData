@@ -48,7 +48,7 @@ struct AddressView: View {
             .padding([.leading, .trailing], 10 )
         }
         .sheet(isPresented: $editRecipient) {
-            EditRecipientView(recipient: $recipient, navigationPath: $navigationPath)
+            RecipientView(recipientToEdit: recipient)
                 .interactiveDismissDisabled(true)
         }
     }
