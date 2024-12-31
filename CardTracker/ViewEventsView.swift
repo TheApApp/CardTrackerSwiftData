@@ -106,7 +106,7 @@ struct ViewEventsView: View {
             }
             )
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("\(recipient.fullName)")
+//            .navigationTitle("\(recipient.fullName)")
         }
         .sheet(item: $navBarItemChosen ) { item in
             switch item {

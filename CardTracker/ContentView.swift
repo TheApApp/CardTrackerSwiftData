@@ -27,123 +27,141 @@ struct ContentView: View {
     /// Tracks whether the modal sheet for adding a new item is presented.
     @State private var addItem = false
     
+    /// Adding a WalkThru launch screen  Will alllow for a reset to do the walkthu again
+    @AppStorage("walkthrough") var walkthrough = 1
+    @AppStorage("totalViews") var totalViews = 5
+    
     var body: some View {
-        /// The main content view containing a `TabView` with three tabs: Events, Gallery, and Recipients.
-        TabView(selection: $listView) {
-            // Events Tab
-            NavigationView {
-                FilteredList(searchText: searchText, listView: .events, navigationPath: $navigationPath)
-                    .searchable(text: $searchText)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Text("Events")
-                                .foregroundColor(.accentColor)
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                listView = .events
-                                self.addItem.toggle()
-                            }, label: {
-                                Image(systemName: "plus.circle")
-                                    .font(.title2)
+        
+        if walkthrough == 1 {
+            WalkThroughtView(title: "Welcome to Greeting Tracker", description: "Never send the same card twice", bgColor: "AccentColor", img: "Welcome_one")
+        } else if walkthrough == 2 {
+            WalkThroughtView(title: "Events", description: "Let's setup your first event.", bgColor: "AccentColor", img: "Welcome_two")
+        } else if walkthrough == 3 {
+            WalkThroughtView(title: "Cards", description: "Now let's add a card for that event.", bgColor: "AccentColor", img: "Welcome_three")
+        } else if walkthrough == 4 {
+            WalkThroughtView(title: "Recipients", description: "Then add a recipient to receive cards.", bgColor: "AccentColor", img: "Welcome_four")
+        } else if walkthrough == 5 {
+            WalkThroughtView(title: "Putting it together", description: "Finally, add a card to a recipient.", bgColor: "AccentColor", img: "Welcome_five")
+        } else {
+            /// The main content view containing a `TabView` with three tabs: Events, Gallery, and Recipients.
+            TabView(selection: $listView) {
+                // Events Tab
+                NavigationView {
+                    FilteredList(searchText: searchText, listView: .events, navigationPath: $navigationPath)
+                        .searchable(text: $searchText)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Text("Events")
                                     .foregroundColor(.accentColor)
-                            })
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            EditButton()
-                                .foregroundColor(.accentColor)
-                        }
-                    }
-            }
-            .tabItem {
-                Image(systemName: "calendar")
-                Text("Events")
-                    .foregroundColor(.accentColor)
-            }
-            .tag(ListView.events)
-            
-            // Gallery Tab
-            NavigationView {
-                FilteredList(searchText: searchText, listView: .greetingCard, navigationPath: $navigationPath)
-                    .searchable(text: $searchText)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Text("Gallery")
-                                .foregroundColor(.accentColor)
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                listView = .greetingCard
-                                self.addItem.toggle()
-                            }, label: {
-                                Image(systemName: "plus.circle")
-                                    .font(.title2)
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    listView = .events
+                                    self.addItem.toggle()
+                                }, label: {
+                                    Image(systemName: "plus.circle")
+                                        .font(.title2)
+                                        .foregroundColor(.accentColor)
+                                })
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                EditButton()
                                     .foregroundColor(.accentColor)
-                            })
+                            }
                         }
-                    }
-            }
-            .tabItem {
-                Image(systemName: "photo.stack")
-                Text("Gallery")
-                    .foregroundColor(.accentColor)
-            }
-            .tag(ListView.greetingCard)
-            
-            // Recipients Tab
-            NavigationView {
-                FilteredList(searchText: searchText, listView: .recipients, navigationPath: $navigationPath)
-                    .searchable(text: $searchText)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Text("Recipient")
-                                .foregroundColor(.accentColor)
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                listView = .recipients
-                                self.addItem.toggle()
-                            }, label: {
-                                Image(systemName: "plus.circle")
-                                    .font(.title2)
+                }
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Text("Events")
+                        .foregroundColor(.accentColor)
+                }
+                .tag(ListView.events)
+                
+                // Gallery Tab
+                NavigationView {
+                    FilteredList(searchText: searchText, listView: .greetingCard, navigationPath: $navigationPath)
+                        .searchable(text: $searchText)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Text("Gallery")
                                     .foregroundColor(.accentColor)
-                            })
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    listView = .greetingCard
+                                    self.addItem.toggle()
+                                }, label: {
+                                    Image(systemName: "plus.circle")
+                                        .font(.title2)
+                                        .foregroundColor(.accentColor)
+                                })
+                            }
                         }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            EditButton()
-                                .foregroundColor(.accentColor)
+                }
+                .tabItem {
+                    Image(systemName: "photo.stack")
+                    Text("Gallery")
+                        .foregroundColor(.accentColor)
+                }
+                .tag(ListView.greetingCard)
+                
+                // Recipients Tab
+                NavigationView {
+                    FilteredList(searchText: searchText, listView: .recipients, navigationPath: $navigationPath)
+                        .searchable(text: $searchText)
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Text("Recipient")
+                                    .foregroundColor(.accentColor)
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    listView = .recipients
+                                    self.addItem.toggle()
+                                }, label: {
+                                    Image(systemName: "plus.circle")
+                                        .font(.title2)
+                                        .foregroundColor(.accentColor)
+                                })
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                EditButton()
+                                    .foregroundColor(.accentColor)
+                            }
                         }
-                    }
+                }
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Recipients")
+                        .foregroundColor(.accentColor)
+                }
+                .tag(ListView.recipients)
             }
-            .tabItem {
-                Image(systemName: "person.crop.circle")
-                Text("Recipients")
-                    .foregroundColor(.accentColor)
+            .tabViewStyle(.automatic)
+            .sheet(isPresented: $addItem) {
+                /// Dynamically presents a modal sheet based on the current tab.
+                switch listView {
+                case .events:
+                    EditEventTypeView(eventType: nil)
+                        .interactiveDismissDisabled(true)
+                case .recipients:
+                    RecipientView()
+                        .interactiveDismissDisabled(true)
+                case .greetingCard:
+                    EditGreetingCardView(greetingCard: nil)
+                        .interactiveDismissDisabled(true)
+                }
             }
-            .tag(ListView.recipients)
         }
-        .tabViewStyle(.automatic)
-        .sheet(isPresented: $addItem) {
-            /// Dynamically presents a modal sheet based on the current tab.
-            switch listView {
-            case .events:
-                EditEventTypeView(eventType: nil)
-                    .interactiveDismissDisabled(true)
-            case .recipients:
-                RecipientView()
-                    .interactiveDismissDisabled(true)
-            case .greetingCard:
-                EditGreetingCardView(greetingCard: nil)
-                    .interactiveDismissDisabled(true)
-            }
-        }
+        
     }
 }
 
 #Preview {
     do {
         let previewer = try Previewer()
-
+        
         return ContentView().modelContainer(previewer.container)
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")

@@ -59,6 +59,7 @@
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
 		9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9586F3FD2D19ECD000CE1A39 /* Category.swift */; };
+		95DECCCC2D21B3D70052066C /* WalkThroughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */; };
 		95E015942D206B4C00C6574D /* RecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E015932D206B4C00C6574D /* RecipientView.swift */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,7 @@
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		9586F3FD2D19ECD000CE1A39 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughtView.swift; sourceTree = "<group>"; };
 		95E015932D206B4C00C6574D /* RecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +277,7 @@
 				189F5C6C2B27B48A0067245A /* AddressView.swift */,
 				189DB6812B2E230400FC3E87 /* CardView.swift */,
 				18D962102B263EC200662849 /* ContentView.swift */,
+				95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */,
 				18D962522B269DF400662849 /* EditCardView.swift */,
 				189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */,
 				1892FB082B4A370B003997D7 /* EditEventTypeView.swift */,
@@ -466,6 +469,7 @@
 				189F5C672B2766D00067245A /* MenuOverlayView.swift in Sources */,
 				189F5C6B2B27A0430067245A /* MapView.swift in Sources */,
 				18D962532B269DF400662849 /* EditCardView.swift in Sources */,
+				95DECCCC2D21B3D70052066C /* WalkThroughtView.swift in Sources */,
 				18B916722B365441008101A7 /* Previewer.swift in Sources */,
 				18D9623F2B26411900662849 /* Recipient.swift in Sources */,
 				18D9623D2B26409500662849 /* EventType.swift in Sources */,

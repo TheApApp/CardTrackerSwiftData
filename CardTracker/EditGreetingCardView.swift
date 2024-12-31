@@ -34,6 +34,9 @@ struct EditGreetingCardView: View {
     /// A flag to present the image picker for capturing or selecting a front image.
     @State var captureFrontImage = false
     
+    /// An optionally passed eventType
+    var eventTypePassed: EventType?
+    
     /// The selected event type for the greeting card.
     @State private var eventType: EventType?
     /// The name of the card.
@@ -51,6 +54,16 @@ struct EditGreetingCardView: View {
     @State private var isCameraPresented = false
     /// A flag to track if a new event type is being added.
     @State private var newEvent = false
+    
+    init(eventTypePassed: EventType?) {
+        if let eventTypePassed {
+            _eventType = .init(initialValue: eventTypePassed)
+        }
+    }
+    
+    init(greetingCard: GreetingCard?) {
+        self.greetingCard = greetingCard
+    }
     
     var body: some View {
         NavigationStack {
@@ -254,7 +267,7 @@ struct EditGreetingCardView: View {
     let container = try! ModelContainer(for: GreetingCard.self, configurations: config)
     let card: GreetingCard? = nil
     
-    return EditGreetingCardView(greetingCard: card)
+    EditGreetingCardView(greetingCard: card)
         .modelContainer(container)
 }
 

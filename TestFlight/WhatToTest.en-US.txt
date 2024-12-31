@@ -5,6 +5,7 @@ Things to Test:
 2. Card Website should no longer auto capitalize the "H" in "https"
 3. Added ability to edit a recipient's address and more (is this discoverable?)
 4. Added ability to classification a recipient: i.e. work, family, friends. etc.
+5. Added new launch startup screen
 
 Known bugs:
 1. Bug in macOS - can’t access Camera even if setting says permitted
@@ -22,7 +23,6 @@ Potential Features to develop:
 1. Add an app intent to show a gallery of a specific event type’s cards
 1. Add ability to click on a card in the gallery and see all the people it was sent to and when
 1. Add a date range to the PDF Print option so you can print all Christmas cards for a specific year (as an example)
-1. Add pop-up menus for edit on address
 1. Change Card overlays to be pop-up menus
 1. Add overlay information on name, vendor etc. to full screen card
 1. Added filters by recipient catagory

@@ -14,6 +14,7 @@ struct NewCardView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var recipient: Recipient
+    var eventTypePassed: EventType?
 
     @Query(sort: \EventType.eventName) private var events: [EventType]
     @Query(sort: \GreetingCard.cardName) private var greetingCards: [GreetingCard]
@@ -35,6 +36,20 @@ struct NewCardView: View {
                 SortDescriptor(\GreetingCard.cardName, order: .reverse),
             ]
         )
+    }
+    
+    init(recipient: Recipient, eventTypePassed: EventType?) {
+        self.recipient = recipient
+        let selectedEventTypeID = selectedEvent?.persistentModelID
+        _greetingCards = Query(
+            filter: #Predicate {$0.eventType?.persistentModelID == selectedEventTypeID },
+            sort: [
+                SortDescriptor(\GreetingCard.cardName, order: .reverse),
+            ]
+        )
+        if let eventTypePassed {
+            _selectedEvent = .init(wrappedValue: eventTypePassed)
+        }
     }
     
     var body: some View {

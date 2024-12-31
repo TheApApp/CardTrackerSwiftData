@@ -72,7 +72,7 @@ struct ViewCardsView: View {
                 }
             )
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("\(eventType.eventName) - \(cards.count)")
+//            .navigationTitle("\(eventType.eventName) - \(cards.count)")
         }
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {

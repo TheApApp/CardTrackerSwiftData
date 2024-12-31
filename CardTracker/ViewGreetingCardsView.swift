@@ -70,7 +70,7 @@ struct ViewGreetingCardsView: View {
                 )
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("\(eventType)")
+//            .navigationTitle("\(eventType)")
         }
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {
