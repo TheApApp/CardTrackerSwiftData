@@ -12,8 +12,6 @@ struct WalkThroughtView: View {
     @AppStorage("walkthrough") var walkthrough = 1
     @AppStorage("totalViews") var totalViews = 5
     
-//    @Binding var navigationPath: NavigationPath
-    
     var title: String
     var description: String
     var bgColor: String
@@ -33,13 +31,6 @@ struct WalkThroughtView: View {
     @Query(WalkThroughtView.recipientDescriptor) var recipients: [Recipient]
     var recipient: Recipient? { recipients.first}
     
-//    static var eventTypeDescriptor: FetchDescriptor<EventType> {
-//        var descriptor = FetchDescriptor<EventType>(sortBy: [SortDescriptor(\.persistentModelID, order: .reverse)])
-//        descriptor.fetchLimit = 1
-//        return descriptor
-//    }
-    
-//    @Query(WalkThroughtView.eventTypeDescriptor) var eventTypes: [EventType]
     @State private var eventType: EventType? = nil
     
     var body: some View {

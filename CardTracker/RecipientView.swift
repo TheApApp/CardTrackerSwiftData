@@ -16,6 +16,7 @@ import SwiftUIKit
 struct RecipientView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     @State private var lastName: String = ""
     @State private var firstName: String = ""
@@ -48,40 +49,48 @@ struct RecipientView: View {
     }
     
     var body: some View {
-        NavigationView {
-            GeometryReader { geo in
-                ContactPicker(showPicker: $showPicker, onSelectContact: {contact in
-                    firstName = contact.givenName
-                    lastName = contact.familyName
-                    if contact.postalAddresses.count > 0 {
-                        if let addressString = (
-                            ((contact.postalAddresses[0] as AnyObject).value(forKey: "labelValuePair")
-                             as AnyObject).value(forKey: "value"))
-                            as? CNPostalAddress {
-                            let mailAddress =
-                            CNPostalAddressFormatter.string(from: addressString, style: .mailingAddress)
-                            addressLine1 = "\(addressString.street)"
+        NavigationStack {
+            Group {
+                GeometryReader { geo in
+                    ContactPicker(showPicker: $showPicker, onSelectContact: {contact in
+                        firstName = contact.givenName
+                        lastName = contact.familyName
+                        if contact.postalAddresses.count > 0 {
+                            if let addressString = (
+                                ((contact.postalAddresses[0] as AnyObject).value(forKey: "labelValuePair")
+                                 as AnyObject).value(forKey: "value"))
+                                as? CNPostalAddress {
+                                let mailAddress =
+                                CNPostalAddressFormatter.string(from: addressString, style: .mailingAddress)
+                                addressLine1 = "\(addressString.street)"
+                                addressLine2 = ""
+                                city = "\(addressString.city)"
+                                state = "\(addressString.state)"
+                                zip = "\(addressString.postalCode)"
+                                country = "\(addressString.country)"
+                                print("Mail address is \n\(mailAddress)")
+                            }
+                        } else {
+                            addressLine1 = "No Address Provided"
                             addressLine2 = ""
-                            city = "\(addressString.city)"
-                            state = "\(addressString.state)"
-                            zip = "\(addressString.postalCode)"
-                            country = "\(addressString.country)"
-                            print("Mail address is \n\(mailAddress)")
+                            city = ""
+                            state = ""
+                            zip = ""
+                            country = ""
+                            print("No Address Provided")
                         }
-                    } else {
-                        addressLine1 = "No Address Provided"
-                        addressLine2 = ""
-                        city = ""
-                        state = ""
-                        zip = ""
-                        country = ""
-                        print("No Address Provided")
-                    }
-                    self.showPicker.toggle()
-                }, onCancel: nil)
-                VStack {
-                    Text("")
-                    Picker("Category", selection: $selectedCategory) {
+                        self.showPicker.toggle()
+                    }, onCancel: nil)
+                    .alert(isPresented: $presentAlert, content: {
+                        Alert(
+                            title: Text("Contacts Denied"),
+                            message: Text("Please enable access to contacs in Settings"),
+                            dismissButton: .cancel()
+                        )
+                    })
+                    VStack {
+                        Text("")
+                        Picker("Category", selection: $selectedCategory) {
                             ForEach(Category.allCases) { category in
                                 Text(category.rawValue).tag(category)
                             }
@@ -90,78 +99,81 @@ struct RecipientView: View {
                         .frame(height: 50)
                         .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
                         
-                    HStack {
-                        VStack(alignment: .leading) {
-                            TextField("First Name", text: $firstName)
-                                .customTextField()
+                        HStack {
+                            VStack(alignment: .leading) {
+                                TextField("First Name", text: $firstName)
+                                    .customTextField()
+                            }
+                            VStack(alignment: .leading) {
+                                TextField("Last Name", text: $lastName)
+                                    .customTextField()
+                            }
                         }
-                        VStack(alignment: .leading) {
-                            TextField("Last Name", text: $lastName)
+                        TextField("Address Line 1", text: $addressLine1)
+                            .customTextField()
+                        TextField("Address Line 2", text: $addressLine2)
+                            .customTextField()
+                        HStack {
+                            TextField("City", text: $city)
                                 .customTextField()
+                                .frame(width: geo.size.width * 0.48)
+                            Spacer()
+                            TextField("ST", text: $state)
+                                .customTextField()
+                                .frame(width: geo.size.width * 0.18)
+                            Spacer()
+                            TextField("Zip", text: $zip)
+                                .customTextField()
+                                .frame(width: geo.size.width * 0.28)
                         }
-                    }
-                    TextField("Address Line 1", text: $addressLine1)
-                        .customTextField()
-                    TextField("Address Line 2", text: $addressLine2)
-                        .customTextField()
-                    HStack {
-                        TextField("City", text: $city)
+                        TextField("Country", text: $country)
                             .customTextField()
-                            .frame(width: geo.size.width * 0.48)
                         Spacer()
-                        TextField("ST", text: $state)
-                            .customTextField()
-                            .frame(width: geo.size.width * 0.18)
-                        Spacer()
-                        TextField("Zip", text: $zip)
-                            .customTextField()
-                            .frame(width: geo.size.width * 0.28)
                     }
-                    TextField("Country", text: $country)
-                        .customTextField()
-                    Spacer()
                 }
             }
-            .padding([.leading, .trailing], 10 )
-            .navigationTitle("Recipient Information")
-            .navigationBarItems(trailing:
-                                    HStack {
-                Button(action: {
-                    let contactsPermissions = checkContactsPermissions()
-                    if contactsPermissions == true {
-                        self.showPicker.toggle()
-                    } else {
-                        presentAlert = true
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding([.top, .leading, .trailing],10)
+            Spacer()
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Recipient Information")
+                        .font(Font.system(size: 20, weight: .medium, design: .rounded))
+                        .foregroundColor(.accentColor)
+                }
+                
+                ToolbarItem(placement: .primaryAction){
+                    Button(action: {
+                        let contactsPermissions = checkContactsPermissions()
+                        if contactsPermissions == true {
+                            self.showPicker.toggle()
+                        } else {
+                            presentAlert = true
+                        }
+                    }, label: {
+                        Image(systemName: "person.crop.circle.fill.badge.plus")
+                            .foregroundColor(.accentColor)
+                    })
+                }
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        withAnimation {
+                            saveRecipient()
+                            dismiss()
+                        }
+                    } label: {
+                        Image(systemName: "square.and.arrow.down")
                     }
-                }, label: {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
-                })
-                Button(action: {
-                    saveRecipient()
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "square.and.arrow.down")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
-                })
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "chevron.down.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
-                })
+                }
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", role: .cancel) {
+                        dismiss()
+                    }
+                }
+                
             }
-            )
-            .alert(isPresented: $presentAlert, content: {
-                Alert(
-                    title: Text("Contacts Denied"),
-                    message: Text("Please enable access to contacs in Settings"),
-                    dismissButton: .cancel()
-                )
-            })
         }
     }
     
