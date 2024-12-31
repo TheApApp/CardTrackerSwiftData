@@ -71,7 +71,7 @@ struct NewCardView: View {
                             }
                         }
                         
-                        NavigationLink("Add Event Type", destination: NewEventView())
+                        NavigationLink("Add Event Type", destination: EventTypeView())
                         
                         DatePicker(
                             "Event Date",

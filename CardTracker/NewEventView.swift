@@ -5,6 +5,8 @@
 //  Created by Michael Rowe on 12/10/23.
 //
 
+/// DEPRECIATED and removed from build
+
 import os
 import SwiftData
 import SwiftUI
@@ -12,13 +14,14 @@ import SwiftUI
 struct NewEventView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     @State private var eventName: String = ""
     
     @State var presentAlert = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Form {
                 Section("Description") {
                     TextField("Event Name", text: $eventName)
@@ -26,26 +29,30 @@ struct NewEventView: View {
                 }
             }
             .padding([.leading, .trailing], 10 )
-            .navigationTitle("Event Information")
-            .navigationBarItems(trailing:
-                                    HStack {
-                Button(action: {
-                    saveEvent()
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "square.and.arrow.down")
-                        .font(.largeTitle)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Event Information")
+                        .font(Font.system(size: 15, weight: .medium, design: .rounded))
                         .foregroundColor(.accentColor)
-                })
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "chevron.down.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
-                })
+                }
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        withAnimation {
+                            saveEvent()
+                            dismiss()
+                        }
+                    } label: {
+                        Image(systemName: "square.and.arrow.down")
+                    }
+                }
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", role: .cancel) {
+                        dismiss()
+                    }
+                }
             }
-            )
         }
     }
     

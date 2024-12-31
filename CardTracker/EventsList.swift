@@ -56,7 +56,7 @@ struct EventsList: View {
                 .foregroundColor(.accentColor)
         }
         .sheet(isPresented: $newEvent) {
-            NewEventView()
+            EventTypeView()
                 .interactiveDismissDisabled(true)
         }
     }

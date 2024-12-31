@@ -143,7 +143,7 @@ struct ContentView: View {
                 /// Dynamically presents a modal sheet based on the current tab.
                 switch listView {
                 case .events:
-                    EditEventTypeView(eventType: nil)
+                    EventTypeView(eventType: nil)
                         .interactiveDismissDisabled(true)
                 case .recipients:
                     RecipientView()

@@ -33,14 +33,14 @@ struct WalkThroughtView: View {
     @Query(WalkThroughtView.recipientDescriptor) var recipients: [Recipient]
     var recipient: Recipient? { recipients.first}
     
-    static var eventTypeDescriptor: FetchDescriptor<EventType> {
-        var descriptor = FetchDescriptor<EventType>(sortBy: [SortDescriptor(\.persistentModelID, order: .reverse)])
-        descriptor.fetchLimit = 1
-        return descriptor
-    }
+//    static var eventTypeDescriptor: FetchDescriptor<EventType> {
+//        var descriptor = FetchDescriptor<EventType>(sortBy: [SortDescriptor(\.persistentModelID, order: .reverse)])
+//        descriptor.fetchLimit = 1
+//        return descriptor
+//    }
     
-    @Query(WalkThroughtView.eventTypeDescriptor) var eventTypes: [EventType]
-    var eventType: EventType? { eventTypes.first}
+//    @Query(WalkThroughtView.eventTypeDescriptor) var eventTypes: [EventType]
+    @State private var eventType: EventType? = nil
     
     var body: some View {
         ZStack{
@@ -213,7 +213,7 @@ struct WalkThroughtView: View {
             }
         }
         .sheet(isPresented: $showNewEventView) {
-            NewEventView()
+            EventTypeView(eventType: eventType)
         }
         .sheet(isPresented: $showNewGreetingCardView) {
             EditGreetingCardView(eventTypePassed: eventType)

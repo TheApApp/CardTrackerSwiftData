@@ -82,7 +82,7 @@ class GeneratePDF {
             
             pdfOutput.beginPDFPage(nil)
             
-            let renderTop = ImageRenderer(content: EventTypeView(title: title, isCards: false))
+            let renderTop = ImageRenderer(content: DisplayEventTypeView(title: title, isCards: false))
             renderTop.render { size, renderTop in
                 pdfOutput.move(to: CGPoint(x: origin.x, y: origin.y))
                 pdfOutput.translateBy(x: 10.0, y: 720)

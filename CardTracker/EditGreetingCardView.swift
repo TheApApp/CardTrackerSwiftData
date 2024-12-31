@@ -82,7 +82,7 @@ struct EditGreetingCardView: View {
                             }
                         }
                     }
-                    NavigationLink(destination: NewEventView()) {
+                    NavigationLink(destination: EventTypeView()) {
                         Text("\(Image(systemName: "plus.circle.fill")) Add New Event")
                     }
                 }
