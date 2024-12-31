@@ -15,22 +15,42 @@ struct CardView: View {
 
     var cardImage: UIImage
     var cardTitle = ""
+    var cardDate: Date? = Date()
 
-    init(cardImage: UIImage, cardTitle: String) {
+    init(cardImage: UIImage, cardTitle: String, cardDate: Date) {
         self.cardImage = cardImage
         self.cardTitle = cardTitle
+        self.cardDate = cardDate
     }
 
     var body: some View {
         GeometryReader { geo in
-            VStack {
+            ZStack {
+                
                 Image(uiImage: cardImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .scaledToFit()
                     .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.95)
-                    .padding(2)
+                    .padding(5)
                     .mask(RoundedRectangle(cornerRadius: 25))
+
+                VStack(spacing: 4) {
+                    Spacer()
+                    VStack {
+                        Text("\(cardTitle)")
+                        
+                        Text("\(cardDate ?? Date(), formatter: cardDateFormatter)")
+                    }
+                        .padding(8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
+                        .foregroundColor(.white)
+                }
+
+                .padding(.bottom, 10)
 
             }
             .padding(5)
@@ -45,7 +65,7 @@ struct CardView: View {
     do {
         let previewer = try Previewer()
         
-        return CardView(cardImage: UIImage(data: (previewer.card.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, cardTitle: "Title")
+        return CardView(cardImage: UIImage(data: (previewer.card.cardFront?.cardFront)!) ?? UIImage(named: "frontImage")!, cardTitle: "Title", cardDate: Date())
     } catch {
         return Text("Failed to create preview: \(error.localizedDescription)")
     }

@@ -68,19 +68,19 @@ struct MenuOverlayView: View {
                     if let card = card,
                        let cardFrontData = card.cardFront?.cardFront,
                        let cardImage = UIImage(data: cardFrontData) ?? UIImage(named: "frontImage") {
-                        CardView(cardImage: cardImage, cardTitle: "\(card.cardDate.formatted(date: .abbreviated, time: .omitted))")
+                        CardView(cardImage: cardImage, cardTitle: "\(card.cardFront?.cardName ?? "No Card Name")", cardDate: card.cardDate)
                     } else {
                         let defaultImage = UIImage(named: "frontImage") ?? UIImage()
-                        CardView(cardImage: defaultImage, cardTitle: "Unknown Date")
+                        CardView(cardImage: defaultImage, cardTitle: "Unknown Date", cardDate: Date())
                     }
                 } else {
                     if let greetingCard = greetingCard,
                        let cardFrontData = greetingCard.cardFront,
                        let cardImage = UIImage(data: cardFrontData) ?? UIImage(named: "frontImage") {
-                        CardView(cardImage: cardImage, cardTitle: greetingCard.cardName)
+                        CardView(cardImage: cardImage, cardTitle: greetingCard.cardName, cardDate: Date())
                     } else {
                         let defaultImage = UIImage(named: "frontImage") ?? UIImage()
-                        CardView(cardImage: defaultImage, cardTitle: "Missing EventType")
+                        CardView(cardImage: defaultImage, cardTitle: "Missing EventType", cardDate: Date())
                     }
                 }
             } label: {

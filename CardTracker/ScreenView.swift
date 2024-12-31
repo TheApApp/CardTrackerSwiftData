@@ -29,7 +29,7 @@ struct ScreenView: View {
     }
     
     var body: some View {
-        HStack {
+        ZStack {
             VStack {
                 if isEventType != .greetingCard {
                     AsyncImageView(imageData: card!.cardFront?.cardFront)
@@ -93,5 +93,6 @@ struct ScreenView: View {
         .mask(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 5)
         .padding(isIphone.iPhone ? 5: 10)
+        
     }
 }
