@@ -151,12 +151,18 @@ struct ScreenView: View {
                     }
                     
                 }
+                .foregroundColor(.white)
+                .padding(isIphone.iPhone ? 1 : isVision ? 1 : 5)
+                .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 .foregroundColor(.accentColor)
             }
             .padding()
             .frame(minWidth: isIphone.iPhone ? 160 : 320, maxWidth: .infinity,
                    minHeight: isIphone.iPhone ? 160 : 320, maxHeight: .infinity)
             .background(Color(UIColor.systemGroupedBackground))
+            .mask(RoundedRectangle(cornerRadius: 20))
+            .shadow(radius: 5)
+            .padding(isIphone.iPhone ? 5: 10)
         }
     }
     private func deleteCard(card: Card) {
