@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct ScreenView: View {
+struct ScreenViewXXX: View {
     @EnvironmentObject var isIphone: IsIphone
     
     private let blankCardFront = UIImage(named: "frontImage")
@@ -30,69 +30,81 @@ struct ScreenView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                if isEventType != .greetingCard {
-                    AsyncImageView(imageData: card!.cardFront?.cardFront)
-                } else {
-                    AsyncImageView(imageData: greetingCard!.cardFront)
-                }
-                HStack {
-                    VStack {
-                        switch isEventType {
-                        case .events:
-                            VStack {
-                                Text("\(card?.recipient?.fullName ?? "Unknown")")
-                                .foregroundColor(.accentColor)
-                            
-                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
-                                    .fixedSize()
-                                    .foregroundColor(.accentColor)
-                                HStack {
-                                    MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
-                                    Spacer()
-                                }
-                            }
-                        case .recipients:
-                            VStack {
-                                Text("\(card?.eventType?.eventName ?? "Unknown")")
-                                .foregroundColor(.accentColor)
-                            
-                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
-                                    .fixedSize()
-                                    .foregroundColor(.accentColor)
-                                HStack {
-                                    MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
-                                    Spacer()
-                                }
-                            }
-                        case .greetingCard:
-                            VStack {
-                                Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
-                                    .fixedSize(horizontal: false, vertical: true)
-                                    .foregroundColor(.accentColor)
-                                HStack {
-                                    MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
-                                    Spacer()
-                                }
-                            }
-                        }
+            if isEventType != .greetingCard {
+                AsyncImageView(imageData: card!.cardFront?.cardFront)
+            } else {
+                AsyncImageView(imageData: greetingCard!.cardFront)
+            }
 
+            VStack {
+//                HStack {
+//                    Spacer()
+//                    VStack(alignment: .leading) {
+//                        switch isEventType {
+//                        case .events:
+//                            MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
+//                        case .recipients:
+//                            MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
+//                        case .greetingCard:
+//                            MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
+//                        }
+//                    }
+//                }
+                
+                VStack {
+                    Spacer()
+                    switch isEventType {
+                    case .events:
+                        VStack {
+                            Text("\(card?.recipient?.fullName ?? "Unknown")")
+                            Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
+                                .fixedSize()
+                        }
+                        .padding(2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
+                    case .recipients:
+                        VStack {
+                            Text("\(card?.eventType?.eventName ?? "Unknown")")
+                            Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
+                                .fixedSize()
+                        }
+                        .padding(2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
+                    case .greetingCard:
+                        VStack {
+                            Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
                     }
-                    .padding(isIphone.iPhone ? 1 : isVision ? 1 : 5)
-                    .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
-                    .foregroundColor(.accentColor)
+                    
                 }
             }
+            .foregroundColor(.white)
+            .padding(isIphone.iPhone ? 1 : isVision ? 1 : 5)
+            .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
+            .foregroundColor(.accentColor)
+            
         }
+        
         .padding()
-//        .frame(minWidth: isIphone.iPhone ? 160 : isVision ? 400 : 320, maxWidth: .infinity,
-//               minHeight: isIphone.iPhone ? 160 : isVision ? 400 : 320, maxHeight: .infinity)
+        //        .frame(minWidth: isIphone.iPhone ? 160 : isVision ? 400 : 320, maxWidth: .infinity,
+        //               minHeight: isIphone.iPhone ? 160 : isVision ? 400 : 320, maxHeight: .infinity)
         .frame(minWidth: isIphone.iPhone ? 160 : 320, maxWidth: .infinity,
                minHeight: isIphone.iPhone ? 160 : 320, maxHeight: .infinity)
         .background(Color(UIColor.systemGroupedBackground))
         .mask(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 5)
         .padding(isIphone.iPhone ? 5: 10)
-        
     }
 }

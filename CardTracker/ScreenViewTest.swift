@@ -1,63 +1,43 @@
 //
-//  MenuOverlayView.swift
+//  ScreenView.swift
 //  CardTracker
 //
-//  Created by Michael Rowe on 12/11/23.
+//  Created by Michael Rowe on 12/16/23.
 //
 
 import os
 import SwiftData
 import SwiftUI
 
-/// MenuOverLayView - This allows for card to have a set of functions that are able to be executed on them.
-///
-/// Supported Features;
-///
-/// * "􀉅" You can display a larger view of the card
-/// * "􀈎" You can edit an existing card
-/// * "􀈑" You can delete a specific instance of a card.
-///
-
-struct MenuOverlayView: View {
+struct ScreenView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var isIphone: IsIphone
-    
     @State var areYouSure: Bool = false
-    @State var isEditActive: Bool = false
-    @State var isCardActive: Bool = false
-    @Binding var navigationPath: NavigationPath
-    
-    private var isVision = false
     
     private let blankCardFront = UIImage(named: "frontImage")
     private var card: Card?
     private var greetingCard: GreetingCard?
-    private var isEventType: ListView = .recipients
-    
-    @State var navigateTo: AnyView?
-    @State var isNavigationActive = false
+    private var isVision = false
+    var isEventType: ListView = .recipients
+    @Binding var navigationPath: NavigationPath
     
     init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
-        
         if UIDevice.current.userInterfaceIdiom == .vision {
             self.isVision = true
         }
-        
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
         self._navigationPath = navigationPath
     }
     
-    
     var body: some View {
-        Menu {            
+        Menu {
             NavigationLink {
                 if isEventType != .greetingCard {
                     EditCardView(card: Bindable(card!), navigationPath: $navigationPath)
                 } else {
-                    
                     EditGreetingCardView(greetingCard: greetingCard)
                 }
             } label: {
@@ -127,10 +107,66 @@ struct MenuOverlayView: View {
                 }
                 .keyboardShortcut(.defaultAction)
             }
-        }
-        label: {
-            Image(systemName: "ellipsis.circle")
+        } label: {
+            ZStack {
+                if isEventType != .greetingCard {
+                    AsyncImageView(imageData: card!.cardFront?.cardFront)
+                } else {
+                    AsyncImageView(imageData: greetingCard!.cardFront)
+                }
+                
+                VStack {
+                    Spacer()
+                    switch isEventType {
+                    case .events:
+                        VStack {
+                            Text("\(card?.recipient?.fullName ?? "Unknown")")
+                            Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
+                                .fixedSize()
+                        }
+                        .padding(2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
+                    case .recipients:
+                        VStack {
+                            Text("\(card?.eventType?.eventName ?? "Unknown")")
+                            Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
+                                .fixedSize()
+                        }
+                        .padding(2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
+                    case .greetingCard:
+                        VStack {
+                            Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding(2)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
+                    }
+                    
+                }
+                .foregroundColor(.white)
+                .padding(isIphone.iPhone ? 1 : isVision ? 1 : 5)
+                .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 .foregroundColor(.accentColor)
+                
+            }
+            
+            .padding()
+            .frame(minWidth: isIphone.iPhone ? 160 : 320, maxWidth: .infinity,
+                   minHeight: isIphone.iPhone ? 160 : 320, maxHeight: .infinity)
+            .background(Color(UIColor.systemGroupedBackground))
+            .mask(RoundedRectangle(cornerRadius: 20))
+            .shadow(radius: 5)
+            .padding(isIphone.iPhone ? 5: 10)
         }
     }
     
