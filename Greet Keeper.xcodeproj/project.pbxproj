@@ -55,7 +55,8 @@
 		18D9624D2B2656AB00662849 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624C2B2656AB00662849 /* EventsList.swift */; };
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
-		9547B1AC2D26167E006BD359 /* ScreenViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547B1A52D260B5D006BD359 /* ScreenViewTest.swift */; };
+		95608F362D26E60D009160BD /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
+		95608F372D26E613009160BD /* MenuOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C662B2766D00067245A /* MenuOverlayView.swift */; };
 		9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9586F3FD2D19ECD000CE1A39 /* Category.swift */; };
 		95DECCCC2D21B3D70052066C /* WalkThroughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */; };
 		95E015942D206B4C00C6574D /* RecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E015932D206B4C00C6574D /* RecipientView.swift */; };
@@ -137,8 +138,6 @@
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
-		9547B1A52D260B5D006BD359 /* ScreenViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewTest.swift; sourceTree = "<group>"; };
-		9547B1AA2D2615F2006BD359 /* ScreenViewTestAnother.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenViewTestAnother.swift; sourceTree = "<group>"; };
 		9586F3FD2D19ECD000CE1A39 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughtView.swift; sourceTree = "<group>"; };
 		95E015932D206B4C00C6574D /* RecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientView.swift; sourceTree = "<group>"; };
@@ -294,8 +293,6 @@
 				18D962422B264D1D00662849 /* NewRecipientView.swift */,
 				189F5C6E2B27C6410067245A /* PrintView.swift */,
 				95E015932D206B4C00C6574D /* RecipientView.swift */,
-				9547B1AA2D2615F2006BD359 /* ScreenViewTestAnother.swift */,
-				9547B1A52D260B5D006BD359 /* ScreenViewTest.swift */,
 				189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */,
 				189DB6832B2E405800FC3E87 /* ViewCardsView.swift */,
 				189F5C642B2766B30067245A /* ViewEventsView.swift */,
@@ -470,6 +467,7 @@
 			files = (
 				189F5C6B2B27A0430067245A /* MapView.swift in Sources */,
 				18D962532B269DF400662849 /* EditCardView.swift in Sources */,
+				95608F372D26E613009160BD /* MenuOverlayView.swift in Sources */,
 				95DECCCC2D21B3D70052066C /* WalkThroughtView.swift in Sources */,
 				18B916722B365441008101A7 /* Previewer.swift in Sources */,
 				18D9623F2B26411900662849 /* Recipient.swift in Sources */,
@@ -483,7 +481,6 @@
 				18D962112B263EC200662849 /* ContentView.swift in Sources */,
 				189F5C712B27C7500067245A /* ImageTransformer.swift in Sources */,
 				189F5C772B27CBBF0067245A /* Collection+Extensions.swift in Sources */,
-				9547B1AC2D26167E006BD359 /* ScreenViewTest.swift in Sources */,
 				18CBD38D2C05328B00CA9C05 /* ShareSheetHelper.swift in Sources */,
 				189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */,
 				189DB6822B2E230400FC3E87 /* CardView.swift in Sources */,
@@ -499,6 +496,7 @@
 				18CBD38B2C05317F00CA9C05 /* GeneratePDF.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
 				18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */,
+				95608F362D26E60D009160BD /* ScreenView.swift in Sources */,
 				189F5C752B27CB280067245A /* FooterView.swift in Sources */,
 				18D962132B263EC200662849 /* Card.swift in Sources */,
 				187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */,

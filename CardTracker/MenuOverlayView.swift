@@ -52,7 +52,8 @@ struct MenuOverlayView: View {
     
     
     var body: some View {
-        Menu {            
+//        Menu {
+        HStack {
             NavigationLink {
                 if isEventType != .greetingCard {
                     EditCardView(card: Bindable(card!), navigationPath: $navigationPath)
@@ -62,9 +63,9 @@ struct MenuOverlayView: View {
                 }
             } label: {
                 HStack {
-                    Text("Edit Card")
+//                    Text("Edit Card")
                     Image(systemName: "square.and.pencil")
-                        .foregroundColor(.accentColor)
+//                        .foregroundColor(.accentColor)
                         .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 }
             }
@@ -90,9 +91,9 @@ struct MenuOverlayView: View {
                 }
             } label: {
                 HStack{
-                    Text("Display Card")
+//                    Text("Display Card")
                     Image(systemName: "doc.richtext")
-                        .foregroundColor(.accentColor)
+//                        .foregroundColor(.accentColor)
                         .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 }
             }
@@ -100,7 +101,7 @@ struct MenuOverlayView: View {
                 areYouSure.toggle()
             }, label: {
                 HStack {
-                    Text("Remove Card")
+//                    Text("Remove Card")
                     Image(systemName: "trash")
                         .foregroundColor(.red)
                         .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
@@ -128,10 +129,10 @@ struct MenuOverlayView: View {
                 .keyboardShortcut(.defaultAction)
             }
         }
-        label: {
-            Image(systemName: "ellipsis.circle")
-                .foregroundColor(.accentColor)
-        }
+//        label: {
+//            Image(systemName: "ellipsis.circle")
+//                .foregroundColor(.accentColor)
+//        }
     }
     
     private func deleteCard(card: Card) {

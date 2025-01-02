@@ -10,7 +10,6 @@ Things to Test:
 5. Added new launch startup screen
 
 Known bugs:
-0. MAJOR BUG - For this build only Note that the Menu Functions do not work when trying to edit, view or delete a card.
 1. Bug in macOS - can’t access Camera even if setting says permitted
 2. Bag in macOS - if you change the name of a card, you lose the picture and can’t update
 
@@ -29,3 +28,5 @@ Potential Features to develop:
 1. Change Card overlays to be pop-up menus
 1. Add overlay information on name, vendor etc. to full screen card
 1. Added filters by recipient catagory
+
+Other notes -- Can't get menuing to work for the Card Edits...

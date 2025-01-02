@@ -8,7 +8,7 @@
 import SwiftData
 import SwiftUI
 
-struct ScreenViewXXX: View {
+struct ScreenView: View {
     @EnvironmentObject var isIphone: IsIphone
     
     private let blankCardFront = UIImage(named: "frontImage")
@@ -37,63 +37,52 @@ struct ScreenViewXXX: View {
             }
 
             VStack {
-//                HStack {
-//                    Spacer()
-//                    VStack(alignment: .leading) {
-//                        switch isEventType {
-//                        case .events:
-//                            MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
-//                        case .recipients:
-//                            MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
-//                        case .greetingCard:
-//                            MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
-//                        }
-//                    }
-//                }
-                
+                Spacer()
                 VStack {
-                    Spacer()
-                    switch isEventType {
-                    case .events:
-                        VStack {
-                            Text("\(card?.recipient?.fullName ?? "Unknown")")
-                            Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
-                                .fixedSize()
+                    VStack {
+                        switch isEventType {
+                        case .events:
+                            VStack {
+                                Text("\(card?.recipient?.fullName ?? "Unknown")")
+                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
+                                    .fixedSize()
+                            }
+                        case .recipients:
+                            VStack {
+                                Text("\(card?.eventType?.eventName ?? "Unknown")")
+                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
+                                    .fixedSize()
+                            }
+                        case .greetingCard:
+                            VStack {
+                                Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
                         }
-                        .padding(2)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.black.opacity(0.6))
-                        )
-                    case .recipients:
-                        VStack {
-                            Text("\(card?.eventType?.eventName ?? "Unknown")")
-                            Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
-                                .fixedSize()
-                        }
-                        .padding(2)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.black.opacity(0.6))
-                        )
-                    case .greetingCard:
-                        VStack {
-                            Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        .padding(2)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.black.opacity(0.6))
-                        )
                     }
-                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            switch isEventType {
+                            case .events:
+                                MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
+                            case .recipients:
+                                MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
+                            case .greetingCard:
+                                MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
+                            }
+                        }
+                    }
                 }
+                .padding(2)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.black.opacity(0.6))
+                )
+                .foregroundColor(.white)
+                .padding(isIphone.iPhone ? 1 : isVision ? 1 : 5)
+                .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
+                .foregroundColor(.accentColor)
             }
-            .foregroundColor(.white)
-            .padding(isIphone.iPhone ? 1 : isVision ? 1 : 5)
-            .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
-            .foregroundColor(.accentColor)
             
         }
         
