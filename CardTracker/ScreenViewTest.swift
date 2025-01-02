@@ -141,35 +141,24 @@ struct ScreenView: View {
                                 .fill(Color.black.opacity(0.6))
                         )
                     case .greetingCard:
-                        VStack {
-                            Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        .padding(2)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.black.opacity(0.6))
-                        )
+                        Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(2)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.black.opacity(0.6))
+                            )
                     }
                     
                 }
-                .foregroundColor(.white)
-                .padding(isIphone.iPhone ? 1 : isVision ? 1 : 5)
-                .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 .foregroundColor(.accentColor)
-                
             }
-            
             .padding()
             .frame(minWidth: isIphone.iPhone ? 160 : 320, maxWidth: .infinity,
                    minHeight: isIphone.iPhone ? 160 : 320, maxHeight: .infinity)
             .background(Color(UIColor.systemGroupedBackground))
-            .mask(RoundedRectangle(cornerRadius: 20))
-            .shadow(radius: 5)
-            .padding(isIphone.iPhone ? 5: 10)
         }
     }
-    
     private func deleteCard(card: Card) {
         let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "MenuOverlayView.deleteCard")
         let taskContext = modelContext
