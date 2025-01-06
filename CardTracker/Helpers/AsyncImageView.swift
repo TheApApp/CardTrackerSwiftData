@@ -25,7 +25,7 @@ struct AsyncImageView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .scaledToFit()
-                .frame(width: iPhone ? 125 : 250, height: iPhone ? 125 : 250)
+//                .frame(width: iPhone ? 125 : 250, height: iPhone ? 125 : 250)
             
         } else {
             ProgressView()

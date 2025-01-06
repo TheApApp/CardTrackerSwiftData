@@ -97,3 +97,14 @@ struct ScreenView: View {
         .padding(isIphone.iPhone ? 5: 10)
     }
 }
+
+#Preview {
+    
+    ScreenView(card: Card(cardDate: Date(), eventType: EventType(eventName: "Christmas"), cardFront: GreetingCard(cardName: "Cool Christmas Card", cardFront: nil, cardManufacturer: "MicroCards", cardURL: "https://michaelrowe01.com"), recipient: Recipient(addressLine1: "123 North Street", addressLine2: "Apt 123", city: "Anytown", state: "NC", zip: "22712", country: "USA", firstName: "Michael", lastName: "Rowe", category: .home)), greetingCard: nil, isEventType: .recipients, navigationPath: .constant(NavigationPath()))
+        .environmentObject(IsIphone.init())
+        .frame(width: 160, height: 160)
+    
+    ScreenView(card: Card(cardDate: Date(), eventType: EventType(eventName: "Christmas"), cardFront: GreetingCard(cardName: "Cool Christmas Card", cardFront: nil, cardManufacturer: "MicroCards", cardURL: "https://michaelrowe01.com"), recipient: Recipient(addressLine1: "123 North Street", addressLine2: "Apt 123", city: "Anytown", state: "NC", zip: "22712", country: "USA", firstName: "Michael", lastName: "Rowe", category: .home)), greetingCard: nil, isEventType: .recipients, navigationPath: .constant(NavigationPath()))
+        .environmentObject(IsIphone.init())
+        .frame(width: 320, height: 320)
+}

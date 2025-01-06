@@ -57,6 +57,7 @@
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
 		95608F362D26E60D009160BD /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
 		95608F372D26E613009160BD /* MenuOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C662B2766D00067245A /* MenuOverlayView.swift */; };
+		95705C022D2C3BF000FCE2AF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 95705C012D2C3BF000FCE2AF /* Localizable.xcstrings */; };
 		9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9586F3FD2D19ECD000CE1A39 /* Category.swift */; };
 		95DECCCC2D21B3D70052066C /* WalkThroughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */; };
 		95E015942D206B4C00C6574D /* RecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E015932D206B4C00C6574D /* RecipientView.swift */; };
@@ -138,6 +139,7 @@
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+		95705C012D2C3BF000FCE2AF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9586F3FD2D19ECD000CE1A39 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughtView.swift; sourceTree = "<group>"; };
 		95E015932D206B4C00C6574D /* RecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientView.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				18D9621A2B263EC300662849 /* Info.plist */,
 				18D962172B263EC300662849 /* Preview Content */,
 				18987E3A2B534B7B008275E4 /* ReadMe.MD */,
+				95705C012D2C3BF000FCE2AF /* Localizable.xcstrings */,
 			);
 			path = CardTracker;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D962192B263EC300662849 /* Preview Assets.xcassets in Resources */,
+				95705C022D2C3BF000FCE2AF /* Localizable.xcstrings in Resources */,
 				180BD22F2BA5FA2C00C92A52 /* PrivacyInfo.xcprivacy in Resources */,
 				181BAA3C2C0BC68B00E7DA87 /* WhatToTest.en-US.txt in Resources */,
 				18D962152B263EC300662849 /* Assets.xcassets in Resources */,
@@ -605,6 +609,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				XROS_DEPLOYMENT_TARGET = 1.2;
@@ -664,6 +669,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				XROS_DEPLOYMENT_TARGET = 1.2;
 			};
