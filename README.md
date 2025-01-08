@@ -1,4 +1,4 @@
-# Card Tracker App
+# Greeting Tracker
 This is a rewrite of my personal Holiday card tracker app. 
 
 The basics of the application is that I have Cards that I want to track.  I sent a lot of cards each year to different people, at different times.  Sometimes I forget and send the same card to someone a few years later.  By allowing for classification of Events and Cards for Events, I can now pick a card and assign it to a person.  This way I will know if I've already sent it before.
