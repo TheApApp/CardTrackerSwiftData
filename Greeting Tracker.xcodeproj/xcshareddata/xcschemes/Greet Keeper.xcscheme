@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "18D9620A2B263EC200662849"
-               BuildableName = "Greet Keeper.app"
-               BlueprintName = "Greet Keeper"
-               ReferencedContainer = "container:Greet Keeper.xcodeproj">
+               BuildableName = "Greeting Tracker.app"
+               BlueprintName = "Greeting Tracker"
+               ReferencedContainer = "container:Greeting Tracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "18D9621E2B263EC400662849"
-               BuildableName = "Greet KeeperTests.xctest"
-               BlueprintName = "Greet KeeperTests"
-               ReferencedContainer = "container:Greet Keeper.xcodeproj">
+               BuildableName = "Greeting TrackerTests.xctest"
+               BlueprintName = "Greeting TrackerTests"
+               ReferencedContainer = "container:Greeting Tracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,9 +46,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "18D962282B263EC400662849"
-               BuildableName = "Greet KeeperUITests.xctest"
-               BlueprintName = "Greet KeeperUITests"
-               ReferencedContainer = "container:Greet Keeper.xcodeproj">
+               BuildableName = "Greeting TrackerUITests.xctest"
+               BlueprintName = "Greeting TrackerUITests"
+               ReferencedContainer = "container:Greeting Tracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18D9620A2B263EC200662849"
-            BuildableName = "Greet Keeper.app"
-            BlueprintName = "Greet Keeper"
-            ReferencedContainer = "container:Greet Keeper.xcodeproj">
+            BuildableName = "Greeting Tracker.app"
+            BlueprintName = "Greeting Tracker"
+            ReferencedContainer = "container:Greeting Tracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "18D9620A2B263EC200662849"
-            BuildableName = "Greet Keeper.app"
-            BlueprintName = "Greet Keeper"
-            ReferencedContainer = "container:Greet Keeper.xcodeproj">
+            BuildableName = "Greeting Tracker.app"
+            BlueprintName = "Greeting Tracker"
+            ReferencedContainer = "container:Greeting Tracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
