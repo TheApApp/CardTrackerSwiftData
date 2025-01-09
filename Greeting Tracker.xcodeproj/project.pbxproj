@@ -135,7 +135,6 @@
 		18D9623E2B26411900662849 /* Recipient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipient.swift; sourceTree = "<group>"; };
 		18D962422B264D1D00662849 /* NewRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipientView.swift; sourceTree = "<group>"; };
 		18D962482B2650C100662849 /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
-		18D9624A2B2654EA00662849 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
@@ -292,7 +291,6 @@
 				189F5C6A2B27A0430067245A /* MapView.swift */,
 				189F5C662B2766D00067245A /* MenuOverlayView.swift */,
 				189F5C782B27CF240067245A /* NewCardView.swift */,
-				18D9624A2B2654EA00662849 /* NewEventView.swift */,
 				18D962422B264D1D00662849 /* NewRecipientView.swift */,
 				189F5C6E2B27C6410067245A /* PrintView.swift */,
 				95E015932D206B4C00C6574D /* RecipientView.swift */,

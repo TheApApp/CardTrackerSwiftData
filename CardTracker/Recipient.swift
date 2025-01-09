@@ -36,7 +36,7 @@ final class Recipient: CustomDebugStringConvertible {
     var category: Category? = Category.home
     
     var debugDescription: String {
-        "\(fullName ), \(firstName ), \(lastName ), \(addressLine1 ), \(addressLine2 ), \(city ), \(state ), \(zip ), \(country ), Number of Cards - \(cardsSent()), Category: \(category)"
+        "\(fullName ), \(firstName ), \(lastName ), \(addressLine1 ), \(addressLine2 ), \(city ), \(state ), \(zip ), \(country ), Number of Cards - \(cardsSent()), Category: \(category.debugDescription)"
     }
     
     // MARK: - Computed Properties

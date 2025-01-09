@@ -8,6 +8,7 @@ Things to Test:
 3. Added ability to edit a recipient's address and more (is this discoverable?)
 4. Added ability to classification a recipient: i.e. work, family, friends. etc.
 5. Added new launch startup screen
+6. change toolbar items to better align with apple standards (first pass), and changed some icons.
 
 Known bugs:
 1. Bug in macOS - can’t access Camera even if setting says permitted

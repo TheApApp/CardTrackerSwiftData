@@ -68,9 +68,9 @@ struct EditGreetingCardView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Event") {
-                    Picker("Select Event type", selection: $eventType) {
-                        Text("Unknown Event")
+                Section("Occasion") {
+                    Picker("Select Occasion", selection: $eventType) {
+                        Text("Unknown Occasion")
                             .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                         
                         if events.isEmpty == false {
@@ -83,7 +83,7 @@ struct EditGreetingCardView: View {
                         }
                     }
                     NavigationLink(destination: EventTypeView()) {
-                        Text("\(Image(systemName: "plus.circle.fill")) Add New Event")
+                        Text("New Occasion")
                     }
                 }
                 
@@ -185,7 +185,7 @@ struct EditGreetingCardView: View {
                             dismiss()
                         }
                     } label: {
-                        Image(systemName: "square.and.arrow.down")
+                        Text("Save")
                     }
                     .disabled($cardUIImage.wrappedValue == nil)
                 }

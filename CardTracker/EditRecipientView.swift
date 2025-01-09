@@ -117,7 +117,7 @@ struct EditRecipientView: View {
                         presentAlert = true
                     }
                 }, label: {
-                    Image(systemName: "person.crop.circle.fill")
+                    Image(systemName: "person.crop.rectangle.fill")
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })

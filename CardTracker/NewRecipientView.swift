@@ -117,15 +117,15 @@ struct NewRecipientView: View {
                         presentAlert = true
                     }
                 }, label: {
-                    Image(systemName: "person.crop.circle.fill")
+                    Image(systemName: "person.crop.rectangle.fill")
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })
                 Button(action: {
-                    saveRecipient()
+                    save()
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Image(systemName: "square.and.arrow.down")
+                    Text("Save")
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })
@@ -148,7 +148,7 @@ struct NewRecipientView: View {
         }
     }
     
-    func saveRecipient() {
+    func save() {
         let logger=Logger(subsystem: "com.theapapp.cardtracker", category: "NewRecipientView.SaveRecipient")
         logger.log("Saving...")
         if firstName != "" {

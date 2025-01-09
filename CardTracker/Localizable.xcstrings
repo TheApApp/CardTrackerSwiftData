@@ -143,6 +143,7 @@
       }
     },
     "%@ Add New Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -373,6 +374,7 @@
       }
     },
     "Add Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -419,6 +421,7 @@
       }
     },
     "Add New Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -463,6 +466,9 @@
           }
         }
       }
+    },
+    "Add Occasion" : {
+
     },
     "Address Line 1" : {
       "localizations" : {
@@ -785,6 +791,9 @@
           }
         }
       }
+    },
+    "Card Gallery" : {
+
     },
     "Card Image" : {
       "localizations" : {
@@ -1339,6 +1348,7 @@
       }
     },
     "Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1431,6 +1441,7 @@
       }
     },
     "Event Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1523,6 +1534,7 @@
       }
     },
     "Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1569,6 +1581,7 @@
       }
     },
     "Events" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1661,6 +1674,7 @@
       }
     },
     "Gallery" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1890,6 +1904,9 @@
         }
       }
     },
+    "New Occasion" : {
+
+    },
     "No" : {
       "localizations" : {
         "de" : {
@@ -1935,6 +1952,18 @@
           }
         }
       }
+    },
+    "Occasion" : {
+
+    },
+    "Occasion Date" : {
+
+    },
+    "Occasion Name" : {
+
+    },
+    "Occasions" : {
+
     },
     "Page %@ of %@" : {
       "localizations" : {
@@ -2212,6 +2241,9 @@
         }
       }
     },
+    "Save" : {
+
+    },
     "Select %@ Card" : {
       "localizations" : {
         "de" : {
@@ -2351,6 +2383,7 @@
       }
     },
     "Select Event type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2397,6 +2430,7 @@
       }
     },
     "Select Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2441,6 +2475,12 @@
           }
         }
       }
+    },
+    "Select Occasion" : {
+
+    },
+    "Select Occasion Type" : {
+
     },
     "Select one." : {
       "localizations" : {
@@ -2765,6 +2805,7 @@
       }
     },
     "Unknown Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2809,6 +2850,9 @@
           }
         }
       }
+    },
+    "Unknown Occasion" : {
+
     },
     "Used %lld times" : {
       "localizations" : {

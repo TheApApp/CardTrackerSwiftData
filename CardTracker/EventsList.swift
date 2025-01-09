@@ -45,7 +45,7 @@ struct EventsList: View {
                     Button(action: {
                         self.newEvent.toggle()
                     }, label: {
-                        Image(systemName: "plus.circle.fill")
+                        Image(systemName: "plus")
                             .font(.title2)
                             .foregroundColor(.accentColor)
                     })

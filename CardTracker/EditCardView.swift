@@ -69,9 +69,9 @@ struct EditCardView: View {
         /// The main form for editing card details, divided into sections for event type, date, and card image.
         Form {
             // Event Section
-            Section("Event") {
-                Picker(selection: $card.eventType, label: Text("Event Type")) {
-                    Text("Unknown Event Type")
+            Section("Occasion") {
+                Picker(selection: $card.eventType, label: Text("Occasion")) {
+                    Text("Unknown Occasion")
                         .tag(Optional<EventType>.none)
                     
                     Divider()
@@ -85,7 +85,7 @@ struct EditCardView: View {
                     }
                 }
                 
-                NavigationLink("Add New Event", destination: EventTypeView())
+                NavigationLink("New Occasion", destination: EventTypeView())
             }
             
             // Date Section

@@ -57,7 +57,7 @@ struct NewCardView: View {
             VStack {
                 Form {
                     Section("Card Information") {
-                        Picker("Select Event Type", selection: $selectedEvent) {
+                        Picker("Select Occasion Type", selection: $selectedEvent) {
                             Text("Unknown Event")
                                 .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                             
@@ -71,10 +71,10 @@ struct NewCardView: View {
                             }
                         }
                         
-                        NavigationLink("Add Event Type", destination: EventTypeView())
+                        NavigationLink("Add Occasion", destination: EventTypeView())
                         
                         DatePicker(
-                            "Event Date",
+                            "Occasion Date",
                             selection: $cardDate,
                             displayedComponents: [.date])
                     }
@@ -109,10 +109,10 @@ struct NewCardView: View {
                                     HStack {
                 Button(action: {
                     // TODO: add an error check to confirm they have an event and card selected
-                    saveCard()
+                    save()
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
-                    Image(systemName: "square.and.arrow.down")
+                    Text("Save")
                         .font(.largeTitle)
                         .foregroundColor(.accentColor)
                 })
@@ -129,7 +129,7 @@ struct NewCardView: View {
         .foregroundColor(.accentColor)
     }
     
-    func saveCard() {
+    func save() {
         let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "NewCardView")
         logger.log("saving...")
         print("Selected greetingCard = \(String(describing: selectedGreetingCard?.cardName))")

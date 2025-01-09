@@ -93,7 +93,7 @@ struct ViewEventsView: View {
                 Button(action: {
                     navBarItemChosen = .newCard
                 }, label: {
-                    Image(systemName: "plus.circle.fill")
+                    Image(systemName: "plus")
                         .foregroundColor(.accentColor)
                 })
                 if isLoading {

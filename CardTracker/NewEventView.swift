@@ -24,14 +24,14 @@ struct NewEventView: View {
         NavigationStack {
             Form {
                 Section("Description") {
-                    TextField("Event Name", text: $eventName)
+                    TextField("Occasion Name", text: $eventName)
                         .customTextField()
                 }
             }
             .padding([.leading, .trailing], 10 )
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Event Information")
+                    Text("Occasion Information")
                         .font(Font.system(size: 15, weight: .medium, design: .rounded))
                         .foregroundColor(.accentColor)
                 }
@@ -43,7 +43,7 @@ struct NewEventView: View {
                             dismiss()
                         }
                     } label: {
-                        Image(systemName: "square.and.arrow.down")
+                        Text("Save")
                     }
                 }
                 

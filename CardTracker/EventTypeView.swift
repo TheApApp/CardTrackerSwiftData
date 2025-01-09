@@ -17,14 +17,14 @@ struct EventTypeView: View {
     @State private var eventName = ""
 
     private var editorTitle: String {
-        eventType == nil ? "Add Event Type" : "Edit Event Type"
+        eventType == nil ? "Add Occasion" : "Edit Occasion"
     }
     
     var body: some View {
         NavigationStack {
             Form {
                 Section("Description") {
-                    TextField("Event Name", text: $eventName)
+                    TextField("Occasion Name", text: $eventName)
                         .customTextField()
                 }
             }
@@ -43,7 +43,7 @@ struct EventTypeView: View {
                             dismiss()
                         }
                     } label: {
-                        Image(systemName: "square.and.arrow.down")
+                        Text("Save")
                     }
                     .disabled($eventName.wrappedValue == "")
                 }

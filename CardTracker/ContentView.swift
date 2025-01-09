@@ -36,9 +36,9 @@ struct ContentView: View {
         if walkthrough == 1 {
             WalkThroughtView(title: "Welcome to Greeting Tracker", description: "Never send the same card twice", bgColor: "AccentColor", img: "Welcome_one")
         } else if walkthrough == 2 {
-            WalkThroughtView(title: "Events", description: "Let's setup your first event.", bgColor: "AccentColor", img: "Welcome_two")
+            WalkThroughtView(title: "Occasions", description: "Let's define your first occasion.", bgColor: "AccentColor", img: "Welcome_two")
         } else if walkthrough == 3 {
-            WalkThroughtView(title: "Cards", description: "Now let's add a card for that event.", bgColor: "AccentColor", img: "Welcome_three")
+            WalkThroughtView(title: "Greeting Cards", description: "Now let's add a card for that type of occasion.", bgColor: "AccentColor", img: "Welcome_three")
         } else if walkthrough == 4 {
             WalkThroughtView(title: "Recipients", description: "Then add a recipient to receive cards.", bgColor: "AccentColor", img: "Welcome_four")
         } else if walkthrough == 5 {
@@ -52,7 +52,7 @@ struct ContentView: View {
                         .searchable(text: $searchText)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Text("Events")
+                                Text("Occasions")
                                     .foregroundColor(.accentColor)
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
@@ -60,7 +60,7 @@ struct ContentView: View {
                                     listView = .events
                                     self.addItem.toggle()
                                 }, label: {
-                                    Image(systemName: "plus.circle")
+                                    Image(systemName: "plus")
                                         .font(.title2)
                                         .foregroundColor(.accentColor)
                                 })
@@ -73,7 +73,7 @@ struct ContentView: View {
                 }
                 .tabItem {
                     Image(systemName: "calendar")
-                    Text("Events")
+                    Text("Occasions")
                         .foregroundColor(.accentColor)
                 }
                 .tag(ListView.events)
@@ -84,7 +84,7 @@ struct ContentView: View {
                         .searchable(text: $searchText)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
-                                Text("Gallery")
+                                Text("Card Gallery")
                                     .foregroundColor(.accentColor)
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
@@ -92,16 +92,20 @@ struct ContentView: View {
                                     listView = .greetingCard
                                     self.addItem.toggle()
                                 }, label: {
-                                    Image(systemName: "plus.circle")
+                                    Image(systemName: "plus")
                                         .font(.title2)
                                         .foregroundColor(.accentColor)
                                 })
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                EditButton()
+                                    .foregroundColor(.accentColor)
                             }
                         }
                 }
                 .tabItem {
                     Image(systemName: "photo.stack")
-                    Text("Gallery")
+                    Text("Card Gallery")
                         .foregroundColor(.accentColor)
                 }
                 .tag(ListView.greetingCard)
@@ -120,7 +124,7 @@ struct ContentView: View {
                                     listView = .recipients
                                     self.addItem.toggle()
                                 }, label: {
-                                    Image(systemName: "plus.circle")
+                                    Image(systemName: "plus")
                                         .font(.title2)
                                         .foregroundColor(.accentColor)
                                 })
@@ -132,7 +136,7 @@ struct ContentView: View {
                         }
                 }
                 .tabItem {
-                    Image(systemName: "person.crop.circle")
+                    Image(systemName: "person.crop.rectangle.fill")
                     Text("Recipients")
                         .foregroundColor(.accentColor)
                 }

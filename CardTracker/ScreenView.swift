@@ -91,7 +91,7 @@ struct ScreenView: View {
         //               minHeight: isIphone.iPhone ? 160 : isVision ? 400 : 320, maxHeight: .infinity)
         .frame(minWidth: isIphone.iPhone ? 160 : 320, maxWidth: .infinity,
                minHeight: isIphone.iPhone ? 160 : 320, maxHeight: .infinity)
-        .background(Color(UIColor.systemGroupedBackground))
+        .background(Color("SlideColor"))
         .mask(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 5)
         .padding(isIphone.iPhone ? 5: 10)

@@ -151,7 +151,7 @@ struct RecipientView: View {
                             presentAlert = true
                         }
                     }, label: {
-                        Image(systemName: "person.crop.circle.fill.badge.plus")
+                        Image(systemName: "person.crop.rectangle.badge.plus.fill")
                             .foregroundColor(.accentColor)
                     })
                 }
@@ -159,11 +159,11 @@ struct RecipientView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button {
                         withAnimation {
-                            saveRecipient()
+                            save()
                             dismiss()
                         }
                     } label: {
-                        Image(systemName: "square.and.arrow.down")
+                        Text("Save")
                     }
                 }
                 
@@ -178,7 +178,7 @@ struct RecipientView: View {
     }
     
     
-    func saveRecipient() {
+    func save() {
         let logger = Logger(subsystem: "com.theapapp.cardtracker", category: "RecipientFormView.SaveRecipient")
         logger.log("Saving...")
         
