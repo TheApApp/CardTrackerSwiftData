@@ -88,25 +88,29 @@ struct ViewEventsView: View {
                     .padding()
                 }
             }
-            .navigationBarItems(trailing:
-                                    HStack {
-                Button(action: {
-                    navBarItemChosen = .newCard
-                }, label: {
-                    Image(systemName: "plus")
-                        .foregroundColor(.accentColor)
-                })
-                if isLoading {
-                    ProgressView()
-                } else {
-                    Button(action: generatePDF) {
-                        Image(systemName: "square.and.arrow.up")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("\(recipient.fullName)")
+                        .foregroundColor(Color.accentColor)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        navBarItemChosen = .newCard
+                    }, label: {
+                        Image(systemName: "plus")
+                            .foregroundColor(.accentColor)
+                    })
+                }
+                ToolbarItem(placement:.navigationBarTrailing) {
+                    if isLoading {
+                        ProgressView()
+                    } else {
+                        Button(action: generatePDF) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
                     }
                 }
             }
-            )
-            .navigationBarTitleDisplayMode(.inline)
-//            .navigationTitle("\(recipient.fullName)")
         }
         .sheet(item: $navBarItemChosen ) { item in
             switch item {

@@ -30,7 +30,6 @@ struct PrintView: View {
                         .scaledToFit()
                         .frame(width: 125, height: 115)
                 } else {
-//                    Image(uiImage: (greetingCard?.cardUIImage())!)
                     Image(uiImage: UIImage(data: (greetingCard?.cardFront)!) ?? UIImage(named: "frontImage")!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -43,24 +42,24 @@ struct PrintView: View {
                         case .events:
                             Text("\(card?.recipient?.fullName ?? "Unknown")")
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                .minimumScaleFactor(0.3)
                             Text("\(card!.cardDate, formatter: cardDateFormatter)")
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                .minimumScaleFactor(0.3)
                         case .recipients:
                             Text("\(card!.recipient?.fullName ?? "Unknown")")
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                .minimumScaleFactor(0.3)
                             Text("\(card!.cardDate, formatter: cardDateFormatter)")
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                .minimumScaleFactor(0.3)
                         case .greetingCard:
                             Text("\(String(describing: greetingCard!.cardName))")
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                .minimumScaleFactor(0.3)
                             Text("Used \(greetingCard?.cards?.count ?? 0) times")
                                 .lineLimit(1)
-                                .minimumScaleFactor(0.5)
+                                .minimumScaleFactor(0.3)
                         }
                     }
                 }
@@ -74,3 +73,6 @@ struct PrintView: View {
     }
 }
 
+#Preview {
+    PrintView(card: nil, greetingCard: GreetingCard(cardName: "Happy Card", cardFront: UIImage(named: "frontImage")?.pngData(), cardManufacturer: "The ApAPp", cardURL: "https://michaelrowe01.com"), isEventType: .greetingCard)
+}

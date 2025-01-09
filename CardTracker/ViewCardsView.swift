@@ -26,7 +26,7 @@ struct ViewCardsView: View {
     @State private var PDFUrl: URL?
     @State private var showShareSheet: Bool = false
     @State private var isLoading: Bool = false
-
+    
     init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
         self.eventType = eventType
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
@@ -46,7 +46,7 @@ struct ViewCardsView: View {
                 GridItem(.adaptive(minimum: 320), spacing: 20, alignment: .center)
             ]
         }
-
+        
         self._navigationPath = navigationPath
     }
     
@@ -60,8 +60,12 @@ struct ViewCardsView: View {
                     .padding()
                 }
             }
-            .navigationBarItems(trailing:
-                HStack {
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("\(eventType.eventName) - \(cards.count) Sent")
+                        .foregroundColor(Color.accentColor)
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
                     if isLoading {
                         ProgressView()
                     } else {
@@ -70,9 +74,7 @@ struct ViewCardsView: View {
                         }
                     }
                 }
-            )
-            .navigationBarTitleDisplayMode(.inline)
-//            .navigationTitle("\(eventType.eventName) - \(cards.count)")
+            }
         }
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {

@@ -136,7 +136,7 @@ struct RecipientView: View {
             .padding([.top, .leading, .trailing],10)
             Spacer()
             .toolbar {
-                ToolbarItem(placement: .principal) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Text("Recipient Information")
                         .font(Font.system(size: 20, weight: .medium, design: .rounded))
                         .foregroundColor(.accentColor)

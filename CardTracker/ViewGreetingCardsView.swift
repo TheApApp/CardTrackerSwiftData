@@ -57,8 +57,12 @@ struct ViewGreetingCardsView: View {
                         ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
                     }
                 }
-                .navigationBarItems(trailing:
-                    HStack {
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("\(eventType) - \(greetingCards.count) Cards")
+                            .foregroundColor(Color.accentColor)
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing){
                         if isLoading {
                             ProgressView()
                         } else {
@@ -67,17 +71,15 @@ struct ViewGreetingCardsView: View {
                             }
                         }
                     }
-                )
+                }
             }
-            .navigationBarTitleDisplayMode(.inline)
-//            .navigationTitle("\(eventType)")
+            .sheet(isPresented: $showShareSheet, content: {
+                if let PDFUrl = PDFUrl {
+                    ShareSheet(activityItems: [PDFUrl])
+                        .interactiveDismissDisabled(true)
+                }
+            })
         }
-        .sheet(isPresented: $showShareSheet, content: {
-            if let PDFUrl = PDFUrl {
-                ShareSheet(activityItems: [PDFUrl])
-                    .interactiveDismissDisabled(true)
-            }
-        })
     }
     
     private func generatePDF() {
