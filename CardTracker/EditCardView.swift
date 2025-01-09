@@ -85,7 +85,7 @@ struct EditCardView: View {
                     }
                 }
                 
-                NavigationLink("New Occasion", destination: EventTypeView())
+//                NavigationLink("New Occasion", destination: EventTypeView())
             }
             
             // Date Section

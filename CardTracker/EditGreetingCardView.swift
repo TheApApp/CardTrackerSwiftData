@@ -11,6 +11,7 @@ import SwiftUI
 
 /// EdtiGreetingCardView allows for editing an existing Greeting Card.  You may change any value including replacing the image with a new value from your Photo Library, or via the camera
 /// A view for creating or editing a greeting card, including setting its event, details, and image.
+
 struct EditGreetingCardView: View {
     /// The shared model context used for saving and retrieving data.
     @Environment(\.modelContext) private var modelContext
@@ -55,6 +56,8 @@ struct EditGreetingCardView: View {
     /// A flag to track if a new event type is being added.
     @State private var newEvent = false
     
+    @AppStorage("walkthrough") var walkthrough = 1
+    
     init(eventTypePassed: EventType?) {
         if let eventTypePassed {
             _eventType = .init(initialValue: eventTypePassed)
@@ -82,8 +85,10 @@ struct EditGreetingCardView: View {
                             }
                         }
                     }
-                    NavigationLink(destination: EventTypeView()) {
-                        Text("New Occasion")
+                    if eventType == nil {
+                        NavigationLink(destination: EventTypeView()) {
+                            Text("New Occasion")
+                        }
                     }
                 }
                 
@@ -192,6 +197,9 @@ struct EditGreetingCardView: View {
                 
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", role: .cancel) {
+                        if walkthrough == 3 {
+                            walkthrough += 1
+                        }
                         dismiss()
                     }
                 }
@@ -218,6 +226,9 @@ struct EditGreetingCardView: View {
     }
     
     @MainActor private func save() {
+        if walkthrough == 3 {
+            walkthrough += 1
+        }
         ImageCompressor.compress(image: (frontImageSelected?.asUIImage())!, maxByte: 1_048_576) { image in
             guard image != nil else {
                 print("Error compressing image")

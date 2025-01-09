@@ -25,9 +25,11 @@ struct DisplayEventTypeView: View {
             HStack {
                 if isCards {
                     Text("\(title) Gallery")
+                        .foregroundColor(.accentColor)
                         .font(.title)
                 } else {
                     Text("\(title) Cards Sent")
+                        .foregroundColor(.accentColor)
                         .font(.title)
                 }
                 Spacer()
@@ -35,18 +37,10 @@ struct DisplayEventTypeView: View {
             Spacer()
         }
         .scaledToFill()
-        .foregroundColor(.accentColor)
         .padding([.leading, .trailing], 10 )
     }
 }
 
 #Preview {
-    do {
-        let previewer = try Previewer()
-        
-        return DisplayEventTypeView(title: previewer.eventType.eventName, isCards: false)
-        
-    } catch {
-        return Text("Failed to create preview: \(error.localizedDescription)")
-    }
+    DisplayEventTypeView(title: "Sample Title", isCards: false)
 }

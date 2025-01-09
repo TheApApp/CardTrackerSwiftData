@@ -55,19 +55,17 @@ struct GreetingCardsPickerView: View {
                 }
             }
             .padding()
-            .navigationTitle("Select \(eventType.eventName) Card")
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Select \(eventType.eventName) Card")
+                        .foregroundColor(Color.accentColor)
+                }
+            }
         }
     }
 }
 
-//#Preview {
-//    @Previewable @State var greetingCard: GreetingCard? = GreetingCard(cardName: "Test Card", cardFront: nil, eventType: .birthday, cardManufacturer: "Test Manufacturer", cardURL: "https://www.example.com")
-//    do {
-//        let previewer = try Previewer()
-//        
-//        GreetingCardsPickerView(eventType: previewer.eventType, selectedGreetingCard: $greetingCard)
-//        
-//    } catch {
-//       return Text("Error: \(error.localizedDescription)")
-//    }
-//}
+#Preview {
+    @Previewable @State var greetingCard: GreetingCard? = GreetingCard(cardName: "Test Card", cardFront: UIImage(named: "frontImage")?.pngData(), eventType: EventType(eventName: "Birthday"), cardManufacturer: "Test Manufacturer", cardURL: "https://www.example.com")
+    GreetingCardsPickerView(eventType: EventType(eventName: "Birthday"), selectedGreetingCard: $greetingCard)
+}

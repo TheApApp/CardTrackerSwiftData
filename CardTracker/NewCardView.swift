@@ -13,6 +13,8 @@ struct NewCardView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     
+    @AppStorage("walkthrough") var walkthrough = 1
+    
     var recipient: Recipient
     var eventTypePassed: EventType?
 
@@ -120,6 +122,9 @@ struct NewCardView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
+                        if walkthrough == 5 {
+                            walkthrough += 1
+                        }
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Cancel")
@@ -135,6 +140,11 @@ struct NewCardView: View {
         let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "NewCardView")
         logger.log("saving...")
         print("Selected greetingCard = \(String(describing: selectedGreetingCard?.cardName))")
+        
+        if walkthrough == 5 {
+            walkthrough += 1
+        }
+        
         /// You must have both an event and a card selected.
         if selectedEvent != nil  && selectedGreetingCard != nil {
             let card = Card(cardDate: cardDate, eventType: selectedEvent!, cardFront: selectedGreetingCard!, recipient: recipient)

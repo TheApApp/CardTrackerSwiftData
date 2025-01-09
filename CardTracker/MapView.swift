@@ -50,3 +50,7 @@ struct MapView: View {
         }
     }
 }
+
+#Preview {
+    MapView(region: MKCoordinateRegion())
+}

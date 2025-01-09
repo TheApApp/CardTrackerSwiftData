@@ -52,7 +52,6 @@ struct MenuOverlayView: View {
     
     
     var body: some View {
-//        Menu {
         HStack {
             NavigationLink {
                 if isEventType != .greetingCard {
@@ -63,9 +62,7 @@ struct MenuOverlayView: View {
                 }
             } label: {
                 HStack {
-//                    Text("Edit Card")
                     Image(systemName: "square.and.pencil")
-//                        .foregroundColor(.accentColor)
                         .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 }
             }
@@ -91,9 +88,7 @@ struct MenuOverlayView: View {
                 }
             } label: {
                 HStack{
-//                    Text("Display Card")
                     Image(systemName: "doc.richtext")
-//                        .foregroundColor(.accentColor)
                         .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 }
             }
@@ -101,7 +96,6 @@ struct MenuOverlayView: View {
                 areYouSure.toggle()
             }, label: {
                 HStack {
-//                    Text("Remove Card")
                     Image(systemName: "trash")
                         .foregroundColor(.red)
                         .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
@@ -129,10 +123,6 @@ struct MenuOverlayView: View {
                 .keyboardShortcut(.defaultAction)
             }
         }
-//        label: {
-//            Image(systemName: "ellipsis.circle")
-//                .foregroundColor(.accentColor)
-//        }
     }
     
     private func deleteCard(card: Card) {

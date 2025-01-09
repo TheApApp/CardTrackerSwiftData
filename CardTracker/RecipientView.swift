@@ -31,6 +31,8 @@ struct RecipientView: View {
     @State private var presentAlert = false
     @State private var showPicker = false
     
+    @AppStorage("walkthrough") var walkthrough = 1
+    
     let recipientToEdit: Recipient?
     
     init(recipientToEdit: Recipient? = nil) {
@@ -89,14 +91,15 @@ struct RecipientView: View {
                         )
                     })
                     VStack {
-                        Text("")
+//                        Text("")
                         Picker("Category", selection: $selectedCategory) {
                             ForEach(Category.allCases) { category in
-                                Text(category.rawValue).tag(category)
+                                Text(category.rawValue)
+                                    .tag(category)
                             }
                         }
                         .frame(maxWidth: .infinity)
-                        .frame(height: 50)
+//                        .frame(height: 50)
                         .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
                         
                         HStack {
@@ -137,12 +140,19 @@ struct RecipientView: View {
             Spacer()
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Recipient Information")
-                        .font(Font.system(size: 20, weight: .medium, design: .rounded))
-                        .foregroundColor(.accentColor)
+                    Button("Cancel", role: .cancel) {
+                        if walkthrough == 4 {
+                            walkthrough += 1
+                        }
+                        dismiss()
+                    }
                 }
                 
-                ToolbarItem(placement: .primaryAction){
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Recipient")
+                        .foregroundColor(.accentColor)
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
                     Button(action: {
                         let contactsPermissions = checkContactsPermissions()
                         if contactsPermissions == true {
@@ -165,14 +175,8 @@ struct RecipientView: View {
                     } label: {
                         Text("Save")
                     }
+                    .disabled(firstName.isEmpty || lastName.isEmpty)
                 }
-                
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel) {
-                        dismiss()
-                    }
-                }
-                
             }
         }
     }
@@ -181,6 +185,10 @@ struct RecipientView: View {
     func save() {
         let logger = Logger(subsystem: "com.theapapp.cardtracker", category: "RecipientFormView.SaveRecipient")
         logger.log("Saving...")
+        
+        if walkthrough == 4 {
+            walkthrough += 1
+        }
         
         if firstName.isEmpty && lastName.isEmpty {
             return

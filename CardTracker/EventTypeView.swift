@@ -11,6 +11,7 @@ import SwiftUI
 struct EventTypeView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @AppStorage("walkthrough") var walkthrough = 1
     
     var eventType: EventType?
     
@@ -55,6 +56,9 @@ struct EventTypeView: View {
                 
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", role: .cancel) {
+                        if walkthrough == 2 {
+                            walkthrough += 1
+                        }
                         dismiss()
                     }
                 }
@@ -74,6 +78,9 @@ struct EventTypeView: View {
     }
     
     private func save() {
+        if walkthrough == 2 {
+            walkthrough += 1
+        }
         if let eventType {
             eventType.eventName = eventName
         } else {

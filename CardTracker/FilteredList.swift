@@ -109,3 +109,42 @@ struct FilteredList: View {
         }
     }
 }
+
+#Preview("Events") {
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: EventType.self, configurations: config)
+
+    for i in 1..<10 {
+        let event = EventType(eventName: "Example Event \(i)")
+        container.mainContext.insert(event)
+    }
+
+    return FilteredList(searchText: "", listView: .events, navigationPath: .constant(NavigationPath()))
+        .modelContainer(container)
+}
+
+#Preview("Card Gallery") {
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: EventType.self, configurations: config)
+
+    for i in 1..<10 {
+        let event = EventType(eventName: "Example Event for Cards \(i)")
+        container.mainContext.insert(event)
+    }
+
+    return FilteredList(searchText: "", listView: .greetingCard, navigationPath: .constant(NavigationPath()))
+        .modelContainer(container)
+}
+
+#Preview("Recipients") {
+    let configRecipient = ModelConfiguration(isStoredInMemoryOnly: true)
+    let containerRecipient = try! ModelContainer(for: Recipient.self, configurations: configRecipient)
+
+    for i in 1..<10 {
+        let recipient = Recipient(addressLine1: "3494 Kuhl Avenue", addressLine2: "", city: "Atlanta", state: "GA", zip: "30303", country: "USA", firstName: "John \(i)", lastName: "AppleSeed", category: .work)
+        containerRecipient.mainContext.insert(recipient)
+    }
+
+    return FilteredList(searchText: "", listView: .recipients, navigationPath: .constant(NavigationPath()))
+        .modelContainer(containerRecipient)
+}

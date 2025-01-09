@@ -30,19 +30,20 @@ struct ContentView: View {
     /// Adding a WalkThru launch screen  Will alllow for a reset to do the walkthu again
     @AppStorage("walkthrough") var walkthrough = 1
     @AppStorage("totalViews") var totalViews = 5
+    @State var eventType: EventType? 
     
     var body: some View {
         
         if walkthrough == 1 {
-            WalkThroughtView(title: "Welcome to Greeting Tracker", description: "Never send the same card twice", bgColor: "AccentColor", img: "Welcome_one")
+            WalkThroughtView(title: "Welcome to Greeting Tracker", description: "Never send the same card twice", bgColor: "AccentColor", img: "Welcome_one", eventType: $eventType)
         } else if walkthrough == 2 {
-            WalkThroughtView(title: "Occasions", description: "Let's define your first occasion.", bgColor: "AccentColor", img: "Welcome_two")
+            WalkThroughtView(title: "Occasions", description: "Let's define your first occasion.", bgColor: "AccentColor", img: "Welcome_two", eventType: $eventType)
         } else if walkthrough == 3 {
-            WalkThroughtView(title: "Greeting Cards", description: "Now let's add a card for that type of occasion.", bgColor: "AccentColor", img: "Welcome_three")
+            WalkThroughtView(title: "Greeting Cards", description: "Now let's add a card for that type of occasion.", bgColor: "AccentColor", img: "Welcome_three", eventType: $eventType)
         } else if walkthrough == 4 {
-            WalkThroughtView(title: "Recipients", description: "Then add a recipient to receive cards.", bgColor: "AccentColor", img: "Welcome_four")
+            WalkThroughtView(title: "Recipients", description: "Then add a recipient to receive cards.", bgColor: "AccentColor", img: "Welcome_four", eventType: $eventType)
         } else if walkthrough == 5 {
-            WalkThroughtView(title: "Putting it together", description: "Finally, add a card to a recipient.", bgColor: "AccentColor", img: "Welcome_five")
+            WalkThroughtView(title: "Putting it together", description: "Finally, add a card to a recipient.", bgColor: "AccentColor", img: "Welcome_five", eventType: $eventType)
         } else {
             /// The main content view containing a `TabView` with three tabs: Events, Gallery, and Recipients.
             TabView(selection: $listView) {

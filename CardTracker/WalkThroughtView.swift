@@ -30,8 +30,7 @@ struct WalkThroughtView: View {
     
     @Query(WalkThroughtView.recipientDescriptor) var recipients: [Recipient]
     var recipient: Recipient? { recipients.first}
-    
-    @State private var eventType: EventType? = nil
+    @Binding var eventType: EventType?
     
     var body: some View {
         ZStack{
@@ -203,6 +202,7 @@ struct WalkThroughtView: View {
                 )
             }
         }
+
         .sheet(isPresented: $showNewEventView) {
             EventTypeView(eventType: eventType)
         }
@@ -210,7 +210,7 @@ struct WalkThroughtView: View {
             EditGreetingCardView(eventTypePassed: eventType)
         }
         .sheet(isPresented: $showNewRecipientView) {
-            RecipientView()
+            RecipientView(recipientToEdit: recipient)
         }
         .sheet(isPresented: $showNewCardView) {
             NewCardView(recipient: recipient!, eventTypePassed: eventType)
@@ -225,5 +225,7 @@ struct WalkThroughtView: View {
 }
 
 #Preview {
-    WalkThroughtView(title: "WalkThrough", description: "This will show a lot of information", bgColor: "AccentColor", img:"Welcome_todo")
+    @Previewable @State var eventType: EventType? = EventType(eventName: "Birthday")
+    
+    WalkThroughtView(title: "WalkThrough", description: "This will show a lot of information", bgColor: "AccentColor", img:"Welcome_one", eventType: $eventType)
 }
