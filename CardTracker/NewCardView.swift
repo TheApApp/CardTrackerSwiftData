@@ -58,7 +58,7 @@ struct NewCardView: View {
                 Form {
                     Section("Card Information") {
                         Picker("Select Occasion Type", selection: $selectedEvent) {
-                            Text("Unknown Event")
+                            Text("Unknown Occasion")
                                 .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                             
                             if events.isEmpty == false {
@@ -71,7 +71,9 @@ struct NewCardView: View {
                             }
                         }
                         
-                        NavigationLink("Add Occasion", destination: EventTypeView())
+                        if selectedEvent == nil {
+                            NavigationLink("Add Occasion", destination: EventTypeView())
+                        }
                         
                         DatePicker(
                             "Occasion Date",
@@ -81,8 +83,9 @@ struct NewCardView: View {
                     
                     Section("Image") {
                         if selectedEvent != nil {
-                            NavigationLink("Add Card", destination: EditGreetingCardView(greetingCard: nil))
-                            
+                            if selectedGreetingCard == nil {
+                                NavigationLink("Add Card", destination: EditGreetingCardView(greetingCard: nil))
+                            }
                             NavigationLink("Select card:", destination: GreetingCardsPickerView(eventType: selectedEvent!, selectedGreetingCard: $selectedGreetingCard))
                         }
                         
@@ -104,27 +107,26 @@ struct NewCardView: View {
                 print("Selected a Greeting Card - \(String(describing: selectedGreetingCard)))")
             }
             .padding([.leading, .trailing], 10)
-            .navigationBarTitle("\(recipient.fullName)")
-            .navigationBarItems(trailing:
-                                    HStack {
-                Button(action: {
-                    // TODO: add an error check to confirm they have an event and card selected
-                    save()
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Text("Save")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
-                })
-                Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "chevron.down.circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.accentColor)
-                })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        save()
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Save")
+                            .foregroundColor(.accentColor)
+                    })
+                    .disabled(selectedEvent == nil || selectedGreetingCard == nil)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Text("Cancel")
+                            .foregroundColor(.accentColor)
+                    })
+                }
             }
-            )
         }
         .foregroundColor(.accentColor)
     }

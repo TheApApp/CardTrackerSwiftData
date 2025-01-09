@@ -1,9 +1,9 @@
 Major Updates coming including;
 1. New getting started Walkthru
-2. consistency changes for creating and editing event types, greeting cards, and recipients
+2. consistency changes for creating and editing occasions, greeting cards, and recipients
 
 Things to Test:
-1. You can now create a new event when adding a card to the gallery.  What do you think of the User Experience? (feature - Add to both the Event and Card Pickers in the Recipient view - ability to add a new item)
+1. You can now create a new occasion when adding a card to the gallery.  What do you think of the User Experience? (feature - Add to both the Occaions and Card Pickers in the Recipient view - ability to add a new item)
 2. Card Website should no longer auto capitalize the "H" in "https"
 3. Added ability to edit a recipient's address and more (is this discoverable?)
 4. Added ability to classification a recipient: i.e. work, family, friends. etc.
@@ -17,13 +17,13 @@ Known bugs:
 Things yet to come:
 1. Correct VisionOS layout issues
 2. Resolve issue with Receipient Title, with Cards Sent, changing from color to black
-3. Bug Fix - on the delete for the Card App - Issue is that the Events list needs to remove the array element after the Child is deleted
+3. Bug Fix - on the delete for the Card App - Issue is that the Occasions list needs to remove the array element after the Child is deleted
 4. Update the slide view to fill the slide with the card image and make the click on the image give you the full screen view
 
 Potential Features to develop:
 1. Add filter by name option in the Card picker view
 1. Add card name to the add Card to receipient view
-1. Add an app intent to show a gallery of a specific event type’s cards
+1. Add an app intent to show a gallery of a specific occasions' cards
 1. Add ability to click on a card in the gallery and see all the people it was sent to and when
 1. Add a date range to the PDF Print option so you can print all Christmas cards for a specific year (as an example)
 1. Change Card overlays to be pop-up menus
