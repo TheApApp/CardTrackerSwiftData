@@ -15,6 +15,7 @@ struct TextFieldModifier: ViewModifier {
         content
             .padding(10)
             .font(Font.system(size: 20, weight: .medium, design: .rounded))
+            .foregroundColor(Color.accentColor)
             .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.accentColor, lineWidth: borderWidth))
     }
 }

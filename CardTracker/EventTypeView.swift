@@ -24,8 +24,13 @@ struct EventTypeView: View {
         NavigationStack {
             Form {
                 Section("Description") {
-                    TextField("Occasion Name", text: $eventName)
+                    TextField("Name", text: $eventName)
                         .customTextField()
+                }
+                Section {
+                    VStack {
+                        Text("An occassion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\nBirthdays\nAnniversaries\nWeddings\nGraduations\nHolidays")
+                    }
                 }
             }
             
@@ -90,7 +95,7 @@ struct EventTypeView: View {
 #Preview("Edit Event Type") {
      let config = ModelConfiguration(isStoredInMemoryOnly: true)
      let container = try! ModelContainer(for: EventType.self, configurations: config)
-     let event = EventType(eventName: "Event Name")
+     let event = EventType(eventName: "Occasion Name")
     
     return EventTypeView(eventType: event)
          .modelContainer(container)

@@ -9,6 +9,7 @@ Things to Test:
 4. Added ability to classification a recipient: i.e. work, family, friends. etc.
 5. Added new launch startup screen
 6. change toolbar items to better align with apple standards (first pass), and changed some icons.
+7. Added descriptions on Occasions screen, feedback on language would be helpful
 
 Known bugs:
 1. Bug in macOS - can’t access Camera even if setting says permitted

@@ -58,7 +58,7 @@ struct NewCardView: View {
                 Form {
                     Section("Card Information") {
                         Picker("Select Occasion Type", selection: $selectedEvent) {
-                            Text("Unknown Occasion")
+                            Text("Unknown")
                                 .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                             
                             if events.isEmpty == false {

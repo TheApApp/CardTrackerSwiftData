@@ -1572,6 +1572,9 @@
         }
       }
     },
+    "An occassion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\nBirthdays\nAnniversaries\nWeddings\nGraduations\nHolidays" : {
+
+    },
     "Are you sure" : {
       "localizations" : {
         "ar-AE" : {
@@ -4825,6 +4828,9 @@
         }
       }
     },
+    "Name" : {
+
+    },
     "New Event" : {
       "localizations" : {
         "ar-AE" : {
@@ -5386,6 +5392,7 @@
       }
     },
     "Occasion Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -7850,6 +7857,9 @@
           }
         }
       }
+    },
+    "Unknown" : {
+
     },
     "Unknown Event" : {
       "extractionState" : "stale",
