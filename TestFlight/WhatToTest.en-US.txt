@@ -1,4 +1,4 @@
-I would like to fix one thing and then release this as 1.3.0.  Note, I do know I have some changes to make for the Graphics on the walkthru.
+I would like to fix one thing and then release this as 1.3.0. Updated Graphics in walkthru.
 
 Things to Test:
 1. You can now create a new occasion when adding a card to the gallery.  What do you think of the User Experience? (feature - Add to both the Occaions and Card Pickers in the Recipient view - ability to add a new item)

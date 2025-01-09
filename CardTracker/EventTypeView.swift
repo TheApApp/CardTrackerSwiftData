@@ -30,7 +30,7 @@ struct EventTypeView: View {
                 }
                 Section {
                     VStack {
-                        Text("An occassion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\nBirthdays\nAnniversaries\nWeddings\nGraduations\nHolidays")
+                        Text("An occasion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\n\t• Birthdays\n\t• Anniversaries\n\t• Weddings\n\t• Graduations\n\t• Holidays")
                     }
                 }
             }
