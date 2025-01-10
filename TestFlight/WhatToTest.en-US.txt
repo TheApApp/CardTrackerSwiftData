@@ -8,6 +8,7 @@ Things to Test:
 6. Changed toolbar items to better align with apple standards (first pass), and changed some icons.
 7. Added descriptions on Occasions screen, feedback on language would be helpful
 8. Updated default color options on various UI elements
+9. Fixed issue on visionOS with card grid layout
 
 Known bugs:
 1. Bug in macOS - can’t access Camera even if setting says permitted

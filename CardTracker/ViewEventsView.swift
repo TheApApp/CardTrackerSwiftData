@@ -42,10 +42,14 @@ struct ViewEventsView: View {
                 SortDescriptor(\Card.cardDate, order: .reverse),
             ]
         )
-        if  UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision { // isIphone.iPhone {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             iPhone = true
             self.gridLayout = [
                 GridItem(.adaptive(minimum: 160), spacing: 10, alignment: .center)
+            ]
+        } else if UIDevice.current.userInterfaceIdiom == .vision {
+            self.gridLayout = [
+                GridItem(.adaptive(minimum: 320), spacing: 20, alignment: .leading)
             ]
         } else {
             self.gridLayout = [
@@ -125,70 +129,6 @@ struct ViewEventsView: View {
                     .interactiveDismissDisabled(true)
             }
         })
-    }
-    
-    @MainActor func render(viewsPerPage: Int) -> URL {
-        let cardsArray: [Card] = cards.map { $0 }
-        let url = URL.documentsDirectory.appending(path: "\(recipient.fullName)-cards.pdf")
-        var pageSize = CGRect(x: 0, y: 0, width: 612, height: 792)
-        
-        guard let pdfOutput = CGContext(url as CFURL, mediaBox: &pageSize, nil) else {
-            return url
-        }
-        
-        let numberOfPages = Int((cards.count + viewsPerPage - 1) / viewsPerPage)   // Round to number of pages
-        let viewsPerRow = 4
-        let rowsPerPage = 4
-        let spacing = 10.0
-        
-        for pageIndex in 0..<numberOfPages {
-            let startIndex = pageIndex * viewsPerPage
-            let endIndex = min(startIndex + viewsPerPage, cardsArray.count)
-            
-            var currentX : Double = 0
-            var currentY : Double = 0
-            
-            pdfOutput.beginPDFPage(nil)
-            
-            // Printer header - top 160 points of the page
-            let renderTop = ImageRenderer(content: AddressView(recipient: recipient))
-            renderTop.render { size, renderTop in
-                // Go to Bottom Left of Page and then translate up to 160 points from the top
-                pdfOutput.move(to: CGPoint(x: 0.0, y: 0.0))
-                pdfOutput.translateBy(x: 0.0, y: 692)
-                currentY += 692
-                renderTop(pdfOutput)
-            }
-            pdfOutput.translateBy(x: spacing / 2, y: -160)
-            
-            for row in 0..<rowsPerPage {
-                for col in 0..<viewsPerRow {
-                    let index = startIndex + row * viewsPerRow + col
-                    if index < endIndex, let card = cardsArray[safe: index] {
-                        let renderBody = ImageRenderer(content: PrintView(card: card, greetingCard: nil, isEventType: .events))
-                        renderBody.render { size, renderBody in
-                            renderBody(pdfOutput)
-                            pdfOutput.translateBy(x: size.width + 10, y: 0)
-                            currentX += size.width + 10
-                        }
-                    }
-                }
-                pdfOutput.translateBy(x: -pageSize.width + 5, y: -144)
-                currentY -= 153
-                currentX = 0
-            }
-            
-            // Print Footer - from bottom of page, up 40 points
-            let renderBottom = ImageRenderer(content: FooterView(page: pageIndex + 1, pages: numberOfPages))
-            pdfOutput.move(to: CGPoint(x: 0, y: 0))
-            pdfOutput.translateBy(x: 0, y: 40)
-            renderBottom.render { size, renderBottom in
-                renderBottom(pdfOutput)
-            }
-            pdfOutput.endPDFPage()
-        }
-        pdfOutput.closePDF()
-        return url
     }
     
     func getLocation(from address: String, completion: @escaping (_ location: CLLocationCoordinate2D?) -> Void) {

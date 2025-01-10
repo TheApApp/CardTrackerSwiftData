@@ -73,7 +73,7 @@ struct WalkThroughtView: View {
                         Button {
                             showNewEventView.toggle()
                         } label: {
-                            Text("New Event")
+                            Text("Create an occasion")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
                                 .font(.title)
@@ -83,7 +83,7 @@ struct WalkThroughtView: View {
                         Button {
                             showNewGreetingCardView.toggle()
                         } label: {
-                            Text("Create the card")
+                            Text("Create a card")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
                                 .font(.title)
@@ -93,7 +93,7 @@ struct WalkThroughtView: View {
                         Button {
                             showNewRecipientView.toggle()
                         } label: {
-                            Text("Create the recipient")
+                            Text("Create a recipient")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
                                 .font(.title)
@@ -103,7 +103,7 @@ struct WalkThroughtView: View {
                         Button {
                             showNewCardView.toggle()
                         } label: {
-                            Text("Add card to the recipient")
+                            Text("Send the recipient the card")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
                                 .font(.title)

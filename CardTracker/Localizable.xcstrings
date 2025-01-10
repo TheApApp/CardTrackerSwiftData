@@ -1011,6 +1011,7 @@
       }
     },
     "Add card to the recipient" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -1684,6 +1685,9 @@
         }
       }
     },
+    "An occasion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\n\t• Birthdays\n\t• Anniversaries\n\t• Weddings\n\t• Graduations\n\t• Holidays" : {
+
+    },
     "An occassion is simply any reason you may send out a greeting card." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1796,9 +1800,6 @@
           }
         }
       }
-    },
-    "An occassion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\nBirthdays\nAnniversaries\nWeddings\nGraduations\nHolidays" : {
-
     },
     "Anniversaries" : {
       "extractionState" : "stale",
@@ -3482,7 +3483,17 @@
         }
       }
     },
+    "Create a card" : {
+
+    },
+    "Create a recipient" : {
+
+    },
+    "Create an occasion" : {
+
+    },
     "Create the card" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -3595,6 +3606,7 @@
       }
     },
     "Create the recipient" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5731,6 +5743,7 @@
       }
     },
     "New Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -8197,6 +8210,9 @@
           }
         }
       }
+    },
+    "Send the recipient the card" : {
+
     },
     "Settings" : {
       "localizations" : {
