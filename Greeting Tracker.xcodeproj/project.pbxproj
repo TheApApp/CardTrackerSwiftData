@@ -52,7 +52,6 @@
 		18D9623D2B26409500662849 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9623C2B26409500662849 /* EventType.swift */; };
 		18D9623F2B26411900662849 /* Recipient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9623E2B26411900662849 /* Recipient.swift */; };
 		18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962482B2650C100662849 /* TextFieldModifier.swift */; };
-		18D9624D2B2656AB00662849 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624C2B2656AB00662849 /* EventsList.swift */; };
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
 		95608F362D26E60D009160BD /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */; };
@@ -505,7 +504,6 @@
 				189F5C752B27CB280067245A /* FooterView.swift in Sources */,
 				18D962132B263EC200662849 /* Card.swift in Sources */,
 				187047252B3226EB00E489AC /* GreetingCardsPickerView.swift in Sources */,
-				18D9624D2B2656AB00662849 /* EventsList.swift in Sources */,
 				189F5C6D2B27B48A0067245A /* AddressView.swift in Sources */,
 				18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */,
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,

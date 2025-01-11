@@ -54,7 +54,7 @@ struct FilteredList: View {
                         ViewCardsView(eventType: eventType, navigationPath: $navigationPath)
                     ) {
                         Text("\(eventType.eventName)")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("ListColor"))
                     }
                 }
                 .onDelete(perform: deleteEvent)
