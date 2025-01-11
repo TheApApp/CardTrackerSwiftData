@@ -68,7 +68,7 @@ class GeneratePDF {
             return url
         }
         
-        let numberOfPages = Int((cardArray ? cardsArray.count : greetingArray.count + viewsPerPage - 1) / viewsPerPage)
+        let numberOfPages = Int((cardArray ? (cardsArray.count + viewsPerPage - 1) : (greetingArray.count + viewsPerPage - 1)) / viewsPerPage)
         let viewsPerRow = 4
         let rowsPerPage = 4
         var pageIndex = 0
