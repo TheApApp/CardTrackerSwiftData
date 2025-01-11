@@ -56,17 +56,20 @@ struct WalkThroughtView: View {
                     Image(img)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .containerRelativeFrame(.horizontal) { size, axis in
+                            size * 0.7
+                        }
                         .cornerRadius(30)
                         .padding()
                     
                     Text(title)
                         .fontWeight(.semibold)
                         .foregroundColor(Color.white)
-                        .font(.title)
+                        .font(.title2)
                         .padding(.top)
                     
                     Text(description)
-                        .padding(.top, 5.0)
+//                        .padding(.top, 3.0)
                         .foregroundColor(Color.white)
                     
                     if walkthrough == 2 {
@@ -76,7 +79,7 @@ struct WalkThroughtView: View {
                             Text("Create an occasion")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
-                                .font(.title)
+                                .font(.title3)
                         }
                         .buttonStyle(.borderedProminent)
                     } else if walkthrough == 3 {
@@ -86,7 +89,7 @@ struct WalkThroughtView: View {
                             Text("Create a card")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
-                                .font(.title)
+                                .font(.title3)
                         }
                         .buttonStyle(.borderedProminent)
                     } else if walkthrough == 4 {
@@ -96,7 +99,7 @@ struct WalkThroughtView: View {
                             Text("Create a recipient")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
-                                .font(.title)
+                                .font(.title3)
                         }
                         .buttonStyle(.borderedProminent)
                     } else if walkthrough == 5 {
@@ -106,7 +109,7 @@ struct WalkThroughtView: View {
                             Text("Send the recipient the card")
                                 .fontWeight(.semibold)
                                 .foregroundColor(Color.white)
-                                .font(.title)
+                                .font(.title3)
                         }
                         .buttonStyle(.borderedProminent)
                     }
