@@ -27,7 +27,7 @@ final class GreetingCard: CustomDebugStringConvertible {
     @Relationship(deleteRule: .cascade, inverse: \Card.cardFront) var cards: [Card]?
     
     var debugDescription: String {
-        "\(cardName ), \(eventType?.eventName ?? "No Event Type"), \(cardManufacturer ), \(cardURL), Used - \(cardsCount()) "
+        "\(cardName ), \(eventType?.eventName ?? "No Event Type"), \(cardManufacturer ), \(cardURL), Used - \(cardsCount())"
     }
     
     init(cardName: String, cardFront: Data?, eventType: EventType? = nil, cardManufacturer: String, cardURL: String) {

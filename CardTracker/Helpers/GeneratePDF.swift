@@ -59,6 +59,11 @@ class GeneratePDF {
         }
         return positions
     }()
+    
+    internal var layoutGridForTesting: [[CGFloat]] {
+        layoutGrid
+    }
+
 
     init(title: String, cards: [Card]?, greetingCards: [GreetingCard]?, cardArray: Bool) {
         self.title = title
@@ -110,7 +115,7 @@ class GeneratePDF {
         return url
     }
 
-    @MainActor private func renderHeader(_ context: CGContext) {
+    @MainActor internal func renderHeader(_ context: CGContext) {
         let header = ImageRenderer(content: DisplayEventTypeView(title: title, isCards: false))
         header.render { _, renderer in
             context.saveGState()
@@ -120,7 +125,7 @@ class GeneratePDF {
         }
     }
 
-    @MainActor private func renderContent(_ context: CGContext, _ data: Any, at position: [CGFloat]) {
+    @MainActor internal func renderContent(_ context: CGContext, _ data: Any, at position: [CGFloat]) {
         guard position.count == 2 else { return }
         
         var renderBody: ImageRenderer<PrintView>
@@ -144,7 +149,7 @@ class GeneratePDF {
 
 
 
-    @MainActor private func renderFooter(_ context: CGContext, pageIndex: Int, totalPages: Int) {
+    @MainActor internal func renderFooter(_ context: CGContext, pageIndex: Int, totalPages: Int) {
         let footer = ImageRenderer(content: FooterView(page: pageIndex + 1, pages: totalPages))
         footer.render { _, renderer in
             context.saveGState()
