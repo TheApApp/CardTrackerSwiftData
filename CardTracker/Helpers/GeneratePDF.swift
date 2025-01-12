@@ -1,9 +1,31 @@
 //
+//  GeneratePDF 2.swift
+//  Greeting Tracker
+//
+//  Created by Michael Rowe1 on 1/12/25.
+//
+
+
 //  GeneratePDF.swift
 //  Greet Keeper
 //
 //  Created by Michael Rowe on 5/27/24.
+
+// 8.5 * 11 at 72 dpi should be
+// 612 * 792
+// If we remove a half inch on all sides we end up with (36dpi)
+// 540 * 720
+
+// Width  540 we can now divide by 4 which is 135
+//        and if we add a 2.5 dpi border we have 130 dots for width
+// Height 720 we divide by 5 (for header and footer) end up with 144
+//        and if we add a 2.5 dpi border we have 139 dots for height
 //
+// So we have a header that is Width 540, Height 139
+// a 5 dpi space
+// 16 images of 130*139 with 5 dpi between
+// a 5 dpi space
+// Footer of width 540, height 139
 
 import os
 import PDFKit
@@ -14,39 +36,30 @@ class GeneratePDF {
     var cards: [Card]?
     var greetingCards: [GreetingCard]?
     var cardArray: Bool
-    let logger = Logger(subsystem: "PDF Render", category: "Print")
-    var numberOfImages: Int?
-    
-    // 8.5 * 11 at 72 dpi should be
-    // 612 * 792
-    // If we remove a half inch on all sides we end up with (36dpi)
-    // 540 * 720
-    
-    // Width  540 we can now divide by 4 which is 135
-    //        and if we add a 2.5 dpi border we have 130 dots for width
-    // Height 720 we divide by 5 (for header and footer) end up with 144
-    //        and if we add a 2.5 dpi border we have 139 dots for height
-    //
-    // So we have a header that is Width 540, Height 139
-    // a 5 dpi space
-    // 16 images of 130*139 with 5 dpi between
-    // a 5 dpi space
-    // Footer of width 540, height 139
-    
-    let pageHeight = 792
-    let pageWidth = 612
-    let origin = (x: 0, y: 0)
-    
-    let layoutGrid = [
-        [0.0, -149.0], [140.0, 0.0], [140.0, 0.0] , [140.0, 0.0],
-        [-422.0, -149.0], [140.0, 0.0], [140.0, 0.0] , [140.0, 0.0],
-        [-422.0, -149.0], [140.0, 0.0], [140.0, 0.0] , [140.0, 0.0],
-        [-422.0, -149.0], [140.0, 0.0], [140.0, 0.0] , [140.0, 0.0]
-    ]
+    private let logger = Logger(subsystem: "PDF Render", category: "Print")
+    private var numberOfImages: Int?
 
-    private var cardsArray: [Card] = []
-    private var greetingArray: [GreetingCard] = []
-    
+    private let pageHeight = 792.0
+    private let pageWidth = 612.0
+    private let origin = CGPoint(x: 0, y: 0)
+
+    private let layoutGrid: [[CGFloat]] = {
+        let cellWidth: CGFloat = 135    // Total cell width (including margins/spacings)
+        let cellHeight: CGFloat = 148  // Total cell height (including margins/spacings)
+        let xMargin: CGFloat = 36      // Left margin
+        let yMargin: CGFloat = 230      // Top margin
+
+        var positions: [[CGFloat]] = []
+        for row in 0..<4 {
+            for col in 0..<4 {
+                let x = xMargin + CGFloat(col) * cellWidth
+                let y = yMargin + CGFloat(row) * cellHeight
+                positions.append([x, y])
+            }
+        }
+        return positions
+    }()
+
     init(title: String, cards: [Card]?, greetingCards: [GreetingCard]?, cardArray: Bool) {
         self.title = title
         self.cards = cards
@@ -57,106 +70,87 @@ class GeneratePDF {
 
     @MainActor
     func render(viewsPerPage: Int) async -> URL {
-        if cardArray {
-            cardsArray = cards.map { $0 }!
-        } else {
-            greetingArray = greetingCards.map { $0 }!
-        }
-            
-        let url = URL.documentsDirectory.appending(path: "\(title)-cards.pdf")
-        var pageSize = CGRect(x: origin.x, y: origin.y, width: pageWidth, height: pageHeight)
-        
+        let url = URL.documentsDirectory.appendingPathComponent("\(title)-cards.pdf")
+        var pageSize = CGRect(origin: origin, size: CGSize(width: pageWidth, height: pageHeight))
+
         guard let pdfOutput = CGContext(url as CFURL, mediaBox: &pageSize, nil) else {
             return url
         }
+
         
-        let numberOfPages = Int((cardArray ? (cardsArray.count + viewsPerPage - 1) : (greetingArray.count + viewsPerPage - 1)) / viewsPerPage)
-        let viewsPerRow = 4
-        let rowsPerPage = 4
+        let dataArray : [Any] = cardArray ? cards ?? [] : greetingCards ?? []
+        let numberOfPages = Int(ceil(Double(dataArray.count) / Double(viewsPerPage)))
+
         var pageIndex = 0
-        
-        // hack to handle footer on last page
-        var footerX = -420.0
-        let modImage = numberOfImages! % viewsPerRow
-        
-        // using repeat while loop since we will always print at least 1 page
         repeat {
             let startIndex = pageIndex * viewsPerPage
-            let endIndex = min(startIndex + viewsPerPage, cardArray ? cardsArray.count : greetingArray.count)
-            
-            // hack to handle footer on last page
-            // if there are more than one pages,  we need to use the same footerX for all but the last one.
-            if numberOfPages > 1 && pageIndex != numberOfPages - 1 {
-                footerX = -420
-            } else if modImage == 0 {
-                footerX = -420
-            } else if modImage == 3 {
-                footerX = -300
-            } else if modImage == 2 {
-                footerX = -150
-            } else if modImage == 1 {
-                footerX = 0
-            }
-            
-            var image = 0
-            
+            let endIndex = min(startIndex + viewsPerPage, dataArray.count)
+
             pdfOutput.beginPDFPage(nil)
-            
-            let renderTop = ImageRenderer(content: DisplayEventTypeView(title: title, isCards: false))
-            renderTop.render { size, renderTop in
-                pdfOutput.move(to: CGPoint(x: origin.x, y: origin.y))
-                pdfOutput.translateBy(x: 10.0, y: 720)
-                renderTop(pdfOutput)
-            }
-            
-            for row in 0..<rowsPerPage {
-                logger.debug("\n\rPrinting Images")
-                for col in 0..<viewsPerRow {
-                    let index = startIndex + row * viewsPerRow + col
-                    logger.debug("Image = \(image)")
-                    if cardArray {
-                        if index < endIndex, let event = cardsArray[safe: index] {
-                            let renderBody = ImageRenderer(content: PrintView(card: event, greetingCard: nil, isEventType: .events))
-                            
-                            renderBody.render { size, renderBody in
-                                pdfOutput.move(to: CGPoint(x: origin.x, y: origin.y))
-                                let x = layoutGrid[image].first ?? 0
-                                let y = layoutGrid[image].last ?? 0
-                                pdfOutput.translateBy(x: x, y: y)
-//                                logger.debug("pdfOutput.translateBy info x = \(pdfOutput.boundingBoxOfPath.origin.x) and y = \(pdfOutput.boundingBoxOfPath.origin.y) \n\r LayoutGrid x=\(x) y=\(y)\n\r")
-                                renderBody(pdfOutput)
-                            }
-                        }
-                    } else {
-                        if index < endIndex, let greeting = greetingArray[safe: index] {
-                            let renderBody = ImageRenderer(content: PrintView(card: nil, greetingCard: greeting, isEventType: .greetingCard))
-                            renderBody.render { size, renderBody in
-                                pdfOutput.move(to: CGPoint(x: origin.x, y: origin.y))
-                                let x = layoutGrid[image].first ?? 0
-                                let y = layoutGrid[image].last ?? 0
-                                pdfOutput.translateBy(x: x, y: y)
-//                                logger.debug("pdfOutput.translateBy info x = \(pdfOutput.boundingBoxOfPath.origin.x) and y = \(pdfOutput.boundingBoxOfPath.origin.y) \n\r LayoutGrid x=\(x) y=\(y)\n\r")
-                                renderBody(pdfOutput)
-                            }
-                        }
+            renderHeader(pdfOutput)
+
+            for row in 0..<4 {
+                for col in 0..<4 {
+                    let gridIndex = row * 4 + col
+                    let index = startIndex + gridIndex
+                    if index < endIndex {
+                        let gridPosition = layoutGrid[gridIndex]
+                        renderContent(pdfOutput, dataArray[index], at: gridPosition)
                     }
-                    image += 1
                 }
             }
-            
-            pageIndex += 1
-            
-//            logger.debug("newX = \(footerX), modImage = \(modImage), image = \(image), numberOfPages = \(numberOfPages)")
-            let renderBottom = ImageRenderer(content: FooterView(page: pageIndex, pages: numberOfPages))
-            pdfOutput.translateBy(x: footerX, y: -80.0)
-            renderBottom.render { size, renderBottom in
-                renderBottom(pdfOutput)
-            }
+
+            renderFooter(pdfOutput, pageIndex: pageIndex, totalPages: numberOfPages)
             pdfOutput.endPDFPage()
-            image = 0
+
+            pageIndex += 1
         } while pageIndex < numberOfPages
-        
+
         pdfOutput.closePDF()
         return url
+    }
+
+    @MainActor private func renderHeader(_ context: CGContext) {
+        let header = ImageRenderer(content: DisplayEventTypeView(title: title, isCards: false))
+        header.render { _, renderer in
+            context.saveGState()
+            context.translateBy(x: 10, y: 720)
+            renderer(context)
+            context.restoreGState()
+        }
+    }
+
+    @MainActor private func renderContent(_ context: CGContext, _ data: Any, at position: [CGFloat]) {
+        guard position.count == 2 else { return }
+        
+        var renderBody: ImageRenderer<PrintView>
+        if let card = data as? Card {
+            renderBody = ImageRenderer(content: PrintView(card: card, greetingCard: nil, isEventType: .events))
+        } else if let greetingCard = data as? GreetingCard {
+            renderBody = ImageRenderer(content: PrintView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard))
+        } else {
+            return
+        }
+
+        renderBody.render { _, renderer in
+            context.saveGState()
+            let x = position[0]
+            let y = pageHeight - position[1] // Invert `y` for correct placement from the top
+            context.translateBy(x: x, y: y)
+            renderer(context)
+            context.restoreGState()
+        }
+    }
+
+
+
+    @MainActor private func renderFooter(_ context: CGContext, pageIndex: Int, totalPages: Int) {
+        let footer = ImageRenderer(content: FooterView(page: pageIndex + 1, pages: totalPages))
+        footer.render { _, renderer in
+            context.saveGState()
+            context.translateBy(x: 10, y: 50)
+            renderer(context)
+            context.restoreGState()
+        }
     }
 }

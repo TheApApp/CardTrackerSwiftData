@@ -39,7 +39,6 @@
 		189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */; };
 		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
 		18B916722B365441008101A7 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B916712B365441008101A7 /* Previewer.swift */; };
-		18CBD38B2C05317F00CA9C05 /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBD38A2C05317F00CA9C05 /* GeneratePDF.swift */; };
 		18CBD38D2C05328B00CA9C05 /* ShareSheetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */; };
 		18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* GreetKeeperApp.swift */; };
 		18D962112B263EC200662849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962102B263EC200662849 /* ContentView.swift */; };
@@ -58,6 +57,7 @@
 		95608F372D26E613009160BD /* MenuOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C662B2766D00067245A /* MenuOverlayView.swift */; };
 		95705C022D2C3BF000FCE2AF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 95705C012D2C3BF000FCE2AF /* Localizable.xcstrings */; };
 		9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9586F3FD2D19ECD000CE1A39 /* Category.swift */; };
+		9593D4F32D3437E900F0DBE4 /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9593D4F22D3437E900F0DBE4 /* GeneratePDF.swift */; };
 		95AEAE912D30483700CACDBC /* EventType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEAE902D30483700CACDBC /* EventType+Extensions.swift */; };
 		95AEAE932D3048D800CACDBC /* GreetingCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEAE922D3048D800CACDBC /* GreetingCard+Extensions.swift */; };
 		95DECCCC2D21B3D70052066C /* WalkThroughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */; };
@@ -116,7 +116,6 @@
 		189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGreetingCardView.swift; sourceTree = "<group>"; };
 		18B086A02B375415001CBFFB /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
 		18B916712B365441008101A7 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
-		18CBD38A2C05317F00CA9C05 /* GeneratePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDF.swift; sourceTree = "<group>"; };
 		18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetHelper.swift; sourceTree = "<group>"; };
 		18D9620B2B263EC200662849 /* Greeting Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Greeting Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D9620E2B263EC200662849 /* GreetKeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetKeeperApp.swift; sourceTree = "<group>"; };
@@ -139,6 +138,7 @@
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		95705C012D2C3BF000FCE2AF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9586F3FD2D19ECD000CE1A39 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		9593D4F22D3437E900F0DBE4 /* GeneratePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDF.swift; sourceTree = "<group>"; };
 		95AEAE902D30483700CACDBC /* EventType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventType+Extensions.swift"; sourceTree = "<group>"; };
 		95AEAE922D3048D800CACDBC /* GreetingCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GreetingCard+Extensions.swift"; sourceTree = "<group>"; };
 		95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughtView.swift; sourceTree = "<group>"; };
@@ -309,7 +309,7 @@
 				18B086A02B375415001CBFFB /* ContactPicker.swift */,
 				189F5C682B276C570067245A /* Constants.swift */,
 				95AEAE902D30483700CACDBC /* EventType+Extensions.swift */,
-				18CBD38A2C05317F00CA9C05 /* GeneratePDF.swift */,
+				9593D4F22D3437E900F0DBE4 /* GeneratePDF.swift */,
 				95AEAE922D3048D800CACDBC /* GreetingCard+Extensions.swift */,
 				189F5C802B27D4070067245A /* ImageCompressor.swift */,
 				1800AC0F2BAF3C0B00C51D14 /* ImageLoader.swift */,
@@ -497,7 +497,6 @@
 				189F5C652B2766B30067245A /* ViewEventsView.swift in Sources */,
 				1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */,
 				95E015942D206B4C00C6574D /* RecipientView.swift in Sources */,
-				18CBD38B2C05317F00CA9C05 /* GeneratePDF.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
 				18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */,
 				95608F362D26E60D009160BD /* ScreenView.swift in Sources */,
@@ -507,6 +506,7 @@
 				189F5C6D2B27B48A0067245A /* AddressView.swift in Sources */,
 				18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */,
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
+				9593D4F32D3437E900F0DBE4 /* GeneratePDF.swift in Sources */,
 				187047232B32098600E489AC /* TabView+Extensions.swift in Sources */,
 				9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */,
 				95AEAE932D3048D800CACDBC /* GreetingCard+Extensions.swift in Sources */,
