@@ -37,7 +37,6 @@
 		189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C7E2B27D2360067245A /* ImagePicker.swift */; };
 		189F5C812B27D4070067245A /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C802B27D4070067245A /* ImageCompressor.swift */; };
 		189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */; };
-		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
 		18B916722B365441008101A7 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B916712B365441008101A7 /* Previewer.swift */; };
 		18CBD38D2C05328B00CA9C05 /* ShareSheetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */; };
 		18D9620F2B263EC200662849 /* GreetKeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* GreetKeeperApp.swift */; };
@@ -71,6 +70,9 @@
 		95805CDF2D347BFD00962B5C /* EventTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CDE2D347BFD00962B5C /* EventTypeTests.swift */; };
 		95805CE12D347C5A00962B5C /* RecipientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CE02D347C5A00962B5C /* RecipientTests.swift */; };
 		95805CE32D347D3F00962B5C /* GreetingCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CE22D347D3F00962B5C /* GreetingCardTests.swift */; };
+		95805CE72D34817000962B5C /* AsyncImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CE62D34817000962B5C /* AsyncImageViewTests.swift */; };
+		95805CEA2D34821500962B5C /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 95805CE92D34821500962B5C /* ViewInspector */; };
+		95805CEE2D34849000962B5C /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CED2D34849000962B5C /* ConstantsTests.swift */; };
 		9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9586F3FD2D19ECD000CE1A39 /* Category.swift */; };
 		9593D4F32D3437E900F0DBE4 /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9593D4F22D3437E900F0DBE4 /* GeneratePDF.swift */; };
 		95AEAE912D30483700CACDBC /* EventType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEAE902D30483700CACDBC /* EventType+Extensions.swift */; };
@@ -129,7 +131,6 @@
 		189F5C7E2B27D2360067245A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		189F5C802B27D4070067245A /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
 		189FD03C2B44A83D003805EC /* EditGreetingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGreetingCardView.swift; sourceTree = "<group>"; };
-		18B086A02B375415001CBFFB /* ContactPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPicker.swift; sourceTree = "<group>"; };
 		18B916712B365441008101A7 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		18CBD38C2C05328B00CA9C05 /* ShareSheetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetHelper.swift; sourceTree = "<group>"; };
 		18D9620B2B263EC200662849 /* Greeting Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Greeting Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +158,8 @@
 		95805CDE2D347BFD00962B5C /* EventTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeTests.swift; sourceTree = "<group>"; };
 		95805CE02D347C5A00962B5C /* RecipientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientTests.swift; sourceTree = "<group>"; };
 		95805CE22D347D3F00962B5C /* GreetingCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCardTests.swift; sourceTree = "<group>"; };
+		95805CE62D34817000962B5C /* AsyncImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageViewTests.swift; sourceTree = "<group>"; };
+		95805CED2D34849000962B5C /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		9586F3FD2D19ECD000CE1A39 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		9593D4F22D3437E900F0DBE4 /* GeneratePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDF.swift; sourceTree = "<group>"; };
 		95AEAE902D30483700CACDBC /* EventType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventType+Extensions.swift"; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95805CEA2D34821500962B5C /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +274,6 @@
 				95805CE52D3480F500962B5C /* Helpers Tests */,
 				95805CE42D3480B300962B5C /* Data Tests */,
 				18D962232B263EC400662849 /* CardTrackerTests.swift */,
-				95805CCC2D346FE900962B5C /* GeneratePDFTests.swift */,
 			);
 			path = CardTrackerTests;
 			sourceTree = "<group>";
@@ -329,7 +332,6 @@
 			children = (
 				1800AC0D2BAF3BD800C51D14 /* AsyncImageView.swift */,
 				189F5C762B27CBBF0067245A /* Collection+Extensions.swift */,
-				18B086A02B375415001CBFFB /* ContactPicker.swift */,
 				189F5C682B276C570067245A /* Constants.swift */,
 				95AEAE902D30483700CACDBC /* EventType+Extensions.swift */,
 				9593D4F22D3437E900F0DBE4 /* GeneratePDF.swift */,
@@ -364,6 +366,9 @@
 		95805CE52D3480F500962B5C /* Helpers Tests */ = {
 			isa = PBXGroup;
 			children = (
+				95805CE62D34817000962B5C /* AsyncImageViewTests.swift */,
+				95805CED2D34849000962B5C /* ConstantsTests.swift */,
+				95805CCC2D346FE900962B5C /* GeneratePDFTests.swift */,
 			);
 			path = "Helpers Tests";
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 			packageReferences = (
 				18121A352C360B550054A016 /* XCRemoteSwiftPackageReference "AQUI" */,
 				18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
+				95805CE82D3481E700962B5C /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = 18D9620C2B263EC200662849 /* Products */;
 			projectDirPath = "";
@@ -539,7 +545,6 @@
 				1800AC102BAF3C0B00C51D14 /* ImageLoader.swift in Sources */,
 				95E015942D206B4C00C6574D /* RecipientView.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
-				18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */,
 				95608F362D26E60D009160BD /* ScreenView.swift in Sources */,
 				189F5C752B27CB280067245A /* FooterView.swift in Sources */,
 				18D962132B263EC200662849 /* Card.swift in Sources */,
@@ -569,10 +574,12 @@
 				95805CCF2D34707F00962B5C /* Card.swift in Sources */,
 				95805CD12D3470A400962B5C /* GeneratePDF.swift in Sources */,
 				95805CD92D3478A600962B5C /* Constants.swift in Sources */,
+				95805CE72D34817000962B5C /* AsyncImageViewTests.swift in Sources */,
 				95805CE12D347C5A00962B5C /* RecipientTests.swift in Sources */,
 				95805CDB2D3478BD00962B5C /* DisplayEventTypeView.swift in Sources */,
 				95805CDA2D3478B700962B5C /* FooterView.swift in Sources */,
 				95805CD22D34710B00962B5C /* EventType.swift in Sources */,
+				95805CEE2D34849000962B5C /* ConstantsTests.swift in Sources */,
 				95805CDD2D347B8800962B5C /* CardTests.swift in Sources */,
 				95805CCE2D34706600962B5C /* GeneratePDFTests.swift in Sources */,
 				95805CD32D34711100962B5C /* Recipient.swift in Sources */,
@@ -979,6 +986,14 @@
 				kind = branch;
 			};
 		};
+		95805CE82D3481E700962B5C /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -991,6 +1006,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;
 			productName = SwiftUIKit;
+		};
+		95805CE92D34821500962B5C /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95805CE82D3481E700962B5C /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

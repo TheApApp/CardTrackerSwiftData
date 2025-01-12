@@ -24,9 +24,7 @@ struct AsyncImageView: View {
             Image(uiImage: uiImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .scaledToFit()
-//                .frame(width: iPhone ? 125 : 250, height: iPhone ? 125 : 250)
-            
+                .scaledToFit()            
         } else {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
