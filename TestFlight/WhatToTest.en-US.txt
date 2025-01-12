@@ -14,7 +14,7 @@ Things to Test:
 #. Resolved issue with Receipient Title, with Cards Sent, changing from color to black
 #. Fixed the delete for the Card App in Occasion list
 #. Fixed macOS - can’t access Camera even if setting says permitted
-#. Fixed bug in Receipient PDF print (it was only printing page 1)
+#. Fixed bug in Receipient PDF print (it was only printing page 1) - PLEASE CHECK this
 #. Fixed Highlighted Selection Item Bug
 
 Known bugs:

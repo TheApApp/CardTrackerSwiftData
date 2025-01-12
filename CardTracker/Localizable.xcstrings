@@ -114,6 +114,7 @@
       }
     },
     "\t• Anniversaries" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -226,6 +227,7 @@
       }
     },
     "\t• Birthdays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -338,6 +340,7 @@
       }
     },
     "\t• Graduations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -450,6 +453,7 @@
       }
     },
     "\t• Holidays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -562,6 +566,7 @@
       }
     },
     "\t• Weddings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -1122,6 +1127,7 @@
       }
     },
     "%@ Add New Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -1570,6 +1576,7 @@
       }
     },
     "Add card to the recipient" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -1682,6 +1689,7 @@
       }
     },
     "Add Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -1794,6 +1802,7 @@
       }
     },
     "Add New Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -2242,6 +2251,7 @@
       }
     },
     "An occasion is simply any reason you may send out a greeting card." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -2353,7 +2363,11 @@
         }
       }
     },
+    "An occasion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\n\t• Birthdays\n\t• Anniversaries\n\t• Weddings\n\t• Graduations\n\t• Holidays" : {
+
+    },
     "An occassion is simply any reason you may send out a greeting card." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -2466,6 +2480,7 @@
       }
     },
     "Anniversaries" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -2690,6 +2705,7 @@
       }
     },
     "Birthdays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -4482,6 +4498,7 @@
       }
     },
     "Create the card" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -4594,6 +4611,7 @@
       }
     },
     "Create the recipient" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5042,6 +5060,7 @@
       }
     },
     "Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5266,6 +5285,7 @@
       }
     },
     "Event Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5378,6 +5398,7 @@
       }
     },
     "Event named %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5490,6 +5511,7 @@
       }
     },
     "Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5602,6 +5624,7 @@
       }
     },
     "Events" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5714,6 +5737,7 @@
       }
     },
     "Examples include:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5938,6 +5962,7 @@
       }
     },
     "Gallery" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -6050,6 +6075,7 @@
       }
     },
     "Graduations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -6162,6 +6188,7 @@
       }
     },
     "Holidays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -6722,6 +6749,7 @@
       }
     },
     "New Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -7282,6 +7310,7 @@
       }
     },
     "Occasion Name" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -7954,6 +7983,7 @@
       }
     },
     "Recipient Information" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -8514,6 +8544,7 @@
       }
     },
     "Select event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -8626,6 +8657,7 @@
       }
     },
     "Select Event type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -8738,6 +8770,7 @@
       }
     },
     "Select Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -9970,6 +10003,7 @@
       }
     },
     "Unknown Event" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -10082,6 +10116,7 @@
       }
     },
     "Unknown Event Type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -10530,6 +10565,7 @@
       }
     },
     "Weddings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -10866,6 +10902,7 @@
       }
     },
     "You can name them whatever you like." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {

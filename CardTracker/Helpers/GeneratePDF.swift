@@ -15,6 +15,7 @@ class GeneratePDF {
     var greetingCards: [GreetingCard]?
     var cardArray: Bool
     let logger = Logger(subsystem: "PDF Render", category: "Print")
+    var numberOfImages: Int?
     
     // 8.5 * 11 at 72 dpi should be
     // 612 * 792
@@ -51,6 +52,7 @@ class GeneratePDF {
         self.cards = cards
         self.greetingCards = greetingCards
         self.cardArray = cardArray
+        self.numberOfImages = cardArray ? cards?.count : greetingCards?.count
     }
 
     @MainActor
@@ -73,11 +75,29 @@ class GeneratePDF {
         let rowsPerPage = 4
         var pageIndex = 0
         
+        // hack to handle footer on last page
+        var footerX = -420.0
+        let modImage = numberOfImages! % viewsPerRow
+        
         // using repeat while loop since we will always print at least 1 page
         repeat {
             let startIndex = pageIndex * viewsPerPage
             let endIndex = min(startIndex + viewsPerPage, cardArray ? cardsArray.count : greetingArray.count)
-
+            
+            // hack to handle footer on last page
+            // if there are more than one pages,  we need to use the same footerX for all but the last one.
+            if numberOfPages > 1 && pageIndex != numberOfPages - 1 {
+                footerX = -420
+            } else if modImage == 0 {
+                footerX = -420
+            } else if modImage == 3 {
+                footerX = -300
+            } else if modImage == 2 {
+                footerX = -150
+            } else if modImage == 1 {
+                footerX = 0
+            }
+            
             var image = 0
             
             pdfOutput.beginPDFPage(nil)
@@ -103,7 +123,7 @@ class GeneratePDF {
                                 let x = layoutGrid[image].first ?? 0
                                 let y = layoutGrid[image].last ?? 0
                                 pdfOutput.translateBy(x: x, y: y)
-                                logger.debug("pdfOutput.translateBy info x = \(pdfOutput.boundingBoxOfPath.origin.x) and y = \(pdfOutput.boundingBoxOfPath.origin.y) \n\r LayoutGrid x=\(x) y=\(y)\n\r")
+//                                logger.debug("pdfOutput.translateBy info x = \(pdfOutput.boundingBoxOfPath.origin.x) and y = \(pdfOutput.boundingBoxOfPath.origin.y) \n\r LayoutGrid x=\(x) y=\(y)\n\r")
                                 renderBody(pdfOutput)
                             }
                         }
@@ -115,7 +135,7 @@ class GeneratePDF {
                                 let x = layoutGrid[image].first ?? 0
                                 let y = layoutGrid[image].last ?? 0
                                 pdfOutput.translateBy(x: x, y: y)
-                                logger.debug("pdfOutput.translateBy info x = \(pdfOutput.boundingBoxOfPath.origin.x) and y = \(pdfOutput.boundingBoxOfPath.origin.y) \n\r LayoutGrid x=\(x) y=\(y)\n\r")
+//                                logger.debug("pdfOutput.translateBy info x = \(pdfOutput.boundingBoxOfPath.origin.x) and y = \(pdfOutput.boundingBoxOfPath.origin.y) \n\r LayoutGrid x=\(x) y=\(y)\n\r")
                                 renderBody(pdfOutput)
                             }
                         }
@@ -125,8 +145,10 @@ class GeneratePDF {
             }
             
             pageIndex += 1
+            
+//            logger.debug("newX = \(footerX), modImage = \(modImage), image = \(image), numberOfPages = \(numberOfPages)")
             let renderBottom = ImageRenderer(content: FooterView(page: pageIndex, pages: numberOfPages))
-            pdfOutput.translateBy(x: -420.0, y: -80.0)
+            pdfOutput.translateBy(x: footerX, y: -80.0)
             renderBottom.render { size, renderBottom in
                 renderBottom(pdfOutput)
             }

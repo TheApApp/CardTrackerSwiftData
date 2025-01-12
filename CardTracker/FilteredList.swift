@@ -64,7 +64,7 @@ struct FilteredList: View {
                         ViewGreetingCardsView(eventType: eventType, navigationPath: $navigationPath)
                     ) {
                         Text("\(eventType.eventName)")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("ListColor"))
                     }
                 }
             case .recipients:
@@ -73,7 +73,7 @@ struct FilteredList: View {
                         ViewEventsView(recipient: recipient, navigationPath: $navigationPath)
                     ) {
                         Text("\(recipient.fullName)")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("ListColor"))
                     }
                 }
                 .onDelete(perform: deleteRecipient)
