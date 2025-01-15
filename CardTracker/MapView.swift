@@ -25,6 +25,16 @@ struct MapView: View {
         Place(name: "", latitude: 0.0, longitude: 0.0)
     ]
     
+    // MARK: Public accessors for testing
+    #if DEBUG
+    var test_region: MKCoordinateRegion {
+        return region
+    }
+    var test_position: MapCameraPosition {
+        return position
+    }
+    #endif
+    
     init(region: MKCoordinateRegion) {
         var region = region
         region.span = MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.005), longitudeDelta: CLLocationDegrees(0.005))

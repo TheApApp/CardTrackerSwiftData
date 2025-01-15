@@ -237,7 +237,7 @@ struct RecipientView: View {
             logger.log("User has denied permissions")
             return false
         case .notDetermined:
-            logger.log("you need to request authorization via the API now")
+            logger.log("Requesting permission via API")
         case .authorized:
             logger.log("already authorized")
         case .limited:
@@ -251,7 +251,7 @@ struct RecipientView: View {
             store.requestAccess(for: .contacts) {success, error in
                 if !success {
                     logger.log("Not authorized to access contacts. Error = \(String(describing: error))")
-                    exit(1)
+//                    exit(1)
                 }
                 logger.log("Authorized")
             }

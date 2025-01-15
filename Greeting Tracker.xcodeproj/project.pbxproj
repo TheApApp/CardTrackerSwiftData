@@ -71,12 +71,12 @@
 		95805CE12D347C5A00962B5C /* RecipientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CE02D347C5A00962B5C /* RecipientTests.swift */; };
 		95805CE32D347D3F00962B5C /* GreetingCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CE22D347D3F00962B5C /* GreetingCardTests.swift */; };
 		95805CE72D34817000962B5C /* AsyncImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CE62D34817000962B5C /* AsyncImageViewTests.swift */; };
-		95805CEA2D34821500962B5C /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 95805CE92D34821500962B5C /* ViewInspector */; };
 		95805CEE2D34849000962B5C /* ConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95805CED2D34849000962B5C /* ConstantsTests.swift */; };
 		9586F3FE2D19ECD000CE1A39 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9586F3FD2D19ECD000CE1A39 /* Category.swift */; };
 		9593D4F32D3437E900F0DBE4 /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9593D4F22D3437E900F0DBE4 /* GeneratePDF.swift */; };
 		95AEAE912D30483700CACDBC /* EventType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEAE902D30483700CACDBC /* EventType+Extensions.swift */; };
 		95AEAE932D3048D800CACDBC /* GreetingCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AEAE922D3048D800CACDBC /* GreetingCard+Extensions.swift */; };
+		95B0FFE32D35F75900EB0E98 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 95B0FFE22D35F75900EB0E98 /* ViewInspector */; };
 		95DECCCC2D21B3D70052066C /* WalkThroughtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DECCCB2D21B3CC0052066C /* WalkThroughtView.swift */; };
 		95E015942D206B4C00C6574D /* RecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E015932D206B4C00C6574D /* RecipientView.swift */; };
 /* End PBXBuildFile section */
@@ -182,7 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95805CEA2D34821500962B5C /* ViewInspector in Frameworks */,
+				95B0FFE32D35F75900EB0E98 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +281,7 @@
 		18D9622C2B263EC400662849 /* CardTrackerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				95EED6F42D35FF4F00C84387 /* Views */,
 				18D9622D2B263EC400662849 /* CardTrackerUITests.swift */,
 				18D9622F2B263EC400662849 /* CardTrackerUITestsLaunchTests.swift */,
 			);
@@ -371,6 +372,13 @@
 				95805CCC2D346FE900962B5C /* GeneratePDFTests.swift */,
 			);
 			path = "Helpers Tests";
+			sourceTree = "<group>";
+		};
+		95EED6F42D35FF4F00C84387 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,7 +476,7 @@
 			packageReferences = (
 				18121A352C360B550054A016 /* XCRemoteSwiftPackageReference "AQUI" */,
 				18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */,
-				95805CE82D3481E700962B5C /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				95B0FFE12D35F75900EB0E98 /* XCRemoteSwiftPackageReference "ViewInspector" */,
 			);
 			productRefGroup = 18D9620C2B263EC200662849 /* Products */;
 			projectDirPath = "";
@@ -897,12 +905,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CardTracker;
+				TEST_TARGET_NAME = "Greeting Tracker";
 			};
 			name = Debug;
 		};
@@ -919,12 +928,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTrackerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CardTracker;
+				TEST_TARGET_NAME = "Greeting Tracker";
 			};
 			name = Release;
 		};
@@ -986,7 +996,7 @@
 				kind = branch;
 			};
 		};
-		95805CE82D3481E700962B5C /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+		95B0FFE12D35F75900EB0E98 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector.git";
 			requirement = {
@@ -1007,9 +1017,9 @@
 			package = 18121A382C360B5E0054A016 /* XCRemoteSwiftPackageReference "SwiftUIKit" */;
 			productName = SwiftUIKit;
 		};
-		95805CE92D34821500962B5C /* ViewInspector */ = {
+		95B0FFE22D35F75900EB0E98 /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 95805CE82D3481E700962B5C /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			package = 95B0FFE12D35F75900EB0E98 /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
 		};
 /* End XCSwiftPackageProductDependency section */

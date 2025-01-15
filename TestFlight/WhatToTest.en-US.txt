@@ -16,9 +16,11 @@ Things to Test:
 #. Fixed macOS - can’t access Camera even if setting says permitted
 #. Fixed bug in Receipient PDF print (it was only printing page 1) - PLEASE CHECK this
 #. Fixed Highlighted Selection Item Bug
+#. Added a Help icon to main tab view, it takes you to that page in the getting started walkthrough
 
 Known bugs:
 #. Bag in macOS - if you change the name of a card, you lose the picture and can’t update
+#. iOS - if you go thru initial setup, and deny access to the Contacts the app crashes you out.  When you restart you will get the popup of permissions not set for contacts.
 
 Potential Features to develop in future releases:
 #. Add filter by name option in the Card picker view

@@ -52,7 +52,7 @@ struct ContentView: View {
                     FilteredList(searchText: searchText, listView: .events, navigationPath: $navigationPath)
                         .searchable(text: $searchText)
                         .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
+                            ToolbarItem(placement: .navigationBarLeading) {
                                 Text("Occasions")
                                     .foregroundColor(.accentColor)
                             }
@@ -70,6 +70,15 @@ struct ContentView: View {
                                 EditButton()
                                     .foregroundColor(.accentColor)
                             }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    walkthrough = 2
+                                }, label: {
+                                    Image(systemName: "questionmark.circle")
+                                        .font(.title2)
+                                        .foregroundColor(.accentColor)
+                                })
+                            }
                         }
                 }
                 .tabItem {
@@ -84,7 +93,7 @@ struct ContentView: View {
                     FilteredList(searchText: searchText, listView: .greetingCard, navigationPath: $navigationPath)
                         .searchable(text: $searchText)
                         .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
+                            ToolbarItem(placement: .navigationBarLeading) {
                                 Text("Card Gallery")
                                     .foregroundColor(.accentColor)
                             }
@@ -102,6 +111,15 @@ struct ContentView: View {
                                 EditButton()
                                     .foregroundColor(.accentColor)
                             }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    walkthrough = 3
+                                }, label: {
+                                    Image(systemName: "questionmark.circle")
+                                        .font(.title2)
+                                        .foregroundColor(.accentColor)
+                                })
+                            }
                         }
                 }
                 .tabItem {
@@ -116,7 +134,7 @@ struct ContentView: View {
                     FilteredList(searchText: searchText, listView: .recipients, navigationPath: $navigationPath)
                         .searchable(text: $searchText)
                         .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
+                            ToolbarItem(placement: .navigationBarLeading) {
                                 Text("Recipient")
                                     .foregroundColor(.accentColor)
                             }
@@ -133,6 +151,15 @@ struct ContentView: View {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 EditButton()
                                     .foregroundColor(.accentColor)
+                            }
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button(action: {
+                                    walkthrough = 4
+                                }, label: {
+                                    Image(systemName: "questionmark.circle")
+                                        .font(.title2)
+                                        .foregroundColor(.accentColor)
+                                })
                             }
                         }
                 }

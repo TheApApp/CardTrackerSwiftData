@@ -27,6 +27,29 @@ struct ViewCardsView: View {
     @State private var showShareSheet: Bool = false
     @State private var isLoading: Bool = false
     
+    
+    // MARK: Public accessors for testing
+    #if DEBUG
+    var test_eventType: EventType {
+        return eventType
+    }
+    var test_cards: [Card] {
+        return cards
+    }
+    var test_isIphone: Bool {
+        return iPhone
+    }
+    var test_PDFUrl: URL? {
+        return PDFUrl
+    }
+    var test_showShareSheet: Bool {
+        return showShareSheet
+    }
+    var test_isLoading: Bool {
+        return isLoading
+    }
+    #endif
+    
     init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
         self.eventType = eventType
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
@@ -88,7 +111,7 @@ struct ViewCardsView: View {
         })
     }
     
-    private func generatePDF() {
+    internal func generatePDF() {
         isLoading = true
         Task {
             let pdfGenerator = GeneratePDF(title: "\(eventType.eventName)", cards: cards, greetingCards: nil, cardArray: true)

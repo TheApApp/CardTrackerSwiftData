@@ -44,7 +44,7 @@ struct FilteredList: View {
         
         self._navigationPath = navigationPath
     }
-    
+ 
     var body: some View {
         List {
             switch listView {
