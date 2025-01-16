@@ -5,39 +5,34 @@
 //  Created by Michael Rowe1 on 1/12/25.
 //
 
-
-import XCTest
+import SwiftUI
+import Testing
 @testable import Greeting_Tracker
 
-final class EventTypeTests: XCTestCase {
-
+struct EventTypeTests {
+    let eventName = "Birthday"
+    let eventType = EventType(eventName: "Birthday")
+    
+    @Test("Test Initializing")
     func testInitialization() {
-        // Arrange
-        let eventName = "Birthday"
-
-        // Act
-        let eventType = EventType(eventName: eventName)
-
-        // Assert
-        XCTAssertEqual(eventType.eventName, eventName, "Event name should be initialized correctly.")
-        XCTAssertNotNil(eventType.cards, "Cards array should be initialized as an empty array.")
-        XCTAssertNotNil(eventType.greetingCards, "GreetingCards array should be initialized as an empty array.")
-        XCTAssertEqual(eventType.cards?.count, 0, "Cards array should initially be empty.")
-        XCTAssertEqual(eventType.greetingCards?.count, 0, "GreetingCards array should initially be empty.")
+        #expect(eventType.eventName == eventName, "Event name should be initialized correctly.")
+        #expect(eventType.cards == [], "Cards array should be initialized as an empty array.")
+        #expect(eventType.greetingCards == [], "GreetingCards array should be initialized as an empty array.")
+        #expect(eventType.cards?.count == 0, "Cards array should initially be empty.")
+        #expect(eventType.greetingCards?.count == 0, "GreetingCards array should initially be empty.")
     }
 
+    @Test("Test Debug Description")
     func testDebugDescription() {
-        // Arrange
-        let eventName = "Anniversary"
+        let eventName = "Birthday"
         let eventType = EventType(eventName: eventName)
-
-        // Act
         let debugDescription = eventType.debugDescription
 
         // Assert
-        XCTAssertEqual(debugDescription, eventName, "Debug description should match the event name.")
+        #expect(debugDescription == eventName, "Debug description should match the event name.")
     }
 
+    @Test("Test Card Count")
     func testCardCount() {
         // Arrange
         let eventType = EventType(eventName: "Holiday")
@@ -50,9 +45,10 @@ final class EventTypeTests: XCTestCase {
         let count = eventType.cardCount()
 
         // Assert
-        XCTAssertEqual(count, 2, "Card count should match the number of cards associated with the event.")
+        #expect(count == 2, "Card count should match the number of cards associated with the event.")
     }
 
+    @Test("Test Gallery Count")
     func testGalleryCount() {
         // Arrange
         let eventType = EventType(eventName: "Wedding")
@@ -66,6 +62,6 @@ final class EventTypeTests: XCTestCase {
         let count = eventType.galleryCount()
 
         // Assert
-        XCTAssertEqual(count, 2, "Gallery count should match the number of greeting cards associated with the event.")
+        #expect(count == 2, "Gallery count should match the number of greeting cards associated with the event.")
     }
 }

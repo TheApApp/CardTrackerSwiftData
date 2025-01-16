@@ -1,4 +1,6 @@
-I would like to fix one thing and then release this as 1.3.0. Updated Graphics in walkthru.
+************** BIG NEWS ******************
+Submitting this build to Apple for release to the app store!  Thank you for all the testing you've done.  If you want a free copy of the app,please send me an email and I will get your a code!
+******************************************
 
 Things to Test:
 #. You can now create a new occasion when adding a card to the gallery.

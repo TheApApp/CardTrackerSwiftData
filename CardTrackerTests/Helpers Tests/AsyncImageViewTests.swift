@@ -12,7 +12,7 @@ import ViewInspector
 @testable import Greeting_Tracker
 
 // Extend AsyncImageView to conform to ViewInspector's Inspectable protocol
-extension AsyncImageView: Inspectable {}
+extension AsyncImageView {}
 
 final class AsyncImageViewTests: XCTestCase {
 

@@ -86,9 +86,9 @@ struct NewCardView: View {
                     Section("Image") {
                         if selectedEvent != nil {
                             if selectedGreetingCard == nil {
-                                NavigationLink("Add Card", destination: EditGreetingCardView(greetingCard: nil))
+                                NavigationLink("Add card", destination: EditGreetingCardView(greetingCard: nil))
                             }
-                            NavigationLink("Select card:", destination: GreetingCardsPickerView(eventType: selectedEvent!, selectedGreetingCard: $selectedGreetingCard))
+                            NavigationLink("Select card", destination: GreetingCardsPickerView(eventType: selectedEvent!, selectedGreetingCard: $selectedGreetingCard))
                         }
                         
                         if let imageData = selectedGreetingCard?.cardFront {
