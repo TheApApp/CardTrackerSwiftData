@@ -7,7 +7,7 @@
 
 import Testing
 
-@testable import Greeting_Tracker
+@testable import CardTracker
 
 
 @Test

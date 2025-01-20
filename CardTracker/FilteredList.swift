@@ -5,9 +5,9 @@
 //  Created by Michael Rowe on 12/10/23.
 //
 /// FilteredList is a view that managed the various supported lists. There are currently three types supported:
-/// .events - which calls ViewCardsView
+/// .events - which calls ViewEventsView
 /// .greetingCard - which calls ViewGreetingCardView
-/// .recipients - which calls ViewEventsView
+/// .recipients - which calls ViewRecipientsView
 ///
 /// FilteredLists is used by ContentView to support different Tabs used by the main application interface.
 
@@ -51,7 +51,7 @@ struct FilteredList: View {
             case .events:
                 ForEach(eventTypes, id: \.self) { eventType in
                     NavigationLink(destination:
-                        ViewCardsView(eventType: eventType, navigationPath: $navigationPath)
+                        ViewEventsView(eventType: eventType, navigationPath: $navigationPath)
                     ) {
                         Text("\(eventType.eventName)")
                             .foregroundColor(Color("ListColor"))
@@ -70,7 +70,7 @@ struct FilteredList: View {
             case .recipients:
                 ForEach(recipients, id: \.self) { recipient in
                     NavigationLink(destination:
-                        ViewEventsView(recipient: recipient, navigationPath: $navigationPath)
+                        ViewRecipientsView(recipient: recipient, navigationPath: $navigationPath)
                     ) {
                         Text("\(recipient.fullName)")
                             .foregroundColor(Color("ListColor"))

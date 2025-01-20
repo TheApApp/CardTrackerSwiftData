@@ -36,6 +36,7 @@ struct RecipientView: View {
     let recipientToEdit: Recipient?
     
     init(recipientToEdit: Recipient? = nil) {
+        print("DEBUG: RecipientView init: \(String(describing: recipientToEdit?.fullName))")
         self.recipientToEdit = recipientToEdit
         if let recipient = recipientToEdit {
             _firstName = State(initialValue: recipient.firstName)
@@ -261,7 +262,7 @@ struct RecipientView: View {
 }
 
 #Preview {
-    var sharedModelContainer: ModelContainer = {
+    let sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Card.self,
             EventType.self,

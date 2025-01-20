@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// Address View presents the address information of a recipient in a visually appealing way.
-/// This is used by both GeneratePDF and ViewEventsView
+/// This is used by both GeneratePDF and ViewRecipientsView
 struct AddressView: View {
     @Bindable  var recipient: Recipient
     @State private var navigationPath = NavigationPath()

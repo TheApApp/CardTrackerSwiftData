@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "EB7CDC2A-51C1-454C-B448-EE824D287E34",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CardTracker.xcodeproj",
+      "identifier" : "18D9620A2B263EC200662849",
+      "name" : "CardTracker"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CardTracker.xcodeproj",
+        "identifier" : "18D9621E2B263EC400662849",
+        "name" : "CardTrackerTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CardTracker.xcodeproj",
+        "identifier" : "18D962282B263EC400662849",
+        "name" : "CardTrackerUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -20,6 +20,9 @@ struct AsyncImageView: View {
         }
     }
     var body: some View {
+        #if DEBUG
+        let _ = print("AsyncImageView rendered: \(String(describing: imageData))")
+        #endif
         if let imageData = imageData, let uiImage = UIImage(data: imageData) {
             Image(uiImage: uiImage)
                 .resizable()

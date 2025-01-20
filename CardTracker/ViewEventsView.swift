@@ -1,11 +1,10 @@
 //
-//  ViewEventsView.swift
+//  ViewCardsView.swift
 //  CardTracker
 //
-//  Created by Michael Rowe on 12/11/23.
+//  Created by Michael Rowe on 12/16/23.
 //
 
-import MapKit
 import os
 import SwiftData
 import SwiftUI
@@ -13,31 +12,50 @@ import SwiftUI
 struct ViewEventsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
-
+    @EnvironmentObject var isIphone: IsIphone
     @Query(sort: [SortDescriptor(\Card.cardDate, order: .reverse)]) private var cards: [Card]
     
     private let blankCardFront = UIImage(named: "frontImage")
     private var gridLayout: [GridItem]
     private var iPhone = false
-    private var recipient: Recipient
+    private var eventType: EventType
     
     @Binding var navigationPath: NavigationPath
-    
-    @State private var actionSheetPresented = false
-    @State private var navBarItemChosen: NavBarItemChosen?
-    @State private var region: MKCoordinateRegion?
-    
     
     // MARK: PDF Properties
     @State private var PDFUrl: URL?
     @State private var showShareSheet: Bool = false
     @State private var isLoading: Bool = false
     
-    init(recipient: Recipient, navigationPath: Binding<NavigationPath>) {
-        self.recipient = recipient
-        let recipientID = recipient.persistentModelID // Note this is required to help in Macro Expansion
+    
+    // MARK: Public accessors for testing
+    #if DEBUG
+    var test_eventType: EventType {
+        return eventType
+    }
+    var test_cards: [Card] {
+        return cards
+    }
+    var test_isIphone: Bool {
+        return iPhone
+    }
+    var test_PDFUrl: URL? {
+        return PDFUrl
+    }
+    var test_showShareSheet: Bool {
+        return showShareSheet
+    }
+    var test_isLoading: Bool {
+        return isLoading
+    }
+    #endif
+    
+    init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
+        print("DEBUG ViewEventsView: eventType : \(String(describing: eventType.eventName))")
+        self.eventType = eventType
+        let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
         _cards = Query(
-            filter: #Predicate {$0.recipient?.persistentModelID == recipientID },
+            filter: #Predicate {$0.eventType?.persistentModelID == eventTypeID },
             sort: [
                 SortDescriptor(\Card.cardDate, order: .reverse),
             ]
@@ -56,56 +74,26 @@ struct ViewEventsView: View {
                 GridItem(.adaptive(minimum: 320), spacing: 20, alignment: .center)
             ]
         }
+        
         self._navigationPath = navigationPath
     }
     
     var body: some View {
         VStack {
-            HStack {
-                if let region = region {
-                    MapView(region: region)
-                        .frame(width: iPhone ? 120 : 200, height: 150)
-                        .mask(RoundedRectangle(cornerRadius: 25))
-                        .padding([.top, .leading], 15 )
-                    AddressView(recipient: recipient)
-                        .scaledToFit()
-                        .frame(width: 250, height: 150)
-                }
-                Spacer()
-                    .onAppear {
-                        // swiftlint:disable:next line_length
-                        let addressString = String("\(recipient.addressLine1) \(recipient.city) \(recipient.state) \(recipient.zip) \(recipient.country)")
-                        getLocation(from: addressString) { coordinates in
-                            if let coordinates = coordinates {
-                                self.region = MKCoordinateRegion(
-                                    center: coordinates,
-                                    span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
-                            }
-                        }
-                    }
-            }
             ScrollView {
                 LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                     ForEach(cards) { card in
-                        ScreenView(card: card, greetingCard: nil, isEventType: .recipients, navigationPath: $navigationPath)
+                        ScreenView(card: card, greetingCard: nil, isEventType: .events, navigationPath: $navigationPath)
                     }
                     .padding()
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("\(recipient.fullName)")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("\(eventType.eventName) - \(cards.count) Sent")
                         .foregroundColor(Color.accentColor)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        navBarItemChosen = .newCard
-                    }, label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.accentColor)
-                    })
-                }
-                ToolbarItem(placement:.navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing){
                     if isLoading {
                         ProgressView()
                     } else {
@@ -116,13 +104,6 @@ struct ViewEventsView: View {
                 }
             }
         }
-        .sheet(item: $navBarItemChosen ) { item in
-            switch item {
-            case .newCard:
-                NewCardView(recipient: recipient)
-                    .interactiveDismissDisabled(true)
-            }
-        }
         .sheet(isPresented: $showShareSheet, content: {
             if let PDFUrl = PDFUrl {
                 ShareSheet(activityItems: [PDFUrl])
@@ -131,22 +112,10 @@ struct ViewEventsView: View {
         })
     }
     
-    func getLocation(from address: String, completion: @escaping (_ location: CLLocationCoordinate2D?) -> Void) {
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { (placemarks, _) in
-            guard let placemarks = placemarks,
-                  let location = placemarks.first?.location?.coordinate else {
-                completion(nil)
-                return
-            }
-            completion(location)
-        }
-    }
-    
-    private func generatePDF() {
+    internal func generatePDF() {
         isLoading = true
         Task {
-            let pdfGenerator = GeneratePDF(title: "\(recipient.fullName)", cards: cards, greetingCards: nil, cardArray: true)
+            let pdfGenerator = GeneratePDF(title: "\(eventType.eventName)", cards: cards, greetingCards: nil, cardArray: true)
             let pdfUrl = await pdfGenerator.render(viewsPerPage: 16)
             PDFUrl = pdfUrl
             isLoading = false

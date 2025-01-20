@@ -61,14 +61,19 @@ struct EditCardView: View {
     ///   - card: The `Card` object to be edited.
     ///   - navigationPath: The navigation path used for managing navigation.
     init(card: Bindable<Card>, navigationPath: Binding<NavigationPath>) {
-        self._card = card
-        self._navigationPath = navigationPath
+        _card = card
+        _navigationPath = navigationPath
     }
     
     var body: some View {
         /// The main form for editing card details, divided into sections for event type, date, and card image.
         Form {
             // Event Section
+            #if DEBUG
+            let _ = print("DEBUG: EditCardView - card: \(String(describing: card))")
+            let _ = print("DEBUG: EditCardVew  - navigationPath: \(String(describing: navigationPath))")
+            #endif
+            
             Section("Occasion") {
                 Picker(selection: $card.eventType, label: Text("Occasion")) {
                     Text("Unknown Occasion")

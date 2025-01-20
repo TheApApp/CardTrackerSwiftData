@@ -209,7 +209,7 @@ struct NewRecipientView: View {
 
 
 #Preview {
-    var sharedModelContainer: ModelContainer = {
+    let sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Card.self,
             EventType.self,

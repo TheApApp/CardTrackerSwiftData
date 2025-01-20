@@ -14,14 +14,43 @@ struct ScreenView: View {
     private let blankCardFront = UIImage(named: "frontImage")
     private var card: Card?
     private var greetingCard: GreetingCard?
-    private var isVision = false
-    var isEventType: ListView = .recipients
+    private var isVision = UIDevice.current.userInterfaceIdiom == .vision
+    private var isEventType: ListView
     @Binding var navigationPath: NavigationPath
-    
-    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
-        if UIDevice.current.userInterfaceIdiom == .vision {
-            self.isVision = true
+
+    private var cardImage: Data? {
+        if isEventType != .greetingCard {
+            return card?.cardFront?.cardFront as Data?
+        } else {
+            return greetingCard?.cardFront as Data?
         }
+    }
+    
+    private var mainText: String {
+        switch isEventType {
+        case .events:
+            return "\(card?.recipient?.fullName ?? "Unknown")"
+        case .recipients:
+            return "\(card?.eventType?.eventName ?? "Unknown")"
+        case .greetingCard:
+            return "\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)"
+        }
+    }
+    
+    private var subText: String {
+        switch isEventType {
+        case .events, .recipients:
+            if let cardDate = card?.cardDate {
+                return cardDateFormatter.string(from: cardDate)
+            } else {
+                return cardDateFormatter.string(from: Date())
+            }
+        case .greetingCard:
+            return ""
+        }
+    }
+
+    init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
@@ -30,46 +59,27 @@ struct ScreenView: View {
     
     var body: some View {
         ZStack {
-            if isEventType != .greetingCard {
-                AsyncImageView(imageData: card!.cardFront?.cardFront)
-            } else {
-                AsyncImageView(imageData: greetingCard!.cardFront)
-            }
-
+            AsyncImageView(imageData: cardImage)
+            
             VStack {
                 Spacer()
                 VStack {
                     VStack {
-                        switch isEventType {
-                        case .events:
-                            VStack {
-                                Text("\(card?.recipient?.fullName ?? "Unknown")")
-                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
-                                    .fixedSize()
-                            }
-                        case .recipients:
-                            VStack {
-                                Text("\(card?.eventType?.eventName ?? "Unknown")")
-                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
-                                    .fixedSize()
-                            }
-                        case .greetingCard:
-                            VStack {
-                                Text("\(greetingCard?.cardName ?? "") - Sent: \(greetingCard?.cardsCount() ?? 0)")
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
+                        Text(mainText)
+                        if !subText.isEmpty {
+                            Text(subText)
+                                .fixedSize()
                         }
                     }
+                    
                     HStack {
                         VStack(alignment: .leading) {
-                            switch isEventType {
-                            case .events:
-                                MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .events, navigationPath: $navigationPath)
-                            case .recipients:
-                                MenuOverlayView(card: card!, greetingCard: greetingCard, isEventType: .recipients, navigationPath: $navigationPath)
-                            case .greetingCard:
-                                MenuOverlayView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
-                            }
+                            MenuOverlayView(
+                                card: isEventType != .greetingCard ? card : nil,
+                                greetingCard: isEventType == .greetingCard ? greetingCard : nil,
+                                isEventType: isEventType,
+                                navigationPath: $navigationPath
+                            )
                         }
                     }
                 }
@@ -83,16 +93,18 @@ struct ScreenView: View {
                 .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
                 .foregroundColor(.accentColor)
             }
-            
         }
-        
         .padding()
-        .frame(minWidth: isIphone.iPhone ? 160 : isVision ? 160 : 320, maxWidth: .infinity,
-               minHeight: isIphone.iPhone ? 160 : isVision ? 160 : 320, maxHeight: 320)
+        .frame(
+            minWidth: isIphone.iPhone ? 160 : isVision ? 160 : 320,
+            maxWidth: .infinity,
+            minHeight: isIphone.iPhone ? 160 : isVision ? 160 : 320,
+            maxHeight: 320
+        )
         .background(Color("SlideColor"))
         .mask(RoundedRectangle(cornerRadius: 20))
         .shadow(radius: 5)
-        .padding(isIphone.iPhone ? 5: 10)
+        .padding(isIphone.iPhone ? 5 : 10)
     }
 }
 

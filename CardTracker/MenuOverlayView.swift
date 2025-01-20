@@ -1,155 +1,139 @@
-//
-//  MenuOverlayView.swift
-//  CardTracker
-//
-//  Created by Michael Rowe on 12/11/23.
-//
-
 import os
 import SwiftData
 import SwiftUI
-
-/// MenuOverLayView - This allows for card to have a set of functions that are able to be executed on them.
-///
-/// Supported Features;
-///
-/// * "􀉅" You can display a larger view of the card
-/// * "􀈎" You can edit an existing card
-/// * "􀈑" You can delete a specific instance of a card.
-///
 
 struct MenuOverlayView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var isIphone: IsIphone
-    
+
     @State var areYouSure: Bool = false
-    @State var isEditActive: Bool = false
-    @State var isCardActive: Bool = false
     @Binding var navigationPath: NavigationPath
-    
-    private var isVision = false
-    
+
+    private var logger = Logger(subsystem: "com.theapa.CardTracker", category: "MenuOverlay")
+    private var isVision = UIDevice.current.userInterfaceIdiom == .vision
+
     private let blankCardFront = UIImage(named: "frontImage")
     private var card: Card?
     private var greetingCard: GreetingCard?
-    private var isEventType: ListView = .recipients
-    
-    @State var navigateTo: AnyView?
-    @State var isNavigationActive = false
-    
+    private var isEventType: ListView
+
     init(card: Card?, greetingCard: GreetingCard?, isEventType: ListView, navigationPath: Binding<NavigationPath>) {
-        
-        if UIDevice.current.userInterfaceIdiom == .vision {
-            self.isVision = true
-        }
-        
         self.card = card
         self.greetingCard = greetingCard
         self.isEventType = isEventType
         self._navigationPath = navigationPath
     }
-    
-    
+
     var body: some View {
         HStack {
-            NavigationLink {
-                if isEventType != .greetingCard {
-                    EditCardView(card: Bindable(card!), navigationPath: $navigationPath)
+            NavigationLink(destination: editView) {
+                Image(systemName: "square.and.pencil")
+                    .font(iconFont)
+            }
+
+            NavigationLink(destination: detailedView) {
+                Image(systemName: "doc.richtext")
+                    .font(iconFont)
+            }
+
+            Button(action: { areYouSure.toggle() }) {
+                Image(systemName: "trash")
+                    .foregroundColor(.red)
+                    .font(iconFont)
+            }
+            .confirmationDialog("Are you sure", isPresented: $areYouSure) {
+                confirmationButtons
+            }
+        }
+    }
+
+    // MARK: - Helper Views
+
+    private var editView: some View {
+        Group {
+            if isEventType != .greetingCard {
+                if let card = card {
+                    EditCardView(card: Bindable(card), navigationPath: $navigationPath)
                 } else {
-                    
+                    Text("Card is missing")
+                }
+            } else {
+                if let greetingCard = greetingCard {
                     EditGreetingCardView(greetingCard: greetingCard)
-                }
-            } label: {
-                HStack {
-                    Image(systemName: "square.and.pencil")
-                        .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
-                }
-            }
-            NavigationLink {
-                if isEventType != .greetingCard {
-                    if let card = card,
-                       let cardFrontData = card.cardFront?.cardFront,
-                       let cardImage = UIImage(data: cardFrontData) ?? UIImage(named: "frontImage") {
-                        CardView(cardImage: cardImage, cardTitle: "\(card.cardFront?.cardName ?? "No Card Name")", cardDate: card.cardDate)
-                    } else {
-                        let defaultImage = UIImage(named: "frontImage") ?? UIImage()
-                        CardView(cardImage: defaultImage, cardTitle: "Unknown Date", cardDate: Date())
-                    }
                 } else {
-                    if let greetingCard = greetingCard,
-                       let cardFrontData = greetingCard.cardFront,
-                       let cardImage = UIImage(data: cardFrontData) ?? UIImage(named: "frontImage") {
-                        CardView(cardImage: cardImage, cardTitle: greetingCard.cardName, cardDate: Date())
-                    } else {
-                        let defaultImage = UIImage(named: "frontImage") ?? UIImage()
-                        CardView(cardImage: defaultImage, cardTitle: "Missing EventType", cardDate: Date())
-                    }
+                    Text("Greeting card is missing")
                 }
-            } label: {
-                HStack{
-                    Image(systemName: "doc.richtext")
-                        .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
-                }
-            }
-            Button(action: {
-                areYouSure.toggle()
-            }, label: {
-                HStack {
-                    Image(systemName: "trash")
-                        .foregroundColor(.red)
-                        .font(isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3)
-                }
-            })
-            .confirmationDialog("Are you sure", isPresented: $areYouSure, titleVisibility: .visible) {
-                Button("Yes", role:.destructive) {
-                    withAnimation {
-                        if isEventType != .greetingCard {
-                            deleteCard(card: card!)
-                        } else {
-                            deleteGreetingCard(greetingCard: greetingCard!)
-                        }
-                    }
-                }
-                Button("No") {
-                    withAnimation {
-                        if isEventType != .greetingCard {
-                            print("Cancelled delete of \(String(describing: card?.eventType)) \(String(describing: card?.cardDate))")
-                        } else {
-                            print("Cancelled delete of \(String(describing: greetingCard?.eventType)) \(String(describing: greetingCard?.cardName))")
-                        }
-                    }
-                }
-                .keyboardShortcut(.defaultAction)
             }
         }
     }
-    
-    private func deleteCard(card: Card) {
-        let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "MenuOverlayView.deleteCard")
-        let taskContext = modelContext
-        
-        taskContext.delete(card)
-        do {
-            try taskContext.save()
-        } catch {
-            let nsError = error as NSError
-            logger.log("Unresolved error \(nsError), \(nsError.userInfo)")
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+
+    private var detailedView: some View {
+        Group {
+            if let viewData = cardOrGreetingCardData {
+                CardView(cardImage: viewData.image, cardTitle: viewData.title, cardDate: viewData.date)
+            } else {
+                let defaultImage = UIImage(named: "frontImage") ?? UIImage()
+                CardView(cardImage: defaultImage, cardTitle: "Missing TitleEd", cardDate: Date())
+            }
         }
     }
-    
-    private func deleteGreetingCard(greetingCard: GreetingCard) {
-        let logger=Logger(subsystem: "com.theapapp.cardTracker", category: "MenuOverlayView.deleteGreetingCard")
-        let taskContext = modelContext
-        
-        taskContext.delete(greetingCard)
+
+    private var confirmationButtons: some View {
+        Group {
+            Button("Yes", role: .destructive) {
+                withAnimation { delete() }
+            }
+            Button("No", role: .cancel) {
+                logger.log("Deletion cancelled")
+            }
+        }
+    }
+
+    // MARK: - Helper Properties
+
+    private var iconFont: Font {
+        isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3
+    }
+
+    private var cardOrGreetingCardData: (image: UIImage, title: String, date: Date)? {
+        if isEventType != .greetingCard, let card = card {
+            let image = UIImage(data: card.cardFront?.cardFront ?? blankCardFront?.pngData() ?? Data()) ?? blankCardFront ?? UIImage()
+            let title = card.cardFront?.cardName ?? "No Card Name"
+            let date = card.cardDate
+            return (image, title, date)
+        } else if let greetingCard = greetingCard, let data = greetingCard.cardFront, let image = UIImage(data: data) {
+            return (image, greetingCard.cardName, Date())
+        }
+        return nil
+    }
+
+    // MARK: - Actions
+
+    private func delete() {
+        if isEventType != .greetingCard {
+            if let card = card { deleteCard(card) }
+        } else {
+            if let greetingCard = greetingCard { deleteGreetingCard(greetingCard) }
+        }
+    }
+
+    private func deleteCard(_ card: Card) {
+        modelContext.delete(card)
+        saveContext()
+    }
+
+    private func deleteGreetingCard(_ greetingCard: GreetingCard) {
+        modelContext.delete(greetingCard)
+        saveContext()
+    }
+
+    private func saveContext() {
         do {
-            try taskContext.save()
+            try modelContext.save()
         } catch {
             let nsError = error as NSError
-            logger.log("Unresolved error \(nsError), \(nsError.userInfo)")
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            logger.error("Unresolved error: \(nsError), \(nsError.userInfo)")
         }
     }
 }

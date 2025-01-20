@@ -28,6 +28,7 @@ struct ViewGreetingCardsView: View {
     @State private var isLoading: Bool = false
     
     init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
+        print("DEBUG ViewGreetingCardsView.init: eventType : \(eventType.eventName)")
         self.eventType = eventType
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
         _greetingCards = Query(
