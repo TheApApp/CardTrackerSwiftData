@@ -1,5 +1,5 @@
 //
-//  ViewCardsView.swift
+//  ViewEventsView.swift
 //  CardTracker
 //
 //  Created by Michael Rowe on 12/16/23.
