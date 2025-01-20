@@ -17,7 +17,6 @@
 		189DB6822B2E230400FC3E87 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6812B2E230400FC3E87 /* CardView.swift */; };
 		189DB6842B2E405800FC3E87 /* ViewEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6832B2E405800FC3E87 /* ViewEventsView.swift */; };
 		189DB6882B2E4C0100FC3E87 /* EventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189DB6872B2E4C0100FC3E87 /* EventTypeView.swift */; };
-		189F5C652B2766B30067245A /* ViewRecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C642B2766B30067245A /* ViewRecipientsView.swift */; };
 		189F5C672B2766D00067245A /* MenuOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C662B2766D00067245A /* MenuOverlayView.swift */; };
 		189F5C692B276C570067245A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C682B276C570067245A /* Constants.swift */; };
 		189F5C6B2B27A0430067245A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C6A2B27A0430067245A /* MapView.swift */; };
@@ -54,6 +53,7 @@
 		18D9624D2B2656AB00662849 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624C2B2656AB00662849 /* EventsList.swift */; };
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
+		952A79262D3F1323001214EE /* ViewRecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F5C642B2766B30067245A /* ViewRecipientsView.swift */; };
 		95FA53022D3E99D900E3307B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */; };
 		95FA53032D3E99D900E3307B /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FD2D3E99D900E3307B /* GeneratePDF.swift */; };
 		95FA53042D3E99D900E3307B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FF2D3E99D900E3307B /* ImageLoader.swift */; };
@@ -518,6 +518,7 @@
 				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
 				189DB6842B2E405800FC3E87 /* ViewEventsView.swift in Sources */,
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
+				952A79262D3F1323001214EE /* ViewRecipientsView.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,
 				18D962112B263EC200662849 /* ContentView.swift in Sources */,
@@ -535,7 +536,6 @@
 				189F5C6F2B27C6410067245A /* PrintView.swift in Sources */,
 				189DB6882B2E4C0100FC3E87 /* EventTypeView.swift in Sources */,
 				18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */,
-				189F5C652B2766B30067245A /* ViewRecipientsView.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
 				18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */,
 				189F5C752B27CB280067245A /* FooterView.swift in Sources */,
