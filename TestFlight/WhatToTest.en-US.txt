@@ -1,31 +1,14 @@
-************** BIG NEWS ******************
-Submitting this build to Apple for release to the app store!  Thank you for all the testing you've done.  If you want a free copy of the app,please send me an email and I will get your a code!
-******************************************
+New Updates coming:
 
 Things to Test:
-#. You can now create a new occasion when adding a card to the gallery.
-#. Added ability to edit a recipient's address.
-#. Added ability to classification a recipient: i.e. work, family, friends.
-#. Added new launch startup screen.
-#. Changed toolbar items to better align with apple standards (first pass), and changed some icons.
-#. Added descriptions on Occasions screen, feedback on language would be helpful
-#. Updated default color options on various UI elements
-#. Fixed issue on visionOS with card grid layout
-#. Fixed PDF layout
-#. Fixed Walkthru Button layout.
-#. Resolved issue with Receipient Title, with Cards Sent, changing from color to black
-#. Fixed the delete for the Card App in Occasion list
-#. Fixed macOS - can’t access Camera even if setting says permitted
-#. Fixed bug in Receipient PDF print (it was only printing page 1) - PLEASE CHECK this
-#. Fixed Highlighted Selection Item Bug
-#. Added a Help icon to main tab view, it takes you to that page in the getting started walkthrough
+1. Fixed crash when you try to view a card or edit a card in the Occasions List or Card Gallery
+2. Added a search bar to the Greeting Card Picker
 
 Known bugs:
 #. Bag in macOS - if you change the name of a card, you lose the picture and can’t update
 #. iOS - if you go thru initial setup, and deny access to the Contacts the app crashes you out.  When you restart you will get the popup of permissions not set for contacts.
 
 Potential Features to develop in future releases:
-#. Add filter by name option in the Card picker view
 #. Add card name to the add Card to receipient view
 #. Add an app intent to show a gallery of a specific occasions' cards
 #. Add ability to click on a card in the gallery and see all the people it was sent to and when

@@ -1,8 +1,8 @@
 //
-//  ViewRecipientView.swift
+//  ViewEventsView.swift
 //  CardTracker
 //
-//  Created by Michael Rowe1 on 1/21/25.
+//  Created by Michael Rowe on 12/11/23.
 //
 
 import MapKit
