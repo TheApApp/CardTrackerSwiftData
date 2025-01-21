@@ -144,9 +144,7 @@
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
-<<<<<<< Updated upstream
-		952A79272D3F26C1001214EE /* ViewRecipientsViewx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientsViewx.swift; sourceTree = "<group>"; };
-		95E833522D3FD54300CC4925 /* ViewRecipientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientsView.swift; sourceTree = "<group>"; };
+		952A79272D3F26C1001214EE /* ViewRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientViewxswift; sourceTree = "<group>"; };
 		95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		95FA52FC2D3E99D900E3307B /* EventType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventType+Extensions.swift"; sourceTree = "<group>"; };
 		95FA52FD2D3E99D900E3307B /* GeneratePDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDF.swift; sourceTree = "<group>"; };
@@ -166,9 +164,8 @@
 		95FA531B2D3EA05900E3307B /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		95FA531C2D3EA05900E3307B /* GeneratePDFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDFTests.swift; sourceTree = "<group>"; };
 		95FA53272D3EA10000E3307B /* CardTracker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardTracker.xctestplan; sourceTree = "<group>"; };
-=======
 		95FA52F42D3E954000E3307B /* CardTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerApp.swift; sourceTree = "<group>"; };
->>>>>>> Stashed changes
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,7 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95B23B3C2D3F356F006919AA /* ViewRecipientsViewx.swift in Sources */,
+				95B23B3C2D3F356F006919AA /* ViewRecipientView.swift in Sources */,
 				189F5C672B2766D00067245A /* MenuOverlayView.swift in Sources */,
 				189F5C6B2B27A0430067245A /* MapView.swift in Sources */,
 				18D962532B269DF400662849 /* EditCardView.swift in Sources */,
@@ -523,11 +520,7 @@
 				18D9623D2B26409500662849 /* EventType.swift in Sources */,
 				18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */,
 				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
-<<<<<<< Updated upstream
-				189DB6842B2E405800FC3E87 /* ViewEventsView.swift in Sources */,
-=======
 				189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */,
->>>>>>> Stashed changes
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,
@@ -556,11 +549,8 @@
 				95FA530C2D3E9A7300E3307B /* DisplayEventTypeView.swift in Sources */,
 				1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */,
 				189F5C6D2B27B48A0067245A /* AddressView.swift in Sources */,
-<<<<<<< Updated upstream
 				95FA530E2D3E9A8500E3307B /* WalkThroughtView.swift in Sources */,
 				18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */,
-=======
->>>>>>> Stashed changes
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				95FA53022D3E99D900E3307B /* AsyncImageView.swift in Sources */,
 				95FA53032D3E99D900E3307B /* GeneratePDF.swift in Sources */,
