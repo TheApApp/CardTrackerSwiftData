@@ -1,8 +1,8 @@
 //
-//  ViewRecipientsView.swift
+//  ViewEventsView.swift
 //  CardTracker
 //
-//  Created by Michael Rowe1 on 1/21/25.
+//  Created by Michael Rowe on 12/11/23.
 //
 
 import MapKit
@@ -10,7 +10,7 @@ import os
 import SwiftData
 import SwiftUI
 
-struct ViewRecipientsView: View {
+struct ViewRecipientsViewx: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
 
