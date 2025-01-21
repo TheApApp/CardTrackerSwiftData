@@ -36,7 +36,6 @@
 		18B086A12B375415001CBFFB /* ContactPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B086A02B375415001CBFFB /* ContactPicker.swift */; };
 		18B916722B365441008101A7 /* Previewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B916712B365441008101A7 /* Previewer.swift */; };
 		18CFAE152B537E020036CD8A /* WhatToTest.en-US.txt in Resources */ = {isa = PBXBuildFile; fileRef = 18CFAE142B537E020036CD8A /* WhatToTest.en-US.txt */; };
-		18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9620E2B263EC200662849 /* CardTrackerApp.swift */; };
 		18D962112B263EC200662849 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962102B263EC200662849 /* ContentView.swift */; };
 		18D962132B263EC200662849 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962122B263EC200662849 /* Card.swift */; };
 		18D962152B263EC300662849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D962142B263EC300662849 /* Assets.xcassets */; };
@@ -126,7 +125,6 @@
 		18B916712B365441008101A7 /* Previewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previewer.swift; sourceTree = "<group>"; };
 		18CFAE142B537E020036CD8A /* WhatToTest.en-US.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WhatToTest.en-US.txt"; sourceTree = "<group>"; };
 		18D9620B2B263EC200662849 /* CardTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		18D9620E2B263EC200662849 /* CardTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerApp.swift; sourceTree = "<group>"; };
 		18D962102B263EC200662849 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18D962122B263EC200662849 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		18D962142B263EC300662849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +144,7 @@
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		952A79272D3F26C1001214EE /* ViewRecipientsViewx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientsViewx.swift; sourceTree = "<group>"; };
 		95E833522D3FD54300CC4925 /* ViewRecipientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientsView.swift; sourceTree = "<group>"; };
 		95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
@@ -167,6 +166,9 @@
 		95FA531B2D3EA05900E3307B /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		95FA531C2D3EA05900E3307B /* GeneratePDFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDFTests.swift; sourceTree = "<group>"; };
 		95FA53272D3EA10000E3307B /* CardTracker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardTracker.xctestplan; sourceTree = "<group>"; };
+=======
+		95FA52F42D3E954000E3307B /* CardTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerApp.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +234,7 @@
 		18D9620D2B263EC200662849 /* CardTracker */ = {
 			isa = PBXGroup;
 			children = (
-				18D9620E2B263EC200662849 /* CardTrackerApp.swift */,
+				95FA52F42D3E954000E3307B /* CardTrackerApp.swift */,
 				18D962472B2650AB00662849 /* Helpers */,
 				18D962402B2649DE00662849 /* Data */,
 				18D962412B264A0200662849 /* Views */,
@@ -521,7 +523,11 @@
 				18D9623D2B26409500662849 /* EventType.swift in Sources */,
 				18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */,
 				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
+<<<<<<< Updated upstream
 				189DB6842B2E405800FC3E87 /* ViewEventsView.swift in Sources */,
+=======
+				189DB6842B2E405800FC3E87 /* ViewCardsView.swift in Sources */,
+>>>>>>> Stashed changes
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,
@@ -550,8 +556,11 @@
 				95FA530C2D3E9A7300E3307B /* DisplayEventTypeView.swift in Sources */,
 				1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */,
 				189F5C6D2B27B48A0067245A /* AddressView.swift in Sources */,
+<<<<<<< Updated upstream
 				95FA530E2D3E9A8500E3307B /* WalkThroughtView.swift in Sources */,
 				18D9620F2B263EC200662849 /* CardTrackerApp.swift in Sources */,
+=======
+>>>>>>> Stashed changes
 				189FD03D2B44A83D003805EC /* EditGreetingCardView.swift in Sources */,
 				95FA53022D3E99D900E3307B /* AsyncImageView.swift in Sources */,
 				95FA53032D3E99D900E3307B /* GeneratePDF.swift in Sources */,
