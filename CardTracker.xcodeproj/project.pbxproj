@@ -163,7 +163,6 @@
 		95FA531A2D3EA05900E3307B /* AsyncImageViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageViewTests.swift; sourceTree = "<group>"; };
 		95FA531B2D3EA05900E3307B /* ConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsTests.swift; sourceTree = "<group>"; };
 		95FA531C2D3EA05900E3307B /* GeneratePDFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDFTests.swift; sourceTree = "<group>"; };
-		95FA53272D3EA10000E3307B /* CardTracker.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardTracker.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,7 +205,6 @@
 		18D962022B263EC200662849 = {
 			isa = PBXGroup;
 			children = (
-				95FA53272D3EA10000E3307B /* CardTracker.xctestplan */,
 				18CFAE162B53826B0036CD8A /* TestFlight */,
 				18D9620D2B263EC200662849 /* CardTracker */,
 				18D962222B263EC400662849 /* CardTrackerTests */,
