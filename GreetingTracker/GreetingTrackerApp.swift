@@ -41,14 +41,14 @@ struct GreetKeeperApp: App {
         appearance.backgroundColor = .white
         let attrs: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.green,
-            .font: UIFont.monospacedSystemFont(ofSize: 36, weight: .black)
+            .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .black)
         ]
         
         appearance.largeTitleTextAttributes = attrs
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Color.accentColor]
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.accent]
-        UINavigationBar.appearance().tintColor = UIColor.accent
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Color.accentColor]
+        UINavigationBar.appearance().tintColor = UIColor(Color.accentColor)
     }
     
     
