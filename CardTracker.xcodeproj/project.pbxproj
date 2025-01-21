@@ -53,8 +53,7 @@
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
 		9564AECF2D3FF0AC002E4359 /* CardTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52F42D3E954000E3307B /* CardTrackerApp.swift */; };
-		95E833542D3FD7B600CC4925 /* ViewRecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A79272D3F26C1001214EE /* ViewRecipientView.swift */; };
-		95E833552D3FD7B600CC4925 /* ViewRecipientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A79272D3F26C1001214EE /* ViewRecipientView.swift */; };
+		9564AED12D3FF33D002E4359 /* ViewRecipientDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564AED02D3FF32E002E4359 /* ViewRecipientDetailsView.swift */; };
 		95FA53022D3E99D900E3307B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */; };
 		95FA53032D3E99D900E3307B /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FD2D3E99D900E3307B /* GeneratePDF.swift */; };
 		95FA53042D3E99D900E3307B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FF2D3E99D900E3307B /* ImageLoader.swift */; };
@@ -144,7 +143,7 @@
 		18D9624C2B2656AB00662849 /* EventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsList.swift; sourceTree = "<group>"; };
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
-		952A79272D3F26C1001214EE /* ViewRecipientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientView.swift; sourceTree = "<group>"; };
+		9564AED02D3FF32E002E4359 /* ViewRecipientDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientDetailsView.swift; sourceTree = "<group>"; };
 		95FA52F42D3E954000E3307B /* CardTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTrackerApp.swift; sourceTree = "<group>"; };
 		95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		95FA52FC2D3E99D900E3307B /* EventType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventType+Extensions.swift"; sourceTree = "<group>"; };
@@ -307,7 +306,7 @@
 				95FA530F2D3E9A9A00E3307B /* RecipientView.swift */,
 				189DB67F2B2E1F4E00FC3E87 /* ScreenView.swift */,
 				189DB6832B2E405800FC3E87 /* ViewEventsView.swift */,
-				952A79272D3F26C1001214EE /* ViewRecipientView.swift */,
+				9564AED02D3FF32E002E4359 /* ViewRecipientDetailsView.swift */,
 				187047202B3131B300E489AC /* ViewGreetingCardsView.swift */,
 				95FA530D2D3E9A8500E3307B /* WalkThroughtView.swift */,
 			);
@@ -520,7 +519,6 @@
 				189DB6842B2E405800FC3E87 /* ViewEventsView.swift in Sources */,
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
-				95E833542D3FD7B600CC4925 /* ViewRecipientView.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,
 				18D962112B263EC200662849 /* ContentView.swift in Sources */,
 				189F5C712B27C7500067245A /* ImageTransformer.swift in Sources */,
@@ -528,6 +526,7 @@
 				189F5C772B27CBBF0067245A /* Collection+Extensions.swift in Sources */,
 				189F5C7F2B27D2360067245A /* ImagePicker.swift in Sources */,
 				189DB6822B2E230400FC3E87 /* CardView.swift in Sources */,
+				9564AED12D3FF33D002E4359 /* ViewRecipientDetailsView.swift in Sources */,
 				189F5C7D2B27CFD10067245A /* View+Extensions.swift in Sources */,
 				18B0869F2B368B48001CBFFB /* EditRecipientView.swift in Sources */,
 				9564AECF2D3FF0AC002E4359 /* CardTrackerApp.swift in Sources */,
@@ -568,7 +567,6 @@
 				95FA53152D3EA04200E3307B /* EventTypeTests.swift in Sources */,
 				95FA53162D3EA04200E3307B /* CardTests.swift in Sources */,
 				95FA53172D3EA04200E3307B /* RecipientTests.swift in Sources */,
-				95E833552D3FD7B600CC4925 /* ViewRecipientView.swift in Sources */,
 				95FA531D2D3EA05900E3307B /* GeneratePDFTests.swift in Sources */,
 				95FA531E2D3EA05900E3307B /* ConstantsTests.swift in Sources */,
 				95FA531F2D3EA05900E3307B /* AsyncImageViewTests.swift in Sources */,

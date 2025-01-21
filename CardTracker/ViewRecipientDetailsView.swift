@@ -1,16 +1,17 @@
 //
-//  ViewEventsView.swift
+//  ViewRecipientDetailsView.swift
 //  CardTracker
 //
-//  Created by Michael Rowe on 12/11/23.
+//  Created by Michael Rowe1 on 1/21/25.
 //
+
 
 import MapKit
 import os
 import SwiftData
 import SwiftUI
 
-struct ViewRecipientView: View {
+struct ViewRecipientDetailsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
 
@@ -34,7 +35,7 @@ struct ViewRecipientView: View {
     @State private var isLoading: Bool = false
     
     init(recipient: Recipient, navigationPath: Binding<NavigationPath>) {
-        print("DEBUG ViewRecipientView: recipient : \(recipient.fullName)")
+        print("DEBUG ViewRecipientDetailsView: recipient : \(recipient.fullName)")
         self.recipient = recipient
         let recipientID = recipient.persistentModelID // Note this is required to help in Macro Expansion
         _cards = Query(
