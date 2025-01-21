@@ -37,3 +37,29 @@ extension View {
         return image
     }
 }
+
+
+extension View {
+    func setupNavigationDestinations(for navigationPath: Binding<NavigationPath>) -> some View {
+        self.navigationDestination(for: NavigationDestination.self) { destination in
+            switch destination {
+            case .editCard(let card):
+                EditCardView(card: Bindable(card), navigationPath: navigationPath)
+            case .detailsCard(let card):
+                CardView(
+                    cardImage: UIImage(data: card.cardFront?.cardFront ?? Data()) ?? UIImage(),
+                    cardTitle: card.eventType?.eventName ?? "",
+                    cardDate: card.cardDate
+                )
+            case .editGreetingCard(let greetingCard):
+                EditGreetingCardView(greetingCard: greetingCard)
+            case .detailsGreetingCard(let greetingCard):
+                CardView(
+                    cardImage: UIImage(data: greetingCard.cardFront ?? Data()) ?? UIImage(),
+                    cardTitle: greetingCard.cardName,
+                    cardDate: Date()
+                )
+            }
+        }
+    }
+}

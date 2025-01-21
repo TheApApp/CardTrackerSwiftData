@@ -31,11 +31,6 @@ struct GreetKeeperApp: App {
     }()
     
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.accentColor) // Use your asset color
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemGray], for: .normal)
-        UINavigationBar.appearance().barTintColor = UIColor(Color.accentColor)
-        
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
@@ -45,9 +40,13 @@ struct GreetKeeperApp: App {
         ]
         
         appearance.largeTitleTextAttributes = attrs
+        
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.accentColor) // Use your asset color
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemGray], for: .normal)
+        UINavigationBar.appearance().barTintColor = UIColor(Color.accentColor)
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Color.accentColor]
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Color.accentColor]
         UINavigationBar.appearance().tintColor = UIColor(Color.accentColor)
     }
     

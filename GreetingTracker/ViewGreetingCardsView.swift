@@ -28,23 +28,17 @@ struct ViewGreetingCardsView: View {
     @State private var isLoading: Bool = false
     
     init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
-        print("DEBUG ViewGreetingCardsView.init: eventType : \(eventType.eventName)")
         self.eventType = eventType
-        let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
+        let eventTypeID = eventType.persistentModelID
         _greetingCards = Query(
-            filter: #Predicate {$0.eventType?.persistentModelID == eventTypeID },
-            sort: [
-                SortDescriptor(\GreetingCard.cardName, order: .forward),
-            ]
+            filter: #Predicate { $0.eventType?.persistentModelID == eventTypeID },
+            sort: [SortDescriptor(\GreetingCard.cardName, order: .forward)]
         )
+        
         if UIDevice.current.userInterfaceIdiom == .phone {
             iPhone = true
             self.gridLayout = [
                 GridItem(.adaptive(minimum: 160), spacing: 10, alignment: .center)
-            ]
-        } else if UIDevice.current.userInterfaceIdiom == .vision {
-            self.gridLayout = [
-                GridItem(.adaptive(minimum: 320), spacing: 20, alignment: .leading)
             ]
         } else {
             self.gridLayout = [
@@ -55,28 +49,30 @@ struct ViewGreetingCardsView: View {
     }
     
     var body: some View {
-        VStack {
-            if greetingCards.count == 0 {
-                ContentUnavailableView {
-                    Label("No Cards", systemImage: "doc.richtext")
-                        .foregroundColor(.accentColor)
-                } description: {
-                    Text("There are no cards in this gallery.")
-                        .foregroundColor(.accentColor)
-                }
-            } else {
-                ScrollView {
-                    LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                        ForEach(greetingCards) { greetingCard in
-                            ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
+        NavigationStack(path: $navigationPath) {
+            VStack {
+                if greetingCards.isEmpty {
+                    ContentUnavailableView {
+                        Label("No Cards", systemImage: "doc.richtext")
+                            .foregroundColor(.accentColor)
+                    } description: {
+                        Text("There are no cards in this gallery.")
+                            .foregroundColor(.accentColor)
+                    }
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
+                            ForEach(greetingCards, id: \.id ) { greetingCard in
+                                ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
+                            }
                         }
                     }
                     .toolbar {
                         ToolbarItem(placement: .navigationBarLeading) {
-                            Text("\(eventType) - \(greetingCards.count) Cards")
+                            Text("\(eventType.eventName) - \(greetingCards.count) Cards")
                                 .foregroundColor(Color.accentColor)
                         }
-                        ToolbarItem(placement: .navigationBarTrailing){
+                        ToolbarItem(placement: .navigationBarTrailing) {
                             if isLoading {
                                 ProgressView()
                             } else {
@@ -86,15 +82,15 @@ struct ViewGreetingCardsView: View {
                             }
                         }
                     }
-                }
-                
-                .sheet(isPresented: $showShareSheet, content: {
-                    if let PDFUrl = PDFUrl {
-                        ShareSheet(activityItems: [PDFUrl])
-                            .interactiveDismissDisabled(true)
+                    .sheet(isPresented: $showShareSheet) {
+                        if let PDFUrl = PDFUrl {
+                            ShareSheet(activityItems: [PDFUrl])
+                                .interactiveDismissDisabled(true)
+                        }
                     }
-                })
+                }
             }
+            .setupNavigationDestinations(for: $navigationPath)
         }
     }
     
@@ -109,6 +105,7 @@ struct ViewGreetingCardsView: View {
         }
     }
 }
+
 
 #Preview {
     ViewGreetingCardsView(eventType: EventType(eventName: "Birthday"), navigationPath: .constant(NavigationPath()))

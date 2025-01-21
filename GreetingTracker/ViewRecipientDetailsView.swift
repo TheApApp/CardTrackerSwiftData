@@ -14,7 +14,7 @@ import SwiftUI
 struct ViewRecipientDetailsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
-
+    
     @Query(sort: [SortDescriptor(\Card.cardDate, order: .reverse)]) private var cards: [Card]
     
     private let blankCardFront = UIImage(named: "frontImage")
@@ -62,75 +62,78 @@ struct ViewRecipientDetailsView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                if let region = region {
-                    MapView(region: region)
-                        .frame(width: iPhone ? 120 : 200, height: 150)
-                        .mask(RoundedRectangle(cornerRadius: 25))
-                        .padding([.top, .leading], 15 )
-                    AddressView(recipient: recipient)
-                        .scaledToFit()
-                        .frame(width: 250, height: 150)
-                }
-                Spacer()
-                    .onAppear {
-                        // swiftlint:disable:next line_length
-                        let addressString = String("\(recipient.addressLine1) \(recipient.city) \(recipient.state) \(recipient.zip) \(recipient.country)")
-                        getLocation(from: addressString) { coordinates in
-                            if let coordinates = coordinates {
-                                self.region = MKCoordinateRegion(
-                                    center: coordinates,
-                                    span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+        NavigationStack(path: $navigationPath){
+            VStack {
+                HStack {
+                    if let region = region {
+                        MapView(region: region)
+                            .frame(width: iPhone ? 120 : 200, height: 150)
+                            .mask(RoundedRectangle(cornerRadius: 25))
+                            .padding([.top, .leading], 15 )
+                        AddressView(recipient: recipient)
+                            .scaledToFit()
+                            .frame(width: 250, height: 150)
+                    }
+                    Spacer()
+                        .onAppear {
+                            // swiftlint:disable:next line_length
+                            let addressString = String("\(recipient.addressLine1) \(recipient.city) \(recipient.state) \(recipient.zip) \(recipient.country)")
+                            getLocation(from: addressString) { coordinates in
+                                if let coordinates = coordinates {
+                                    self.region = MKCoordinateRegion(
+                                        center: coordinates,
+                                        span: MKCoordinateSpan(latitudeDelta: 0.008, longitudeDelta: 0.008))
+                                }
                             }
                         }
-                    }
-            }
-            ScrollView {
-                LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                    ForEach(cards) { card in
-                        ScreenView(card: card, greetingCard: nil, isEventType: .recipients, navigationPath: $navigationPath)
+                }
+                ScrollView {
+                    LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
+                        ForEach(cards) { card in
+                            ScreenView(card: card, greetingCard: nil, isEventType: .recipients, navigationPath: $navigationPath)
+                        }
                     }
                     .padding()
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("\(recipient.fullName)")
-                        .foregroundColor(Color.accentColor)
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        navBarItemChosen = .newCard
-                    }, label: {
-                        Image(systemName: "plus")
-                            .foregroundColor(.accentColor)
-                    })
-                }
-                ToolbarItem(placement:.navigationBarTrailing) {
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Button(action: generatePDF) {
-                            Image(systemName: "square.and.arrow.up")
+                .setupNavigationDestinations(for: $navigationPath)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("\(recipient.fullName)")
+                            .foregroundColor(Color.accentColor)
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            navBarItemChosen = .newCard
+                        }, label: {
+                            Image(systemName: "plus")
+                                .foregroundColor(.accentColor)
+                        })
+                    }
+                    ToolbarItem(placement:.navigationBarTrailing) {
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Button(action: generatePDF) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
                         }
                     }
                 }
             }
-        }
-        .sheet(item: $navBarItemChosen ) { item in
-            switch item {
-            case .newCard:
-                NewCardView(recipient: recipient)
-                    .interactiveDismissDisabled(true)
+            .sheet(item: $navBarItemChosen ) { item in
+                switch item {
+                case .newCard:
+                    NewCardView(recipient: recipient)
+                        .interactiveDismissDisabled(true)
+                }
             }
+            .sheet(isPresented: $showShareSheet, content: {
+                if let PDFUrl = PDFUrl {
+                    ShareSheet(activityItems: [PDFUrl])
+                        .interactiveDismissDisabled(true)
+                }
+            })
         }
-        .sheet(isPresented: $showShareSheet, content: {
-            if let PDFUrl = PDFUrl {
-                ShareSheet(activityItems: [PDFUrl])
-                    .interactiveDismissDisabled(true)
-            }
-        })
     }
     
     func getLocation(from address: String, completion: @escaping (_ location: CLLocationCoordinate2D?) -> Void) {

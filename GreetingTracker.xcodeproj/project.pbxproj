@@ -51,6 +51,7 @@
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
 		9564AECF2D3FF0AC002E4359 /* GreetingTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52F42D3E954000E3307B /* GreetingTrackerApp.swift */; };
 		9564AED12D3FF33D002E4359 /* ViewRecipientDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564AED02D3FF32E002E4359 /* ViewRecipientDetailsView.swift */; };
+		9578FD632D401B4C00C10D3A /* RecipientAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578FD622D401B4C00C10D3A /* RecipientAddressView.swift */; };
 		95FA53022D3E99D900E3307B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */; };
 		95FA53032D3E99D900E3307B /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FD2D3E99D900E3307B /* GeneratePDF.swift */; };
 		95FA53042D3E99D900E3307B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FF2D3E99D900E3307B /* ImageLoader.swift */; };
@@ -113,6 +114,7 @@
 		18D9624E2B266F0E00662849 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		9564AED02D3FF32E002E4359 /* ViewRecipientDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientDetailsView.swift; sourceTree = "<group>"; };
+		9578FD622D401B4C00C10D3A /* RecipientAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientAddressView.swift; sourceTree = "<group>"; };
 		95FA52F42D3E954000E3307B /* GreetingTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingTrackerApp.swift; sourceTree = "<group>"; };
 		95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		95FA52FC2D3E99D900E3307B /* EventType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventType+Extensions.swift"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				189F5C6C2B27B48A0067245A /* AddressView.swift */,
+				9578FD622D401B4C00C10D3A /* RecipientAddressView.swift */,
 				189DB6812B2E230400FC3E87 /* CardView.swift */,
 				18D962102B263EC200662849 /* ContentView.swift */,
 				95FA530B2D3E9A7300E3307B /* DisplayEventTypeView.swift */,
@@ -424,6 +427,7 @@
 				95FA530A2D3E9A5A00E3307B /* Category.swift in Sources */,
 				18D9624B2B2654EA00662849 /* NewEventView.swift in Sources */,
 				189F5C6F2B27C6410067245A /* PrintView.swift in Sources */,
+				9578FD632D401B4C00C10D3A /* RecipientAddressView.swift in Sources */,
 				189DB6882B2E4C0100FC3E87 /* EventTypeView.swift in Sources */,
 				18D962492B2650C100662849 /* TextFieldModifier.swift in Sources */,
 				189F5C792B27CF240067245A /* NewCardView.swift in Sources */,
@@ -603,7 +607,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -647,7 +651,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

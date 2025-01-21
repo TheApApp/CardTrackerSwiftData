@@ -2,12 +2,15 @@ import os
 import SwiftData
 import SwiftUI
 
+import SwiftUI
+import os
+
 struct MenuOverlayView: View {
     @Environment(\.modelContext) var modelContext
-    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var isIphone: IsIphone
 
-    @State var areYouSure: Bool = false
+    @State private var areYouSure: Bool = false
+    @State private var destination: Destination? = nil
     @Binding var navigationPath: NavigationPath
 
     private var logger = Logger(subsystem: "com.theapa.CardTracker", category: "MenuOverlay")
@@ -26,26 +29,54 @@ struct MenuOverlayView: View {
     }
 
     var body: some View {
-        HStack {
-            NavigationLink(destination: editView) {
-                Image(systemName: "square.and.pencil")
-                    .font(iconFont)
+        VStack {
+            Color.clear // Empty content to attach the context menu
+        }
+        .contextMenu {
+            Button(action: {
+                navigateToEditView()
+            }) {
+                Label("Edit", systemImage: "square.and.pencil")
             }
 
-            NavigationLink(destination: detailedView) {
-                Image(systemName: "doc.richtext")
-                    .font(iconFont)
+            Button(action: {
+                navigateToDetailedView()
+            }) {
+                Label("Details", systemImage: "doc.richtext")
             }
 
-            Button(action: { areYouSure.toggle() }) {
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
-                    .font(iconFont)
-            }
-            .confirmationDialog("Are you sure", isPresented: $areYouSure) {
-                confirmationButtons
+            Button(role: .destructive, action: {
+                areYouSure.toggle()
+            }) {
+                Label("Delete", systemImage: "trash")
             }
         }
+        .confirmationDialog("Are you sure?", isPresented: $areYouSure) {
+            Button("Yes", role: .destructive) {
+                withAnimation { delete() }
+            }
+            Button("No", role: .cancel) {
+                logger.log("Deletion cancelled")
+            }
+        }
+        .navigationDestination(for: Destination.self) { destination in
+            switch destination {
+            case .editView:
+                editView
+            case .detailedView:
+                detailedView
+            }
+        }
+    }
+
+    // MARK: - Navigation Logic
+
+    private func navigateToEditView() {
+        destination = .editView
+    }
+
+    private func navigateToDetailedView() {
+        destination = .detailedView
     }
 
     // MARK: - Helper Views
@@ -74,27 +105,12 @@ struct MenuOverlayView: View {
                 CardView(cardImage: viewData.image, cardTitle: viewData.title, cardDate: viewData.date)
             } else {
                 let defaultImage = UIImage(named: "frontImage") ?? UIImage()
-                CardView(cardImage: defaultImage, cardTitle: "Missing TitleEd", cardDate: Date())
-            }
-        }
-    }
-
-    private var confirmationButtons: some View {
-        Group {
-            Button("Yes", role: .destructive) {
-                withAnimation { delete() }
-            }
-            Button("No", role: .cancel) {
-                logger.log("Deletion cancelled")
+                CardView(cardImage: defaultImage, cardTitle: "Missing Title", cardDate: Date())
             }
         }
     }
 
     // MARK: - Helper Properties
-
-    private var iconFont: Font {
-        isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3
-    }
 
     private var cardOrGreetingCardData: (image: UIImage, title: String, date: Date)? {
         if isEventType != .greetingCard, let card = card {
@@ -135,5 +151,12 @@ struct MenuOverlayView: View {
             let nsError = error as NSError
             logger.error("Unresolved error: \(nsError), \(nsError.userInfo)")
         }
+    }
+
+    // MARK: - Destination Enum
+
+    private enum Destination: Hashable {
+        case editView
+        case detailedView
     }
 }

@@ -29,7 +29,7 @@ struct ViewEventsView: View {
     
     
     // MARK: Public accessors for testing
-    #if DEBUG
+#if DEBUG
     var test_eventType: EventType {
         return eventType
     }
@@ -48,7 +48,7 @@ struct ViewEventsView: View {
     var test_isLoading: Bool {
         return isLoading
     }
-    #endif
+#endif
     
     init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
         print("DEBUG ViewEventsView: eventType : \(String(describing: eventType.eventName))")
@@ -79,37 +79,40 @@ struct ViewEventsView: View {
     }
     
     var body: some View {
-        VStack {
-            ScrollView {
-                LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                    ForEach(cards) { card in
-                        ScreenView(card: card, greetingCard: nil, isEventType: .events, navigationPath: $navigationPath)
+        NavigationStack(path: $navigationPath){
+            VStack {
+                ScrollView {
+                    LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
+                        ForEach(cards) { card in
+                            ScreenView(card: card, greetingCard: nil, isEventType: .events, navigationPath: $navigationPath)
+                        }
+                        .padding()
                     }
-                    .padding()
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("\(eventType.eventName) - \(cards.count) Sent")
-                        .foregroundColor(Color.accentColor)
-                }
-                ToolbarItem(placement: .navigationBarTrailing){
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Button(action: generatePDF) {
-                            Image(systemName: "square.and.arrow.up")
+                .setupNavigationDestinations(for: $navigationPath)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("\(eventType.eventName) - \(cards.count) Sent")
+                            .foregroundColor(Color.accentColor)
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Button(action: generatePDF) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
                         }
                     }
                 }
             }
+            .sheet(isPresented: $showShareSheet, content: {
+                if let PDFUrl = PDFUrl {
+                    ShareSheet(activityItems: [PDFUrl])
+                        .interactiveDismissDisabled(true)
+                }
+            })
         }
-        .sheet(isPresented: $showShareSheet, content: {
-            if let PDFUrl = PDFUrl {
-                ShareSheet(activityItems: [PDFUrl])
-                    .interactiveDismissDisabled(true)
-            }
-        })
     }
     
     internal func generatePDF() {

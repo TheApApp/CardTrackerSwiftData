@@ -28,11 +28,6 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                #if DEBUG
-                let _ = print("DEBUG: CardView - cardImage: \(String(describing: cardImage))")
-                let _ = print("DEBUG: CardVew  - cardTitle: \(String(describing: cardTitle))")
-                let _ = print("DEBUG: CardView - cardDate: \(String(describing: cardDate))")
-                #endif
                 Image(uiImage: cardImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
