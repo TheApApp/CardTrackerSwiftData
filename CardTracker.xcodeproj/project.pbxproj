@@ -53,8 +53,8 @@
 		18D9624D2B2656AB00662849 /* EventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624C2B2656AB00662849 /* EventsList.swift */; };
 		18D9624F2B266F0E00662849 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D9624E2B266F0E00662849 /* FilteredList.swift */; };
 		18D962532B269DF400662849 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D962522B269DF400662849 /* EditCardView.swift */; };
-		952A79282D3F26C1001214EE /* ViewRecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A79272D3F26C1001214EE /* ViewRecipientsView.swift */; };
 		952A792B2D3F2EBE001214EE /* ViewRecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A79272D3F26C1001214EE /* ViewRecipientsView.swift */; };
+		95B23B3C2D3F356F006919AA /* ViewRecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A79272D3F26C1001214EE /* ViewRecipientsView.swift */; };
 		95FA53022D3E99D900E3307B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FB2D3E99D900E3307B /* AsyncImageView.swift */; };
 		95FA53032D3E99D900E3307B /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FD2D3E99D900E3307B /* GeneratePDF.swift */; };
 		95FA53042D3E99D900E3307B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52FF2D3E99D900E3307B /* ImageLoader.swift */; };
@@ -508,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B23B3C2D3F356F006919AA /* ViewRecipientsView.swift in Sources */,
 				189F5C672B2766D00067245A /* MenuOverlayView.swift in Sources */,
 				189F5C6B2B27A0430067245A /* MapView.swift in Sources */,
 				18D962532B269DF400662849 /* EditCardView.swift in Sources */,
@@ -519,7 +520,6 @@
 				189DB6802B2E1F4E00FC3E87 /* ScreenView.swift in Sources */,
 				189DB6842B2E405800FC3E87 /* ViewEventsView.swift in Sources */,
 				189F5C7B2B27CFAA0067245A /* UIView+Extensions.swift in Sources */,
-				952A79282D3F26C1001214EE /* ViewRecipientsView.swift in Sources */,
 				189F5C692B276C570067245A /* Constants.swift in Sources */,
 				189F5C732B27CAEF0067245A /* UIImage+Extensions.swift in Sources */,
 				18D962112B263EC200662849 /* ContentView.swift in Sources */,
