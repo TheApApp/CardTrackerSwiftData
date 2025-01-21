@@ -35,10 +35,22 @@ struct GreetKeeperApp: App {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemGray], for: .normal)
         UINavigationBar.appearance().barTintColor = UIColor(Color.accentColor)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        let attrs: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.green,
+            .font: UIFont.monospacedSystemFont(ofSize: 36, weight: .black)
+        ]
+        
+        appearance.largeTitleTextAttributes = attrs
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Color.accentColor]
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.accent]
+        UINavigationBar.appearance().tintColor = UIColor.accent
     }
-
-
+    
+    
     @Environment(\.scenePhase) var scenePhase
     
     var body: some Scene {
@@ -49,32 +61,14 @@ struct GreetKeeperApp: App {
                 .environmentObject(isIphone)
                 .onChange(of: scenePhase) {
                     print("scenePhase \(scenePhase)")
-//                    logger.log("scenePhase \(scenePhase)")
+                    //                    logger.log("scenePhase \(scenePhase)")
                     /// look at logger for UIapplicationDelecgate if memory issue
                 }
         }
-        #if os(macOS)
+#if os(macOS)
         .commands {
             SidebarCommands()
         }
-        #endif
-    }
-    
-    @MainActor mutating func didFinishLaunchingWithOptions() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .white
-
-        let attrs: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.green,
-            .font: UIFont.monospacedSystemFont(ofSize: 36, weight: .black)
-        ]
-
-        appearance.largeTitleTextAttributes = attrs
-
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.accent]
-        UINavigationBar.appearance().tintColor = UIColor.accent
-        
+#endif
     }
 }
