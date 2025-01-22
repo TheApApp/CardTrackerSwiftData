@@ -66,6 +66,7 @@ struct EditGreetingCardView: View {
     
     init(greetingCard: GreetingCard?) {
         self.greetingCard = greetingCard
+        _eventType = .init(initialValue: greetingCard?.eventType)
     }
     
     var body: some View {

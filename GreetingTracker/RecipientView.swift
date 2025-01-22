@@ -92,7 +92,6 @@ struct RecipientView: View {
                         )
                     })
                     VStack {
-//                        Text("")
                         Picker("Category", selection: $selectedCategory) {
                             ForEach(Category.allCases) { category in
                                 Text(category.rawValue)
@@ -100,7 +99,6 @@ struct RecipientView: View {
                             }
                         }
                         .frame(maxWidth: .infinity)
-//                        .frame(height: 50)
                         .pickerStyle(SegmentedPickerStyle()) // You can also use DefaultPickerStyle()
                         
                         HStack {

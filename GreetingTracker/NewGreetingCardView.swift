@@ -53,7 +53,7 @@ struct NewGreetingCardView: View {
                             }
                         }
                     }
-                    NavigationLink("Add New Event", destination: NewEventView())
+                    NavigationLink("Add New Event", destination:EventTypeView())
                     
                     TextField("Description", text: $cardName)
                         .customTextField()
@@ -133,7 +133,7 @@ struct NewGreetingCardView: View {
             }
 
             .sheet(isPresented: $newEvent) {
-                NewEventView()
+                EventTypeView()
             }
             
             .padding([.leading, .trailing], 10)

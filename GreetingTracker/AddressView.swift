@@ -19,6 +19,22 @@ struct AddressView: View {
     }
     
     var body: some View {
+#if targetEnvironment(macCatalyst)
+        VStack {
+            RecipientAddressView(recipient: recipient)
+                .foregroundColor(.accentColor)
+                .scaledToFit()
+            
+            Button("Edit") {
+                editRecipient.toggle()
+            }
+            
+            .sheet(isPresented: $editRecipient) {
+                RecipientView(recipientToEdit: recipient)
+                    .interactiveDismissDisabled(true)
+            }
+        }
+#else
         RecipientAddressView(recipient: recipient)
             .foregroundColor(.accentColor)
             .scaledToFit()
@@ -31,6 +47,7 @@ struct AddressView: View {
                 RecipientView(recipientToEdit: recipient)
                     .interactiveDismissDisabled(true)
             }
+#endif
     }
 }
 
