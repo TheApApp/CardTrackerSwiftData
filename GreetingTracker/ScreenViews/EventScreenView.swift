@@ -44,6 +44,10 @@ struct EventScreenView: View {
         isIphone.iPhone ? 160 : isVision ? 160 : 320
     }
     
+    var frameMaxWidth: CGFloat {
+        isIphone.iPhone ? 160 : isVision ? 160 : 320
+    }
+    
     var fontInfo: Font {
         isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3
     }
@@ -55,41 +59,41 @@ struct EventScreenView: View {
     
     // MARK: Body View
     var body: some View {
-        ZStack {
-            Button {
-                selectedAction = .display
-            } label: {
-                ZStack {
-                    AsyncImageView(imageData: card?.cardFront?.cardFront)
-                    
+        
+        Button {
+            selectedAction = .display
+        } label: {
+            ZStack {
+                AsyncImageView(imageData: card?.cardFront?.cardFront)
+                
+                VStack {
+                    Spacer()
                     VStack {
-                        Spacer()
                         VStack {
-                            VStack {
-                                Text("\(card?.recipient?.fullName ?? "Unknown")")
-                                Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
-                                    .fixedSize()
-                            }
+                            Text("\(card?.recipient?.fullName ?? "Unknown")")
+                            Text("\(card?.cardDate ?? Date(), formatter: cardDateFormatter)")
+                                .fixedSize(horizontal: false, vertical: true)
                         }
-                        .padding(2)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.black.opacity(0.6))
-                        )
-                        .foregroundColor(.white)
-                        .padding(paddingValueInner)
-                        .font(fontInfo)
-                        .foregroundColor(.accentColor)
                     }
+                    .padding(2)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.black.opacity(0.6))
+                            .frame(maxWidth: .infinity)
+                    )
+                    .foregroundColor(.white)
+                    .padding(paddingValueInner)
+                    .font(fontInfo)
                 }
             }
         }
+        .buttonStyle(PlainButtonStyle())
         .padding()
         .frame(
             minWidth: frameMinWidth,
-            maxWidth: .infinity,
+            maxWidth: frameMaxWidth,
             minHeight: frameMinWidth,
-            maxHeight: 320
+            maxHeight: frameMaxWidth
         )
         .background(Color("SlideColor"))
         .mask(RoundedRectangle(cornerRadius: 20))
@@ -108,7 +112,7 @@ struct EventScreenView: View {
                 Label("Delete", systemImage: "trash")
             }
         }
-
+        
         .sheet(item: $selectedAction) { action in
             ActionSheetContentView(
                 action: action,
@@ -118,7 +122,7 @@ struct EventScreenView: View {
                 logger: logger
             )
         }
-
+        
     }
     
     
@@ -146,7 +150,7 @@ struct EventScreenView: View {
             EditCardView(card: Bindable(card), navigationPath: $navigationPath)
         }
     }
-
+    
     struct DisplayViewWrapper: View {
         var card: Card
         
@@ -164,7 +168,7 @@ struct EventScreenView: View {
         var card: Card
         let deleteCard: (Card) -> Void // Closure to call the delete function
         let logger: Logger // Pass the logger for logging
-
+        
         var body: some View {
             ZStack {
                 AsyncImageView(imageData: card.cardFront?.cardFront)
@@ -180,27 +184,27 @@ struct EventScreenView: View {
                 .foregroundColor(.white)
                 
             }
-                .confirmationDialog("Are you sure?", isPresented: $areYouSure) {
-                    Button("Yes", role: .destructive) {
-                        withAnimation {
-                            deleteCard(card)
-                        }
-                    }
-                    Button("No", role: .cancel) {
-                        logger.log("Deletion cancelled")
+            .confirmationDialog("Are you sure?", isPresented: $areYouSure) {
+                Button("Yes", role: .destructive) {
+                    withAnimation {
+                        deleteCard(card)
                     }
                 }
+                Button("No", role: .cancel) {
+                    logger.log("Deletion cancelled")
+                }
+            }
         }
     }
-
-
+    
+    
     struct ActionSheetContentView: View {
         var action: EventsActionType
         var card: Card?
         @Binding var navigationPath: NavigationPath
         let deleteCard: (Card) -> Void
         let logger: Logger
-
+        
         var body: some View {
             if let card = card {
                 switch action {
@@ -216,9 +220,9 @@ struct EventScreenView: View {
             }
         }
     }
-
-
-
+    
+    
+    
     struct ErrorView: View {
         let message: String
         

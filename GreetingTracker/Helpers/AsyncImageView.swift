@@ -10,15 +10,11 @@ import SwiftUI
 struct AsyncImageView: View {
     @StateObject private var imageLoader = ImageLoader()
     let imageData: Data?
-    private var iPhone = false
 
     init(imageData: Data?) {
         self.imageData = imageData
-        
-        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .vision {
-            iPhone = true
-        }
     }
+    
     var body: some View {
         #if DEBUG
         let _ = print("AsyncImageView rendered: \(String(describing: imageData))")
@@ -27,7 +23,7 @@ struct AsyncImageView: View {
             Image(uiImage: uiImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .scaledToFit()            
+                .scaledToFit()
         } else {
             ProgressView()
                 .progressViewStyle(CircularProgressViewStyle())
@@ -40,3 +36,11 @@ struct AsyncImageView: View {
     }
 }
 
+#Preview {
+    if let defaultImage = UIImage(named: "frontImage"),
+       let imageData = defaultImage.pngData() {
+        AsyncImageView(imageData: imageData)
+    } else {
+        AsyncImageView(imageData: nil) // Fallback if the asset isn't available
+    }
+}

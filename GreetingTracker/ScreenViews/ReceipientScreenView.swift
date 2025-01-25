@@ -64,6 +64,10 @@ struct ReceipientScreenView: View {
         isIphone.iPhone ? 160 : isVision ? 160 : 320
     }
     
+    var frameMaxWidth: CGFloat {
+        isIphone.iPhone ? 160 : isVision ? 160 : 320
+    }
+    
     var fontInfo: Font {
         isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3
     }
@@ -103,12 +107,13 @@ struct ReceipientScreenView: View {
                 }
             }
         }
+        .buttonStyle(PlainButtonStyle())
         .padding()
         .frame(
             minWidth: frameMinWidth,
-            maxWidth: .infinity,
+            maxWidth: frameMaxWidth,
             minHeight: frameMinWidth,
-            maxHeight: 320
+            maxHeight: frameMaxWidth
         )
         .background(Color("SlideColor"))
         .mask(RoundedRectangle(cornerRadius: 20))

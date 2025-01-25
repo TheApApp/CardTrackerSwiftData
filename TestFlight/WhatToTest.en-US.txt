@@ -3,7 +3,7 @@ New Updates coming:
 Things to Test:
 1. Fixed crash when you try to view a card or edit a card in the Occasions List or Card Gallery
 2. Added a search bar to the Greeting Card Picker
-3. Check the new menuing .. I think I am very close.
+3. Check the new menuing
 
 Known bugs:
 #. Something has changed and the application is ignoring the accent colors and dark mode.  Will try and resolve this.

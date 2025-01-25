@@ -70,153 +70,155 @@ struct EditGreetingCardView: View {
     }
     
     var body: some View {
-        Form {
-            Section("Occasion") {
-                Picker("Select Occasion", selection: $eventType) {
-                    Text("Unknown Occasion")
-                        .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
-                    
-                    if events.isEmpty == false {
-                        Divider()
+        NavigationStack {
+            Form {
+                Section("Occasion") {
+                    Picker("Select Occasion", selection: $eventType) {
+                        Text("Unknown Occasion")
+                            .tag(Optional<EventType>.none) //basically added empty tag and it solve the case
                         
-                        ForEach(events) { event in
-                            Text(event.eventName)
-                                .tag(Optional(event))
+                        if events.isEmpty == false {
+                            Divider()
+                            
+                            ForEach(events) { event in
+                                Text(event.eventName)
+                                    .tag(Optional(event))
+                            }
+                        }
+                    }
+                    if eventType == nil {
+                        NavigationLink(destination: EventTypeView()) {
+                            Text("New Occasion")
                         }
                     }
                 }
-                if eventType == nil {
-                    NavigationLink(destination: EventTypeView()) {
-                        Text("New Occasion")
-                    }
-                }
-            }
-            
-            Section("Card details") {
                 
-                TextField("Description", text: $cardName)
-                    .customTextField()
-                TextField("Manufacturer", text: $cardManufacturer)
-                    .customTextField()
-                TextField("Website", text: $cardURL)
-                    .customTextField()
-                    .autocapitalization(.none)
-            }
-            .foregroundColor(.accentColor)
-            
-            Section("Card Image") {
-                HStack(alignment: .center){
-                    Spacer()
-                    ZStack {
-                        Image(uiImage: cardUIImage ?? UIImage(named: "frontImage")!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .shadow(radius: 10 )
-                        Image(systemName: "camera.fill")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                            .shadow(radius: 10)
-                            .frame(width: 200)
-                            .onTapGesture { self.frontPhoto = true }
-                            .actionSheet(isPresented: $frontPhoto) { () -> ActionSheet in
+                Section("Card details") {
+                    
+                    TextField("Description", text: $cardName)
+                        .customTextField()
+                    TextField("Manufacturer", text: $cardManufacturer)
+                        .customTextField()
+                    TextField("Website", text: $cardURL)
+                        .customTextField()
+                        .autocapitalization(.none)
+                }
+                .foregroundColor(.accentColor)
+                
+                Section("Card Image") {
+                    HStack(alignment: .center){
+                        Spacer()
+                        ZStack {
+                            Image(uiImage: cardUIImage ?? UIImage(named: "frontImage")!)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .shadow(radius: 10 )
+                            Image(systemName: "camera.fill")
+                                .foregroundColor(.white)
+                                .font(.largeTitle)
+                                .shadow(radius: 10)
+                                .frame(width: 200)
+                                .onTapGesture { self.frontPhoto = true }
+                                .actionSheet(isPresented: $frontPhoto) { () -> ActionSheet in
 #if !os(visionOS)
-                                ActionSheet(
-                                    title: Text("Choose mode"),
-                                    message: Text("Select one."),
-                                    buttons: [
-                                        ActionSheet.Button.default(Text("Camera"), action: {
-                                            checkCameraAuthorization()
-                                            self.captureFrontImage.toggle()
-                                            self.sourceType = .camera
-                                        }),
-                                        
-                                        ActionSheet.Button.default(Text("Photo Library"), action: {
-                                            self.captureFrontImage.toggle()
-                                            self.sourceType = .photoLibrary
-                                        }),
-                                        
-                                        ActionSheet.Button.cancel()
-                                    ]
-                                )
+                                    ActionSheet(
+                                        title: Text("Choose mode"),
+                                        message: Text("Select one."),
+                                        buttons: [
+                                            ActionSheet.Button.default(Text("Camera"), action: {
+                                                checkCameraAuthorization()
+                                                self.captureFrontImage.toggle()
+                                                self.sourceType = .camera
+                                            }),
+                                            
+                                            ActionSheet.Button.default(Text("Photo Library"), action: {
+                                                self.captureFrontImage.toggle()
+                                                self.sourceType = .photoLibrary
+                                            }),
+                                            
+                                            ActionSheet.Button.cancel()
+                                        ]
+                                    )
 #else
-                                ActionSheet(
-                                    title: Text("Choose mode"),
-                                    message: Text("Select one."),
-                                    buttons: [
-                                        ActionSheet.Button.default(Text("Photo Library"), action: {
-                                            self.captureFrontImage.toggle()
-                                            self.sourceType = .photoLibrary }),
-                                        ActionSheet.Button.cancel()
-                                    ]
-                                )
+                                    ActionSheet(
+                                        title: Text("Choose mode"),
+                                        message: Text("Select one."),
+                                        buttons: [
+                                            ActionSheet.Button.default(Text("Photo Library"), action: {
+                                                self.captureFrontImage.toggle()
+                                                self.sourceType = .photoLibrary }),
+                                            ActionSheet.Button.cancel()
+                                        ]
+                                    )
 #endif
-                            }
-                            .sheet(isPresented: $captureFrontImage) {
-                                ImagePicker(
-                                    sourceType: sourceType,
-                                    image: $frontImageSelected)
-                                .interactiveDismissDisabled(true)
-                            }
-                        
+                                }
+                                .sheet(isPresented: $captureFrontImage) {
+                                    ImagePicker(
+                                        sourceType: sourceType,
+                                        image: $frontImageSelected)
+                                    .interactiveDismissDisabled(true)
+                                }
+                            
+                        }
+                        .frame(width: 250, height: 250)
+                        Spacer()
                     }
-                    .frame(width: 250, height: 250)
-                    Spacer()
                 }
             }
-        }
-        .alert(isPresented: $cameraNotAuthorized) {
-            Alert(
-                title: Text("Unable to access the Camera"),
-                message: Text("To enable access, go to Settings > Privacy > Camera and turn on Camera access for this app."),
-                primaryButton: .default(Text("Settings")) {
-                    openSettings()
-                }
-                ,
-                secondaryButton: .cancel()
-            )
-        }
-        
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text(editorTitle)
-                    .font(Font.system(size: 15, weight: .medium, design: .rounded))
-                    .foregroundColor(.accentColor)
+            .alert(isPresented: $cameraNotAuthorized) {
+                Alert(
+                    title: Text("Unable to access the Camera"),
+                    message: Text("To enable access, go to Settings > Privacy > Camera and turn on Camera access for this app."),
+                    primaryButton: .default(Text("Settings")) {
+                        openSettings()
+                    }
+                    ,
+                    secondaryButton: .cancel()
+                )
             }
             
-            ToolbarItem(placement: .confirmationAction) {
-                Button {
-                    withAnimation {
-                        save()
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text(editorTitle)
+                        .font(Font.system(size: 15, weight: .medium, design: .rounded))
+                        .foregroundColor(.accentColor)
+                }
+                
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        withAnimation {
+                            save()
+                            dismiss()
+                        }
+                    } label: {
+                        Text("Save")
+                    }
+                    .disabled($cardUIImage.wrappedValue == nil)
+                }
+                
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", role: .cancel) {
+                        if walkthrough == 3 {
+                            walkthrough += 1
+                        }
                         dismiss()
                     }
-                } label: {
-                    Text("Save")
                 }
-                .disabled($cardUIImage.wrappedValue == nil)
             }
             
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel", role: .cancel) {
-                    if walkthrough == 3 {
-                        walkthrough += 1
-                    }
-                    dismiss()
+            .onAppear {
+                if let greetingCard {
+                    cardName = greetingCard.cardName
+                    cardManufacturer = greetingCard.cardManufacturer
+                    cardURL = greetingCard.cardURL
+                    cardUIImage = UIImage(data: (greetingCard.cardFront)!) ?? UIImage(named: "frontImage")!
+                    eventType = greetingCard.eventType
                 }
             }
-        }
-        
-        .onAppear {
-            if let greetingCard {
-                cardName = greetingCard.cardName
-                cardManufacturer = greetingCard.cardManufacturer
-                cardURL = greetingCard.cardURL
-                cardUIImage = UIImage(data: (greetingCard.cardFront)!) ?? UIImage(named: "frontImage")!
-                eventType = greetingCard.eventType
+            
+            .onChange(of: frontImageSelected) { oldValue, newValue in
+                cardUIImage = newValue?.asUIImage()
             }
-        }
-        
-        .onChange(of: frontImageSelected) { oldValue, newValue in
-            cardUIImage = newValue?.asUIImage()
         }
 #if os(macOS)
         .padding()
