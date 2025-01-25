@@ -79,32 +79,30 @@ struct ViewEventsView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $navigationPath){
-            VStack {
-                ScrollView {
-                    LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                        ForEach(cards) { card in
-                            ScreenView(card: card, greetingCard: nil, isEventType: .events, navigationPath: $navigationPath)
-                        }
-                        .padding()
+        VStack {
+            ScrollView {
+                LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
+                    ForEach(cards) { card in
+                        EventScreenView(card: card, navigationPath: $navigationPath)
                     }
+                    .padding()
                 }
-                .setupNavigationDestinations(for: $navigationPath)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Text("\(eventType.eventName) - \(cards.count) Sent")
-                            .foregroundColor(Color.accentColor)
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing){
-                        if isLoading {
-                            ProgressView()
-                        } else {
-                            Button(action: generatePDF) {
-                                Image(systemName: "square.and.arrow.up")
-                            }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("\(eventType.eventName) - \(cards.count) Sent")
+                        .foregroundColor(Color.accentColor)
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    if isLoading {
+                        ProgressView()
+                    } else {
+                        Button(action: generatePDF) {
+                            Image(systemName: "square.and.arrow.up")
                         }
                     }
                 }
+                
             }
             .sheet(isPresented: $showShareSheet, content: {
                 if let PDFUrl = PDFUrl {

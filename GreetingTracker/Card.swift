@@ -27,7 +27,7 @@ final class Card: CustomDebugStringConvertible {
     var cardFront: GreetingCard?
     /// A card must be sent to someone
     var recipient: Recipient?
-
+    
     // MARK: - Initializer
     init(cardDate: Date, eventType: EventType, cardFront: GreetingCard, recipient: Recipient) {
         self.cardDate = cardDate

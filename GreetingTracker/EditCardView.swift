@@ -16,6 +16,7 @@ struct EditCardView: View {
     
     /// Provides access to the current presentation mode, allowing dismissal of the view.
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     /// A query for fetching and sorting `EventType` objects by their event name.
     @Query(sort: \EventType.eventName) private var events: [EventType]
@@ -56,6 +57,9 @@ struct EditCardView: View {
     /// Tracks whether the user is adding a new event.
     @State private var newEvent = false
     
+    /// Tracks changed greeting card
+    @State private var selectedGreetingCard: GreetingCard?
+    
     /// Initializes the `EditCardView` with a bound `Card` object and navigation path.
     /// - Parameters:
     ///   - card: The `Card` object to be edited.
@@ -63,68 +67,89 @@ struct EditCardView: View {
     init(card: Bindable<Card>, navigationPath: Binding<NavigationPath>) {
         _card = card
         _navigationPath = navigationPath
+        print(card.eventType)
     }
     
     var body: some View {
         /// The main form for editing card details, divided into sections for event type, date, and card image.
-        Form {
-            // Event Section
-            #if DEBUG
-            let _ = print("DEBUG: EditCardView - card: \(String(describing: card))")
-            let _ = print("DEBUG: EditCardVew  - navigationPath: \(String(describing: navigationPath))")
-            #endif
-            
-            Section("Occasion") {
-                Picker(selection: $card.eventType, label: Text("Occasion")) {
-                    Text("Unknown Occasion")
-                        .tag(Optional<EventType>.none)
+        NavigationStack {
+            Group {
+                Form {
+                    Section("Occasion") {
+                        Picker(selection: $card.eventType, label: Text("Occasion")) {
+                            Text("Unknown Occasion")
+                                .tag(Optional<EventType>.none)
+                            
+                            Divider()
+                            
+                            if !events.isEmpty {
+                                Divider()
+                                ForEach(events) { event in
+                                    Text(event.eventName)
+                                        .tag(Optional(event))
+                                }
+                            }
+                        }
+                    }
                     
-                    Divider()
+                    // Date Section
+                    Section("Date") {
+                        DatePicker(
+                            "Event Date",
+                            selection: $card.cardDate,
+                            displayedComponents: [.date]
+                        )
+                    }
                     
-                    if !events.isEmpty {
-                        Divider()
-                        ForEach(events) { event in
-                            Text(event.eventName)
-                                .tag(Optional(event))
+                    // Card Section
+                    Section("Card") {
+                        VStack {
+                            NavigationLink(
+                                destination: {
+                                    if let eventType = card.eventType {
+                                        GreetingCardsPickerView(eventType: eventType, selectedGreetingCard: $card.cardFront)
+                                    } else {
+                                        EmptyView()
+                                    }
+                                },
+                                label: {
+                                    Text("Select card:")
+                                        .foregroundColor(.accentColor)
+                                }
+                            )
+                            
+                            if let imageData = card.cardFront {
+                                Image(uiImage: UIImage(data: imageData.cardFront!)!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 200, height: 200, alignment: .center)
+                            } else {
+                                Image(uiImage: UIImage(named: "frontImage")!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 200, height: 200, alignment: .center)
+                            }
                         }
                     }
                 }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Edit Card")
+                        .foregroundColor(.accentColor)
+                }
                 
-//                NavigationLink("New Occasion", destination: EventTypeView())
-            }
-            
-            // Date Section
-            Section("Date") {
-                DatePicker(
-                    "Event Date",
-                    selection: $card.cardDate,
-                    displayedComponents: [.date]
-                )
-            }
-            
-            // Card Section
-            Section("Card") {
-                VStack {
-                    NavigationLink(
-                        "Select card:",
-                        destination: GreetingCardsPickerView(eventType: card.eventType!, selectedGreetingCard: $card.cardFront)
-                    )
-                    
-                    if let imageData = card.cardFront {
-                        Image(uiImage: UIImage(data: imageData.cardFront!)!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 200, height: 200, alignment: .center)
-                    } else {
-                        Image(uiImage: UIImage(named: "frontImage")!)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 200, height: 200, alignment: .center)
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        withAnimation {
+                            dismiss()
+                        }
+                    } label: {
+                        Text("OK")
                     }
                 }
             }
         }
-        .navigationBarTitle("\(card.recipient?.fullName ?? "Missing Name")", displayMode: .inline)
     }
 }
 

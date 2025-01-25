@@ -49,48 +49,45 @@ struct ViewGreetingCardsView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            VStack {
-                if greetingCards.isEmpty {
-                    ContentUnavailableView {
-                        Label("No Cards", systemImage: "doc.richtext")
-                            .foregroundColor(.accentColor)
-                    } description: {
-                        Text("There are no cards in this gallery.")
-                            .foregroundColor(.accentColor)
-                    }
-                } else {
-                    ScrollView {
-                        LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                            ForEach(greetingCards, id: \.id ) { greetingCard in
-                                ScreenView(card: nil, greetingCard: greetingCard, isEventType: .greetingCard, navigationPath: $navigationPath)
-                            }
-                        }
-                    }
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Text("\(eventType.eventName) - \(greetingCards.count) Cards")
-                                .foregroundColor(Color.accentColor)
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            if isLoading {
-                                ProgressView()
-                            } else {
-                                Button(action: generatePDF) {
-                                    Image(systemName: "square.and.arrow.up")
-                                }
-                            }
-                        }
-                    }
-                    .sheet(isPresented: $showShareSheet) {
-                        if let PDFUrl = PDFUrl {
-                            ShareSheet(activityItems: [PDFUrl])
-                                .interactiveDismissDisabled(true)
+        VStack {
+            if greetingCards.isEmpty {
+                ContentUnavailableView {
+                    Label("No Cards", systemImage: "doc.richtext")
+                        .foregroundColor(.accentColor)
+                } description: {
+                    Text("There are no cards in this gallery.")
+                        .foregroundColor(.accentColor)
+                }
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
+                        ForEach(greetingCards, id: \.id ) { greetingCard in
+                            GreetingCardScreenView(greetingCard: greetingCard, navigationPath: $navigationPath)
                         }
                     }
                 }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("\(eventType.eventName) - \(greetingCards.count) Cards")
+                            .foregroundColor(Color.accentColor)
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Button(action: generatePDF) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
+                        }
+                    }
+                }
+                .sheet(isPresented: $showShareSheet) {
+                    if let PDFUrl = PDFUrl {
+                        ShareSheet(activityItems: [PDFUrl])
+                            .interactiveDismissDisabled(true)
+                    }
+                }
             }
-            .setupNavigationDestinations(for: $navigationPath)
         }
     }
     

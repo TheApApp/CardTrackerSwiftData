@@ -49,7 +49,7 @@ struct ContentView: View {
             TabView(selection: $listView) {
                 // Events Tab
                 NavigationView {
-                    FilteredList(searchText: searchText, listView: .events, navigationPath: $navigationPath)
+                    EventsFilteredList(searchText: searchText, listView: .events, navigationPath: $navigationPath)
                         .searchable(text: $searchText)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
@@ -90,7 +90,7 @@ struct ContentView: View {
                 
                 // Gallery Tab
                 NavigationView {
-                    FilteredList(searchText: searchText, listView: .greetingCard, navigationPath: $navigationPath)
+                    GreetingCardsFilteredList(searchText: searchText, listView: .greetingCard, navigationPath: $navigationPath)
                         .searchable(text: $searchText)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
@@ -131,7 +131,7 @@ struct ContentView: View {
                 
                 // Recipients Tab
                 NavigationView {
-                    FilteredList(searchText: searchText, listView: .recipients, navigationPath: $navigationPath)
+                    RecipientsFilteredList(searchText: searchText, listView: .recipients, navigationPath: $navigationPath)
                         .searchable(text: $searchText)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
