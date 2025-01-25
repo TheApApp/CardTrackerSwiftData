@@ -13,6 +13,7 @@ import SwiftUI
 struct CardView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dismiss) private var dismiss
     
     private var logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.example.CardTracker", category: "CardView")
     var cardImage: UIImage
@@ -26,39 +27,48 @@ struct CardView: View {
     }
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Image(uiImage: cardImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .scaledToFit()
-                    .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.95)
-                    .padding(5)
-                    .mask(RoundedRectangle(cornerRadius: 25))
-                
-                VStack(spacing: 4) {
-                    Spacer()
-                    VStack {
-                        Text(cardTitle ?? "No Title")
-                        
-                        if let cardDate = cardDate {
-                            Text("\(cardDate, formatter: cardDateFormatter)")
+        NavigationStack {
+            GeometryReader { geo in
+                ZStack {
+                    Image(uiImage: cardImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .scaledToFit()
+                        .frame(width: geo.size.width * 0.95, height: geo.size.height * 0.95)
+                        .padding(5)
+                        .mask(RoundedRectangle(cornerRadius: 25))
+                    
+                    VStack(spacing: 4) {
+                        Spacer()
+                        VStack {
+                            Text(cardTitle ?? "No Title")
+                            
+                            if let cardDate = cardDate {
+                                Text("\(cardDate, formatter: cardDateFormatter)")
+                            }
                         }
+                        .padding(8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black.opacity(0.6))
+                        )
+                        .foregroundColor(.white)
                     }
-                    .padding(8)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.black.opacity(0.6))
-                    )
-                    .foregroundColor(.white)
+                    .padding(.bottom, 10)
+                    
                 }
-                .padding(.bottom, 10)
-                
+                .padding(5)
+                .font(.title)
+                .foregroundColor(.primary)
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("OK", role: .cancel) {
+                            dismiss()
+                        }
+                        .foregroundColor(Color("AccentColor"))
+                    }
+                }
             }
-            .padding(5)
-            .font(.title)
-            .foregroundColor(.primary)
-            .navigationTitle(cardTitle ?? "No Card Name")
         }
     }
 }

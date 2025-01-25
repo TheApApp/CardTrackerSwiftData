@@ -53,10 +53,10 @@ struct ViewGreetingCardsView: View {
             if greetingCards.isEmpty {
                 ContentUnavailableView {
                     Label("No Cards", systemImage: "doc.richtext")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 } description: {
                     Text("There are no cards in this gallery.")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
             } else {
                 ScrollView {
@@ -69,7 +69,7 @@ struct ViewGreetingCardsView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Text("\(eventType.eventName) - \(greetingCards.count) Cards")
-                            .foregroundColor(Color.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         if isLoading {

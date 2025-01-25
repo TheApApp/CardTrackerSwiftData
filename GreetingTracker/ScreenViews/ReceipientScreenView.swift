@@ -102,7 +102,7 @@ struct ReceipientScreenView: View {
                         .foregroundColor(.white)
                         .padding(paddingValueInner)
                         .font(fontInfo)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                     }
                 }
             }

@@ -39,7 +39,7 @@ struct EventTypeView: View {
                 ToolbarItem(placement: .principal) {
                     Text(editorTitle)
                         .font(Font.system(size: 20, weight: .medium, design: .rounded))
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
@@ -50,6 +50,7 @@ struct EventTypeView: View {
                         }
                     } label: {
                         Text("Save")
+                            .foregroundColor(Color("AccentColor"))
                     }
                     .disabled($eventName.wrappedValue == "")
                 }
@@ -61,6 +62,7 @@ struct EventTypeView: View {
                         }
                         dismiss()
                     }
+                    .foregroundColor(Color("AccentColor"))
                 }
             }
             

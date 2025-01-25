@@ -22,11 +22,14 @@ struct AddressView: View {
 #if targetEnvironment(macCatalyst)
         VStack {
             RecipientAddressView(recipient: recipient)
-                .foregroundColor(.accentColor)
+                .foregroundColor(Color("AccentColor"))
                 .scaledToFit()
             
-            Button("Edit") {
+            Button {
                 editRecipient.toggle()
+            } label: {
+                Text("Edit")
+                    .foregroundColor(Color("AccentColor"))
             }
             
             .sheet(isPresented: $editRecipient) {
@@ -36,11 +39,14 @@ struct AddressView: View {
         }
 #else
         RecipientAddressView(recipient: recipient)
-            .foregroundColor(.accentColor)
+            .foregroundColor(Color("AccentColor"))
             .scaledToFit()
             .contextMenu {
-                Button("Edit") {
+                Button {
                     editRecipient.toggle()
+                } label: {
+                    Text("Edit")
+                        .foregroundColor(Color("AccentColor"))
                 }
             }
             .sheet(isPresented: $editRecipient) {

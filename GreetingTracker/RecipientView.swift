@@ -145,11 +145,12 @@ struct RecipientView: View {
                         }
                         dismiss()
                     }
+                    .foregroundColor(Color("AccentColor"))
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text("Recipient")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button(action: {
@@ -161,7 +162,7 @@ struct RecipientView: View {
                         }
                     }, label: {
                         Image(systemName: "person.crop.rectangle.badge.plus.fill")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     })
                 }
                 
@@ -173,6 +174,7 @@ struct RecipientView: View {
                         }
                     } label: {
                         Text("Save")
+                            .foregroundColor(Color("AccentColor"))
                     }
                     .disabled(firstName.isEmpty || lastName.isEmpty)
                 }

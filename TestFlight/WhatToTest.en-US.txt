@@ -4,9 +4,9 @@ Things to Test:
 1. Fixed crash when you try to view a card or edit a card in the Occasions List or Card Gallery
 2. Added a search bar to the Greeting Card Picker
 3. Check the new menuing
+4. Please confirm I have the AccentColor resolved across all screens
 
 Known bugs:
-#. Something has changed and the application is ignoring the accent colors and dark mode.  Will try and resolve this.
 #. Bag in macOS - if you change the name of a card, you lose the picture and can’t update
 #. iOS - if you go thru initial setup, and deny access to the Contacts the app crashes you out.  When you restart you will get the popup of permissions not set for contacts.
 

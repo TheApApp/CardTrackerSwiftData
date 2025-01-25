@@ -33,7 +33,7 @@ struct NewEventView: View {
                 ToolbarItem(placement: .principal) {
                     Text("Occasion Information")
                         .font(Font.system(size: 15, weight: .medium, design: .rounded))
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
@@ -44,6 +44,7 @@ struct NewEventView: View {
                         }
                     } label: {
                         Text("Save")
+                            .foregroundColor(Color("AccentColor"))
                     }
                 }
                 
@@ -51,6 +52,7 @@ struct NewEventView: View {
                     Button("Cancel", role: .cancel) {
                         dismiss()
                     }
+                    .foregroundColor(Color("AccentColor"))
                 }
             }
         }

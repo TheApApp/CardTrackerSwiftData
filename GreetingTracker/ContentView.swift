@@ -54,7 +54,7 @@ struct ContentView: View {
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Text("Occasions")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color("AccentColor"))
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {
@@ -63,12 +63,12 @@ struct ContentView: View {
                                 }, label: {
                                     Image(systemName: "plus")
                                         .font(.title2)
-                                        .foregroundColor(.accentColor)
+                                        .tint(Color("AccentColor"))
                                 })
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 EditButton()
-                                    .foregroundColor(.accentColor)
+                                    .tint(Color("AccentColor"))
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {
@@ -76,7 +76,7 @@ struct ContentView: View {
                                 }, label: {
                                     Image(systemName: "questionmark.circle")
                                         .font(.title2)
-                                        .foregroundColor(.accentColor)
+                                        .tint(Color("AccentColor"))
                                 })
                             }
                         }
@@ -84,7 +84,6 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "calendar")
                     Text("Occasions")
-                        .foregroundColor(.accentColor)
                 }
                 .tag(ListView.events)
                 
@@ -95,7 +94,8 @@ struct ContentView: View {
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Text("Card Gallery")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color("AccentColor"))
+                                
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {
@@ -104,12 +104,12 @@ struct ContentView: View {
                                 }, label: {
                                     Image(systemName: "plus")
                                         .font(.title2)
-                                        .foregroundColor(.accentColor)
+                                        .tint(Color("AccentColor"))
                                 })
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 EditButton()
-                                    .foregroundColor(.accentColor)
+                                    .tint(Color("AccentColor"))
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {
@@ -117,7 +117,7 @@ struct ContentView: View {
                                 }, label: {
                                     Image(systemName: "questionmark.circle")
                                         .font(.title2)
-                                        .foregroundColor(.accentColor)
+                                        .tint(Color("AccentColor"))
                                 })
                             }
                         }
@@ -125,7 +125,6 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "photo.stack")
                     Text("Card Gallery")
-                        .foregroundColor(.accentColor)
                 }
                 .tag(ListView.greetingCard)
                 
@@ -136,7 +135,7 @@ struct ContentView: View {
                         .toolbar {
                             ToolbarItem(placement: .navigationBarLeading) {
                                 Text("Recipient")
-                                    .foregroundColor(.accentColor)
+                                    .foregroundColor(Color("AccentColor"))
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {
@@ -145,12 +144,12 @@ struct ContentView: View {
                                 }, label: {
                                     Image(systemName: "plus")
                                         .font(.title2)
-                                        .foregroundColor(.accentColor)
+                                        .tint(Color("AccentColor"))
                                 })
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 EditButton()
-                                    .foregroundColor(.accentColor)
+                                    .tint(Color("AccentColor"))
                             }
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button(action: {
@@ -158,19 +157,20 @@ struct ContentView: View {
                                 }, label: {
                                     Image(systemName: "questionmark.circle")
                                         .font(.title2)
-                                        .foregroundColor(.accentColor)
+                                        .tint(Color("AccentColor"))
                                 })
                             }
                         }
+                        .tint(Color("AccentColor"))
                 }
                 .tabItem {
                     Image(systemName: "person.crop.rectangle.fill")
                     Text("Recipients")
-                        .foregroundColor(.accentColor)
                 }
                 .tag(ListView.recipients)
             }
             .tabViewStyle(.automatic)
+            .accentColor(Color("AccentColor"))
             .sheet(isPresented: $addItem) {
                 /// Dynamically presents a modal sheet based on the current tab.
                 switch listView {
@@ -186,6 +186,7 @@ struct ContentView: View {
                 }
             }
         }
+        
         
     }
 }

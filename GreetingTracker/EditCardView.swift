@@ -114,7 +114,7 @@ struct EditCardView: View {
                                 },
                                 label: {
                                     Text("Select card:")
-                                        .foregroundColor(.accentColor)
+                                        .foregroundColor(Color("AccentColor"))
                                 }
                             )
                             
@@ -136,7 +136,7 @@ struct EditCardView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text("Edit Card")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
@@ -146,6 +146,7 @@ struct EditCardView: View {
                         }
                     } label: {
                         Text("OK")
+                            .foregroundColor(Color("AccentColor"))
                     }
                 }
             }

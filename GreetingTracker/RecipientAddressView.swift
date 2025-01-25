@@ -29,7 +29,7 @@ struct RecipientAddressView: View {
                 Text(recipient.country).textCase(.uppercase)
             }
         }
-        .foregroundColor(.accentColor)
+        .foregroundColor(Color("AccentColor"))
         .padding([.leading, .trailing], 10 )
     }
 }

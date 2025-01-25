@@ -116,7 +116,7 @@ struct NewCardView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Save")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     })
                     .disabled(selectedEvent == nil || selectedGreetingCard == nil)
                 }
@@ -128,12 +128,12 @@ struct NewCardView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Text("Cancel")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     })
                 }
             }
         }
-        .foregroundColor(.accentColor)
+        .foregroundColor(Color("AccentColor"))
     }
     
     func save() {

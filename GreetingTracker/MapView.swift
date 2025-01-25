@@ -50,7 +50,7 @@ struct MapView: View {
                 Image(systemName: "house")
                     .padding(4)
                     .foregroundStyle(.white)
-                    .background(Color.accentColor)
+                    .background(Color("AccentColor"))
                     .cornerRadius(4)
             }
         }

@@ -36,7 +36,7 @@ struct NewGreetingCardView: View {
                 Section("Details") {
                     HStack {
                         Text("Select Type")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                             .font(.headline)
                         
                         Picker("Select type", selection: $selectedEvent) {
@@ -62,7 +62,7 @@ struct NewGreetingCardView: View {
                     TextField("Website", text: $cardURLString)
                         .customTextField()
                 }
-                .foregroundColor(.accentColor)
+                .foregroundColor(Color("AccentColor"))
                 
                 Section("Card Image") {
                     ZStack {
@@ -144,15 +144,11 @@ struct NewGreetingCardView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "square.and.arrow.down")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.accentColor)
                 })
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "chevron.down.circle.fill")
-//                        .font(.largeTitle)
-//                        .foregroundColor(.accentColor)
                 })
             }
             )

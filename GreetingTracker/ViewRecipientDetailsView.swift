@@ -98,14 +98,14 @@ struct ViewRecipientDetailsView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     Text("\(recipient.fullName)")
-                        .foregroundColor(Color.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         navBarItemChosen = .newCard
                     }, label: {
                         Image(systemName: "plus")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     })
                 }
                 ToolbarItem(placement:.navigationBarTrailing) {

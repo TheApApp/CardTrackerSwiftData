@@ -73,7 +73,7 @@ struct GreetingCardsPickerView: View {
             .toolbar {
                 ToolbarItem(placement: .principal) {
                 Text("Select \(eventType.eventName) Card")
-                        .foregroundColor(Color.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
             }
     }

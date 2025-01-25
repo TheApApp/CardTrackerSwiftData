@@ -31,23 +31,24 @@ struct GreetKeeperApp: App {
     }()
     
     init() {
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color("AccentColor")) // Use your asset color
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemGray], for: .normal)
+        UINavigationBar.appearance().barTintColor = UIColor(Color("AccentColor"))
+        
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
         let attrs: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.green,
-            .font: UIFont.monospacedSystemFont(ofSize: 20, weight: .black)
+            .font: UIFont.monospacedSystemFont(ofSize: 36, weight: .black)
         ]
         
         appearance.largeTitleTextAttributes = attrs
-        
-        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.accentColor) // Use your asset color
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.systemGray], for: .normal)
-        UINavigationBar.appearance().barTintColor = UIColor(Color.accentColor)
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Color.accentColor]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color("AccentColor"))]
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().tintColor = UIColor(Color.accentColor)
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor(Color("AccentColor"))]
+        UINavigationBar.appearance().tintColor = UIColor(Color("AccentColor"))
     }
     
     

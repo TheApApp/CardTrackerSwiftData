@@ -91,7 +91,7 @@ struct ViewEventsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text("\(eventType.eventName) - \(cards.count) Sent")
-                        .foregroundColor(Color.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
                     if isLoading {

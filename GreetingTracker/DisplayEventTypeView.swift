@@ -25,11 +25,11 @@ struct DisplayEventTypeView: View {
             HStack {
                 if isCards {
                     Text("\(title) Gallery")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                         .font(.title)
                 } else {
                     Text("\(title) Cards Sent")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                         .font(.title)
                 }
                 Spacer()

@@ -103,7 +103,7 @@ struct EditGreetingCardView: View {
                         .customTextField()
                         .autocapitalization(.none)
                 }
-                .foregroundColor(.accentColor)
+                .foregroundColor(Color("AccentColor"))
                 
                 Section("Card Image") {
                     HStack(alignment: .center){
@@ -181,7 +181,7 @@ struct EditGreetingCardView: View {
                 ToolbarItem(placement: .principal) {
                     Text(editorTitle)
                         .font(Font.system(size: 15, weight: .medium, design: .rounded))
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 }
                 
                 ToolbarItem(placement: .confirmationAction) {
@@ -192,6 +192,7 @@ struct EditGreetingCardView: View {
                         }
                     } label: {
                         Text("Save")
+                            .foregroundColor(Color("AccentColor"))
                     }
                     .disabled($cardUIImage.wrappedValue == nil)
                 }
@@ -203,6 +204,7 @@ struct EditGreetingCardView: View {
                         }
                         dismiss()
                     }
+                    .foregroundColor(Color("AccentColor"))
                 }
             }
             

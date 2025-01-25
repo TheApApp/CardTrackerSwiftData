@@ -119,7 +119,7 @@ struct NewRecipientView: View {
                 }, label: {
                     Image(systemName: "person.crop.rectangle.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 })
                 Button(action: {
                     save()
@@ -127,14 +127,14 @@ struct NewRecipientView: View {
                 }, label: {
                     Text("Save")
                         .font(.largeTitle)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 })
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "chevron.down.circle.fill")
                         .font(.largeTitle)
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color("AccentColor"))
                 })
             }
             )

@@ -24,10 +24,10 @@ struct EventsList: View {
                 ForEach(events) { event in
                     NavigationLink {
                         Text("Event named \(event.eventName)")
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     } label: {
                         Text(event.eventName)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -47,13 +47,13 @@ struct EventsList: View {
                     }, label: {
                         Image(systemName: "plus")
                             .font(.title2)
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(Color("AccentColor"))
                     })
                 }
             }
         } detail: {
             Text("Select event")
-                .foregroundColor(.accentColor)
+                .foregroundColor(Color("AccentColor"))
         }
         .sheet(isPresented: $newEvent) {
             EventTypeView()
