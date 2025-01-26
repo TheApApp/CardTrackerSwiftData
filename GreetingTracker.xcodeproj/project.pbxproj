@@ -49,6 +49,7 @@
 		951E58672D4455B7002F0057 /* GreetingCardScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E58662D4455B7002F0057 /* GreetingCardScreenView.swift */; };
 		9564AECF2D3FF0AC002E4359 /* GreetingTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FA52F42D3E954000E3307B /* GreetingTrackerApp.swift */; };
 		9564AED12D3FF33D002E4359 /* ViewRecipientDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564AED02D3FF32E002E4359 /* ViewRecipientDetailsView.swift */; };
+		95715AF92D46C3FC001A23D0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 95715AF82D46C3FC001A23D0 /* Localizable.xcstrings */; };
 		9578FD632D401B4C00C10D3A /* RecipientAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578FD622D401B4C00C10D3A /* RecipientAddressView.swift */; };
 		95C1EEF82D43E27B00CB4705 /* EventsFilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C1EEF72D43E27B00CB4705 /* EventsFilteredList.swift */; };
 		95C1EEFA2D43E36A00CB4705 /* RecipientsFilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C1EEF92D43E36A00CB4705 /* RecipientsFilteredList.swift */; };
@@ -114,6 +115,7 @@
 		18D962522B269DF400662849 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		951E58662D4455B7002F0057 /* GreetingCardScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingCardScreenView.swift; sourceTree = "<group>"; };
 		9564AED02D3FF32E002E4359 /* ViewRecipientDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRecipientDetailsView.swift; sourceTree = "<group>"; };
+		95715AF82D46C3FC001A23D0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9578FD622D401B4C00C10D3A /* RecipientAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientAddressView.swift; sourceTree = "<group>"; };
 		95C1EEF72D43E27B00CB4705 /* EventsFilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsFilteredList.swift; sourceTree = "<group>"; };
 		95C1EEF92D43E36A00CB4705 /* RecipientsFilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipientsFilteredList.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		18D962022B263EC200662849 = {
 			isa = PBXGroup;
 			children = (
+				95715AF82D46C3FC001A23D0 /* Localizable.xcstrings */,
 				18CFAE162B53826B0036CD8A /* TestFlight */,
 				18D9620D2B263EC200662849 /* GreetingTracker */,
 				18D962222B263EC400662849 /* GreetingTrackerTests */,
@@ -385,7 +388,21 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				nl,
+				fr,
+				de,
+				hi,
+				id,
+				it,
+				ja,
+				ko,
+				pl,
+				ru,
+				es,
+				th,
+				tr,
+				uk,
+				vi,
 			);
 			mainGroup = 18D962022B263EC200662849;
 			packageReferences = (
@@ -409,6 +426,7 @@
 			files = (
 				18D962192B263EC300662849 /* Preview Assets.xcassets in Resources */,
 				18CFAE152B537E020036CD8A /* WhatToTest.en-US.txt in Resources */,
+				95715AF92D46C3FC001A23D0 /* Localizable.xcstrings in Resources */,
 				18D962152B263EC300662849 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +556,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -595,6 +614,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
 			name = Release;
 		};
