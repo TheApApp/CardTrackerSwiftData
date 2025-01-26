@@ -37,19 +37,19 @@ struct GreetingCardScreenView: View {
     }
     
     var paddingValueInner: CGFloat {
-        isIphone.iPhone ? 1 : isVision ? 1 : 5
+        isIphone.iPhone ? 1 : 5
     }
     
     var frameMinWidth: CGFloat {
-        isIphone.iPhone ? 160 : isVision ? 160 : 320
+        isIphone.iPhone ? 160 : 320
     }
     
     var frameMaxWidth: CGFloat {
-        isIphone.iPhone ? 160 : isVision ? 160 : 320
+        isIphone.iPhone ? 160 : 320
     }
     
     var fontInfo: Font {
-        isIphone.iPhone ? .caption : isVision ? .system(size: 8) : .title3
+        isIphone.iPhone ? .caption : .title3
     }
     
     init(greetingCard: GreetingCard?, navigationPath: Binding<NavigationPath>) {
@@ -164,6 +164,7 @@ struct GreetingCardScreenView: View {
     }
     
     struct DeleteViewWrapper: View {
+        @Environment(\.dismiss) private var dismiss
         @State private var areYouSure = true
         var card: GreetingCard
         let deleteCard: (GreetingCard) -> Void // Closure to call the delete function
@@ -188,10 +189,12 @@ struct GreetingCardScreenView: View {
                 Button("Yes", role: .destructive) {
                     withAnimation {
                         deleteCard(card)
+                        dismiss()
                     }
                 }
                 Button("No", role: .cancel) {
                     logger.log("Deletion cancelled")
+                    dismiss()
                 }
             }
         }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1813F16A2B4A120200D7F234 /* AQUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1813F1692B4A120200D7F234 /* AQUI */; };
+		1813F16A2B4A120200D7F234 /* AQUI in Frameworks */ = {isa = PBXBuildFile; platformFilters = (ios, maccatalyst, ); productRef = 1813F1692B4A120200D7F234 /* AQUI */; };
 		1870471D2B30B59900E489AC /* NewGreetingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471C2B30B59900E489AC /* NewGreetingCardView.swift */; };
 		1870471F2B30B6F600E489AC /* GreetingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1870471E2B30B6F600E489AC /* GreetingCard.swift */; };
 		187047212B3131B300E489AC /* ViewGreetingCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187047202B3131B300E489AC /* ViewGreetingCardsView.swift */; };
@@ -633,12 +633,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2,6,7";
 			};
 			name = Debug;
 		};
@@ -677,12 +677,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.theapapp.CardTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2,6,7";
 			};
 			name = Release;
 		};
