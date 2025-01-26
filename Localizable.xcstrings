@@ -114,6 +114,7 @@
       }
     },
     "\t• Anniversaries" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -226,6 +227,7 @@
       }
     },
     "\t• Birthdays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -338,6 +340,7 @@
       }
     },
     "\t• Graduations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -450,6 +453,7 @@
       }
     },
     "\t• Holidays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -562,6 +566,7 @@
       }
     },
     "\t• Weddings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -2018,6 +2023,7 @@
       }
     },
     "An occasion is simply any reason you may send out a greeting card." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -2125,6 +2131,124 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "场合只是你发送贺卡的任何理由。"
+          }
+        }
+      }
+    },
+    "An occasion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\n\t• Birthdays\n\t• Anniversaries\n\t• Weddings\n\t• Graduations\n\t• Holidays" : {
+      "localizations" : {
+        "ar-AE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المناسبة هي ببساطة أي سبب يمكنك إرسال بطاقة تهنئة.\n\nيمكنك تسميتهم كما تريد.\n\nتتضمن الأمثلة ما يلي:\n• أعياد الميلاد\n• الذكرى السنوية\n• حفلات الزفاف\n• التخرج\n• العطلات"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Anlass ist einfach jeder Grund, warum Sie eine Grußkarte verschicken dürfen.\n\nSie können sie nennen, wie Sie wollen.\n\nBeispiele sind:\n• Geburtstage\n• Jubiläen\n• Hochzeiten\n• Abschlüsse\n• Feiertage"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An occasion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\n\t• Birthdays\n\t• Anniversaries\n\t• Weddings\n\t• Graduations\n\t• Holidays"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una ocasión es simplemente cualquier razón por la que puedas enviar una tarjeta de felicitación.\n\nPuedes nombrarlos como quieras.\n\nLos ejemplos incluyen:\n• Cumpleaños\n• Aniversarios\n• Bodas\n• Graduaciones\n• Vacaciones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une occasion est simplement n'importe quelle raison pour laquelle vous pouvez envoyer une carte de vœux.\n\nVous pouvez les nommer comme vous le souhaitez.\n\nLes exemples incluent :\n• Anniversaires\n• Mariages\n• Remise Des Diplômes\n• Vacances"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "एक अवसर बस कोई भी कारण है कि आप एक ग्रीटिंग कार्ड भेज सकते हैं।\n\nआप उन्हें जो चाहें नाम दे सकते हैं।\n\nउदाहरणों में शामिल हैं:\n• जन्मदिन\n• वर्षगांठ\n• विवाह\n• स्नातक\n• छुट्टियाँ"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sebuah kesempatan hanyalah alasan apa pun yang mungkin Anda kirimkan kartu ucapan.\n\nKamu bisa menamai mereka apapun yang kamu suka.\n\nContohnya termasuk:\n• Ulang tahun\n• Peringatan\n• Pernikahan\n• Wisuda\n• Liburan"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un'occasione è semplicemente qualsiasi motivo per cui puoi inviare un biglietto di auguri.\n\nPuoi chiamarli come preferisci.\n\nGli esempi includono:\n• Compleanni\n• Anniversari\n• Matrimoni\n• Lauree\n• Vacanze"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "機会とは、グリーティングカードを送る理由にすぎません。\n\n好きな名前を付けることができます。\n\n例には以下が含まれます：\n• 誕生日\n• 記念日\n• 結婚式\n• 卒業式\n• 休日"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "행사는 단순히 당신이 인사말 카드를 보낼 수 있는 모든 이유입니다.\n\n당신은 당신이 원하는 대로 이름을 지을 수 있습니다.\n\n예는 다음과 같습니다:\n• 생일\n• 기념일\n• 결혼식\n• 졸업식\n• 휴일"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Een gelegenheid is gewoon elke reden waarom je een wenskaart mag versturen.\n\nJe kunt ze een naam geven zoals je wilt.\n\nVoorbeelden zijn:\n• Verjaardagen\n• Jubilea\n• Bruiloften\n• Afstuderen\n• Feestdagen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okazja to po prostu każdy powód, dla którego możesz wysłać kartkę z życzeniami.\n\nMożesz nazwać je jak chcesz.\n\nPrzykłady obejmują:\n• Urodziny\n• Obyczenia\n• Wesela\n• Ukończenie szkoły\n• Wakacje"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uma ocasião é simplesmente qualquer motivo pelo qual você possa enviar um cartão de felicitações.\n\nVocê pode nomeá-los como quiser.\n\nExemplos incluem:\n• Aniversários\n• Casamentos\n• Graduações\n• Feriados"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Случай - это просто любая причина, по которой вы можете отправить поздравительную открытку.\n\nМожешь назвать их как хочешь.\n\nПримеры включают:\n• Дни рождения\n• Анновиры\n• Свадьбы\n• Выпускные\n• Праздники"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "โอกาสเป็นเพียงเหตุผลใด ๆ ที่คุณอาจส่งการ์ดอวยพร\n\nคุณสามารถตั้งชื่ออะไรก็ได้ที่คุณชอบ\n\nตัวอย่างรวมถึง:\n• วันเกิด\n• วันครบรอบ\n• งานแต่งงาน\n• การสําเร็จการศึกษา\n• วันหยุด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir fırsat, bir tebrik kartı göndermenizin herhangi bir nedenidir.\n\nOnlara istediğiniz gibi isim verebilirsiniz.\n\nÖrnekler şunları içerir:\n• Doğum Günleri\n• Yıldönümleri\n• Düğünler\n• Mezuniyetler\n• Tatiller"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нагода - це просто будь-яка причина, чому ви можете надіслати вітальну листівку.\n\nВи можете назвати їх як завгодно.\n\nПриклади включають:\n• Дні народження\n• ювільніри\n• Весілля\n• Випускні\n• Свята"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Một dịp đơn giản là bất kỳ lý do nào bạn có thể gửi thiệp chúc mừng.\n\nBạn có thể đặt tên cho chúng bất cứ thứ gì bạn thích.\n\nCác ví dụ bao gồm:\n• Sinh nhật\n• Ngày kỷ niệm\n• Đám cưới\n• Lễ tốt nghiệp\n• Những ngày nghỉ"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "场合只是你发送贺卡的任何理由。\n\n你可以给他们起任何你喜欢的名字。\n\n例子包括：\n•生日\n•周年纪念日\n•婚礼\n•毕业典礼\n•假期"
           }
         }
       }
@@ -2240,6 +2364,9 @@
           }
         }
       }
+    },
+    "Camera" : {
+
     },
     "Cancel" : {
       "localizations" : {
@@ -5042,6 +5169,7 @@
       }
     },
     "Examples include:" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
@@ -5152,6 +5280,9 @@
           }
         }
       }
+    },
+    "Failed to create preview: %@" : {
+
     },
     "Filter Cards" : {
       "localizations" : {
@@ -9970,6 +10101,7 @@
       }
     },
     "You can name them whatever you like." : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar-AE" : {
           "stringUnit" : {
