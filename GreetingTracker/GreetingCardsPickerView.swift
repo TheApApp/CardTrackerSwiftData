@@ -72,10 +72,11 @@ struct GreetingCardsPickerView: View {
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Filter Cards")
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                Text("Select \(eventType.eventName) Card")
+                    Text("Select \(eventType.eventName) Card")
                         .foregroundColor(Color("AccentColor"))
                 }
             }
+            .tint(Color("AccentColor"))
     }
 }
 

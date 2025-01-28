@@ -1,10 +1,5 @@
-New Updates coming:
-
 Things to Test:
-1. Fixed crash when you try to view a card or edit a card in the Occasions List or Card Gallery
-2. Added a search bar to the Greeting Card Picker
-3. Check the new menuing
-4. Please confirm I have the AccentColor resolved across all screens
+1. Emergency fix on Dark mode for main Views
 
 Known bugs:
 #. Bag in macOS - if you change the name of a card, you lose the picture and can’t update
