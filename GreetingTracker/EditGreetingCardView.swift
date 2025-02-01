@@ -153,10 +153,16 @@ struct EditGreetingCardView: View {
 #endif
                                 }
                                 .fullScreenCover(isPresented: $captureFrontImage) {
+                                    #if !os(visionOS)
                                     ImagePicker(
                                         sourceType: sourceType,
                                         image: $frontImageSelected)
                                     .interactiveDismissDisabled(true)
+                                    #else
+                                    ImagePicker(
+                                        image: $frontImageSelected)
+                                    .interactiveDismissDisabled(true)
+                                    #endif
                                 }
                             
                         }

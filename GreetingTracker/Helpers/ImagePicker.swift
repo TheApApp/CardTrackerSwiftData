@@ -5,6 +5,7 @@
 //  Created by Michael Rowe on 12/11/23.
 //
 
+#if !os(visionOS)
 import SwiftUI
 import UIKit
 
@@ -54,3 +55,54 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
     }
 }
+
+#else
+import SwiftUI
+import PhotosUI
+
+struct ImagePicker: UIViewControllerRepresentable {
+    @Binding var image: Image?
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    func makeUIViewController(context: Context) -> PHPickerViewController {
+        var config = PHPickerConfiguration()
+        config.filter = .images // Only allow image selection
+        config.selectionLimit = 1 // Allow only one image
+
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
+        // No updates needed
+    }
+
+    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+        var parent: ImagePicker
+
+        init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
+
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            picker.dismiss(animated: true)
+
+            guard let provider = results.first?.itemProvider else { return }
+            if provider.canLoadObject(ofClass: UIImage.self) {
+                provider.loadObject(ofClass: UIImage.self) { image, _ in
+                    DispatchQueue.main.async { [self] in
+                        if let uiImage = image as? UIImage {
+                            parent.image = Image(uiImage: uiImage)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#endif

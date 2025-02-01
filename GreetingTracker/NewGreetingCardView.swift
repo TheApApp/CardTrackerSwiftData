@@ -102,7 +102,9 @@ struct NewGreetingCardView: View {
                                     message: Text("Select one."),
                                     buttons: [
                                         ActionSheet.Button.default(Text("Photo Library"), action: {
-                                              self.captureFrontImage.toggle()
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                                self.captureFrontImage = true
+                                            }
                                               self.sourceType = .photoLibrary
                                     }),
                                         ActionSheet.Button.cancel()
@@ -112,9 +114,14 @@ struct NewGreetingCardView: View {
                                 #endif
                             }
                             .fullScreenCover(isPresented: $captureFrontImage) {
+                                #if !os(visionOS)
                                 ImagePicker(
                                     sourceType: sourceType,
                                     image: $frontImageSelected)
+                                #else
+                                ImagePicker(
+                                    image: $frontImageSelected)
+                                #endif
                             }
                     }
                     .frame(width: 350, height: 350)
