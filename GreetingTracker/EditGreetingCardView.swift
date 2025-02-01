@@ -152,7 +152,7 @@ struct EditGreetingCardView: View {
                                     )
 #endif
                                 }
-                                .sheet(isPresented: $captureFrontImage) {
+                                .fullScreenCover(isPresented: $captureFrontImage) {
                                     ImagePicker(
                                         sourceType: sourceType,
                                         image: $frontImageSelected)

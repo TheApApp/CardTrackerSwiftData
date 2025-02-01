@@ -111,7 +111,7 @@ struct NewGreetingCardView: View {
 
                                 #endif
                             }
-                            .sheet(isPresented: $captureFrontImage) {
+                            .fullScreenCover(isPresented: $captureFrontImage) {
                                 ImagePicker(
                                     sourceType: sourceType,
                                     image: $frontImageSelected)
@@ -132,7 +132,7 @@ struct NewGreetingCardView: View {
                 )
             }
 
-            .sheet(isPresented: $newEvent) {
+            .fullScreenCover(isPresented: $newEvent) {
                 EventTypeView()
             }
             

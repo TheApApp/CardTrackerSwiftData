@@ -104,7 +104,7 @@ struct ViewEventsView: View {
                 }
                 
             }
-            .sheet(isPresented: $showShareSheet, content: {
+            .fullScreenCover(isPresented: $showShareSheet, content: {
                 if let PDFUrl = PDFUrl {
                     ShareSheet(activityItems: [PDFUrl])
                         .interactiveDismissDisabled(true)

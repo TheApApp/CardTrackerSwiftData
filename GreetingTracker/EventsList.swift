@@ -55,7 +55,7 @@ struct EventsList: View {
             Text("Select event")
                 .foregroundColor(Color("AccentColor"))
         }
-        .sheet(isPresented: $newEvent) {
+        .fullScreenCover(isPresented: $newEvent) {
             EventTypeView()
                 .interactiveDismissDisabled(true)
         }

@@ -118,14 +118,14 @@ struct ViewRecipientDetailsView: View {
                     }
                 }
             }
-            .sheet(item: $navBarItemChosen ) { item in
+            .fullScreenCover(item: $navBarItemChosen ) { item in
                 switch item {
                 case .newCard:
                     NewCardView(recipient: recipient)
                         .interactiveDismissDisabled(true)
                 }
             }
-            .sheet(isPresented: $showShareSheet, content: {
+            .fullScreenCover(isPresented: $showShareSheet, content: {
                 if let PDFUrl = PDFUrl {
                     ShareSheet(activityItems: [PDFUrl])
                         .interactiveDismissDisabled(true)

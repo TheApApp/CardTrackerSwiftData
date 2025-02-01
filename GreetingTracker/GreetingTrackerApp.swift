@@ -38,7 +38,6 @@ struct GreetKeeperApp: App {
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-//        appearance.backgroundColor = .white
         let attrs: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.green,
             .font: UIFont.monospacedSystemFont(ofSize: 36, weight: .black)

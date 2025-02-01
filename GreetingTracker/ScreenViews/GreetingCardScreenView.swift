@@ -114,7 +114,7 @@ struct GreetingCardScreenView: View {
             }
         }
         
-        .sheet(item: $selectedAction) { action in
+        .fullScreenCover(item: $selectedAction) { action in
             ActionSheetContentView(
                 action: action,
                 card: greetingCard,
@@ -213,10 +213,13 @@ struct GreetingCardScreenView: View {
                 switch action {
                 case .edit:
                     EditViewWrapper(card: card)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 case .display:
                     DisplayViewWrapper(card: card)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 case .delete:
                     DeleteViewWrapper(card: card, deleteCard: deleteCard, logger: logger)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             } else {
                 ErrorView(message: "No card available.")

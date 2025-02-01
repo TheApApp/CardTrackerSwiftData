@@ -11,7 +11,9 @@ import SwiftUI
 struct WalkThroughtView: View {
     @AppStorage("walkthrough") var walkthrough = 1
     @AppStorage("totalViews") var totalViews = 5
-    
+
+    @EnvironmentObject var iPhone: IsIphone
+
     var title: String
     var description: String
     var bgColor: String
@@ -34,7 +36,7 @@ struct WalkThroughtView: View {
     
     var body: some View {
         ZStack{
-            VStack{
+            VStack(spacing: 0){
                 HStack {
                     Text("Welcome!")
                         .foregroundColor(Color.white)
@@ -50,28 +52,31 @@ struct WalkThroughtView: View {
                                 .foregroundColor(Color.white)
                         }
                     )
-                }.padding()
+                }
+                .padding()
                 Spacer()
-                VStack(alignment: .leading){
+                VStack(alignment: .leading, spacing: 0){
                     Image(img)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .containerRelativeFrame(.horizontal) { size, axis in
-                            size * 0.7
-                        }
+                        .frame(width: iPhone.iPhone ? 300 : 600, height: iPhone.iPhone ? 300 : 600)
                         .cornerRadius(30)
-                        .padding()
-                    
+                        .padding(.bottom, 20)
+
                     Text(title)
                         .fontWeight(.semibold)
                         .foregroundColor(Color.white)
                         .font(.title2)
                         .padding(.top)
-                    
+
                     Text(description)
-//                        .padding(.top, 3.0)
+                        .frame(maxWidth: iPhone.iPhone ? 300 : .infinity, alignment: .leading)
+                        .padding(.top, 3.0)
+                        .padding(.bottom, 10.0)
+                        .fixedSize(horizontal: true, vertical: true)
+                        .lineLimit(nil)
                         .foregroundColor(Color.white)
-                    
+
                     if walkthrough == 2 {
                         Button {
                             showNewEventView.toggle()
@@ -115,7 +120,8 @@ struct WalkThroughtView: View {
                     }
                     
                     Spacer(minLength: 0)
-                    
+                        .padding(.bottom, 30)
+
                 }
                 .padding()
                 .overlay(
@@ -206,16 +212,16 @@ struct WalkThroughtView: View {
             }
         }
 
-        .sheet(isPresented: $showNewEventView) {
+        .fullScreenCover(isPresented: $showNewEventView) {
             EventTypeView(eventType: eventType)
         }
-        .sheet(isPresented: $showNewGreetingCardView) {
+        .fullScreenCover(isPresented: $showNewGreetingCardView) {
             EditGreetingCardView(eventTypePassed: eventType)
         }
-        .sheet(isPresented: $showNewRecipientView) {
+        .fullScreenCover(isPresented: $showNewRecipientView) {
             RecipientView(recipientToEdit: recipient)
         }
-        .sheet(isPresented: $showNewCardView) {
+        .fullScreenCover(isPresented: $showNewCardView) {
             NewCardView(recipient: recipient!, eventTypePassed: eventType)
         }
         //.background(Color(bgColor).ignoresSafeArea())
@@ -231,4 +237,5 @@ struct WalkThroughtView: View {
     @Previewable @State var eventType: EventType? = EventType(eventName: "Birthday")
     
     WalkThroughtView(title: "WalkThrough", description: "This will show a lot of information", bgColor: "AccentColor", img:"Welcome_one", eventType: $eventType)
+        .environmentObject(IsIphone())
 }

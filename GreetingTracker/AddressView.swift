@@ -32,7 +32,7 @@ struct AddressView: View {
                     .foregroundColor(Color("AccentColor"))
             }
             
-            .sheet(isPresented: $editRecipient) {
+            .fullScreenCover(isPresented: $editRecipient) {
                 RecipientView(recipientToEdit: recipient)
                     .interactiveDismissDisabled(true)
             }
@@ -49,7 +49,7 @@ struct AddressView: View {
                         .foregroundColor(Color("AccentColor"))
                 }
             }
-            .sheet(isPresented: $editRecipient) {
+            .fullScreenCover(isPresented: $editRecipient) {
                 RecipientView(recipientToEdit: recipient)
                     .interactiveDismissDisabled(true)
             }

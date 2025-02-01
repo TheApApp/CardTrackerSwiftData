@@ -81,7 +81,7 @@ struct ViewGreetingCardsView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $showShareSheet) {
+                .fullScreenCover(isPresented: $showShareSheet) {
                     if let PDFUrl = PDFUrl {
                         ShareSheet(activityItems: [PDFUrl])
                             .interactiveDismissDisabled(true)

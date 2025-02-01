@@ -113,7 +113,7 @@ struct EventScreenView: View {
             }
         }
         
-        .sheet(item: $selectedAction) { action in
+        .fullScreenCover(item: $selectedAction) { action in
             ActionSheetContentView(
                 action: action,
                 card: card,
@@ -121,8 +121,8 @@ struct EventScreenView: View {
                 deleteCard: deleteCard,
                 logger: logger
             )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        
     }
     
     
@@ -148,6 +148,7 @@ struct EventScreenView: View {
         
         var body: some View {
             EditCardView(card: Bindable(card), navigationPath: $navigationPath)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
@@ -160,6 +161,7 @@ struct EventScreenView: View {
                 cardTitle: card.eventType?.eventName ?? "No Title",
                 cardDate: card.cardDate
             )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
@@ -185,6 +187,7 @@ struct EventScreenView: View {
                 .foregroundColor(.white)
                 
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .confirmationDialog("Are you sure?", isPresented: $areYouSure) {
                 Button("Yes", role: .destructive) {
                     withAnimation {
