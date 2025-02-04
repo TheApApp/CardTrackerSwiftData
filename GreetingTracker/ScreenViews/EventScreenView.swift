@@ -176,16 +176,20 @@ struct EventScreenView: View {
             ZStack {
                 AsyncImageView(imageData: card.cardFront?.cardFront)
                 VStack {
-                    Text("Delete \(card.eventType?.eventName ?? "No Title")")
-                    Text("Are you sure?")
+                    VStack {
+                        Text("Delete \(card.eventType?.eventName ?? "No Title")")
+                        Text("Are you sure?")
+                    }
+                    .font(.title)
+                    .padding(2)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.black.opacity(0.6))
+                    )
+                    .foregroundColor(.white)
+                    Spacer()
                 }
-                .padding(2)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.black.opacity(0.6))
-                )
-                .foregroundColor(.white)
-                
+
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .confirmationDialog("Are you sure?", isPresented: $areYouSure) {
@@ -248,14 +252,50 @@ struct EventScreenView: View {
 #Preview("iPhone") {
     
     EventScreenView(card:
-                        Card(cardDate: Date(), eventType: EventType(eventName: "Christmas"), cardFront: GreetingCard(cardName: "Cool Christmas Card", cardFront: nil, cardManufacturer: "MicroCards", cardURL: "https://michaelrowe01.com"), recipient: Recipient(addressLine1: "123 North Street", addressLine2: "Apt 123", city: "Anytown", state: "NC", zip: "22712", country: "USA", firstName: "Michael", lastName: "Rowe", category: .home)), navigationPath: .constant(NavigationPath()))
+                        Card(
+                            cardDate: Date(),
+                            eventType: EventType(eventName: "Christmas"),
+                            cardFront: GreetingCard(
+                                cardName: "Cool Christmas Card",
+                                cardFront: nil,
+                                cardManufacturer: "MicroCards",
+                                cardURL: "https://michaelrowe01.com"
+                            ), recipient: Recipient(
+                                addressLine1: "123 North Street",
+                                addressLine2: "Apt 123",
+                                city: "Anytown",
+                                state: "NC",
+                                zip: "22712",
+                                country: "USA",
+                                firstName: "Michael",
+                                lastName: "Rowe",
+                                category: .home)),
+                    navigationPath: .constant(NavigationPath()))
     .environmentObject(IsIphone.init())
     .frame(width: 160, height: 160)
     
 }
 #Preview("iPad") {
     EventScreenView(card:
-                        Card(cardDate: Date(), eventType: EventType(eventName: "Christmas"), cardFront: GreetingCard(cardName: "Cool Christmas Card", cardFront: nil, cardManufacturer: "MicroCards", cardURL: "https://michaelrowe01.com"), recipient: Recipient(addressLine1: "123 North Street", addressLine2: "Apt 123", city: "Anytown", state: "NC", zip: "22712", country: "USA", firstName: "Michael", lastName: "Rowe", category: .home)), navigationPath: .constant(NavigationPath()))
+                        Card(
+                            cardDate: Date(),
+                            eventType: EventType(eventName: "Christmas"),
+                            cardFront: GreetingCard(
+                                cardName: "Cool Christmas Card",
+                                cardFront: nil,
+                                cardManufacturer: "MicroCards",
+                                cardURL: "https://michaelrowe01.com"),
+                            recipient: Recipient(
+                                addressLine1: "123 North Street",
+                                addressLine2: "Apt 123",
+                                city: "Anytown",
+                                state: "NC",
+                                zip: "22712",
+                                country: "USA",
+                                firstName: "Michael",
+                                lastName: "Rowe",
+                                category: .home)),
+                    navigationPath: .constant(NavigationPath()))
     .environmentObject(IsIphone.init())
     .frame(width: 320, height: 320)
 }

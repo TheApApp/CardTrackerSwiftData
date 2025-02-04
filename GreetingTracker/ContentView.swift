@@ -177,17 +177,15 @@ struct ContentView: View {
                 case .events:
                     EventTypeView(eventType: nil)
                         .interactiveDismissDisabled(true)
-                case .recipients:
-                    RecipientView()
-                        .interactiveDismissDisabled(true)
                 case .greetingCard:
                     EditGreetingCardView(greetingCard: nil)
+                        .interactiveDismissDisabled(true)
+                case .recipients:
+                    RecipientView()
                         .interactiveDismissDisabled(true)
                 }
             }
         }
-        
-        
     }
 }
 

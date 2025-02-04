@@ -2,116 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-      "localizations" : {
-        "ar-AE" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "zh" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      }
+
     },
     "\t• Anniversaries" : {
       "extractionState" : "stale",
@@ -1379,7 +1270,7 @@
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld कार्ड भेजे गए"
+            "value" : "%Lld कार्ड भेजे गए"
           }
         },
         "id" : {
@@ -1409,7 +1300,7 @@
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%Lld Kaarten Verzonden"
+            "value" : "%lld Kaarten Verzonden"
           }
         },
         "pl" : {
@@ -2149,12 +2040,6 @@
             "value" : "Ein Anlass ist einfach jeder Grund, warum Sie eine Grußkarte verschicken dürfen.\n\nSie können sie nennen, wie Sie wollen.\n\nBeispiele sind:\n• Geburtstage\n• Jubiläen\n• Hochzeiten\n• Abschlüsse\n• Feiertage"
           }
         },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An occasion is simply any reason you may send out a greeting card.\n\nYou can name them whatever you like.\n\nExamples include:\n\t• Birthdays\n\t• Anniversaries\n\t• Weddings\n\t• Graduations\n\t• Holidays"
-          }
-        },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2224,7 +2109,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "โอกาสเป็นเพียงเหตุผลใด ๆ ที่คุณอาจส่งการ์ดอวยพร\n\nคุณสามารถตั้งชื่ออะไรก็ได้ที่คุณชอบ\n\nตัวอย่างรวมถึง:\n• วันเกิด\n• วันครบรอบ\n• งานแต่งงาน\n• การสําเร็จการศึกษา\n• วันหยุด"
+            "value" : "โอกาสเป็นเพียงเหตุผลใด ๆ ที่คุณอาจส่งการ์ดอวยพร\n\nคุณสามารถตั้งชื่ออะไรก็ได้ที่คุณชอบ\n\n ตัวอย่างรวมถึง:\n• วันเกิด\n• วันครบรอบ\n• งานแต่งงาน\n• การสําเร็จการศึกษา\n• วันหยุด"
           }
         },
         "tr" : {
@@ -2366,7 +2251,116 @@
       }
     },
     "Camera" : {
-
+      "localizations" : {
+        "ar-AE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كاميرا"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fotoapparat"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cámara fotográfica"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appareil photo"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "कैमरा"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macchina fotografica"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "カメラ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카메라"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Câmera"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กล้องถ่ายรูป"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kamera"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Máy ảnh"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "照相机"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -6289,6 +6283,230 @@
         }
       }
     },
+    "No cards have been sent for this oocasion." : {
+      "localizations" : {
+        "ar-AE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم يتم إرسال أي بطاقات لهذه المناسبة."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für diese Gelegenheit wurden keine Karten gesendet."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han enviado tarjetas para esta ocasión."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucune carte n'a été envoyée pour cette occasion."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "इस ओकेशन के लिए कोई कार्ड नहीं भेजा गया है।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada kartu yang dikirim untuk kesempatan ini."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non sono state inviate carte per questa occasione."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "この機会にカードは送られていません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이번 오케이션에 어떤 카드도 보내지 않았다."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Er zijn geen kaarten verzonden voor deze gelegenheid."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Z tej powodu nie wysłano żadnych kartek."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum cartão foi enviado para esta ocasião."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для этого случая не было отправлено никаких открыток."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่มีการส่งการ์ดสําหรับโอคาชั่นนี้"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu durum için hiçbir kart gönderilmedi."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Для цього не було надіслано жодних карток."
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không có thẻ nào được gửi cho oocasion này."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这次没有发送卡片。"
+          }
+        }
+      }
+    },
+    "Not Used" : {
+      "localizations" : {
+        "ar-AE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غير مستخدم"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht verwendet"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No utilizado"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non utilisé"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "इस्तेमाल नहीं किया गया"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak Digunakan"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non utilizzato"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未使用"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용되지 않음"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niet gebruikt"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieużyte"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não Usado"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не Используется"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่ได้ใช้"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanılmadı"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не використовується"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không được sử dụng"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未使用"
+          }
+        }
+      }
+    },
     "Occasion" : {
       "localizations" : {
         "ar-AE" : {
@@ -9702,7 +9920,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld회 사용됨"
+            "value" : "%Lld회 사용됨"
           }
         },
         "nl" : {
@@ -9738,7 +9956,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld kez kullanıldı"
+            "value" : "%Lld kez kullanıldı"
           }
         },
         "uk" : {

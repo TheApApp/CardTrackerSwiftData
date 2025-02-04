@@ -51,7 +51,6 @@ struct ViewEventsView: View {
 #endif
     
     init(eventType: EventType, navigationPath: Binding<NavigationPath>) {
-        print("DEBUG ViewEventsView: eventType : \(String(describing: eventType.eventName))")
         self.eventType = eventType
         let eventTypeID = eventType.persistentModelID // Note this is required to help in Macro Expansion
         _cards = Query(
@@ -79,37 +78,48 @@ struct ViewEventsView: View {
     }
     
     var body: some View {
-        VStack {
-            ScrollView {
-                LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
-                    ForEach(cards) { card in
-                        EventScreenView(card: card, navigationPath: $navigationPath)
-                    }
-                    .padding()
-                }
+        if cards.isEmpty {
+            ContentUnavailableView {
+                Label("Not Used", systemImage: "doc.richtext")
+                    .font(.largeTitle)
+                    .foregroundColor(Color("AccentColor"))
+            } description: {
+                Text("No cards have been sent for this oocasion.")
+                    .foregroundColor(Color("AccentColor"))
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("\(eventType.eventName) - \(cards.count) Sent")
-                        .foregroundColor(Color("AccentColor"))
+        } else {
+            VStack {
+                ScrollView {
+                    LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
+                        ForEach(cards) { card in
+                            EventScreenView(card: card, navigationPath: $navigationPath)
+                        }
+                        .padding()
+                    }
                 }
-                ToolbarItem(placement: .navigationBarTrailing){
-                    if isLoading {
-                        ProgressView()
-                    } else {
-                        Button(action: generatePDF) {
-                            Image(systemName: "square.and.arrow.up")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Text("\(eventType.eventName) - \(cards.count) Sent")
+                            .foregroundColor(Color("AccentColor"))
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        if isLoading {
+                            ProgressView()
+                        } else {
+                            Button(action: generatePDF) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
                         }
                     }
+
                 }
-                
+                .fullScreenCover(isPresented: $showShareSheet, content: {
+                    if let PDFUrl = PDFUrl {
+                        ShareSheet(activityItems: [PDFUrl])
+                            .interactiveDismissDisabled(true)
+                    }
+                })
             }
-            .fullScreenCover(isPresented: $showShareSheet, content: {
-                if let PDFUrl = PDFUrl {
-                    ShareSheet(activityItems: [PDFUrl])
-                        .interactiveDismissDisabled(true)
-                }
-            })
         }
     }
     
@@ -123,4 +133,8 @@ struct ViewEventsView: View {
             showShareSheet = true
         }
     }
+}
+
+#Preview {
+    ViewEventsView(eventType: EventType(eventName: "Sample"), navigationPath: .constant(NavigationPath()))
 }

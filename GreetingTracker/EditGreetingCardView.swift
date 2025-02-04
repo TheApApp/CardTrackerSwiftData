@@ -92,7 +92,8 @@ struct EditGreetingCardView: View {
                         }
                     }
                 }
-                
+                .foregroundColor(Color("AccentColor"))
+
                 Section("Card details") {
                     
                     TextField("Description", text: $cardName)

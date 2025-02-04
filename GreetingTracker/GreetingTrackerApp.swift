@@ -59,9 +59,9 @@ struct GreetKeeperApp: App {
             ContentView()
                 .modelContainer(sharedModelContainer)
                 .environmentObject(isIphone)
-                .onChange(of: scenePhase) {
-                    print("scenePhase \(scenePhase)")
-                }
+//                .onChange(of: scenePhase) {
+//                    print("scenePhase \(scenePhase)")
+//                }
         }
 #if os(macOS)
         .commands {

@@ -174,16 +174,20 @@ struct GreetingCardScreenView: View {
             ZStack {
                 AsyncImageView(imageData: card.cardFront)
                 VStack {
-                    Text("Delete \(card.cardName)?")
-                    Text("Are you sure?")
+                    VStack {
+                        Text("Delete \(card.cardName)?")
+                        Text("Are you sure?")
+                    }
+                    .font(.title)
+                    .padding(2)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.black.opacity(0.6))
+                    )
+                    .foregroundColor(.white)
+                    Spacer()
                 }
-                .padding(2)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.black.opacity(0.6))
-                )
-                .foregroundColor(.white)
-                
+
             }
             .confirmationDialog("Are you sure?", isPresented: $areYouSure) {
                 Button("Yes", role: .destructive) {
@@ -213,13 +217,10 @@ struct GreetingCardScreenView: View {
                 switch action {
                 case .edit:
                     EditViewWrapper(card: card)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 case .display:
                     DisplayViewWrapper(card: card)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 case .delete:
                     DeleteViewWrapper(card: card, deleteCard: deleteCard, logger: logger)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             } else {
                 ErrorView(message: "No card available.")

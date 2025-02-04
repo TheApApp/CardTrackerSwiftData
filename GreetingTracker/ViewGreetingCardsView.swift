@@ -9,7 +9,9 @@ import os
 import SwiftData
 import SwiftUI
 
-/// ViewGreetingCardsView allows for capturing new Greeting Cards into the Image gallery.  Images can be captured in one of two ways, importing from the user's Photo library or via the camera on their device.  The image gallery will be sorted by EventType
+/// ViewGreetingCardsView allows for capturing new Greeting Cards into the Image gallery.
+/// Images can be captured in one of two ways, importing from the user's Photo library or via the camera on their device.
+/// The image gallery will be sorted by EventType
 struct ViewGreetingCardsView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.presentationMode) var presentationMode
@@ -53,6 +55,7 @@ struct ViewGreetingCardsView: View {
             if greetingCards.isEmpty {
                 ContentUnavailableView {
                     Label("No Cards", systemImage: "doc.richtext")
+                        .font(.largeTitle)
                         .foregroundColor(Color("AccentColor"))
                 } description: {
                     Text("There are no cards in this gallery.")
@@ -62,7 +65,10 @@ struct ViewGreetingCardsView: View {
                 ScrollView {
                     LazyVGrid(columns: gridLayout, alignment: .center, spacing: 5) {
                         ForEach(greetingCards, id: \.id ) { greetingCard in
-                            GreetingCardScreenView(greetingCard: greetingCard, navigationPath: $navigationPath)
+                            GreetingCardScreenView(
+                                greetingCard: greetingCard,
+                                navigationPath: $navigationPath
+                            )
                         }
                     }
                 }
@@ -94,7 +100,10 @@ struct ViewGreetingCardsView: View {
     private func generatePDF() {
         isLoading = true
         Task {
-            let pdfGenerator = GeneratePDF(title: "\(eventType.eventName)", cards: nil, greetingCards: greetingCards, cardArray: false)
+            let pdfGenerator = GeneratePDF(title: "\(eventType.eventName)",
+                                           cards: nil,
+                                           greetingCards: greetingCards,
+                                           cardArray: false)
             let pdfUrl = await pdfGenerator.render(viewsPerPage: 16)
             PDFUrl = pdfUrl
             isLoading = false
@@ -105,5 +114,8 @@ struct ViewGreetingCardsView: View {
 
 
 #Preview {
-    ViewGreetingCardsView(eventType: EventType(eventName: "Birthday"), navigationPath: .constant(NavigationPath()))
+    ViewGreetingCardsView(
+        eventType: EventType(eventName: "Birthday"),
+        navigationPath: .constant(NavigationPath())
+    )
 }
