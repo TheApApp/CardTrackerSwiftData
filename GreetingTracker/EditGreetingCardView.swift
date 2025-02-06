@@ -128,13 +128,13 @@ struct EditGreetingCardView: View {
                                         buttons: [
                                             ActionSheet.Button.default(Text("Camera"), action: {
                                                 checkCameraAuthorization()
-                                                self.captureFrontImage.toggle()
-                                                self.sourceType = .camera
+                                                captureFrontImage.toggle()
+                                                sourceType = .camera
                                             }),
                                             
                                             ActionSheet.Button.default(Text("Photo Library"), action: {
-                                                self.captureFrontImage.toggle()
-                                                self.sourceType = .photoLibrary
+                                                captureFrontImage.toggle()
+                                                sourceType = .photoLibrary
                                             }),
                                             
                                             ActionSheet.Button.cancel()
@@ -146,8 +146,8 @@ struct EditGreetingCardView: View {
                                         message: Text("Select one."),
                                         buttons: [
                                             ActionSheet.Button.default(Text("Photo Library"), action: {
-                                                self.captureFrontImage.toggle()
-                                                self.sourceType = .photoLibrary }),
+                                                captureFrontImage.toggle()
+                                                sourceType = .photoLibrary }),
                                             ActionSheet.Button.cancel()
                                         ]
                                     )
